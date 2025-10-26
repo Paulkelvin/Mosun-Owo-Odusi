@@ -11,7 +11,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
-  description: 'Driving Impact Through Strategic Leadership and Collaboration - Project Manager, Education Consultant, and Real Estate Advisor',
+  description: 'Mosun is a strategic leader specializing in project management, education consultancy, and real estate advisory with extensive experience in World Bank initiatives and development projects.',
   keywords: ['project management', 'education consulting', 'real estate advisory', 'leadership', 'strategy', 'world bank', 'development projects'],
   authors: [{ name: 'Mosun Owo-Odusi' }],
   creator: 'Mosun Owo-Odusi',
@@ -24,13 +24,13 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
-    description: 'Driving Impact Through Strategic Leadership and Collaboration',
+    description: 'Mosun is a strategic leader specializing in project management, education consultancy, and real estate advisory with extensive World Bank experience.',
     siteName: 'Mosun Owo-Odusi Professional Website',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
-    description: 'Driving Impact Through Strategic Leadership and Collaboration',
+    description: 'Mosun is a strategic leader specializing in project management, education consultancy, and real estate advisory with extensive World Bank experience.',
   },
   viewport: {
     width: 'device-width',
