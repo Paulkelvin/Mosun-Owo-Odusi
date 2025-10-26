@@ -4,6 +4,7 @@ import type { Metadata } from 'next'
 import { motion } from 'framer-motion'
 import { Star, Quote, Linkedin, Twitter, Mail, Building2, Users, GraduationCap, TrendingUp, Play, Pause } from 'lucide-react'
 import HighlightText from '@/components/HighlightText'
+import Image from 'next/image'
 import { useState, useRef } from 'react'
 
 const testimonials = [
@@ -274,22 +275,42 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
 export default function Testimonials() {
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-white via-primary-50/20 to-gold-50/10">
-        <div className="container-custom">
+      {/* Hero Section with Banner */}
+      <section className="relative h-96 lg:h-[500px] overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/testimonial-banner.png"
+            alt="Client Testimonials - Mosun Owo-Odusi"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          {/* Optional overlay if needed for text readability */}
+          <div className="absolute inset-0 bg-black/20" />
+        </div>
+
+        {/* Hero Content Overlay */}
+        <div className="relative z-10 flex items-center justify-center h-full px-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-16"
+            className="text-center max-w-4xl"
           >
-            <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-              Client <HighlightText highlightColor="gold"><span className="gradient-text">Testimonials</span></HighlightText>
+            <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
+              Client <HighlightText highlightColor="gold"><span className="text-gold-300">Testimonials</span></HighlightText>
             </h1>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-200 max-w-3xl mx-auto">
               Discover what colleagues, clients, and partners say about working together to create meaningful impact
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Main Content Section */}
+      <section className="section-padding bg-gradient-to-br from-white via-primary-50/20 to-gold-50/10">
+        <div className="container-custom">
 
           {/* Testimonials Grid */}
           <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
