@@ -61,7 +61,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
           >
-            Driving Impact Through Strategic Leadership
+            <span className="block sm:inline">Driving Impact</span>{' '}
+            <span className="block sm:inline">Through Leadership</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -69,7 +70,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.25 }}
             className="text-lg lg:text-xl text-slate-200 mb-8"
           >
-            Project Manager | Education Consultant | Real Estate Advisor
+            Project Management | Education Consultancy | Real Estate Advisory
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
