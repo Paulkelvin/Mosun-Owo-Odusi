@@ -280,7 +280,7 @@ export default function Testimonials() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/testimonial-banner.png"
+            src="/images/testimonial-banner.png"
             alt="Client Testimonials - Mosun Owo-Odusi"
             fill
             className="object-cover object-center"
