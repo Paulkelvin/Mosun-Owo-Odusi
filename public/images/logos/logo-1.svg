@@ -1,0 +1,5 @@
+<svg width="140" height="40" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Logo 1">
+  <rect width="140" height="40" rx="8" fill="#3B82F6"/>
+  <circle cx="28" cy="20" r="10" fill="#F59E0B"/>
+  <text x="55" y="25" font-size="16" font-family="Arial, Helvetica, sans-serif" fill="#ffffff">BrandOne</text>
+</svg>
