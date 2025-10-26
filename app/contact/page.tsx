@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Mail, Phone, MapPin, Calendar, Clock, Globe, Send, MessageSquare, User, ArrowRight } from 'lucide-react'
 import HighlightText from '@/components/HighlightText'
+import Image from 'next/image'
 
 export default function Contact() {
   return (
@@ -11,10 +12,12 @@ export default function Contact() {
       <section className="relative h-96 lg:h-[500px] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
-          <img
+          <Image
             src="/images/mosun-portrait.png"
             alt="Mosun Owo-Odusi - Contact"
-            className="w-full h-full object-cover object-center"
+            fill
+            className="object-cover object-center"
+            priority
           />
           {/* Dark overlay for readability */}
           <div
