@@ -286,9 +286,9 @@ export default function Testimonials() {
             className="object-cover object-center"
             priority
           />
-          {/* Enhanced overlay for better text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60" />
-          <div className="absolute inset-0 bg-primary-900/30" />
+          {/* Light, colorful overlay that enhances rather than darkens */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary-50/30 via-transparent to-gold-50/20" />
         </div>
 
         {/* Hero Content Overlay */}
@@ -299,12 +299,12 @@ export default function Testimonials() {
             transition={{ duration: 0.8 }}
             className="text-center max-w-4xl"
           >
-            {/* Text container with background for extra contrast */}
-            <div className="bg-black/20 backdrop-blur-sm rounded-2xl p-8 border border-white/10">
-              <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6 drop-shadow-2xl">
-                Client <HighlightText highlightColor="gold"><span className="text-gold-200 drop-shadow-lg">Testimonials</span></HighlightText>
+            {/* Light, glassy text container that complements the colorful background */}
+            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-10 border border-white/40 shadow-2xl">
+              <h1 className="text-4xl lg:text-5xl font-bold text-primary-900 mb-6">
+                Client <HighlightText highlightColor="gold"><span className="text-gold-600">Testimonials</span></HighlightText>
               </h1>
-              <p className="text-xl text-white max-w-3xl mx-auto drop-shadow-lg opacity-95">
+              <p className="text-xl text-primary-700 max-w-3xl mx-auto font-medium">
                 Discover what colleagues, clients, and partners say about working together to create meaningful impact
               </p>
             </div>
