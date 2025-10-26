@@ -23,14 +23,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
+    url: 'https://mosun-owo-odusi.netlify.app',
     title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
     description: 'Mosun is a strategic leader specializing in project management, education consultancy, and real estate advisory with extensive World Bank experience.',
     siteName: 'Mosun Owo-Odusi Professional Website',
+    images: [
+      {
+        url: '/images/mosun-portrait.png',
+        width: 1200,
+        height: 630,
+        alt: 'Mosun Owo-Odusi - Professional Portrait',
+        type: 'image/png',
+      }
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
     description: 'Mosun is a strategic leader specializing in project management, education consultancy, and real estate advisory with extensive World Bank experience.',
+    images: ['/images/mosun-portrait.png'],
   },
   viewport: {
     width: 'device-width',

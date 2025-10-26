@@ -182,20 +182,22 @@ export default function ExpertiseTabs() {
             )})}
           </motion.div>
 
-          {/* Tab Content - Enhanced Design */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            viewport={{ once: true }}
-            className={`relative rounded-3xl shadow-large overflow-hidden mb-16 ${
-              activeArea?.id === 'project-management' ? 'bg-blue-500' :
-              activeArea?.id === 'education-consulting' ? 'bg-emerald-500' :
-              activeArea?.id === 'real-estate' ? 'bg-amber-500' :
-              activeArea?.id === 'leadership' ? 'bg-violet-500' :
-              'bg-white'
-            }`}
-          >
+        </div>
+        
+        {/* Tab Content - Enhanced Design - Extended width */}
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className={`relative rounded-none sm:rounded-3xl shadow-large overflow-hidden mb-16 mx-0 sm:mx-4 lg:mx-8 ${
+            activeArea?.id === 'project-management' ? 'bg-blue-500' :
+            activeArea?.id === 'education-consulting' ? 'bg-emerald-500' :
+            activeArea?.id === 'real-estate' ? 'bg-amber-500' :
+            activeArea?.id === 'leadership' ? 'bg-violet-500' :
+            'bg-white'
+          }`}
+        >
             <AnimatePresence mode="wait">
               {activeArea && (
                 <motion.div
@@ -208,9 +210,9 @@ export default function ExpertiseTabs() {
                 >
 
 
-                  <div className="relative p-8 lg:p-12">
+                  <div className="relative p-0 py-8 lg:p-12">
                     {/* Header Section */}
-                    <div className="flex items-center gap-6 mb-8">
+                    <div className="flex items-center gap-6 mb-8 px-4 sm:px-6 lg:px-12">
                       {/* Icon Circle with Contrasting Background */}
                       <div className="relative flex-shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg bg-white/20 backdrop-blur-sm border border-white/30">
                         <div className="text-white w-6 h-6 flex items-center justify-center">
@@ -263,7 +265,7 @@ export default function ExpertiseTabs() {
                     </div>
 
                     {/* Two Column Layout */}
-                    <div className="grid lg:grid-cols-5 gap-8">
+                    <div className="grid lg:grid-cols-5 gap-4 lg:gap-8 px-4 sm:px-6 lg:px-12">
                       
                       {/* Left Column - Description (streamlined) */}
                       <div className="lg:col-span-3 space-y-6">
@@ -461,8 +463,7 @@ export default function ExpertiseTabs() {
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
