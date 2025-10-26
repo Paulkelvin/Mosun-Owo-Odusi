@@ -14,7 +14,7 @@ export default function Contact() {
             Get In <span className="gradient-text">Touch</span>
           </h1>
           <p className="text-xl text-slate-600 mb-12">
-            Let's discuss how we can work together to create transformative impact
+            Let&apos;s discuss how we can work together to create transformative impact
           </p>
           <div className="bg-white rounded-2xl shadow-medium p-8">
             <h2 className="text-2xl font-bold text-slate-900 mb-6">Contact Information</h2>

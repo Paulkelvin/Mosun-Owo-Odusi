@@ -20,7 +20,7 @@ export default function About() {
           <div className="bg-white rounded-2xl shadow-medium p-8 text-left">
             <h2 className="text-2xl font-bold text-slate-900 mb-4">Professional Background</h2>
             <p className="text-slate-600 leading-relaxed mb-6">
-              This page will feature a comprehensive overview of Mosun's professional journey, 
+              This page will feature a comprehensive overview of Mosun&apos;s professional journey, 
               educational background, key achievements, and the experiences that have shaped her 
               approach to project management and education consulting.
             </p>

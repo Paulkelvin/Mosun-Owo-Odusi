@@ -33,7 +33,7 @@ export default function Organizations() {
               className="w-10 h-0.5 bg-gradient-to-r from-primary-600 to-primary-700 mx-auto mb-3"
             />
             <h2 id="orgs-heading" className="text-2xl lg:text-3xl font-semibold text-slate-900">
-              Organizations I've Worked With
+              Organizations I&apos;ve Worked With
             </h2>
           </motion.div>
           

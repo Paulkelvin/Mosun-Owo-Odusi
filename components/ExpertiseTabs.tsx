@@ -438,7 +438,7 @@ export default function ExpertiseTabs() {
                               <div className="rounded-[10px] bg-white/90 backdrop-blur-sm px-5 py-4">
                                 <div className="flex items-center gap-3">
                                   <span className="inline-block h-6 w-1.5 rounded-full bg-gradient-to-b from-amber-300 to-amber-500 shadow-[0_0_0_2px_rgba(255,255,255,0.6)_inset]" />
-                                  <span className="font-semibold text-primary-800 text-lg lg:text-xl">Let's discuss your project goals.</span>
+                                  <span className="font-semibold text-primary-800 text-lg lg:text-xl">                            <span className="relative z-10">Let&apos;s discuss your project goals.</span></span>
                                 </div>
                               </div>
                             </div>
