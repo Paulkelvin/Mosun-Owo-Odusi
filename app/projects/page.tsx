@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Users, DollarSign, Calendar, MapPin, Award, TrendingUp, Briefcase } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Users, DollarSign, Calendar, MapPin, Award, TrendingUp, Briefcase, ChevronDown, ChevronUp, Image as ImageIcon } from 'lucide-react'
 import HighlightText from '@/components/HighlightText'
 import Image from 'next/image'
-import type { Metadata } from 'next'
 
-// Sample project data structure (you'll replace with real content later)
+// Enhanced project data structure with milestones
 const projects = [
   {
     id: 1,
@@ -20,21 +19,103 @@ const projects = [
     duration: "2019-2024",
     location: "Multi-state, Nigeria",
     image: "/api/placeholder/600/400",
-    highlights: [
-      "Streamlined land administration systems",
-      "Digital governance transformation", 
-      "Skills training and capacity building",
-      "Agricultural productivity enhancement"
-    ],
-    metrics: {
-      "Certificates of Occupancy Issued": "15,000+",
-      "Farmers Digitized": "160,000",
-      "Technical Colleges Rehabilitated": "8",
-      "Youth Trained": "25,000+"
-    },
     description: "Led strategic coordination of World Bank-supported economic transformation program, implementing innovative land administration solutions and digital governance systems across multiple Nigerian states.",
     impact: "Transformed lives of over 65,000 beneficiaries through integrated approach to land rights, agricultural productivity, and skills development.",
-    tags: ["World Bank", "Digital Transformation", "Land Administration", "Capacity Building"]
+    tags: ["World Bank", "Digital Transformation", "Land Administration", "Capacity Building"],
+    milestones: [
+      {
+        id: "phase1",
+        title: "Project Initiation & Planning",
+        period: "Q1-Q2 2019",
+        description: "Comprehensive stakeholder mapping and project framework development across participating states.",
+        achievements: [
+          "Stakeholder engagement across 6 states",
+          "Baseline assessment completion",
+          "Technical team establishment",
+          "Community sensitization programs"
+        ],
+        metrics: {
+          "States Engaged": "6",
+          "Stakeholders Mapped": "500+",
+          "Communities Reached": "150",
+          "Technical Experts": "25"
+        },
+        images: [
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300"
+        ]
+      },
+      {
+        id: "phase2",
+        title: "Digital Infrastructure Development",
+        period: "Q3 2019 - Q4 2020",
+        description: "Implementation of cutting-edge digital land administration systems and governance platforms.",
+        achievements: [
+          "Land information system deployment",
+          "Digital certificate generation platform",
+          "Mobile application development",
+          "Data migration and validation"
+        ],
+        metrics: {
+          "Systems Deployed": "8",
+          "Records Digitized": "75,000",
+          "Mobile Users": "12,000",
+          "Accuracy Rate": "99.5%"
+        },
+        images: [
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300"
+        ]
+      },
+      {
+        id: "phase3",
+        title: "Capacity Building & Training",
+        period: "Q1 2021 - Q2 2023",
+        description: "Comprehensive skills development and institutional capacity building across all participating states.",
+        achievements: [
+          "Technical college rehabilitation",
+          "Youth skills training programs",
+          "Farmer digital literacy initiatives",
+          "Government staff capacity building"
+        ],
+        metrics: {
+          "Youth Trained": "25,000+",
+          "Farmers Digitized": "160,000",
+          "Colleges Rehabilitated": "8",
+          "Staff Trained": "2,500"
+        },
+        images: [
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300"
+        ]
+      },
+      {
+        id: "phase4",
+        title: "Impact Scaling & Sustainability",
+        period: "Q3 2023 - Q4 2024",
+        description: "Focus on scaling successful interventions and ensuring long-term sustainability of project outcomes.",
+        achievements: [
+          "Certificate issuance acceleration",
+          "Private sector engagement",
+          "Policy framework development",
+          "Impact measurement and evaluation"
+        ],
+        metrics: {
+          "Certificates Issued": "15,000+",
+          "Private Partners": "50+",
+          "Policies Updated": "12",
+          "Impact Score": "8.5/10"
+        },
+        images: [
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300"
+        ]
+      }
+    ]
   },
   {
     id: 2,
@@ -47,21 +128,56 @@ const projects = [
     duration: "2022-2023",
     location: "West Africa",
     image: "/api/placeholder/600/400",
-    highlights: [
-      "Curriculum modernization across 12 countries",
-      "Teacher training and certification programs",
-      "Digital learning infrastructure development",
-      "Student outcome measurement systems"
-    ],
-    metrics: {
-      "Countries Impacted": "12",
-      "Students Reached": "2.1M",
-      "Teachers Trained": "45,000",
-      "Schools Digitized": "3,200"
-    },
     description: "Spearheaded comprehensive education reform initiative working with UNESCO and regional governments to modernize curricula and improve learning outcomes.",
     impact: "Revolutionized educational frameworks leading to 40% improvement in learning outcomes across participating countries.",
-    tags: ["UNESCO", "Policy Reform", "Curriculum Development", "Teacher Training"]
+    tags: ["UNESCO", "Policy Reform", "Curriculum Development", "Teacher Training"],
+    milestones: [
+      {
+        id: "research",
+        title: "Research & Assessment",
+        period: "Q1-Q2 2022",
+        description: "Comprehensive analysis of existing education systems and identification of reform opportunities.",
+        achievements: [
+          "12-country education system analysis",
+          "Best practices identification",
+          "Stakeholder consultation",
+          "Reform framework development"
+        ],
+        metrics: {
+          "Countries Analyzed": "12",
+          "Stakeholders Consulted": "1,500",
+          "Policies Reviewed": "240",
+          "Best Practices": "85"
+        },
+        images: [
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300"
+        ]
+      },
+      {
+        id: "implementation",
+        title: "Curriculum Implementation",
+        period: "Q3 2022 - Q2 2023",
+        description: "Rollout of modernized curricula and teacher training programs across participating countries.",
+        achievements: [
+          "Curriculum modernization",
+          "Teacher training deployment",
+          "Digital learning integration",
+          "Assessment system updates"
+        ],
+        metrics: {
+          "Teachers Trained": "45,000",
+          "Students Reached": "2.1M",
+          "Schools Digitized": "3,200",
+          "Improvement Rate": "40%"
+        },
+        images: [
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300"
+        ]
+      }
+    ]
   },
   {
     id: 3,
@@ -74,21 +190,56 @@ const projects = [
     duration: "2021-2022",
     location: "Lagos, Nigeria",
     image: "/api/placeholder/600/400",
-    highlights: [
-      "Sustainable housing development planning",
-      "Market analysis and investment modeling",
-      "Community engagement and stakeholder management",
-      "Environmental impact assessment integration"
-    ],
-    metrics: {
-      "Housing Units Planned": "5,000",
-      "Investment ROI": "35%",
-      "Jobs Created": "3,500",
-      "Green Building Certification": "100%"
-    },
     description: "Provided strategic advisory for large-scale sustainable housing development, balancing community needs with investor requirements and environmental considerations.",
     impact: "Created sustainable housing solutions for 15,000+ residents while generating positive returns for investors and 3,500 construction jobs.",
-    tags: ["Sustainable Development", "Investment Strategy", "Community Planning", "Green Building"]
+    tags: ["Sustainable Development", "Investment Strategy", "Community Planning", "Green Building"],
+    milestones: [
+      {
+        id: "planning",
+        title: "Strategic Planning & Analysis",
+        period: "Q1-Q2 2021",
+        description: "Market analysis, feasibility studies, and sustainable development planning.",
+        achievements: [
+          "Market analysis completion",
+          "Investment modeling",
+          "Environmental assessment",
+          "Community engagement"
+        ],
+        metrics: {
+          "Market Coverage": "100%",
+          "ROI Projection": "35%",
+          "Green Score": "A+",
+          "Community Support": "95%"
+        },
+        images: [
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300"
+        ]
+      },
+      {
+        id: "development",
+        title: "Development & Construction",
+        period: "Q3 2021 - Q4 2022",
+        description: "Implementation of sustainable housing development with green building standards.",
+        achievements: [
+          "Sustainable construction",
+          "Job creation",
+          "Green certification",
+          "Community integration"
+        ],
+        metrics: {
+          "Units Completed": "5,000",
+          "Jobs Created": "3,500",
+          "Green Certifications": "100%",
+          "Residents Housed": "15,000+"
+        },
+        images: [
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300"
+        ]
+      }
+    ]
   },
   {
     id: 4,
@@ -101,21 +252,56 @@ const projects = [
     duration: "2020-2021",
     location: "Sub-Saharan Africa",
     image: "/api/placeholder/600/400",
-    highlights: [
-      "Executive leadership curriculum design",
-      "Mentorship network establishment",
-      "Cross-sector collaboration frameworks",
-      "Impact measurement and evaluation systems"
-    ],
-    metrics: {
-      "Leaders Trained": "2,500",
-      "Organizations Impacted": "500",
-      "Programs Launched": "50",
-      "Success Rate": "92%"
-    },
     description: "Designed and implemented comprehensive leadership development program for emerging leaders across public and private sectors in Sub-Saharan Africa.",
     impact: "Empowered 2,500 leaders who went on to launch 50+ impactful programs, creating ripple effects reaching 10,000+ beneficiaries.",
-    tags: ["Leadership Development", "Mentorship", "Capacity Building", "Cross-sector Collaboration"]
+    tags: ["Leadership Development", "Mentorship", "Capacity Building", "Cross-sector Collaboration"],
+    milestones: [
+      {
+        id: "design",
+        title: "Program Design & Setup",
+        period: "Q1-Q2 2020",
+        description: "Comprehensive leadership curriculum design and program framework establishment.",
+        achievements: [
+          "Curriculum development",
+          "Mentor network setup",
+          "Platform deployment",
+          "Pilot program launch"
+        ],
+        metrics: {
+          "Modules Created": "24",
+          "Mentors Recruited": "150",
+          "Pilot Participants": "100",
+          "Success Rate": "98%"
+        },
+        images: [
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300"
+        ]
+      },
+      {
+        id: "implementation",
+        title: "Full Program Implementation",
+        period: "Q3 2020 - Q4 2021",
+        description: "Large-scale rollout of leadership development program across Sub-Saharan Africa.",
+        achievements: [
+          "Leadership training delivery",
+          "Mentorship program",
+          "Impact measurement",
+          "Network expansion"
+        ],
+        metrics: {
+          "Leaders Trained": "2,500",
+          "Organizations": "500",
+          "Programs Launched": "50",
+          "Beneficiaries": "10,000+"
+        },
+        images: [
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300"
+        ]
+      }
+    ]
   },
   {
     id: 5,
@@ -128,21 +314,33 @@ const projects = [
     duration: "2020",
     location: "Multi-country",
     image: "/api/placeholder/600/400",
-    highlights: [
-      "Multi-stakeholder response coordination",
-      "Supply chain optimization for medical supplies",
-      "Digital health platform implementation",
-      "Community communication strategy"
-    ],
-    metrics: {
-      "Lives Directly Impacted": "500K+",
-      "Healthcare Facilities Supported": "1,200",
-      "Medical Supplies Distributed": "2M+",
-      "Digital Health Adoptions": "100K+"
-    },
     description: "Coordinated rapid response initiatives during COVID-19 pandemic, ensuring efficient resource allocation and community support across multiple countries.",
     impact: "Saved countless lives through coordinated response efforts and established resilient healthcare systems for future crisis preparedness.",
-    tags: ["Crisis Management", "Healthcare Systems", "Supply Chain", "Digital Health"]
+    tags: ["Crisis Management", "Healthcare Systems", "Supply Chain", "Digital Health"],
+    milestones: [
+      {
+        id: "response",
+        title: "Rapid Response Setup",
+        period: "Q1-Q2 2020",
+        description: "Emergency coordination framework and resource mobilization.",
+        achievements: [
+          "Emergency response setup",
+          "Supply chain establishment",
+          "Healthcare support",
+          "Communication strategy"
+        ],
+        metrics: {
+          "Response Time": "72 hrs",
+          "Facilities Setup": "1,200",
+          "Supplies Mobilized": "2M+",
+          "Lives Saved": "500K+"
+        },
+        images: [
+          "/api/placeholder/400/300",
+          "/api/placeholder/400/300"
+        ]
+      }
+    ]
   }
 ]
 
@@ -150,6 +348,8 @@ export default function Projects() {
   const [selectedYear, setSelectedYear] = useState(2024)
   const [isAutoPlay, setIsAutoPlay] = useState(false)
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
+  const [selectedMilestone, setSelectedMilestone] = useState<string | null>(null)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   // Auto-play functionality
   useEffect(() => {
@@ -158,6 +358,7 @@ export default function Projects() {
     const interval = setInterval(() => {
       setCurrentProjectIndex((prev) => (prev + 1) % projects.length)
       setSelectedYear(projects[(currentProjectIndex + 1) % projects.length].year)
+      setSelectedMilestone(null) // Reset milestone when auto-playing
     }, 4000)
     
     return () => clearInterval(interval)
@@ -165,22 +366,36 @@ export default function Projects() {
 
   const currentProject = projects.find(p => p.year === selectedYear) || projects[0]
   const years = projects.map(p => p.year).sort((a, b) => b - a)
+  const currentMilestone = selectedMilestone 
+    ? currentProject.milestones.find(m => m.id === selectedMilestone)
+    : null
 
   const handleYearClick = (year: number) => {
     setSelectedYear(year)
     setCurrentProjectIndex(projects.findIndex(p => p.year === year))
+    setSelectedMilestone(null)
+    setCurrentImageIndex(0)
   }
 
   const handlePrevious = () => {
     const newIndex = currentProjectIndex > 0 ? currentProjectIndex - 1 : projects.length - 1
     setCurrentProjectIndex(newIndex)
     setSelectedYear(projects[newIndex].year)
+    setSelectedMilestone(null)
+    setCurrentImageIndex(0)
   }
 
   const handleNext = () => {
     const newIndex = currentProjectIndex < projects.length - 1 ? currentProjectIndex + 1 : 0
     setCurrentProjectIndex(newIndex)
     setSelectedYear(projects[newIndex].year)
+    setSelectedMilestone(null)
+    setCurrentImageIndex(0)
+  }
+
+  const handleMilestoneClick = (milestoneId: string) => {
+    setSelectedMilestone(selectedMilestone === milestoneId ? null : milestoneId)
+    setCurrentImageIndex(0)
   }
 
   const getCategoryColor = (category: string) => {
@@ -251,201 +466,237 @@ export default function Projects() {
       {/* Interactive Timeline Section */}
       <section className="section-padding bg-gradient-to-br from-white via-primary-50/20 to-gold-50/10">
         <div className="container-custom">
-          {/* Section Header */}
-          <div className="text-center mb-16">
+          {/* Section Header with Navigation */}
+          <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
               Career <HighlightText highlightColor="blue">Timeline</HighlightText>
             </h2>
-            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto mb-8">
               Explore the journey of impactful projects and strategic initiatives
             </p>
-          </div>
-
-          {/* Timeline Container */}
-          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 max-w-7xl mx-auto">
             
-            {/* Left Panel - Years Timeline */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-32">
-                {/* Controls */}
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-lg font-semibold text-slate-900">Timeline</h3>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => setIsAutoPlay(!isAutoPlay)}
-                      className="p-2 rounded-lg hover:bg-primary-50 transition-colors"
-                      title={isAutoPlay ? "Pause auto-play" : "Start auto-play"}
-                    >
-                      {isAutoPlay ? (
-                        <Pause className="w-5 h-5 text-primary-600" />
-                      ) : (
-                        <Play className="w-5 h-5 text-primary-600" />
-                      )}
-                    </button>
-                  </div>
-                </div>
-
-                {/* Year Navigation */}
-                <div className="relative">
-                  <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-200 to-gold-200"></div>
-                  <div className="space-y-6">
-                    {years.map((year, index) => (
-                      <motion.button
-                        key={year}
-                        onClick={() => handleYearClick(year)}
-                        className={`relative flex items-center text-left transition-all duration-300 ${
-                          selectedYear === year
-                            ? 'text-primary-700'
-                            : 'text-slate-500 hover:text-slate-700'
-                        }`}
-                        whileHover={{ x: 4 }}
-                        whileTap={{ scale: 0.98 }}
-                      >
-                        <div className={`w-12 h-12 rounded-full border-2 flex items-center justify-center font-bold mr-4 transition-all duration-300 ${
-                          selectedYear === year
-                            ? 'bg-primary-600 border-primary-600 text-white shadow-lg'
-                            : 'bg-white border-slate-200 text-slate-600 hover:border-primary-300'
-                        }`}>
-                          {year.toString().slice(-2)}
-                        </div>
-                        <div className={`text-2xl font-bold transition-all duration-300 ${
-                          selectedYear === year ? 'text-primary-700' : 'text-slate-400'
-                        }`}>
-                          {year}
-                        </div>
-                      </motion.button>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Navigation Controls */}
-                <div className="flex gap-2 mt-8">
+            {/* Top Navigation Controls */}
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+              {/* Year Navigation - Horizontal on Mobile */}
+              <div className="flex items-center gap-2 overflow-x-auto pb-2 sm:pb-0">
+                {years.map((year) => (
                   <button
-                    onClick={handlePrevious}
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
+                    key={year}
+                    onClick={() => handleYearClick(year)}
+                    className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 whitespace-nowrap ${
+                      selectedYear === year
+                        ? 'bg-primary-600 text-white shadow-lg'
+                        : 'bg-white text-slate-600 hover:bg-primary-50 border border-slate-200'
+                    }`}
                   >
-                    <ChevronLeft className="w-4 h-4" />
-                    <span className="text-sm">Previous</span>
+                    {year}
                   </button>
-                  <button
-                    onClick={handleNext}
-                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
-                  >
-                    <span className="text-sm">Next</span>
-                    <ChevronRight className="w-4 h-4" />
-                  </button>
-                </div>
+                ))}
+              </div>
+              
+              {/* Controls */}
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={handlePrevious}
+                  className="p-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
+                  title="Previous project"
+                >
+                  <ChevronLeft className="w-5 h-5 text-slate-600" />
+                </button>
+                <button
+                  onClick={() => setIsAutoPlay(!isAutoPlay)}
+                  className="p-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
+                  title={isAutoPlay ? "Pause auto-play" : "Start auto-play"}
+                >
+                  {isAutoPlay ? (
+                    <Pause className="w-5 h-5 text-primary-600" />
+                  ) : (
+                    <Play className="w-5 h-5 text-primary-600" />
+                  )}
+                </button>
+                <button
+                  onClick={handleNext}
+                  className="p-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                  title="Next project"
+                >
+                  <ChevronRight className="w-5 h-5" />
+                </button>
               </div>
             </div>
+          </div>
 
-            {/* Right Panel - Project Details */}
-            <div className="lg:col-span-4">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentProject.id}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.5 }}
-                  className="bg-white rounded-3xl shadow-xl overflow-hidden"
-                >
-                  {/* Project Header */}
-                  <div className="p-8 lg:p-10">
-                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-4 mb-4">
-                          <span className={`px-3 py-1 rounded-full text-sm font-medium border ${getCategoryColor(currentProject.category)}`}>
-                            {currentProject.category}
-                          </span>
-                          <span className="text-2xl font-bold text-primary-600">{currentProject.year}</span>
-                        </div>
-                        <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight">
-                          {currentProject.title}
-                        </h3>
-                        <p className="text-lg text-slate-600 leading-relaxed">
-                          {currentProject.description}
-                        </p>
+          {/* Project Details */}
+          <div className="max-w-6xl mx-auto">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentProject.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5 }}
+                className="bg-white rounded-3xl shadow-xl overflow-hidden"
+              >
+                {/* Project Header */}
+                <div className="p-8 lg:p-10">
+                  <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-4 mb-4">
+                        <span className={`px-3 py-1 rounded-full text-sm font-medium border ${getCategoryColor(currentProject.category)}`}>
+                          {currentProject.category}
+                        </span>
+                        <span className="text-2xl font-bold text-primary-600">{currentProject.year}</span>
                       </div>
-                      
-                      <div className="lg:w-80">
-                        <div className="relative h-48 lg:h-56 rounded-2xl overflow-hidden bg-gradient-to-br from-primary-100 to-gold-100">
-                          <Image
-                            src={currentProject.image}
-                            alt={currentProject.title}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
+                      <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+                        {currentProject.title}
+                      </h3>
+                      <p className="text-lg text-slate-600 leading-relaxed">
+                        {currentProject.description}
+                      </p>
+                    </div>
+                    
+                    <div className="lg:w-80">
+                      <div className="relative h-48 lg:h-56 rounded-2xl overflow-hidden bg-gradient-to-br from-primary-100 to-gold-100">
+                        <Image
+                          src={currentProject.image}
+                          alt={currentProject.title}
+                          fill
+                          className="object-cover"
+                        />
                       </div>
                     </div>
+                  </div>
 
-                    {/* Key Metrics */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-                      {[
-                        { label: "Budget", value: currentProject.budget, icon: DollarSign },
-                        { label: "Beneficiaries", value: currentProject.beneficiaries, icon: Users },
-                        { label: "Duration", value: currentProject.duration, icon: Calendar },
-                        { label: "Location", value: currentProject.location, icon: MapPin }
-                      ].map((metric, index) => (
-                        <div key={metric.label} className="text-center p-4 bg-slate-50 rounded-xl">
-                          <metric.icon className="w-6 h-6 text-primary-600 mx-auto mb-2" />
-                          <div className="text-lg font-bold text-slate-900">{metric.value}</div>
-                          <div className="text-sm text-slate-600">{metric.label}</div>
+                  {/* Key Metrics */}
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    {[
+                      { label: "Budget", value: currentProject.budget, icon: DollarSign },
+                      { label: "Beneficiaries", value: currentProject.beneficiaries, icon: Users },
+                      { label: "Duration", value: currentProject.duration, icon: Calendar },
+                      { label: "Location", value: currentProject.location, icon: MapPin }
+                    ].map((metric, index) => (
+                      <div key={metric.label} className="text-center p-4 bg-slate-50 rounded-xl">
+                        <metric.icon className="w-6 h-6 text-primary-600 mx-auto mb-2" />
+                        <div className="text-lg font-bold text-slate-900">{metric.value}</div>
+                        <div className="text-sm text-slate-600">{metric.label}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Project Milestones */}
+                  <div className="mb-8">
+                    <h4 className="text-xl font-bold text-slate-900 mb-6">Project Milestones</h4>
+                    <div className="space-y-4">
+                      {currentProject.milestones.map((milestone, index) => (
+                        <div key={milestone.id} className="border border-slate-200 rounded-xl overflow-hidden">
+                          <button
+                            onClick={() => handleMilestoneClick(milestone.id)}
+                            className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors"
+                          >
+                            <div className="flex-1">
+                              <div className="flex items-center gap-4 mb-2">
+                                <span className="text-sm font-medium text-primary-600 bg-primary-50 px-3 py-1 rounded-full">
+                                  {milestone.period}
+                                </span>
+                                <span className="text-xs text-slate-500">Phase {index + 1}</span>
+                              </div>
+                              <h5 className="text-lg font-semibold text-slate-900 mb-1">{milestone.title}</h5>
+                              <p className="text-sm text-slate-600">{milestone.description}</p>
+                            </div>
+                            {selectedMilestone === milestone.id ? (
+                              <ChevronUp className="w-5 h-5 text-slate-400 ml-4" />
+                            ) : (
+                              <ChevronDown className="w-5 h-5 text-slate-400 ml-4" />
+                            )}
+                          </button>
+                          
+                          <AnimatePresence>
+                            {selectedMilestone === milestone.id && currentMilestone && (
+                              <motion.div
+                                initial={{ height: 0, opacity: 0 }}
+                                animate={{ height: "auto", opacity: 1 }}
+                                exit={{ height: 0, opacity: 0 }}
+                                transition={{ duration: 0.3 }}
+                                className="border-t border-slate-200"
+                              >
+                                <div className="p-6">
+                                  {/* Milestone Images */}
+                                  {currentMilestone.images.length > 0 && (
+                                    <div className="mb-6">
+                                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                                        {currentMilestone.images.map((imageUrl, imgIndex) => (
+                                          <div key={imgIndex} className="relative h-24 rounded-lg overflow-hidden bg-slate-100">
+                                            <Image
+                                              src={imageUrl}
+                                              alt={`${currentMilestone.title} - Image ${imgIndex + 1}`}
+                                              fill
+                                              className="object-cover hover:scale-105 transition-transform cursor-pointer"
+                                              onClick={() => setCurrentImageIndex(imgIndex)}
+                                            />
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  )}
+                                  
+                                  {/* Milestone Achievements */}
+                                  <div className="grid lg:grid-cols-2 gap-6 mb-6">
+                                    <div>
+                                      <h6 className="font-semibold text-slate-900 mb-3">Key Achievements</h6>
+                                      <div className="space-y-2">
+                                        {currentMilestone.achievements.map((achievement, achieveIndex) => (
+                                          <div key={achieveIndex} className="flex items-start gap-3">
+                                            <div className="w-2 h-2 bg-primary-600 rounded-full mt-2 flex-shrink-0"></div>
+                                            <span className="text-slate-700 text-sm">{achievement}</span>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                    
+                                    <div>
+                                      <h6 className="font-semibold text-slate-900 mb-3">Impact Metrics</h6>
+                                      <div className="grid grid-cols-2 gap-3">
+                                        {Object.entries(currentMilestone.metrics).map(([key, value]) => (
+                                          <div key={key} className="bg-gradient-to-br from-primary-50 to-gold-50 p-3 rounded-lg border border-primary-100">
+                                            <div className="text-lg font-bold text-primary-700">{value}</div>
+                                            <div className="text-xs text-slate-600">{key}</div>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </motion.div>
+                            )}
+                          </AnimatePresence>
                         </div>
                       ))}
                     </div>
-
-                    {/* Project Highlights */}
-                    <div className="mb-8">
-                      <h4 className="text-xl font-bold text-slate-900 mb-4">Key Achievements</h4>
-                      <div className="grid lg:grid-cols-2 gap-3">
-                        {currentProject.highlights.map((highlight, index) => (
-                          <div key={index} className="flex items-start gap-3">
-                            <div className="w-2 h-2 bg-primary-600 rounded-full mt-2 flex-shrink-0"></div>
-                            <span className="text-slate-700">{highlight}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Impact Metrics */}
-                    <div className="mb-8">
-                      <h4 className="text-xl font-bold text-slate-900 mb-4">Impact Metrics</h4>
-                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-                        {Object.entries(currentProject.metrics).map(([key, value]) => (
-                          <div key={key} className="bg-gradient-to-br from-primary-50 to-gold-50 p-4 rounded-xl border border-primary-100">
-                            <div className="text-2xl font-bold text-primary-700">{value}</div>
-                            <div className="text-sm text-slate-600">{key}</div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Impact Statement */}
-                    <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-6 mb-8">
-                      <h4 className="text-lg font-bold text-white mb-3">Project Impact</h4>
-                      <p className="text-primary-100">{currentProject.impact}</p>
-                    </div>
-
-                    {/* Tags and CTA */}
-                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-                      <div className="flex flex-wrap gap-2">
-                        {currentProject.tags.map((tag, index) => (
-                          <span key={index} className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                      
-                      <button className="flex items-center gap-2 px-6 py-3 bg-gold-500 hover:bg-gold-600 text-white rounded-xl font-medium transition-colors">
-                        <span>View Case Study</span>
-                        <ExternalLink className="w-4 h-4" />
-                      </button>
-                    </div>
                   </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
+
+                  {/* Impact Statement */}
+                  <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-6 mb-8">
+                    <h4 className="text-lg font-bold text-white mb-3">Project Impact</h4>
+                    <p className="text-primary-100">{currentProject.impact}</p>
+                  </div>
+
+                  {/* Tags and CTA */}
+                  <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                    <div className="flex flex-wrap gap-2">
+                      {currentProject.tags.map((tag, index) => (
+                        <span key={index} className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                    
+                    <button className="flex items-center gap-2 px-6 py-3 bg-gold-500 hover:bg-gold-600 text-white rounded-xl font-medium transition-colors">
+                      <span>View Case Study</span>
+                      <ExternalLink className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </div>
       </section>
