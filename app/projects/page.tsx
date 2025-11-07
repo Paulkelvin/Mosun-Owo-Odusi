@@ -254,7 +254,7 @@ export default function Projects() {
           {/* Section Header */}
           <div className="text-center mb-16">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-              Career <HighlightText highlightColor="primary">Timeline</HighlightText>
+              Career <HighlightText highlightColor="blue">Timeline</HighlightText>
             </h2>
             <p className="text-xl text-slate-600 max-w-2xl mx-auto">
               Explore the journey of impactful projects and strategic initiatives
@@ -463,7 +463,7 @@ export default function Projects() {
               Ready to Start Your <HighlightText highlightColor="gold"><span className="text-gold-300">Next Project?</span></HighlightText>
             </h2>
             <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
-              Let's collaborate to create meaningful impact and drive transformational change in your organization.
+              Let&apos;s collaborate to create meaningful impact and drive transformational change in your organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button className="px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white rounded-xl font-semibold transition-colors">
