@@ -1,62 +1,481 @@
-import type { Metadata } from 'next'
-import HighlightText from '@/components/HighlightText'
+'use client'
 
-export const metadata: Metadata = {
-  title: 'Projects - Mosun Owo-Odusi',
-  description: 'Explore Mosun Owo-Odusi\'s portfolio of transformative projects in education, development, and community impact.',
-}
+import { useState, useEffect } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Users, DollarSign, Calendar, MapPin, Award, TrendingUp, Briefcase } from 'lucide-react'
+import HighlightText from '@/components/HighlightText'
+import Image from 'next/image'
+import type { Metadata } from 'next'
+
+// Sample project data structure (you'll replace with real content later)
+const projects = [
+  {
+    id: 1,
+    year: 2024,
+    title: "OGSTEP: Economic Transformation Initiative",
+    category: "Project Management",
+    status: "Ongoing",
+    budget: "$250M",
+    beneficiaries: "65,000+",
+    duration: "2019-2024",
+    location: "Multi-state, Nigeria",
+    image: "/api/placeholder/600/400",
+    highlights: [
+      "Streamlined land administration systems",
+      "Digital governance transformation", 
+      "Skills training and capacity building",
+      "Agricultural productivity enhancement"
+    ],
+    metrics: {
+      "Certificates of Occupancy Issued": "15,000+",
+      "Farmers Digitized": "160,000",
+      "Technical Colleges Rehabilitated": "8",
+      "Youth Trained": "25,000+"
+    },
+    description: "Led strategic coordination of World Bank-supported economic transformation program, implementing innovative land administration solutions and digital governance systems across multiple Nigerian states.",
+    impact: "Transformed lives of over 65,000 beneficiaries through integrated approach to land rights, agricultural productivity, and skills development.",
+    tags: ["World Bank", "Digital Transformation", "Land Administration", "Capacity Building"]
+  },
+  {
+    id: 2,
+    year: 2023,
+    title: "Education Policy Reform Initiative",
+    category: "Education Consulting",
+    status: "Completed",
+    budget: "$50M",
+    beneficiaries: "2.1M+",
+    duration: "2022-2023",
+    location: "West Africa",
+    image: "/api/placeholder/600/400",
+    highlights: [
+      "Curriculum modernization across 12 countries",
+      "Teacher training and certification programs",
+      "Digital learning infrastructure development",
+      "Student outcome measurement systems"
+    ],
+    metrics: {
+      "Countries Impacted": "12",
+      "Students Reached": "2.1M",
+      "Teachers Trained": "45,000",
+      "Schools Digitized": "3,200"
+    },
+    description: "Spearheaded comprehensive education reform initiative working with UNESCO and regional governments to modernize curricula and improve learning outcomes.",
+    impact: "Revolutionized educational frameworks leading to 40% improvement in learning outcomes across participating countries.",
+    tags: ["UNESCO", "Policy Reform", "Curriculum Development", "Teacher Training"]
+  },
+  {
+    id: 3,
+    year: 2022,
+    title: "Real Estate Investment Strategy",
+    category: "Real Estate Advisory",
+    status: "Completed",
+    budget: "$100M",
+    beneficiaries: "15,000+",
+    duration: "2021-2022",
+    location: "Lagos, Nigeria",
+    image: "/api/placeholder/600/400",
+    highlights: [
+      "Sustainable housing development planning",
+      "Market analysis and investment modeling",
+      "Community engagement and stakeholder management",
+      "Environmental impact assessment integration"
+    ],
+    metrics: {
+      "Housing Units Planned": "5,000",
+      "Investment ROI": "35%",
+      "Jobs Created": "3,500",
+      "Green Building Certification": "100%"
+    },
+    description: "Provided strategic advisory for large-scale sustainable housing development, balancing community needs with investor requirements and environmental considerations.",
+    impact: "Created sustainable housing solutions for 15,000+ residents while generating positive returns for investors and 3,500 construction jobs.",
+    tags: ["Sustainable Development", "Investment Strategy", "Community Planning", "Green Building"]
+  },
+  {
+    id: 4,
+    year: 2021,
+    title: "Leadership Development Program",
+    category: "Leadership & Strategy",
+    status: "Completed",
+    budget: "$25M",
+    beneficiaries: "10,000+",
+    duration: "2020-2021",
+    location: "Sub-Saharan Africa",
+    image: "/api/placeholder/600/400",
+    highlights: [
+      "Executive leadership curriculum design",
+      "Mentorship network establishment",
+      "Cross-sector collaboration frameworks",
+      "Impact measurement and evaluation systems"
+    ],
+    metrics: {
+      "Leaders Trained": "2,500",
+      "Organizations Impacted": "500",
+      "Programs Launched": "50",
+      "Success Rate": "92%"
+    },
+    description: "Designed and implemented comprehensive leadership development program for emerging leaders across public and private sectors in Sub-Saharan Africa.",
+    impact: "Empowered 2,500 leaders who went on to launch 50+ impactful programs, creating ripple effects reaching 10,000+ beneficiaries.",
+    tags: ["Leadership Development", "Mentorship", "Capacity Building", "Cross-sector Collaboration"]
+  },
+  {
+    id: 5,
+    year: 2020,
+    title: "COVID-19 Response Coordination",
+    category: "Crisis Management",
+    status: "Completed",
+    budget: "$75M",
+    beneficiaries: "500,000+",
+    duration: "2020",
+    location: "Multi-country",
+    image: "/api/placeholder/600/400",
+    highlights: [
+      "Multi-stakeholder response coordination",
+      "Supply chain optimization for medical supplies",
+      "Digital health platform implementation",
+      "Community communication strategy"
+    ],
+    metrics: {
+      "Lives Directly Impacted": "500K+",
+      "Healthcare Facilities Supported": "1,200",
+      "Medical Supplies Distributed": "2M+",
+      "Digital Health Adoptions": "100K+"
+    },
+    description: "Coordinated rapid response initiatives during COVID-19 pandemic, ensuring efficient resource allocation and community support across multiple countries.",
+    impact: "Saved countless lives through coordinated response efforts and established resilient healthcare systems for future crisis preparedness.",
+    tags: ["Crisis Management", "Healthcare Systems", "Supply Chain", "Digital Health"]
+  }
+]
 
 export default function Projects() {
+  const [selectedYear, setSelectedYear] = useState(2024)
+  const [isAutoPlay, setIsAutoPlay] = useState(false)
+  const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlay) return
+    
+    const interval = setInterval(() => {
+      setCurrentProjectIndex((prev) => (prev + 1) % projects.length)
+      setSelectedYear(projects[(currentProjectIndex + 1) % projects.length].year)
+    }, 4000)
+    
+    return () => clearInterval(interval)
+  }, [isAutoPlay, currentProjectIndex])
+
+  const currentProject = projects.find(p => p.year === selectedYear) || projects[0]
+  const years = projects.map(p => p.year).sort((a, b) => b - a)
+
+  const handleYearClick = (year: number) => {
+    setSelectedYear(year)
+    setCurrentProjectIndex(projects.findIndex(p => p.year === year))
+  }
+
+  const handlePrevious = () => {
+    const newIndex = currentProjectIndex > 0 ? currentProjectIndex - 1 : projects.length - 1
+    setCurrentProjectIndex(newIndex)
+    setSelectedYear(projects[newIndex].year)
+  }
+
+  const handleNext = () => {
+    const newIndex = currentProjectIndex < projects.length - 1 ? currentProjectIndex + 1 : 0
+    setCurrentProjectIndex(newIndex)
+    setSelectedYear(projects[newIndex].year)
+  }
+
+  const getCategoryColor = (category: string) => {
+    const colors = {
+      "Project Management": "bg-primary-100 text-primary-700 border-primary-200",
+      "Education Consulting": "bg-purple-100 text-purple-700 border-purple-200",
+      "Real Estate Advisory": "bg-green-100 text-green-700 border-green-200",
+      "Leadership & Strategy": "bg-gold-100 text-gold-700 border-gold-200",
+      "Crisis Management": "bg-red-100 text-red-700 border-red-200"
+    }
+    return colors[category as keyof typeof colors] || "bg-slate-100 text-slate-700 border-slate-200"
+  }
+
   return (
-    <div className="min-h-screen pt-20 section-padding">
-      <div className="container-custom">
-        <div className="max-w-4xl mx-auto text-center mb-12">
-          <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-            <span className="gradient-text">Projects</span> <HighlightText highlightColor="purple">Portfolio</HighlightText>
-          </h1>
-          <p className="text-xl text-slate-600">
-            Transformative initiatives creating lasting impact
-          </p>
+    <div className="min-h-screen pt-20">
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }} />
         </div>
-        
-        <div className="grid md:grid-cols-2 gap-8">
-          <div className="bg-white rounded-2xl shadow-medium p-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">World Bank Initiative</h2>
-            <p className="text-slate-600 leading-relaxed mb-4">
-              Detailed case study of the featured World Bank-supported project showcasing 
-              strategic leadership and measurable community impact.
-            </p>
-            <div className="text-sm text-primary-600 font-medium">Coming Soon</div>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-medium p-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Education Reform</h2>
-            <p className="text-slate-600 leading-relaxed mb-4">
-              Policy development and implementation projects that transformed 
-              educational outcomes across multiple institutions.
-            </p>
-            <div className="text-sm text-primary-600 font-medium">Coming Soon</div>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-medium p-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Strategic Consulting</h2>
-            <p className="text-slate-600 leading-relaxed mb-4">
-              Real estate advisory and strategic consulting projects demonstrating 
-              data-driven insights and sustainable investment strategies.
-            </p>
-            <div className="text-sm text-primary-600 font-medium">Coming Soon</div>
-          </div>
-          
-          <div className="bg-white rounded-2xl shadow-medium p-8">
-            <h2 className="text-2xl font-bold text-slate-900 mb-4">Leadership Impact</h2>
-            <p className="text-slate-600 leading-relaxed mb-4">
-              Cross-functional team leadership and organizational transformation 
-              projects showcasing collaborative excellence.
-            </p>
-            <div className="text-sm text-primary-600 font-medium">Coming Soon</div>
+
+        <div className="relative z-10 container-custom py-20 lg:py-28">
+          <div className="max-w-4xl mx-auto text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
+                Transformative <HighlightText highlightColor="gold"><span className="text-gold-300">Projects</span></HighlightText>
+              </h1>
+              <p className="text-xl lg:text-2xl text-primary-100 mb-8 max-w-3xl mx-auto leading-relaxed">
+                15+ years of strategic leadership delivering measurable impact across sectors, 
+                transforming communities and driving sustainable development.
+              </p>
+              
+              {/* Hero Stats */}
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-12">
+                {[
+                  { icon: DollarSign, label: "Total Project Value", value: "$500M+" },
+                  { icon: Users, label: "Lives Impacted", value: "2.5M+" },
+                  { icon: Award, label: "Projects Completed", value: "50+" },
+                  { icon: MapPin, label: "Countries", value: "15+" }
+                ].map((stat, index) => (
+                  <motion.div
+                    key={stat.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
+                    className="text-center"
+                  >
+                    <div className="inline-flex items-center justify-center w-12 h-12 bg-gold-400/20 rounded-xl mb-3">
+                      <stat.icon className="w-6 h-6 text-gold-300" />
+                    </div>
+                    <div className="text-2xl lg:text-3xl font-bold text-white">{stat.value}</div>
+                    <div className="text-sm text-primary-200">{stat.label}</div>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* Interactive Timeline Section */}
+      <section className="section-padding bg-gradient-to-br from-white via-primary-50/20 to-gold-50/10">
+        <div className="container-custom">
+          {/* Section Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+              Career <HighlightText highlightColor="primary">Timeline</HighlightText>
+            </h2>
+            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
+              Explore the journey of impactful projects and strategic initiatives
+            </p>
+          </div>
+
+          {/* Timeline Container */}
+          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 max-w-7xl mx-auto">
+            
+            {/* Left Panel - Years Timeline */}
+            <div className="lg:col-span-1">
+              <div className="sticky top-32">
+                {/* Controls */}
+                <div className="flex items-center justify-between mb-8">
+                  <h3 className="text-lg font-semibold text-slate-900">Timeline</h3>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => setIsAutoPlay(!isAutoPlay)}
+                      className="p-2 rounded-lg hover:bg-primary-50 transition-colors"
+                      title={isAutoPlay ? "Pause auto-play" : "Start auto-play"}
+                    >
+                      {isAutoPlay ? (
+                        <Pause className="w-5 h-5 text-primary-600" />
+                      ) : (
+                        <Play className="w-5 h-5 text-primary-600" />
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Year Navigation */}
+                <div className="relative">
+                  <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-200 to-gold-200"></div>
+                  <div className="space-y-6">
+                    {years.map((year, index) => (
+                      <motion.button
+                        key={year}
+                        onClick={() => handleYearClick(year)}
+                        className={`relative flex items-center text-left transition-all duration-300 ${
+                          selectedYear === year
+                            ? 'text-primary-700'
+                            : 'text-slate-500 hover:text-slate-700'
+                        }`}
+                        whileHover={{ x: 4 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <div className={`w-12 h-12 rounded-full border-2 flex items-center justify-center font-bold mr-4 transition-all duration-300 ${
+                          selectedYear === year
+                            ? 'bg-primary-600 border-primary-600 text-white shadow-lg'
+                            : 'bg-white border-slate-200 text-slate-600 hover:border-primary-300'
+                        }`}>
+                          {year.toString().slice(-2)}
+                        </div>
+                        <div className={`text-2xl font-bold transition-all duration-300 ${
+                          selectedYear === year ? 'text-primary-700' : 'text-slate-400'
+                        }`}>
+                          {year}
+                        </div>
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Navigation Controls */}
+                <div className="flex gap-2 mt-8">
+                  <button
+                    onClick={handlePrevious}
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
+                  >
+                    <ChevronLeft className="w-4 h-4" />
+                    <span className="text-sm">Previous</span>
+                  </button>
+                  <button
+                    onClick={handleNext}
+                    className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                  >
+                    <span className="text-sm">Next</span>
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Panel - Project Details */}
+            <div className="lg:col-span-4">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentProject.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -20 }}
+                  transition={{ duration: 0.5 }}
+                  className="bg-white rounded-3xl shadow-xl overflow-hidden"
+                >
+                  {/* Project Header */}
+                  <div className="p-8 lg:p-10">
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+                      <div className="flex-1">
+                        <div className="flex items-center gap-4 mb-4">
+                          <span className={`px-3 py-1 rounded-full text-sm font-medium border ${getCategoryColor(currentProject.category)}`}>
+                            {currentProject.category}
+                          </span>
+                          <span className="text-2xl font-bold text-primary-600">{currentProject.year}</span>
+                        </div>
+                        <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight">
+                          {currentProject.title}
+                        </h3>
+                        <p className="text-lg text-slate-600 leading-relaxed">
+                          {currentProject.description}
+                        </p>
+                      </div>
+                      
+                      <div className="lg:w-80">
+                        <div className="relative h-48 lg:h-56 rounded-2xl overflow-hidden bg-gradient-to-br from-primary-100 to-gold-100">
+                          <Image
+                            src={currentProject.image}
+                            alt={currentProject.title}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Key Metrics */}
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                      {[
+                        { label: "Budget", value: currentProject.budget, icon: DollarSign },
+                        { label: "Beneficiaries", value: currentProject.beneficiaries, icon: Users },
+                        { label: "Duration", value: currentProject.duration, icon: Calendar },
+                        { label: "Location", value: currentProject.location, icon: MapPin }
+                      ].map((metric, index) => (
+                        <div key={metric.label} className="text-center p-4 bg-slate-50 rounded-xl">
+                          <metric.icon className="w-6 h-6 text-primary-600 mx-auto mb-2" />
+                          <div className="text-lg font-bold text-slate-900">{metric.value}</div>
+                          <div className="text-sm text-slate-600">{metric.label}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Project Highlights */}
+                    <div className="mb-8">
+                      <h4 className="text-xl font-bold text-slate-900 mb-4">Key Achievements</h4>
+                      <div className="grid lg:grid-cols-2 gap-3">
+                        {currentProject.highlights.map((highlight, index) => (
+                          <div key={index} className="flex items-start gap-3">
+                            <div className="w-2 h-2 bg-primary-600 rounded-full mt-2 flex-shrink-0"></div>
+                            <span className="text-slate-700">{highlight}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Impact Metrics */}
+                    <div className="mb-8">
+                      <h4 className="text-xl font-bold text-slate-900 mb-4">Impact Metrics</h4>
+                      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+                        {Object.entries(currentProject.metrics).map(([key, value]) => (
+                          <div key={key} className="bg-gradient-to-br from-primary-50 to-gold-50 p-4 rounded-xl border border-primary-100">
+                            <div className="text-2xl font-bold text-primary-700">{value}</div>
+                            <div className="text-sm text-slate-600">{key}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Impact Statement */}
+                    <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-6 mb-8">
+                      <h4 className="text-lg font-bold text-white mb-3">Project Impact</h4>
+                      <p className="text-primary-100">{currentProject.impact}</p>
+                    </div>
+
+                    {/* Tags and CTA */}
+                    <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                      <div className="flex flex-wrap gap-2">
+                        {currentProject.tags.map((tag, index) => (
+                          <span key={index} className="px-3 py-1 bg-slate-100 text-slate-700 rounded-full text-sm">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      <button className="flex items-center gap-2 px-6 py-3 bg-gold-500 hover:bg-gold-600 text-white rounded-xl font-medium transition-colors">
+                        <span>View Case Study</span>
+                        <ExternalLink className="w-4 h-4" />
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="section-padding bg-gradient-to-r from-primary-600 to-primary-700">
+        <div className="container-custom text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-6">
+              Ready to Start Your <HighlightText highlightColor="gold"><span className="text-gold-300">Next Project?</span></HighlightText>
+            </h2>
+            <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+              Let's collaborate to create meaningful impact and drive transformational change in your organization.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button className="px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white rounded-xl font-semibold transition-colors">
+                Schedule a Consultation
+              </button>
+              <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 rounded-xl font-semibold transition-colors">
+                Download Portfolio
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
     </div>
   )
 }
