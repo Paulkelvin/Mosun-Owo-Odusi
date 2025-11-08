@@ -79,7 +79,7 @@ export default function ExpertiseTabs() {
 
   return (
     <section id="expertise" className="section-padding bg-gradient-to-br from-white via-primary-50/20 to-gold-50/10">
-      <div className="container-custom">
+      <div className="container-custom max-w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

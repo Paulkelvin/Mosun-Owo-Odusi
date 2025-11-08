@@ -14,7 +14,7 @@ export default function Hero() {
   }
 
   return (
-    <section className="relative min-h-[90vh] lg:min-h-screen overflow-hidden">
+    <section className="relative h-screen overflow-hidden">
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
@@ -48,7 +48,7 @@ export default function Hero() {
       </motion.div>
 
       {/* Centered content */}
-  <div className="relative z-10 flex items-center justify-center px-6 min-h-[90vh] lg:min-h-screen">
+  <div className="relative z-10 flex items-center justify-center px-6 h-screen">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
