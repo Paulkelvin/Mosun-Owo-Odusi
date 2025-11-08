@@ -18,7 +18,7 @@ const projects = [
     beneficiaries: "Ogun State",
     duration: "2019-2025",
     location: "Ogun State, Nigeria",
-    image: "/images/logos/logo-1.svg",
+    image: "/images/ogun_state_logo.png",
     description: "Leading the coordination of the comprehensive Ogun State Economic Transformation Project, overseeing 4 Project Managers, 15+ Specialist Consultants, and 50+ team members across four critical initiatives: Creating a Business Enabling Environment, Improving Agricultural Value Chain, Skills Development, and Public Sector Reforms.",
     impact: "Under her capable leadership, this multifaceted program has flourished, fostering collaboration, strategic insight, and innovation while driving significant progress that empowers stakeholders across sectors and contributes to the state's socio-economic growth.",
     tags: ["World Bank", "Economic Transformation", "Project Coordination", "Public Sector Reform", "Agricultural Development", "Skills Development"],
@@ -27,7 +27,7 @@ const projects = [
         id: "overall_leadership",
         title: "Project Coordination & Strategic Leadership",
         period: "2019 – Present",
-        description: "Provides overall coordination and leadership for the Ogun State Economic Transformation Project (OGSTEP), a World Bank–supported initiative aimed at strengthening governance, stimulating private-sector growth, and improving livelihoods across the state.",
+        description: "Provides overall coordination and leadership for OGSTEP, ensuring alignment with World Bank and government priorities while overseeing programs benefiting 65,000+ residents.",
         achievements: [
           "Directing project implementation across all supported components",
           "Ensuring alignment with World Bank and Ogun State Government development priorities",
@@ -50,7 +50,7 @@ const projects = [
         id: "establishment",
         title: "Project Establishment & Institutional Framework",
         period: "2019 – 2020",
-        description: "Supported the formation of institutional structures and early project planning required for effective rollout of OGSTEP's multi-sector components.",
+        description: "Supported institutional structure formation and early project planning for effective OGSTEP multi-sector component rollout.",
         achievements: [
           "Guided establishment of the State Project Implementation Unit",
           "Coordinated stakeholder consultations during project design",
@@ -92,7 +92,7 @@ const projects = [
         id: "sustainability",
         title: "Sustainability & Development Integration",
         period: "2023 – 2024",
-        description: "Focused on embedding successful interventions into Ogun State's long-term policy and development frameworks to ensure continuity beyond the project lifecycle.",
+        description: "Focused on embedding successful interventions into long-term policy frameworks for continuity beyond project lifecycle.",
         achievements: [
           "Supported sustainability and institutional ownership strategies",
           "Facilitated alignment with the state's economic development agenda",
@@ -449,6 +449,7 @@ export default function Projects() {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0)
   const [selectedMilestone, setSelectedMilestone] = useState<string | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [milestoneImageIndex, setMilestoneImageIndex] = useState<{[key: string]: number}>({})
 
   // Auto-play functionality
   useEffect(() => {
@@ -495,6 +496,20 @@ export default function Projects() {
   const handleMilestoneClick = (milestoneId: string) => {
     setSelectedMilestone(selectedMilestone === milestoneId ? null : milestoneId)
     setCurrentImageIndex(0)
+  }
+
+  const handleMilestoneImageNext = (milestoneId: string, totalImages: number) => {
+    setMilestoneImageIndex(prev => ({
+      ...prev,
+      [milestoneId]: ((prev[milestoneId] || 0) + 1) % totalImages
+    }))
+  }
+
+  const handleMilestoneImagePrev = (milestoneId: string, totalImages: number) => {
+    setMilestoneImageIndex(prev => ({
+      ...prev,
+      [milestoneId]: ((prev[milestoneId] || 0) - 1 + totalImages) % totalImages
+    }))
   }
 
   const getCategoryColor = (category: string) => {
@@ -751,8 +766,8 @@ export default function Projects() {
                       ].map((metric, index) => (
                         <div key={metric.label} className="text-center p-4 bg-slate-50 rounded-xl border border-slate-100">
                           <metric.icon className="w-6 h-6 text-primary-600 mx-auto mb-2" />
-                          <div className="text-lg font-bold text-slate-900">{metric.value}</div>
-                          <div className="text-sm text-slate-700">{metric.label}</div>
+                          <div className="text-sm font-bold text-slate-900">{metric.value}</div>
+                          <div className="text-xs text-slate-700">{metric.label}</div>
                         </div>
                       ))}
                     </div>
@@ -793,21 +808,78 @@ export default function Projects() {
                                   className="border-t border-slate-200"
                                 >
                                   <div className="p-4 bg-slate-50">
-                                    {/* Milestone Images */}
+                                    {/* Milestone Images Carousel */}
                                     {currentMilestone.images.length > 0 && (
                                       <div className="mb-4">
-                                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
-                                          {currentMilestone.images.map((imageUrl, imgIndex) => (
-                                            <div key={imgIndex} className="relative h-24 rounded-lg overflow-hidden bg-slate-200 border border-slate-300">
+                                        <div className="relative">
+                                          <div className="flex items-center">
+                                            {/* Main Image Display */}
+                                            <div className="relative w-full h-48 rounded-lg overflow-hidden bg-slate-200 border border-slate-300">
                                               <Image
-                                                src={imageUrl}
-                                                alt={`${currentMilestone.title} - Image ${imgIndex + 1}`}
+                                                src={currentMilestone.images[milestoneImageIndex[currentMilestone.id] || 0]}
+                                                alt={`${currentMilestone.title} - Image ${(milestoneImageIndex[currentMilestone.id] || 0) + 1}`}
                                                 fill
-                                                className="object-cover hover:scale-105 transition-transform cursor-pointer"
-                                                onClick={() => setCurrentImageIndex(imgIndex)}
+                                                className="object-cover"
                                               />
+                                              
+                                              {/* Navigation Buttons */}
+                                              {currentMilestone.images.length > 1 && (
+                                                <>
+                                                  <button
+                                                    onClick={() => handleMilestoneImagePrev(currentMilestone.id, currentMilestone.images.length)}
+                                                    className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all"
+                                                  >
+                                                    <ChevronLeft className="w-4 h-4" />
+                                                  </button>
+                                                  <button
+                                                    onClick={() => handleMilestoneImageNext(currentMilestone.id, currentMilestone.images.length)}
+                                                    className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full transition-all"
+                                                  >
+                                                    <ChevronRight className="w-4 h-4" />
+                                                  </button>
+                                                </>
+                                              )}
+                                              
+                                              {/* Image Counter */}
+                                              {currentMilestone.images.length > 1 && (
+                                                <div className="absolute bottom-2 right-2 bg-black/70 text-white px-2 py-1 rounded text-xs">
+                                                  {(milestoneImageIndex[currentMilestone.id] || 0) + 1} / {currentMilestone.images.length}
+                                                </div>
+                                              )}
                                             </div>
-                                          ))}
+                                            
+                                            {/* Partial Next Image Preview */}
+                                            {currentMilestone.images.length > 1 && (
+                                              <div className="relative w-16 h-48 ml-2 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 opacity-60">
+                                                <Image
+                                                  src={currentMilestone.images[((milestoneImageIndex[currentMilestone.id] || 0) + 1) % currentMilestone.images.length]}
+                                                  alt="Next image preview"
+                                                  fill
+                                                  className="object-cover"
+                                                />
+                                              </div>
+                                            )}
+                                          </div>
+                                          
+                                          {/* Dot Indicators */}
+                                          {currentMilestone.images.length > 1 && (
+                                            <div className="flex justify-center mt-3 space-x-2">
+                                              {currentMilestone.images.map((_, imgIndex) => (
+                                                <button
+                                                  key={imgIndex}
+                                                  onClick={() => setMilestoneImageIndex(prev => ({
+                                                    ...prev,
+                                                    [currentMilestone.id]: imgIndex
+                                                  }))}
+                                                  className={`w-2 h-2 rounded-full transition-all ${
+                                                    (milestoneImageIndex[currentMilestone.id] || 0) === imgIndex
+                                                      ? 'bg-primary-600'
+                                                      : 'bg-slate-300 hover:bg-slate-400'
+                                                  }`}
+                                                />
+                                              ))}
+                                            </div>
+                                          )}
                                         </div>
                                       </div>
                                     )}
