@@ -18,7 +18,7 @@ const projects = [
     beneficiaries: "Ogun State",
     duration: "2019-2025",
     location: "Ogun State, Nigeria",
-    image: "/images/ogun_state_logo.png",
+    image: "/images/logos/logo-1.svg",
     description: "Leading the coordination of the comprehensive Ogun State Economic Transformation Project, overseeing 4 Project Managers, 15+ Specialist Consultants, and 50+ team members across four critical initiatives: Creating a Business Enabling Environment, Improving Agricultural Value Chain, Skills Development, and Public Sector Reforms.",
     impact: "Under her capable leadership, this multifaceted program has flourished, fostering collaboration, strategic insight, and innovation while driving significant progress that empowers stakeholders across sectors and contributes to the state's socio-economic growth.",
     tags: ["World Bank", "Economic Transformation", "Project Coordination", "Public Sector Reform", "Agricultural Development", "Skills Development"],
@@ -565,7 +565,7 @@ export default function Projects() {
 
       {/* Interactive Timeline Section */}
       <section className="section-padding bg-slate-50">
-        <div className="container-custom">
+        <div className="container-custom max-w-full">
           {/* Section Header with Navigation */}
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
@@ -655,7 +655,7 @@ export default function Projects() {
           </div>
 
           {/* Timeline Container */}
-          <div className="grid lg:grid-cols-5 gap-8 lg:gap-12 max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-5 gap-4 lg:gap-6">
             
             {/* Left Panel - Years Timeline (Desktop Only) */}
             <div className="hidden lg:block lg:col-span-1">
@@ -712,8 +712,8 @@ export default function Projects() {
                   className="bg-white rounded-3xl shadow-xl overflow-hidden border border-slate-200"
                 >
                   {/* Project Header */}
-                  <div className="p-8 lg:p-10 bg-white">
-                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-8">
+                  <div className="p-4 lg:p-6 bg-white">
+                    <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 mb-6">
                       <div className="flex-1">
                         <div className="flex items-center gap-4 mb-4">
                           <span className={`px-3 py-1 rounded-full text-sm font-medium border ${getCategoryColor(currentProject.category)}`}>
@@ -742,7 +742,7 @@ export default function Projects() {
                     </div>
 
                     {/* Key Metrics */}
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6">
                       {[
                         { label: "Budget", value: currentProject.budget, icon: DollarSign },
                         { label: "Beneficiaries", value: currentProject.beneficiaries, icon: Users },
@@ -792,11 +792,11 @@ export default function Projects() {
                                   transition={{ duration: 0.3 }}
                                   className="border-t border-slate-200"
                                 >
-                                  <div className="p-6 bg-slate-50">
+                                  <div className="p-4 bg-slate-50">
                                     {/* Milestone Images */}
                                     {currentMilestone.images.length > 0 && (
-                                      <div className="mb-6">
-                                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
+                                      <div className="mb-4">
+                                        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-3">
                                           {currentMilestone.images.map((imageUrl, imgIndex) => (
                                             <div key={imgIndex} className="relative h-24 rounded-lg overflow-hidden bg-slate-200 border border-slate-300">
                                               <Image
@@ -813,8 +813,8 @@ export default function Projects() {
                                     )}
                                     
                                     {/* Milestone Achievements */}
-                                    <div className="grid lg:grid-cols-2 gap-6 mb-6">
-                                      <div className="bg-white p-4 rounded-lg border border-slate-200">
+                                    <div className="grid lg:grid-cols-2 gap-4 mb-4">
+                                      <div className="bg-white p-3 rounded-lg border border-slate-200">
                                         <h6 className="font-semibold text-slate-900 mb-3">Key Achievements</h6>
                                         <div className="space-y-2">
                                           {currentMilestone.achievements.map((achievement, achieveIndex) => (
@@ -826,7 +826,7 @@ export default function Projects() {
                                         </div>
                                       </div>
                                       
-                                      <div className="bg-white p-4 rounded-lg border border-slate-200">
+                                      <div className="bg-white p-3 rounded-lg border border-slate-200">
                                         <h6 className="font-semibold text-slate-900 mb-3">Impact Metrics</h6>
                                         <div className="grid grid-cols-2 gap-3">
                                           {Object.entries(currentMilestone.metrics).map(([key, value]) => (
