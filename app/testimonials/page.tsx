@@ -2,7 +2,7 @@
 
 import type { Metadata } from 'next'
 import { motion } from 'framer-motion'
-import { Star, Quote, Linkedin, Twitter, Mail, Building2, Users, GraduationCap, TrendingUp, Play, Pause } from 'lucide-react'
+import { Star, Quote, Linkedin, Mail, Building2, Users, GraduationCap, TrendingUp, Play, Pause } from 'lucide-react'
 import HighlightText from '@/components/HighlightText'
 import Image from 'next/image'
 import { useState, useRef } from 'react'
@@ -10,11 +10,11 @@ import { useState, useRef } from 'react'
 const testimonials = [
   {
     id: 1,
-    name: "Dr. Sarah Williams",
-    title: "Director of Strategic Initiatives",
-    company: "World Bank Group",
+    name: "Unyime Eyo",
+    title: "Competitive Strategy Consultant",
+    company: "ChMC - Professional LinkedIn Recommendation",
     image: "/api/placeholder/80/80",
-    content: "Mosun's leadership on the OGSTEP initiative was exceptional. Her ability to coordinate across multiple countries while maintaining focus on measurable outcomes resulted in a 40% efficiency improvement that impacted over 25,000 beneficiaries.",
+    content: "Mosun is a very committed and focused person and team player. When she took over the OGSTEP coordination, the partnership and collaboration between team members improved significantly, and the implementation of the project moved faster. I enjoyed working under her leadership.",
     rating: 5,
     category: "Project Management",
     type: "video",
@@ -22,22 +22,20 @@ const testimonials = [
     videoPoster: "/images/testimonials/sarah-williams-poster.jpg",
     videoDuration: "1:45",
     social: {
-      linkedin: "#",
-      email: "sarah.williams@worldbank.org"
+      linkedin: "https://www.linkedin.com/in/unyimeabasieyo"
     }
   },
   {
     id: 2,
-    name: "Michael Chen",
-    title: "Senior Education Consultant",
-    company: "UNESCO",
+    name: "Toyosi Babatunde",
+    title: "Global Parenting Coach & Author",
+    company: "Professional LinkedIn Recommendation",
     image: "/api/placeholder/80/80",
-    content: "Working with Mosun on education policy reform was transformative. Her strategic insights helped us develop frameworks that were adopted by 12 countries, improving learning outcomes for over 2 million students.",
+    content: "Mosun Owo-Odusi is an excellent administrator and team lead. She poses an innate ability to effectively navigate teams based on the peculiar strengths of the members that make up the team while helping them to overcome their weaknesses. When it comes to project management, she executes with precision, excellence and professionalism. She is a leader per excellence and has my unreserved recommendation.",
     rating: 5,
-    category: "Education Consulting",
+    category: "Leadership & Strategy",
     social: {
-      linkedin: "#",
-      twitter: "#"
+      linkedin: "https://www.linkedin.com/in/toyosi-babatunde-91031637"
     }
   },
   {
@@ -50,51 +48,7 @@ const testimonials = [
     rating: 5,
     category: "Real Estate Advisory",
     social: {
-      linkedin: "#",
-      email: "elena@grep.com"
-    }
-  },
-  {
-    id: 4,
-    name: "James Thompson",
-    title: "CEO",
-    company: "Development Dynamics Inc.",
-    image: "/api/placeholder/80/80",
-    content: "Mosun's leadership transformation program revolutionized our organizational culture. Under her guidance, we achieved a 60% productivity increase and 90% employee retention rate within 18 months.",
-    rating: 5,
-    category: "Leadership & Strategy",
-    social: {
-      linkedin: "#",
-      twitter: "#",
-      email: "james@devdynamics.com"
-    }
-  },
-  {
-    id: 5,
-    name: "Dr. Amara Okafor",
-    title: "Regional Program Manager",
-    company: "African Development Bank",
-    image: "/api/placeholder/80/80",
-    content: "Mosun's expertise in cross-cultural project management was invaluable. She successfully managed a $15M multi-country initiative, delivering results ahead of schedule and under budget.",
-    rating: 5,
-    category: "Project Management",
-    social: {
-      linkedin: "#",
-      email: "a.okafor@afdb.org"
-    }
-  },
-  {
-    id: 6,
-    name: "Lisa Park",
-    title: "Partner",
-    company: "Strategic Education Solutions",
-    image: "/api/placeholder/80/80",
-    content: "Mosun's capacity building programs transformed our approach to educational development. Her frameworks are now standard practice across our organization and have improved project success rates by 45%.",
-    rating: 5,
-    category: "Education Consulting",
-    social: {
-      linkedin: "#",
-      twitter: "#"
+      linkedin: "#"
     }
   }
 ]
@@ -163,18 +117,18 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
 
         {/* Video Container */}
         <div className="relative mb-6 rounded-2xl overflow-hidden bg-slate-100">
-          <div className="aspect-video relative">
+          <div className="aspect-[16/9] lg:aspect-[2/1] relative">
             {!isLoaded && (
               <div 
                 className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center cursor-pointer"
                 onClick={() => setIsLoaded(true)}
               >
                 <div className="text-center">
-                  <div className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center mb-4 mx-auto shadow-lg">
-                    <Play className="w-6 h-6 text-primary-600 ml-1" />
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-white/90 rounded-full flex items-center justify-center mb-3 lg:mb-4 mx-auto shadow-lg">
+                    <Play className="w-4 h-4 lg:w-6 lg:h-6 text-primary-600 ml-1" />
                   </div>
-                  <p className="text-slate-600 font-medium">Click to load video</p>
-                  <p className="text-sm text-slate-500">Lightweight loading for better performance</p>
+                  <p className="text-slate-600 font-medium text-sm lg:text-base">Click to load video</p>
+                  <p className="text-xs lg:text-sm text-slate-500">Lightweight loading for better performance</p>
                 </div>
               </div>
             )}
@@ -198,12 +152,12 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
                 <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <button
                     onClick={handlePlayPause}
-                    className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200"
+                    className="w-12 h-12 lg:w-16 lg:h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200"
                   >
                     {isPlaying ? (
-                      <Pause className="w-6 h-6 text-primary-600" />
+                      <Pause className="w-4 h-4 lg:w-6 lg:h-6 text-primary-600" />
                     ) : (
-                      <Play className="w-6 h-6 text-primary-600 ml-1" />
+                      <Play className="w-4 h-4 lg:w-6 lg:h-6 text-primary-600 ml-1" />
                     )}
                   </button>
                 </div>
@@ -247,22 +201,6 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
                 className="w-10 h-10 bg-slate-100 hover:bg-primary-100 rounded-xl flex items-center justify-center transition-colors duration-200"
               >
                 <Linkedin className="w-5 h-5 text-slate-600 hover:text-primary-600" />
-              </a>
-            )}
-            {testimonial.social.twitter && (
-              <a 
-                href={testimonial.social.twitter}
-                className="w-10 h-10 bg-slate-100 hover:bg-primary-100 rounded-xl flex items-center justify-center transition-colors duration-200"
-              >
-                <Twitter className="w-5 h-5 text-slate-600 hover:text-primary-600" />
-              </a>
-            )}
-            {testimonial.social.email && (
-              <a 
-                href={`mailto:${testimonial.social.email}`}
-                className="w-10 h-10 bg-slate-100 hover:bg-primary-100 rounded-xl flex items-center justify-center transition-colors duration-200"
-              >
-                <Mail className="w-5 h-5 text-slate-600 hover:text-primary-600" />
               </a>
             )}
           </div>
@@ -385,22 +323,6 @@ export default function Testimonials() {
                             className="w-10 h-10 bg-slate-100 hover:bg-primary-100 rounded-xl flex items-center justify-center transition-colors duration-200"
                           >
                             <Linkedin className="w-5 h-5 text-slate-600 hover:text-primary-600" />
-                          </a>
-                        )}
-                        {testimonial.social.twitter && (
-                          <a 
-                            href={testimonial.social.twitter}
-                            className="w-10 h-10 bg-slate-100 hover:bg-primary-100 rounded-xl flex items-center justify-center transition-colors duration-200"
-                          >
-                            <Twitter className="w-5 h-5 text-slate-600 hover:text-primary-600" />
-                          </a>
-                        )}
-                        {testimonial.social.email && (
-                          <a 
-                            href={`mailto:${testimonial.social.email}`}
-                            className="w-10 h-10 bg-slate-100 hover:bg-primary-100 rounded-xl flex items-center justify-center transition-colors duration-200"
-                          >
-                            <Mail className="w-5 h-5 text-slate-600 hover:text-primary-600" />
                           </a>
                         )}
                       </div>

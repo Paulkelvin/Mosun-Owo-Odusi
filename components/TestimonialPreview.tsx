@@ -17,6 +17,14 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     quote:
+      'Under her capable leadership, this multifaceted program has flourished. She fosters collaboration, strategic insight, and innovation, driving significant progress that empowers stakeholders across sectors.',
+    highlights: ['collaboration', 'strategic', 'innovation'],
+    name: 'Unyime Eyo',
+    role: 'CHARTERED MANAGEMENT CONSULTANT',
+    project: 'OGSTEP TEAM MEMBER',
+  },
+  {
+    quote:
       'A visionary leader who brings clarity, coordination, and compassion to every project.',
     highlights: ['clarity', 'coordination', 'compassion'],
     name: 'Colleague',
