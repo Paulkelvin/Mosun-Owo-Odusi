@@ -4,9 +4,9 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const logos = [
-  { src: '/images/logos/logo-1.svg', alt: 'BrandOne' },
-  { src: '/images/logos/logo-2.svg', alt: 'AcmeCorp' },
-  { src: '/images/logos/logo-3.svg', alt: 'Globex' },
+  { src: '/images/logos/logo-1.svg', alt: 'Amville' },
+  { src: '/images/ogun_state_logo.png', alt: 'Ogun State' },
+  { src: '/images/World-Bank-Logo.jpg', alt: 'World Bank' },
   { src: '/images/logos/logo-4.svg', alt: 'Innotech' },
   { src: '/images/logos/logo-5.svg', alt: 'Vertex' },
   { src: '/images/logos/logo-6.svg', alt: 'Nimbus' },

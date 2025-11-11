@@ -17,7 +17,7 @@ const HighlightText = ({
 }: HighlightTextProps) => {
   const colorVariants = {
     blue: 'bg-gradient-to-r from-blue-200/25 via-blue-300/30 to-blue-200/25',
-    gold: 'bg-gradient-to-r from-amber-200/25 via-amber-300/30 to-amber-200/25',
+    gold: 'bg-gradient-to-r from-gold-200/25 via-gold-300/30 to-gold-200/25',
     emerald: 'bg-gradient-to-r from-emerald-200/25 via-emerald-300/30 to-emerald-200/25',
     purple: 'bg-gradient-to-r from-violet-200/25 via-violet-300/30 to-violet-200/25',
     gray: 'bg-gradient-to-r from-slate-200/25 via-slate-300/30 to-slate-200/25'

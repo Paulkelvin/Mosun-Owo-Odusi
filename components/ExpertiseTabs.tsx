@@ -88,7 +88,7 @@ export default function ExpertiseTabs() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-            Core Areas of <HighlightText highlightColor="blue"><span className="gradient-text">Expertise</span></HighlightText>
+            Core Areas of <HighlightText highlightColor="blue">Expertise</HighlightText>
           </h2>
           
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
@@ -129,7 +129,7 @@ export default function ExpertiseTabs() {
                   </div>
                 </div>
                 <h3 className="font-semibold text-lg mb-2 text-center">{area.title}</h3>
-                <div className={`w-12 h-1 rounded-full transition-colors ${
+                <div className={`w-12 h-1 rounded-full transition-colors mx-auto ${
                   activeTab === area.id ? 'bg-gold-400' : 'bg-primary-200 group-hover:bg-primary-400'
                 }`} />
               </motion.button>
@@ -283,89 +283,6 @@ export default function ExpertiseTabs() {
                       {/* Right Column - Metrics & Impact */}
                       <div className="lg:col-span-2 space-y-6">
                         
-                        {/* Impact Metrics */}
-                        <motion.div 
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ duration: 0.5, delay: 0.4 }}
-                          className="p-6 rounded-2xl border bg-white border-slate-200/50"
-                        >
-                          <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider mb-4 opacity-90">
-                            Impact Metrics
-                          </h4>
-                          
-                          <div className="space-y-4">
-                            {/* Dynamic metrics based on expertise area */}
-                            {activeArea.id === 'project-management' && (
-                              <>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">Project Success Rate</span>
-                                  <span className="text-xl font-bold text-blue-600">95%</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">Teams Led</span>
-                                  <span className="text-xl font-bold text-blue-600">25+</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">Budget Managed</span>
-                                  <span className="text-xl font-bold text-blue-600">$50M+</span>
-                                </div>
-                              </>
-                            )}
-                            
-                            {activeArea.id === 'education-consulting' && (
-                              <>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">Institutions Served</span>
-                                  <span className="text-xl font-bold text-emerald-600">40+</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">Learners Impacted</span>
-                                  <span className="text-xl font-bold text-emerald-600">50K+</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">Policy Reforms</span>
-                                  <span className="text-xl font-bold text-emerald-600">15+</span>
-                                </div>
-                              </>
-                            )}
-                            
-                            {activeArea.id === 'real-estate' && (
-                              <>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">Portfolio Value</span>
-                                  <span className="text-xl font-bold text-amber-600">$200M+</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">Markets Analyzed</span>
-                                  <span className="text-xl font-bold text-amber-600">30+</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">ROI Average</span>
-                                  <span className="text-xl font-bold text-amber-600">18%</span>
-                                </div>
-                              </>
-                            )}
-                            
-                            {activeArea.id === 'leadership' && (
-                              <>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">Organizations</span>
-                                  <span className="text-xl font-bold text-violet-600">12+</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">Team Members</span>
-                                  <span className="text-xl font-bold text-violet-600">200+</span>
-                                </div>
-                                <div className="flex justify-between items-center">
-                                  <span className="text-sm text-slate-600">Transformations</span>
-                                  <span className="text-xl font-bold text-violet-600">8+</span>
-                                </div>
-                              </>
-                            )}
-                          </div>
-                        </motion.div>
-
                         {/* Notable Achievement */}
                         <motion.div 
                           initial={{ opacity: 0, y: 20 }}
