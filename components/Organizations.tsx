@@ -4,12 +4,9 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const logos = [
-  { src: '/images/logos/logo-1.svg', alt: 'Amville' },
+  { src: '/images/amVille_SCHOOL_logo.png', alt: 'Amville School' },
   { src: '/images/ogun_state_logo.png', alt: 'Ogun State' },
   { src: '/images/World-Bank-Logo.jpg', alt: 'World Bank' },
-  { src: '/images/logos/logo-4.svg', alt: 'Innotech' },
-  { src: '/images/logos/logo-5.svg', alt: 'Vertex' },
-  { src: '/images/logos/logo-6.svg', alt: 'Nimbus' },
 ]
 
 export default function Organizations() {
