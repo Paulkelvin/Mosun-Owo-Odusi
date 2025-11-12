@@ -31,7 +31,7 @@ export default function FeaturedProject() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-12 lg:mb-10"
+          className="text-center mb-6 lg:mb-10"
         >
           {/* Partial Bar Accent */}
           <motion.div
@@ -60,13 +60,13 @@ export default function FeaturedProject() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
             viewport={{ once: true }}
-            className="text-base lg:text-lg font-light text-slate-500 max-w-2xl mx-auto leading-relaxed"
+            className="text-lg lg:text-xl font-light text-slate-500 max-w-2xl mx-auto leading-relaxed"
           >
             Showcasing transformative initiatives that create lasting impact and measurable change
           </motion.p>
         </motion.div>
 
-  <div ref={ref} className="grid lg:grid-cols-2 gap-8 lg:gap-8 items-center max-w-full">
+  <div ref={ref} className="grid lg:grid-cols-2 gap-6 lg:gap-12 items-center max-w-full">
           
           {/* Project Image with Parallax */}
           <motion.div 
@@ -82,7 +82,7 @@ export default function FeaturedProject() {
 
             <motion.div 
               style={{ scale }}
-              className="relative h-80 lg:h-80 rounded-2xl shadow-large overflow-hidden group z-10 ring-2 ring-primary-600/30"
+              className="relative h-96 lg:h-96 rounded-2xl shadow-large overflow-hidden group z-10 ring-2 ring-primary-600/30"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
             >

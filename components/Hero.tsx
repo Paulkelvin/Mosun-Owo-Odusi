@@ -32,21 +32,6 @@ export default function Hero() {
         />
       </div>
 
-      {/* Excellence tag in top-right corner */}
-      <motion.div
-        initial={{ opacity: 0, y: -10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="absolute top-5 right-5 z-20"
-      >
-        <div
-          className="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-900 px-3 py-1.5 text-xs font-bold shadow-lg"
-          style={{ clipPath: 'polygon(0% 0%, 85% 0%, 100% 100%, 15% 100%)' }}
-        >
-          EXCELLENCE
-        </div>
-      </motion.div>
-
       {/* Centered content */}
   <div className="relative z-10 flex items-center justify-center px-6 h-screen">
         <motion.div
