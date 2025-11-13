@@ -166,11 +166,8 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
           </div>
         </div>
 
-        {/* Testimonial Content */}
-        <blockquote className="text-slate-700 leading-relaxed mb-6 text-lg">
-          <Quote className="w-6 h-6 text-primary-200 mb-2" />
-          &ldquo;{testimonial.content}&rdquo;
-        </blockquote>
+        {/* Testimonial Content - Removed for video testimonials */}
+        {/* Video testimonials focus on visual content */}
 
         {/* Rating */}
         <div className="flex items-center gap-1 mb-6">
@@ -190,7 +187,6 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
           <div className="flex-1">
             <h3 className="font-bold text-slate-900 text-lg">{testimonial.name}</h3>
             <p className="text-slate-600 font-medium">{testimonial.title}</p>
-            <p className="text-primary-600 text-sm font-medium">{testimonial.company}</p>
           </div>
 
           {/* Social Icons */}
@@ -312,7 +308,6 @@ export default function Testimonials() {
                       <div className="flex-1">
                         <h3 className="font-bold text-slate-900 text-lg">{testimonial.name}</h3>
                         <p className="text-slate-600 font-medium">{testimonial.title}</p>
-                        <p className="text-primary-600 text-sm font-medium">{testimonial.company}</p>
                       </div>
 
                       {/* Social Icons */}
