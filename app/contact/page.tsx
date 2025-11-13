@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, Calendar, Clock, Globe, Send, MessageSquare, User, ArrowRight } from 'lucide-react'
+import { MapPin, Calendar, Clock, Globe, Send, MessageSquare, User, ArrowRight } from 'lucide-react'
 import HighlightText from '@/components/HighlightText'
 import Image from 'next/image'
 
@@ -44,7 +44,7 @@ export default function Contact() {
             {/* Social Media Links */}
             <div className="flex justify-center space-x-6">
               <a 
-                href="https://linkedin.com/in/mosun-owo-odusi" 
+                href="https://www.linkedin.com/in/mosun-owo-odusi-mba-pmp-736a1419" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="text-white hover:text-gold-300 transition-colors p-3 rounded-full hover:bg-white/10"
@@ -109,23 +109,7 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Email Field */}
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
-                    Email Address *
-                  </label>
-                  <div className="relative">
-                    <Mail className="absolute left-4 top-1/2 transform -translate-y-1/2 text-primary-500 w-5 h-5" />
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full pl-12 pr-4 py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-gradient-to-r from-slate-50/50 to-primary-50/20 hover:from-primary-50/30 hover:to-gold-50/20"
-                      placeholder="your.email@example.com"
-                    />
-                  </div>
-                </div>
+                {/* Email Field removed - use LinkedIn in contact info */}
 
                 {/* Subject Field */}
                 <div>
@@ -142,7 +126,6 @@ export default function Contact() {
                     <option value="project-management">Project Management Consulting</option>
                     <option value="education-consulting">Education Consulting</option>
                     <option value="real-estate">Real Estate Advisory</option>
-                    <option value="leadership">Leadership & Strategy</option>
                     <option value="collaboration">Partnership Opportunity</option>
                     <option value="other">Other</option>
                   </select>
@@ -194,23 +177,21 @@ export default function Contact() {
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                      <Mail className="w-6 h-6 text-gold-300" />
+                      <svg className="w-6 h-6 text-gold-300" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                      </svg>
                     </div>
                     <div>
-                      <h4 className="font-semibold mb-1">Email</h4>
-                      <p className="text-primary-100">contact@example.com</p>
-                      <p className="text-sm text-primary-200 mt-1">Response within 24 hours</p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-start gap-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-                      <Phone className="w-6 h-6 text-gold-300" />
-                    </div>
-                    <div>
-                      <h4 className="font-semibold mb-1">Phone</h4>
-                      <p className="text-primary-100">+234 801 234 5678</p>
-                      <p className="text-sm text-primary-200 mt-1">Available for consultations</p>
+                      <h4 className="font-semibold mb-1">LinkedIn</h4>
+                      <a 
+                        href="https://www.linkedin.com/in/mosun-owo-odusi-mba-pmp-736a1419" 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="text-primary-100 hover:text-white transition-colors"
+                      >
+                        Connect with me on LinkedIn
+                      </a>
+                      <p className="text-sm text-primary-200 mt-1">Professional networking</p>
                     </div>
                   </div>
 
@@ -302,12 +283,7 @@ export default function Contact() {
                     </div>
                     <p className="text-sm font-medium text-slate-900">Real Estate Advisory</p>
                   </div>
-                  <div className="text-center p-4 bg-white/80 rounded-xl">
-                    <div className="w-8 h-8 bg-violet-100 rounded-lg mx-auto mb-2 flex items-center justify-center">
-                      <div className="w-4 h-4 bg-violet-600 rounded-sm"></div>
-                    </div>
-                    <p className="text-sm font-medium text-slate-900">Leadership</p>
-                  </div>
+                  
                 </div>
               </motion.div>
             </div>

@@ -50,18 +50,6 @@ const expertiseAreas: ExpertiseArea[] = [
       'Sustainable development and ESG considerations',
       'Client advisory for strategic real estate decisions'
     ]
-  },
-  {
-    id: 'leadership',
-    title: 'Leadership & Strategy',
-    icon: <Globe className="w-6 h-6" />,
-    description: 'Guiding diverse teams through collaborative leadership and strategic vision.',
-    details: [
-      'Organizational change management and transformation',
-      'Strategic visioning and roadmap development',
-      'Team empowerment and collaborative frameworks',
-      'Scalable impact measurement optimization'
-    ]
   }
 ]
 
@@ -69,7 +57,7 @@ export default function ExpertiseTabs() {
   const [activeTab, setActiveTab] = useState(expertiseAreas[0].id)
   
   // Get mobile-available tabs (first 3)
-  const mobileAreas = expertiseAreas.slice(0, 3)
+  const mobileAreas = expertiseAreas
   const activeArea = expertiseAreas.find(area => area.id === activeTab)
 
   // Handle tab switching with mobile constraint
@@ -144,7 +132,7 @@ export default function ExpertiseTabs() {
             viewport={{ once: true }}
             className="md:hidden flex gap-1 mb-8 overflow-x-auto scrollbar-hide"
           >
-            {expertiseAreas.slice(0, 3).map((area, index) => {
+            {expertiseAreas.map((area, index) => {
               // Create mobile-specific smaller icons
               const mobileIcon = area.id === 'project-management' ? <BarChart3 className="w-4 h-4" /> :
                                 area.id === 'education-consulting' ? <GraduationCap className="w-4 h-4" /> :
@@ -194,7 +182,6 @@ export default function ExpertiseTabs() {
             activeArea?.id === 'project-management' ? 'bg-blue-500' :
             activeArea?.id === 'education-consulting' ? 'bg-emerald-500' :
             activeArea?.id === 'real-estate' ? 'bg-amber-500' :
-            activeArea?.id === 'leadership' ? 'bg-violet-500' :
             'bg-white'
           }`}
         >
@@ -295,7 +282,7 @@ export default function ExpertiseTabs() {
                             activeArea.id === 'project-management' ? 'bg-blue-500' :
                             activeArea.id === 'education-consulting' ? 'bg-emerald-500' :
                             activeArea.id === 'real-estate' ? 'bg-amber-500' :
-                            'bg-violet-500'
+                            'bg-slate-500'
                           } rounded-full -translate-y-10 translate-x-10`} />
                           
                           <div>
@@ -305,13 +292,13 @@ export default function ExpertiseTabs() {
                                   activeArea.id === 'project-management' ? 'bg-blue-500' :
                                   activeArea.id === 'education-consulting' ? 'bg-emerald-500' :
                                   activeArea.id === 'real-estate' ? 'bg-amber-500' :
-                                  'bg-violet-500'
+                                  'bg-slate-500'
                                 }`} />
                                 <div className={`w-1 h-1 rounded-full opacity-60 ${
                                   activeArea.id === 'project-management' ? 'bg-blue-500' :
                                   activeArea.id === 'education-consulting' ? 'bg-emerald-500' :
                                   activeArea.id === 'real-estate' ? 'bg-amber-500' :
-                                  'bg-violet-500'
+                                  'bg-slate-500'
                                 }`} />
                               </div>
                               <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider opacity-90">
@@ -329,7 +316,7 @@ export default function ExpertiseTabs() {
                               activeArea.id === 'project-management' ? 'bg-blue-500' :
                               activeArea.id === 'education-consulting' ? 'bg-emerald-500' :
                               activeArea.id === 'real-estate' ? 'bg-amber-500' :
-                              'bg-violet-500'
+                              'bg-slate-500'
                             }`} />
                             
                             <p className="text-sm text-slate-700 leading-relaxed font-medium">
