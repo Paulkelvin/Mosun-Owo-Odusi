@@ -62,14 +62,14 @@ export default function Contact() {
       <section className="section-padding bg-gradient-to-br from-white via-primary-50/20 to-gold-50/10">
         <div className="container-custom">
           {/* Contact Cards Grid */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-32 max-w-none mx-auto px-1 sm:px-2 lg:px-8">
+          <div className="grid lg:grid-cols-2 gap-4 lg:gap-32 max-w-none mx-auto px-0 sm:px-1 lg:px-6">
             
             {/* Left Column - Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-white rounded-3xl shadow-large p-4 sm:p-6 lg:p-10 relative overflow-hidden self-start"
+              className="bg-white rounded-3xl shadow-large p-3 sm:p-4 lg:p-10 relative overflow-hidden self-start"
             >
               {/* Subtle color accents */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-100/30 to-gold-100/30 rounded-full -translate-y-16 translate-x-16"></div>
@@ -170,7 +170,7 @@ export default function Contact() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
-                className="bg-gradient-to-br from-primary-700 to-primary-600 rounded-3xl p-4 sm:p-6 lg:p-10 text-white"
+                className="bg-gradient-to-br from-primary-700 to-primary-600 rounded-3xl p-3 sm:p-4 lg:p-10 text-white"
               >
                 <h3 className="text-2xl font-bold mb-6">Get in Touch</h3>
                 
@@ -213,7 +213,7 @@ export default function Contact() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
-                className="bg-white rounded-3xl shadow-large p-4 sm:p-6 lg:p-8"
+                className="bg-white rounded-3xl shadow-large p-3 sm:p-4 lg:p-8"
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-12 h-12 bg-gold-100 rounded-xl flex items-center justify-center">
