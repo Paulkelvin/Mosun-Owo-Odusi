@@ -321,7 +321,7 @@ export default function About() {
                 More <span className="text-emerald-600">Coming Soon</span>
               </h2>
               <p className="text-lg text-slate-600">
-                Additional sections to provide a comprehensive view of Mosun's professional journey
+                Additional sections to provide a comprehensive view of Mosun&apos;s professional journey
               </p>
             </div>
 
