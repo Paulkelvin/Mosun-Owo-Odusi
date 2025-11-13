@@ -248,7 +248,7 @@ export default function Testimonials() {
 
       {/* Main Content Section */}
       <section className="section-padding bg-gradient-to-br from-white via-primary-50/20 to-gold-50/10">
-        <div className="container-custom">
+        <div className="w-full px-4 sm:px-6 lg:px-6">
 
           {/* Testimonials Grid */}
           <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
