@@ -62,7 +62,7 @@ export default function Contact() {
       <section className="section-padding bg-gradient-to-br from-white via-primary-50/20 to-gold-50/10">
         <div className="w-full">
           {/* Contact Cards Grid */}
-          <div className="grid lg:grid-cols-2 gap-4 lg:gap-32 max-w-none mx-auto px-0 sm:px-1 lg:px-6">
+          <div className="grid lg:grid-cols-2 gap-4 lg:gap-32 max-w-none mx-auto px-2 sm:px-3 lg:px-6">
             
             {/* Left Column - Contact Form */}
             <motion.div
