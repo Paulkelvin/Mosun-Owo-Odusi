@@ -159,8 +159,8 @@ export default function TestimonialPreview() {
                 }}
               >
                 {testimonials.map((t, i) => (
-                  <div key={i} className="min-w-full py-12 lg:py-16 px-4 lg:px-8">
-                    <div className="relative max-w-5xl mx-auto text-center lg:text-left">
+                  <div key={i} className="min-w-full flex items-center justify-center min-h-[400px] lg:min-h-[500px] py-12 lg:py-16 px-4 lg:px-8">
+                    <div className="relative max-w-5xl mx-auto text-center lg:text-left w-full">
                       {/* Background Quote Icon - Large, Gold */}
                       <div className="absolute -top-2 left-4 lg:left-12 opacity-25 pointer-events-none">
                         <Quote className="w-28 h-28 lg:w-36 lg:h-36" style={{ color: '#F0C419' }} />

@@ -745,12 +745,12 @@ export default function Projects() {
                       </div>
                       
                       <div className="lg:w-80">
-                        <div className="relative h-48 lg:h-56 rounded-2xl overflow-hidden bg-gradient-to-br from-primary-100 to-gold-100">
+                        <div className="relative h-48 lg:h-56 rounded-2xl overflow-hidden bg-gradient-to-br from-primary-100 to-gold-100 flex items-center justify-center p-6">
                           <Image
                             src={currentProject.image}
                             alt={currentProject.title}
                             fill
-                            className="object-cover"
+                            className="object-contain"
                           />
                         </div>
                       </div>
@@ -814,7 +814,21 @@ export default function Projects() {
                                         <div className="relative">
                                           <div className="flex items-center">
                                             {/* Main Image Display */}
-                                            <div className="relative w-full h-48 rounded-lg overflow-hidden bg-slate-200 border border-slate-300">
+                                            <motion.div 
+                                              className="relative w-full h-48 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 cursor-grab active:cursor-grabbing"
+                                              drag="x"
+                                              dragElastic={0.2}
+                                              dragConstraints={{ left: 0, right: 0 }}
+                                              onDragEnd={(_e, info) => {
+                                                const swipeConfidence = (offset: number, velocity: number) => Math.abs(offset) * velocity
+                                                const swipe = swipeConfidence(info.offset.x, info.velocity.x)
+                                                if (info.offset.x < -50 || swipe < -4000) {
+                                                  handleMilestoneImageNext(currentMilestone.id, currentMilestone.images.length)
+                                                } else if (info.offset.x > 50 || swipe > 4000) {
+                                                  handleMilestoneImagePrev(currentMilestone.id, currentMilestone.images.length)
+                                                }
+                                              }}
+                                            >
                                               <Image
                                                 src={currentMilestone.images[milestoneImageIndex[currentMilestone.id] || 0]}
                                                 alt={`${currentMilestone.title} - Image ${(milestoneImageIndex[currentMilestone.id] || 0) + 1}`}
@@ -846,7 +860,7 @@ export default function Projects() {
                                                   {(milestoneImageIndex[currentMilestone.id] || 0) + 1} / {currentMilestone.images.length}
                                                 </div>
                                               )}
-                                            </div>
+                                            </motion.div>
                                             
                                             {/* Partial Next Image Preview */}
                                             {currentMilestone.images.length > 1 && (

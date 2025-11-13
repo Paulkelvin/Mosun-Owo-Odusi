@@ -178,7 +178,7 @@ export default function ExpertiseTabs() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
           viewport={{ once: true }}
-          className={`relative rounded-2xl sm:rounded-2xl shadow-large overflow-hidden mb-16 mx-0 sm:mx-4 lg:mx-8 ${
+          className={`relative rounded-2xl sm:rounded-2xl shadow-large overflow-hidden mb-8 mx-0 sm:mx-4 lg:mx-8 ${
             activeArea?.id === 'project-management' ? 'bg-blue-500' :
             activeArea?.id === 'education-consulting' ? 'bg-emerald-500' :
             activeArea?.id === 'real-estate' ? 'bg-amber-500' :
