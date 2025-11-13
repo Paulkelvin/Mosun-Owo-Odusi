@@ -131,7 +131,7 @@ export default function TestimonialPreview() {
         </svg>
       </div>
 
-      <div className="container-custom relative">
+      <div className="relative w-full">
         <div className="max-w-6xl mx-auto">
           {/* Carousel Shell */}
           <div className="relative">
