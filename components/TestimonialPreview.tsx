@@ -25,11 +25,11 @@ const testimonials: Testimonial[] = [
   },
   {
     quote:
-      'A visionary leader who brings clarity, coordination, and compassion to every project.',
-    highlights: ['clarity', 'coordination', 'compassion'],
-    name: 'Colleague',
-    role: 'COLLEAGUE',
-    project: 'DEVELOPMENT PROJECT',
+      'Mosun Owo-Odusi is an excellent administrator and team lead. She poses an innate ability to effectively navigate teams based on the peculiar strengths of the members that make up the team while helping them to overcome their weaknesses. When it comes to project management, she executes with precision, excellence and professionalism.',
+    highlights: ['administrator', 'precision', 'professionalism'],
+    name: 'Toyosi Babatunde',
+    role: 'GLOBAL PARENTING COACH & AUTHOR',
+    project: 'PROFESSIONAL RECOMMENDATION',
   },
   {
     quote:
@@ -112,7 +112,7 @@ export default function TestimonialPreview() {
   const swipePowerThreshold = 4000
 
   return (
-    <section className="section-padding bg-gradient-to-br from-slate-50 via-primary-50/30 to-slate-100 relative overflow-hidden">
+    <section className="pt-8 pb-16 lg:py-24 bg-gradient-to-br from-slate-50 via-primary-50/30 to-slate-100 relative overflow-hidden">
       {/* Background graphics retained for section break */}
       <div className="absolute inset-0 pointer-events-none">
         <svg className="absolute inset-0 w-full h-full opacity-5" viewBox="0 0 1200 600" xmlns="http://www.w3.org/2000/svg">
@@ -146,13 +146,15 @@ export default function TestimonialPreview() {
                 animate={{ x: `-${index * 100}%` }}
                 transition={{ type: 'tween', duration: 0.6, ease: 'easeInOut' }}
                 drag="x"
-                dragElastic={0.2}
+                dragElastic={0.1}
+                dragConstraints={{ left: -100, right: 100 }}
+                dragSnapToOrigin={true}
                 onDragEnd={(_e, info) => {
                   const swipe = swipeConfidence(info.offset.x, info.velocity.x)
-                  if (info.offset.x < -50 || swipe < -swipePowerThreshold) {
+                  if (info.offset.x < -80 || swipe < -swipePowerThreshold) {
                     next()
                     resetAutoplay()
-                  } else if (info.offset.x > 50 || swipe > swipePowerThreshold) {
+                  } else if (info.offset.x > 80 || swipe > swipePowerThreshold) {
                     prev()
                     resetAutoplay()
                   }

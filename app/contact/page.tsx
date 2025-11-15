@@ -109,7 +109,25 @@ export default function Contact() {
                   </div>
                 </div>
 
-                {/* Email Field removed - use LinkedIn in contact info */}
+                {/* Email Field */}
+                <div>
+                  <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-2">
+                    Email Address *
+                  </label>
+                  <div className="relative">
+                    <svg className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-primary-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207" />
+                    </svg>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      className="w-full pl-12 pr-4 py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-gradient-to-r from-slate-50/50 to-primary-50/20 hover:from-primary-50/30 hover:to-gold-50/20"
+                      placeholder="your.email@example.com"
+                    />
+                  </div>
+                </div>
 
                 {/* Subject Field */}
                 <div>
@@ -239,21 +257,6 @@ export default function Contact() {
                     </div>
                   </div>
                 </div>
-
-                {/* CTA Button */}
-                <motion.div
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="mt-6 p-1 bg-gradient-to-r from-primary-600 to-gold-500 rounded-xl"
-                >
-                  <div className="bg-white rounded-[10px] p-4 text-center">
-                    <p className="text-sm font-semibold text-slate-900 mb-2">Ready to get started?</p>
-                    <div className="flex items-center justify-center gap-2 text-primary-600">
-                      <span className="font-medium">Schedule a consultation</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </div>
-                  </div>
-                </motion.div>
               </motion.div>
 
               {/* Services Overview */}

@@ -85,9 +85,6 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
     }
   }
 
-  const categoryStyle = categoryColors[testimonial.category as keyof typeof categoryColors]
-  const IconComponent = categoryIcons[testimonial.category as keyof typeof categoryIcons]
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
@@ -104,12 +101,6 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
           <div className="flex items-center gap-3">
             <div className="px-3 py-1 bg-gradient-to-r from-gold-500 to-amber-500 text-white rounded-full text-xs font-bold">
               FEATURED VIDEO
-            </div>
-            <div className={`px-3 py-1 rounded-full text-xs font-medium ${categoryStyle}`}>
-              <div className="flex items-center gap-1">
-                <IconComponent className="w-3 h-3" />
-                {testimonial.category}
-              </div>
             </div>
           </div>
           <span className="text-xs text-slate-500 font-medium">{testimonial.videoDuration}</span>
@@ -259,8 +250,6 @@ export default function Testimonials() {
               }
 
               // Regular testimonial card
-              const IconComponent = categoryIcons[testimonial.category as keyof typeof categoryIcons]
-              const categoryStyle = categoryColors[testimonial.category as keyof typeof categoryColors]
               
               return (
                 <motion.div
@@ -277,12 +266,6 @@ export default function Testimonials() {
                     {/* Quote Icon */}
                     <div className="flex items-center justify-between mb-6">
                       <Quote className="w-8 h-8 text-primary-200" />
-                      <div className={`px-3 py-1 rounded-full text-xs font-medium ${categoryStyle}`}>
-                        <div className="flex items-center gap-1">
-                          <IconComponent className="w-3 h-3" />
-                          {testimonial.category}
-                        </div>
-                      </div>
                     </div>
 
                     {/* Testimonial Content */}

@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { ChevronRight, Building2, Users, GraduationCap, Sprout } from 'lucide-react'
 import { useRef } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 import HighlightText from './HighlightText'
 
 export default function FeaturedProject() {
@@ -202,15 +203,16 @@ export default function FeaturedProject() {
               viewport={{ once: true }}
               className="pt-4 lg:pt-2"
             >
-              <motion.button
-                whileHover={{ scale: 1.02, y: -2 }}
-                whileTap={{ scale: 0.98 }}
-                className="group inline-flex items-center rounded-lg bg-primary-600 px-5 py-3 text-white shadow-lg transition-colors hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
-                aria-label="Read the story"
-              >
-                Read the Story
-                <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-              </motion.button>
+              <Link href="/projects">
+                <motion.div
+                  whileHover={{ scale: 1.02, y: -2 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="group inline-flex items-center rounded-lg bg-primary-600 px-5 py-3 text-white shadow-lg transition-colors hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
+                >
+                  Read the Story
+                  <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </motion.div>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

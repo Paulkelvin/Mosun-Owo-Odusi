@@ -6,7 +6,7 @@ import Organizations from '@/components/Organizations'
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className="relative mt-16 lg:mt-20">
       <Hero />
       <Organizations />
       <ExpertiseTabs />
