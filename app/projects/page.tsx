@@ -320,34 +320,6 @@ export default function Projects() {
               <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
                 Transformative <HighlightText highlightColor="gold"><span className="text-gold-300">Projects</span></HighlightText>
               </h1>
-              <p className="text-xl lg:text-2xl text-primary-100 mb-8 max-w-3xl mx-auto leading-relaxed">
-                15+ years of strategic leadership delivering measurable impact across sectors, 
-                transforming communities and driving sustainable development.
-              </p>
-              
-              {/* Hero Stats */}
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8 mt-12">
-                {[
-                  { icon: DollarSign, label: "Total Project Value", value: "$500M+" },
-                  { icon: Users, label: "Lives Impacted", value: "2.5M+" },
-                  { icon: Award, label: "Projects Completed", value: "50+" },
-                  { icon: MapPin, label: "Countries", value: "15+" }
-                ].map((stat, index) => (
-                  <motion.div
-                    key={stat.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 + index * 0.1 }}
-                    className="text-center"
-                  >
-                    <div className="inline-flex items-center justify-center w-12 h-12 bg-gold-400/20 rounded-xl mb-3">
-                      <stat.icon className="w-6 h-6 text-gold-300" />
-                    </div>
-                    <div className="text-2xl lg:text-3xl font-bold text-white">{stat.value}</div>
-                    <div className="text-sm text-primary-200">{stat.label}</div>
-                  </motion.div>
-                ))}
-              </div>
             </motion.div>
           </div>
         </div>
@@ -410,7 +382,7 @@ export default function Projects() {
             {/* Mobile Navigation - Horizontal */}
             <div className="lg:hidden flex flex-col items-center gap-4 mb-8">
               {/* Year Navigation - Horizontal on Mobile */}
-              <div className="flex items-center gap-2 overflow-x-auto pb-2 w-full">
+              <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2 w-full">
                 {projects.map((project) => (
                   <button
                     key={project.id}
