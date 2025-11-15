@@ -359,11 +359,24 @@ export default function Projects() {
           {/* Section Header with Navigation */}
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-              Career <HighlightText highlightColor="blue">Timeline</HighlightText>
+              A Journey of <HighlightText highlightColor="blue">Transformation</HighlightText>
             </h2>
-            <p className="text-xl text-slate-700 max-w-2xl mx-auto mb-8">
-              Explore the journey of impactful projects and strategic initiatives
-            </p>
+            <div className="max-w-3xl mx-auto mb-8">
+              <p className="text-xl text-slate-700 mb-4">
+                From pioneering educational innovation since 2011 to leading transformative economic development projects, 
+                explore 15+ years of strategic leadership creating lasting impact.
+              </p>
+              <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-600">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
+                  <span className="font-medium">2011-Present: Educational Innovation Era</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 bg-primary-500 rounded-full"></div>
+                  <span className="font-medium">2019-Present: Economic Development Leadership</span>
+                </div>
+              </div>
+            </div>
             
             {/* Desktop Controls - Moved to top */}
             <div className="hidden lg:flex items-center justify-center gap-2 mb-8">
@@ -398,17 +411,18 @@ export default function Projects() {
             <div className="lg:hidden flex flex-col items-center gap-4 mb-8">
               {/* Year Navigation - Horizontal on Mobile */}
               <div className="flex items-center gap-2 overflow-x-auto pb-2 w-full">
-                {years.map((year) => (
+                {projects.map((project) => (
                   <button
-                    key={year}
-                    onClick={() => handleYearClick(year)}
+                    key={project.id}
+                    onClick={() => handleYearClick(project.year)}
                     className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 whitespace-nowrap ${
-                      selectedYear === year
+                      selectedYear === project.year
                         ? 'bg-primary-600 text-white shadow-lg'
                         : 'bg-white text-slate-600 hover:bg-primary-50 border border-slate-200'
                     }`}
                   >
-                    {year}
+                    <div className="text-sm font-bold">{project.duration}</div>
+                    <div className="text-xs opacity-75">{project.category.split(' ')[0]}</div>
                   </button>
                 ))}
               </div>
@@ -452,36 +466,45 @@ export default function Projects() {
               <div className="sticky top-32">
                 {/* Timeline Header */}
                 <div className="mb-8">
-                  <h3 className="text-lg font-semibold text-slate-900">Timeline</h3>
+                  <h3 className="text-lg font-semibold text-slate-900 mb-2">Project Timeline</h3>
+                  <div className="text-sm text-slate-600">
+                    <div className="mb-1">📚 <strong>2011-Present:</strong> Educational Innovation</div>
+                    <div>🏛️ <strong>2019-Present:</strong> Economic Development</div>
+                  </div>
                 </div>
 
                 {/* Year Navigation */}
                 <div className="relative">
                   <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-200 to-gold-200"></div>
                   <div className="space-y-6">
-                    {years.map((year, index) => (
+                    {projects.map((project, index) => (
                       <motion.button
-                        key={year}
-                        onClick={() => handleYearClick(year)}
-                        className={`relative flex items-center text-left transition-all duration-300 ${
-                          selectedYear === year
+                        key={project.id}
+                        onClick={() => handleYearClick(project.year)}
+                        className={`relative flex items-start text-left transition-all duration-300 ${
+                          selectedYear === project.year
                             ? 'text-primary-700'
                             : 'text-slate-500 hover:text-slate-700'
                         }`}
                         whileHover={{ x: 4 }}
                         whileTap={{ scale: 0.98 }}
                       >
-                        <div className={`w-12 h-12 rounded-full border-2 flex items-center justify-center font-bold mr-4 transition-all duration-300 ${
-                          selectedYear === year
+                        <div className={`w-12 h-12 rounded-full border-2 flex items-center justify-center font-bold mr-4 transition-all duration-300 flex-shrink-0 ${
+                          selectedYear === project.year
                             ? 'bg-primary-600 border-primary-600 text-white shadow-lg'
                             : 'bg-white border-slate-200 text-slate-600 hover:border-primary-300'
                         }`}>
-                          {year.toString().slice(-2)}
+                          {project.year.toString().slice(-2)}
                         </div>
-                        <div className={`text-2xl font-bold transition-all duration-300 ${
-                          selectedYear === year ? 'text-primary-700' : 'text-slate-400'
-                        }`}>
-                          {year}
+                        <div className="min-w-0">
+                          <div className={`text-lg font-bold transition-all duration-300 mb-1 ${
+                            selectedYear === project.year ? 'text-primary-700' : 'text-slate-600'
+                          }`}>
+                            {project.duration}
+                          </div>
+                          <div className="text-sm text-slate-500 leading-tight">
+                            {project.title}
+                          </div>
                         </div>
                       </motion.button>
                     ))}
@@ -514,6 +537,13 @@ export default function Projects() {
                         <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight">
                           {currentProject.title}
                         </h3>
+                        
+                        {/* Story Context Badge */}
+                        <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold-50 border border-gold-200 rounded-full text-sm font-medium text-gold-700 mb-4">
+                          <span className="w-2 h-2 bg-gold-400 rounded-full"></span>
+                          {currentProject.id === 1 ? "Current Leadership Role" : "Foundational Innovation Journey"}
+                        </div>
+                        
                         <p className="text-lg text-slate-700 leading-relaxed">
                           {currentProject.description}
                         </p>
@@ -587,10 +617,10 @@ export default function Projects() {
                                     {currentMilestone.images.length > 0 && (
                                       <div className="mb-4">
                                         <div className="relative">
-                                          <div className="flex items-center">
+                                          <div className="flex items-center gap-2">
                                             {/* Main Image Display */}
                                             <motion.div 
-                                              className="relative w-full lg:max-w-lg h-48 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 cursor-grab active:cursor-grabbing"
+                                              className="relative w-full lg:w-96 h-48 lg:h-56 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 cursor-grab active:cursor-grabbing"
                                               drag="x"
                                               dragElastic={0.2}
                                               dragConstraints={{ left: 0, right: 0 }}
@@ -639,7 +669,7 @@ export default function Projects() {
                                             
                                             {/* Partial Next Image Preview */}
                                             {currentMilestone.images.length > 1 && (
-                                              <div className="relative w-16 h-48 ml-2 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 opacity-60">
+                                              <div className="relative w-16 lg:w-20 h-48 lg:h-56 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 opacity-60">
                                                 <Image
                                                   src={currentMilestone.images[((milestoneImageIndex[currentMilestone.id] || 0) + 1) % currentMilestone.images.length]}
                                                   alt="Next image preview"
@@ -710,8 +740,22 @@ export default function Projects() {
 
                     {/* Impact Statement */}
                     <div className="bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl p-6 mb-8 border border-primary-500">
-                      <h4 className="text-lg font-bold text-white mb-3">Project Impact</h4>
-                      <p className="text-primary-50">{currentProject.impact}</p>
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-12 h-12 bg-primary-500/20 rounded-xl flex items-center justify-center">
+                          <TrendingUp className="w-6 h-6 text-white" />
+                        </div>
+                        <div>
+                          <h4 className="text-lg font-bold text-white mb-3">
+                            {currentProject.id === 1 ? "Transformational Leadership Impact" : "Innovation Legacy"}
+                          </h4>
+                          <p className="text-primary-50 leading-relaxed">{currentProject.impact}</p>
+                          {currentProject.id === 2 && (
+                            <div className="mt-3 text-primary-100 text-sm">
+                              <em>Building the foundation for excellence in education since 2011</em>
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </div>
 
                     {/* Tags and CTA */}
