@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Refresh, Globe } from 'lucide-react'
+import { ChevronLeft, ChevronRight, RefreshCw, Globe } from 'lucide-react'
 import HighlightText from '@/components/HighlightText'
 import SearchBar from '@/components/opportunities/SearchBar'
 import Filters from '@/components/opportunities/Filters'
@@ -199,7 +199,7 @@ export default function OpportunitiesPage() {
               disabled={isRefreshing}
               className="flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 disabled:bg-slate-400 text-white rounded-xl font-medium transition-colors duration-200"
             >
-              <Refresh className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+              <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
               {isRefreshing ? 'Refreshing...' : 'Refresh Data'}
             </motion.button>
           </div>
