@@ -117,7 +117,9 @@ async function refreshOpportunitiesData(): Promise<{ added: number; updated: num
  */
 export async function GET(request: NextRequest) {
   try {
+    // Connect to database
     await connectToDatabase();
+    console.log('✅ Database connected');
 
     // Extract query parameters
     const searchParams = request.nextUrl.searchParams;
@@ -126,8 +128,10 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get('search') || '';
     const category = searchParams.get('category') || '';
     const location = searchParams.get('location') || '';
-    const sortBy = searchParams.get('sortBy') || 'createdAt'; // createdAt or deadline
-    const sortOrder = searchParams.get('sortOrder') || 'desc'; // asc or desc
+    const sortBy = searchParams.get('sortBy') || 'createdAt';
+    const sortOrder = searchParams.get('sortOrder') || 'desc';
+
+    console.log('📊 Query params:', { page, limit, search, category, location });
 
     // Background refresh check (non-blocking)
     shouldRefreshData().then(async (needsRefresh) => {
@@ -170,6 +174,22 @@ export async function GET(request: NextRequest) {
     const totalItems = await Opportunity.countDocuments(filter);
     const totalPages = Math.ceil(totalItems / limit);
 
+    console.log('📊 Database stats:', { totalItems, totalPages, filter });
+
+    // If database is empty, trigger immediate refresh
+    if (totalItems === 0) {
+      console.log('📭 Database empty, triggering immediate refresh...');
+      try {
+        await refreshOpportunitiesData();
+        // Retry the query after refresh
+        const retryTotal = await Opportunity.countDocuments(filter);
+        console.log(`✅ Refresh complete, now have ${retryTotal} opportunities`);
+      } catch (refreshError) {
+        console.error('❌ Failed to refresh data:', refreshError);
+        // Continue anyway to show empty state
+      }
+    }
+
     // Build sort object
     const sort: any = {};
     sort[sortBy] = sortOrder === 'asc' ? 1 : -1;
@@ -210,12 +230,18 @@ export async function GET(request: NextRequest) {
 
   } catch (error) {
     console.error('❌ Error in GET /api/opportunities:', error);
+    console.error('Error details:', {
+      name: error instanceof Error ? error.name : 'Unknown',
+      message: error instanceof Error ? error.message : 'Unknown error',
+      stack: error instanceof Error ? error.stack : 'No stack trace'
+    });
     
     return NextResponse.json(
       {
         success: false,
         error: 'Failed to fetch opportunities',
-        message: error instanceof Error ? error.message : 'Unknown error'
+        message: error instanceof Error ? error.message : 'Unknown error',
+        details: process.env.NODE_ENV === 'development' ? (error instanceof Error ? error.stack : String(error)) : undefined
       },
       { status: 500 }
     );
