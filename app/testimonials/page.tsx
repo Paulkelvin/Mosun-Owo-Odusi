@@ -40,7 +40,7 @@ const testimonials = [
   },
   {
     id: 3,
-    name: "Elena Rodriguez",
+    name: "Adebola Ogundimu",
     title: "Chief Investment Officer",
     company: "Global Real Estate Partners",
     image: "/api/placeholder/80/80",
