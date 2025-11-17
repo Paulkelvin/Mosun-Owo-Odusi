@@ -53,6 +53,10 @@
   .glass-effect {
     @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-soft;
   }
+  
+  .card-modern {
+    @apply bg-white rounded-2xl p-6 shadow-soft hover:shadow-medium transition-all duration-300;
+  }
 }
 
 @layer utilities {
