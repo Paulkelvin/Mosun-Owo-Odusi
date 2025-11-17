@@ -134,28 +134,13 @@ export async function fetchReliefWebOpportunities(limit: number = 100): Promise<
   try {
     const url = new URL('https://api.reliefweb.int/v1/jobs');
     
-    // Query parameters
+    // Query parameters - ReliefWeb uses a simpler format
     url.searchParams.append('appname', 'mosun-website');
     url.searchParams.append('limit', limit.toString());
     url.searchParams.append('preset', 'latest');
-    url.searchParams.append('slim', '0');
-    
-    // Filter for relevant job types
-    const filterQuery = {
-      operator: 'OR',
-      conditions: [
-        { field: 'theme.name', value: 'Management' },
-        { field: 'theme.name', value: 'Coordination' },
-        { field: 'theme.name', value: 'Education' },
-        { field: 'theme.name', value: 'Training' },
-        { field: 'theme.name', value: 'Project Management' }
-      ]
-    };
-
-    // Add filter as query parameter
-    url.searchParams.append('filter', JSON.stringify(filterQuery));
 
     console.log('🌐 Fetching from ReliefWeb API...');
+    console.log('📡 URL:', url.toString());
     
     const response = await fetch(url.toString(), {
       headers: {
@@ -164,12 +149,20 @@ export async function fetchReliefWebOpportunities(limit: number = 100): Promise<
     });
 
     if (!response.ok) {
+      const errorText = await response.text();
+      console.error('❌ ReliefWeb API error response:', errorText);
       throw new Error(`ReliefWeb API error: ${response.status} ${response.statusText}`);
     }
 
     const data: ReliefWebResponse = await response.json();
     
-    console.log(`✅ Fetched ${data.data.length} opportunities from ReliefWeb`);
+    console.log(`✅ Fetched ${data.data?.length || 0} opportunities from ReliefWeb`);
+
+    // Check if we got data
+    if (!data.data || data.data.length === 0) {
+      console.warn('⚠️ No data returned from ReliefWeb API');
+      return [];
+    }
 
     // Transform and validate opportunities
     const opportunities: TransformedOpportunity[] = data.data
