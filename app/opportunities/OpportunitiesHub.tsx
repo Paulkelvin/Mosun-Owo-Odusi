@@ -296,3 +296,5 @@ export default function OpportunitiesHub() {
     </div>
   )
 }
+
+export default OpportunitiesHub
