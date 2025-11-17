@@ -335,10 +335,10 @@ export default function Projects() {
             </h2>
             <div className="max-w-3xl mx-auto mb-8">
               <p className="text-xl text-slate-700 mb-4">
-                From pioneering educational innovation since 2011 to leading transformative economic development projects, 
-                explore 15+ years of strategic leadership creating lasting impact.
+                <span className="hidden lg:inline">From pioneering educational innovation since 2011 to leading transformative economic development projects, explore 15+ years of strategic leadership creating lasting impact.</span>
+                <span className="lg:hidden">15+ years of strategic leadership creating lasting impact.</span>
               </p>
-              <div className="flex flex-wrap items-center justify-center gap-4 text-sm text-slate-600">
+              <div className="hidden lg:flex flex-wrap items-center justify-center gap-4 text-sm text-slate-600">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
                   <span className="font-medium">2011-Present: Educational Innovation Era</span>
