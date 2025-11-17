@@ -118,6 +118,7 @@ export default function OpportunitiesHub() {
   // Initial load
   useEffect(() => {
     fetchOpportunities()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // Handle search
@@ -223,7 +224,7 @@ export default function OpportunitiesHub() {
                 Showing <span className="font-semibold text-slate-900">{opportunities.length}</span> of{' '}
                 <span className="font-semibold text-slate-900">{pagination.totalItems}</span> opportunities
                 {searchQuery && (
-                  <span> for "<span className="font-semibold text-primary-700">{searchQuery}</span>"</span>
+                  <span> for &quot;<span className="font-semibold text-primary-700">{searchQuery}</span>&quot;</span>
                 )}
               </p>
             </motion.div>
