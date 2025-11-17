@@ -35,6 +35,29 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (isOpen) {
+        const target = event.target as HTMLElement
+        const nav = document.getElementById('mobile-nav')
+        const menuButton = document.getElementById('menu-button')
+        
+        if (nav && menuButton && !nav.contains(target) && !menuButton.contains(target)) {
+          setIsOpen(false)
+        }
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen])
+
   const scrollToSection = (href: string) => {
     if (href.startsWith('#')) {
       const element = document.querySelector(href)
@@ -136,6 +159,7 @@ export default function Header() {
 
           {/* Mobile Menu Button */}
           <motion.button
+            id="menu-button"
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(!isOpen)}
             className="lg:hidden p-2 text-slate-700 hover:text-primary-700 focus-ring rounded-md"
@@ -149,6 +173,7 @@ export default function Header() {
         <AnimatePresence>
           {isOpen && (
             <motion.div
+              id="mobile-nav"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
