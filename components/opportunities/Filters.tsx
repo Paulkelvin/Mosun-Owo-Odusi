@@ -6,14 +6,12 @@ import { useState, useRef, useEffect } from 'react'
 
 interface FiltersProps {
   filters: {
-    types: string[]
     categories: string[]
-    regions: string[]
+    locations: string[]
   }
   activeFilters: {
-    type: string
     category: string
-    region: string
+    location: string
   }
   onFilterChange: (filterType: string, value: string) => void
   onReset: () => void
@@ -103,7 +101,7 @@ const FilterDropdown = ({ label, options, value, onChange, placeholder }: Filter
 }
 
 const Filters = ({ filters, activeFilters, onFilterChange, onReset }: FiltersProps) => {
-  const hasActiveFilters = activeFilters.type || activeFilters.category || activeFilters.region
+  const hasActiveFilters = activeFilters.category || activeFilters.location
 
   return (
     <motion.div
@@ -127,15 +125,7 @@ const Filters = ({ filters, activeFilters, onFilterChange, onReset }: FiltersPro
         )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <FilterDropdown
-          label="Types"
-          options={filters.types}
-          value={activeFilters.type}
-          onChange={(value) => onFilterChange('type', value)}
-          placeholder="All Types"
-        />
-        
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <FilterDropdown
           label="Categories"
           options={filters.categories}
@@ -145,11 +135,11 @@ const Filters = ({ filters, activeFilters, onFilterChange, onReset }: FiltersPro
         />
         
         <FilterDropdown
-          label="Regions"
-          options={filters.regions}
-          value={activeFilters.region}
-          onChange={(value) => onFilterChange('region', value)}
-          placeholder="All Regions"
+          label="Locations"
+          options={filters.locations}
+          value={activeFilters.location}
+          onChange={(value) => onFilterChange('location', value)}
+          placeholder="All Locations"
         />
       </div>
 
@@ -160,33 +150,22 @@ const Filters = ({ filters, activeFilters, onFilterChange, onReset }: FiltersPro
           className="mt-4 pt-4 border-t border-slate-100"
         >
           <div className="flex flex-wrap gap-2">
-            {activeFilters.type && (
+            {activeFilters.category && (
               <span className="inline-flex items-center gap-1 px-3 py-1 bg-primary-100 text-primary-700 rounded-full text-sm">
-                Type: {activeFilters.type}
+                Category: {activeFilters.category}
                 <button
-                  onClick={() => onFilterChange('type', '')}
+                  onClick={() => onFilterChange('category', '')}
                   className="ml-1 text-primary-600 hover:text-primary-800"
                 >
                   <X className="w-3 h-3" />
                 </button>
               </span>
             )}
-            {activeFilters.category && (
-              <span className="inline-flex items-center gap-1 px-3 py-1 bg-gold-100 text-gold-700 rounded-full text-sm">
-                Category: {activeFilters.category}
-                <button
-                  onClick={() => onFilterChange('category', '')}
-                  className="ml-1 text-gold-600 hover:text-gold-800"
-                >
-                  <X className="w-3 h-3" />
-                </button>
-              </span>
-            )}
-            {activeFilters.region && (
+            {activeFilters.location && (
               <span className="inline-flex items-center gap-1 px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-sm">
-                Region: {activeFilters.region}
+                Location: {activeFilters.location}
                 <button
-                  onClick={() => onFilterChange('region', '')}
+                  onClick={() => onFilterChange('location', '')}
                   className="ml-1 text-emerald-600 hover:text-emerald-800"
                 >
                   <X className="w-3 h-3" />

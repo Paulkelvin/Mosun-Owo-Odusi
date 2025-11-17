@@ -1,7 +1,7 @@
 {
   "crons": [
     {
-      "path": "/api/opportunities/fetch",
+      "path": "/api/opportunities/refresh",
       "schedule": "0 6 * * *"
     }
   ]

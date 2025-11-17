@@ -8,30 +8,29 @@ interface OpportunityCardProps {
   opportunity: {
     _id: string
     title: string
-    source: string
-    url: string
+    organization: string
+    link: string
     category: string
-    deadline?: string
+    deadline: string | null
     location: string
-    type: string
-    postedDate?: string
     description: string
+    source: string
     createdAt: string
   }
   index: number
 }
 
-const typeColors = {
-  job: 'bg-blue-100 text-blue-700 border-blue-200',
-  scholarship: 'bg-emerald-100 text-emerald-700 border-emerald-200',
-  grant: 'bg-purple-100 text-purple-700 border-purple-200',
-  fellowship: 'bg-gold-100 text-gold-700 border-gold-200',
-  training: 'bg-amber-100 text-amber-700 border-amber-200',
-  opportunity: 'bg-slate-100 text-slate-700 border-slate-200'
+const categoryColors = {
+  'Leadership': 'bg-blue-100 text-blue-700 border-blue-200',
+  'Education': 'bg-emerald-100 text-emerald-700 border-emerald-200',
+  'Project Management': 'bg-purple-100 text-purple-700 border-purple-200',
+  'Development': 'bg-gold-100 text-gold-700 border-gold-200',
+  'Sustainability': 'bg-green-100 text-green-700 border-green-200',
+  'Global Opportunities': 'bg-slate-100 text-slate-700 border-slate-200'
 }
 
 const OpportunityCard = ({ opportunity, index }: OpportunityCardProps) => {
-  const typeColor = typeColors[opportunity.type as keyof typeof typeColors] || typeColors.opportunity
+  const categoryColor = categoryColors[opportunity.category as keyof typeof categoryColors] || categoryColors['Global Opportunities']
   
   const truncateDescription = (text: string, maxLength: number = 120) => {
     if (text.length <= maxLength) return text
@@ -65,8 +64,8 @@ const OpportunityCard = ({ opportunity, index }: OpportunityCardProps) => {
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
         <div className="flex items-center gap-2 flex-wrap">
-          <span className={`px-2 py-1 rounded-full text-xs font-medium border ${typeColor}`}>
-            {opportunity.type}
+          <span className={`px-2 py-1 rounded-full text-xs font-medium border ${categoryColor}`}>
+            {opportunity.category}
           </span>
           <span className="text-xs text-slate-500 font-medium">
             {opportunity.source}
@@ -93,7 +92,7 @@ const OpportunityCard = ({ opportunity, index }: OpportunityCardProps) => {
         </div>
         <div className="flex items-center gap-1">
           <Tag className="w-4 h-4" />
-          <span>{opportunity.category}</span>
+          <span>{opportunity.organization}</span>
         </div>
       </div>
 
@@ -111,16 +110,16 @@ const OpportunityCard = ({ opportunity, index }: OpportunityCardProps) => {
               <span>Due: {formatDate(opportunity.deadline)}</span>
             </div>
           )}
-          {!opportunity.deadline && opportunity.postedDate && (
+          {!opportunity.deadline && (
             <div className="flex items-center gap-1">
               <Clock className="w-3 h-3" />
-              <span>Posted: {formatDate(opportunity.postedDate)}</span>
+              <span>Posted: {formatDate(opportunity.createdAt)}</span>
             </div>
           )}
         </div>
 
         <motion.a
-          href={opportunity.url}
+          href={opportunity.link}
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.05 }}

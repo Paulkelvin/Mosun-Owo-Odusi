@@ -11,15 +11,15 @@ import OpportunitiesList from '../../components/opportunities/OpportunitiesList'
 interface Opportunity {
   _id: string
   title: string
-  source: string
-  url: string
+  organization: string
+  link: string
   category: string
-  deadline?: string
+  deadline: string | null
   location: string
-  type: string
-  postedDate?: string
   description: string
+  source: string
   createdAt: string
+  updatedAt: string
 }
 
 interface Pagination {
@@ -28,12 +28,12 @@ interface Pagination {
   totalItems: number
   hasNextPage: boolean
   hasPrevPage: boolean
+  limit: number
 }
 
 interface FiltersData {
-  types: string[]
   categories: string[]
-  regions: string[]
+  locations: string[]
 }
 
 export default function OpportunitiesHub() {
@@ -46,14 +46,12 @@ export default function OpportunitiesHub() {
     hasPrevPage: false
   })
   const [filters, setFilters] = useState<FiltersData>({
-    types: [],
     categories: [],
-    regions: []
+    locations: []
   })
   const [activeFilters, setActiveFilters] = useState({
-    type: '',
     category: '',
-    region: ''
+    location: ''
   })
   const [searchQuery, setSearchQuery] = useState('')
   const [loading, setLoading] = useState(true)
@@ -70,9 +68,8 @@ export default function OpportunitiesHub() {
         page: page.toString(),
         limit: '12',
         ...(search && { search }),
-        ...(filters.type && { type: filters.type }),
         ...(filters.category && { category: filters.category }),
-        ...(filters.region && { region: filters.region })
+        ...(filters.location && { location: filters.location })
       })
 
       const response = await fetch(`/api/opportunities?${params}`)
@@ -98,7 +95,12 @@ export default function OpportunitiesHub() {
   const refreshData = async () => {
     try {
       setIsRefreshing(true)
-      const response = await fetch('/api/opportunities/fetch', { method: 'POST' })
+      const response = await fetch('/api/opportunities/refresh', { 
+        method: 'POST',
+        headers: {
+          'Authorization': 'Bearer mosun-refresh-2024'
+        }
+      })
       const result = await response.json()
       
       if (result.success) {
