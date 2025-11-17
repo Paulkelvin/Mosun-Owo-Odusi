@@ -7,15 +7,15 @@ import { Loader2, AlertCircle } from 'lucide-react'
 interface Opportunity {
   _id: string
   title: string
-  source: string
-  url: string
+  organization: string
+  link: string
   category: string
-  deadline?: string
+  deadline: string | null
   location: string
-  type: string
-  postedDate?: string
   description: string
+  source: string
   createdAt: string
+  updatedAt: string
 }
 
 interface OpportunitiesListProps {

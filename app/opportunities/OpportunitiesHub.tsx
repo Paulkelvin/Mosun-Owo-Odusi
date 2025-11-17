@@ -43,7 +43,8 @@ export default function OpportunitiesHub() {
     totalPages: 1,
     totalItems: 0,
     hasNextPage: false,
-    hasPrevPage: false
+    hasPrevPage: false,
+    limit: 12
   })
   const [filters, setFilters] = useState<FiltersData>({
     categories: [],
@@ -134,7 +135,7 @@ export default function OpportunitiesHub() {
 
   // Reset filters
   const handleResetFilters = () => {
-    const resetFilters = { type: '', category: '', region: '' }
+    const resetFilters = { category: '', location: '' }
     setActiveFilters(resetFilters)
     fetchOpportunities(1, searchQuery, resetFilters)
   }
