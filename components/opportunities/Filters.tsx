@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Filter, RotateCcw, ChevronDown, X } from 'lucide-react'
-import { useState } from 'react'
+import { useState, useRef, useEffect } from 'react'
 
 interface FiltersProps {
   filters: {
@@ -29,9 +29,24 @@ interface FilterDropdownProps {
 
 const FilterDropdown = ({ label, options, value, onChange, placeholder }: FilterDropdownProps) => {
   const [isOpen, setIsOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsOpen(false)
+      }
+    }
+
+    if (isOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      return () => document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isOpen])
 
   return (
-    <div className="relative">
+    <div ref={dropdownRef} className="relative">
       <motion.button
         whileHover={{ scale: 1.02 }}
         whileTap={{ scale: 0.98 }}

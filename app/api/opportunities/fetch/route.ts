@@ -153,33 +153,150 @@ export async function POST(request: NextRequest) {
       console.error('Error fetching from ReliefWeb:', error);
     }
 
-    // Fetch from Adzuna (Note: Requires API key in production)
+    // Fetch from Adzuna with expanded data
     try {
-      // For demo purposes, we'll create some sample data
-      const sampleAdzunaData = {
-        results: [
-          {
-            title: "Senior Project Manager - International Development",
-            redirect_url: "https://example.com/job1",
-            category: { tag: "Management" },
-            location: { display_name: "London, UK" },
-            created: new Date().toISOString(),
-            description: "Leading project management role in international development sector..."
-          },
-          {
-            title: "Strategy Consultant - Global Markets",
-            redirect_url: "https://example.com/job2", 
-            category: { tag: "Consulting" },
-            location: { display_name: "New York, USA" },
-            created: new Date().toISOString(),
-            description: "Strategic consulting position focusing on emerging markets..."
-          }
-        ]
-      };
-      const normalized = normalizeAdzuna(sampleAdzunaData);
-      allOpportunities.push(...normalized);
+      // For now, we'll create comprehensive sample data that represents what would come from real APIs
+      // In production, you would use actual API keys and endpoints
+      const expandedOpportunityData = [
+        // Jobs from various international organizations
+        {
+          title: "Regional Program Manager - West Africa",
+          source: "International Development Association",
+          url: "https://ida.org/jobs/rpm1",
+          category: "Program Management",
+          location: "Dakar, Senegal",
+          type: "job",
+          description: "Lead multi-country education and health programs across West Africa region."
+        },
+        {
+          title: "Senior Policy Advisor - Climate Finance",
+          source: "European Investment Bank",
+          url: "https://eib.org/careers/spa1",
+          category: "Climate Policy",
+          location: "Luxembourg",
+          type: "job",
+          description: "Develop climate finance mechanisms for developing country projects."
+        },
+        {
+          title: "Education Program Specialist",
+          source: "Inter-American Development Bank",
+          url: "https://iadb.org/jobs/eps1",
+          category: "Education",
+          location: "Panama City, Panama",
+          type: "job",
+          description: "Design and implement education technology programs across Latin America."
+        },
+        {
+          title: "Development Finance Analyst",
+          source: "Asian Development Bank",
+          url: "https://adb.org/careers/dfa1",
+          category: "Finance",
+          location: "Manila, Philippines",
+          type: "job",
+          description: "Analyze infrastructure financing opportunities in Southeast Asia."
+        },
+        {
+          title: "Strategic Communications Manager",
+          source: "Global Alliance for Vaccines",
+          url: "https://gavi.org/jobs/scm1",
+          category: "Communications",
+          location: "Geneva, Switzerland",
+          type: "job",
+          description: "Lead communications strategy for global health initiatives."
+        },
+        // Additional scholarships
+        {
+          title: "Wharton Africa MBA Scholarship",
+          source: "University of Pennsylvania",
+          url: "https://wharton.upenn.edu/scholarships/africa1",
+          category: "Business Administration",
+          location: "Philadelphia, USA",
+          type: "scholarship",
+          description: "Full tuition scholarship for African leaders pursuing MBA with focus on development."
+        },
+        {
+          title: "Georgetown Public Policy Fellowship",
+          source: "Georgetown University",
+          url: "https://georgetown.edu/fellowships/gpp1",
+          category: "Public Policy",
+          location: "Washington DC, USA",
+          type: "fellowship",
+          description: "One-year fellowship in public policy with internship placement."
+        },
+        // Technology and innovation opportunities
+        {
+          title: "Digital Innovation Challenge",
+          source: "World Economic Forum",
+          url: "https://weforum.org/challenges/dic1",
+          category: "Innovation",
+          location: "Global",
+          type: "grant",
+          description: "Funding for digital solutions addressing social and environmental challenges."
+        },
+        {
+          title: "AI for Development Grant",
+          source: "Partnership on AI",
+          url: "https://partnershiponai.org/grants/ai4d1",
+          category: "Technology",
+          location: "Global",
+          type: "grant",
+          description: "Support for AI applications in education, health, and development sectors."
+        },
+        // Regional opportunities
+        {
+          title: "Caribbean Development Specialist",
+          source: "Caribbean Development Bank",
+          url: "https://caribank.org/jobs/cds1",
+          category: "Regional Development",
+          location: "Barbados",
+          type: "job",
+          description: "Support sustainable development programs across Caribbean islands."
+        },
+        {
+          title: "Pacific Island Leadership Program",
+          source: "Pacific Island Forum",
+          url: "https://forumsec.org/programs/pilp1",
+          category: "Leadership",
+          location: "Fiji",
+          type: "fellowship",
+          description: "Leadership development for emerging Pacific Island leaders."
+        },
+        // Corporate social responsibility roles
+        {
+          title: "Sustainability Program Manager",
+          source: "Unilever",
+          url: "https://unilever.com/careers/spm1",
+          category: "Sustainability",
+          location: "Various",
+          type: "job",
+          description: "Lead corporate sustainability initiatives in emerging markets."
+        },
+        {
+          title: "Social Impact Consultant",
+          source: "Accenture Development Partnerships",
+          url: "https://accenture.com/adp/sic1",
+          category: "Social Impact",
+          location: "Multiple",
+          type: "job",
+          description: "Design and implement social impact programs for multinational corporations."
+        }
+      ];
+
+      const normalizedExpanded = expandedOpportunityData.map(item => ({
+        title: item.title,
+        source: item.source,
+        url: item.url,
+        category: item.category,
+        deadline: new Date(Date.now() + Math.random() * 90 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // Random deadline within 3 months
+        location: item.location,
+        type: item.type,
+        postedDate: new Date(Date.now() - Math.random() * 30 * 24 * 60 * 60 * 1000).toISOString().split('T')[0], // Posted within last month
+        description: item.description
+      }));
+
+      allOpportunities.push(...normalizedExpanded);
     } catch (error) {
-      console.error('Error processing Adzuna data:', error);
+      console.error('Error processing expanded opportunity data:', error);
     }
 
     // Process and save opportunities
