@@ -176,7 +176,7 @@ export default function ServicesPage() {
                 href="/opportunities"
                 className="btn-secondary inline-flex items-center gap-2"
               >
-                View Career Opportunities
+                View Job Opportunities
                 <ArrowRight size={20} />
               </Link>
             </div>

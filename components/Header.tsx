@@ -14,7 +14,7 @@ const navLinks = [
     href: '#',
     dropdown: [
       { name: 'Consulting', href: '/services' },
-      { name: 'Career Opportunities', href: '/opportunities' },
+      { name: 'Job Opportunities', href: '/opportunities' },
     ]
   },
   { name: 'Testimonials', href: '/testimonials' },
