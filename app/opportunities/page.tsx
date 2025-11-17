@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import OpportunitiesHub from './OpportunitiesHub'
+import OpportunitiesHub from '@/app/opportunities/OpportunitiesHub'
 
 export const metadata: Metadata = {
   title: "Global Opportunities Hub – Mosun Owo-Odusi",

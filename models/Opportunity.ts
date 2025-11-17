@@ -63,8 +63,8 @@ const OpportunitySchema: Schema = new Schema({
   source: { 
     type: String, 
     required: true,
-    enum: ['ReliefWeb', 'API', 'Manual'],
-    default: 'ReliefWeb'
+    enum: ['ReliefWeb', 'Adzuna', 'RemoteOK', 'Arbeitnow', 'TheMuse', 'Findwork', 'GitHubJobs', 'API', 'Manual'],
+    default: 'API'
   },
   createdAt: { 
     type: Date, 

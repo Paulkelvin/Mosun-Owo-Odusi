@@ -2,7 +2,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { connectToDatabase } from '@/lib/mongodb';
 import Opportunity from '@/models/Opportunity';
 import FetchLog from '@/models/FetchLog';
-import { fetchReliefWebOpportunities, TransformedOpportunity } from '@/lib/reliefweb';
+import { fetchAllOpportunities, getSourceStatistics } from '@/lib/api-sources/aggregator';
+import { cleanupExpiredJobs } from '@/lib/cleanup/expiredJobs';
 
 const CACHE_DURATION_HOURS = 24; // Refresh data every 24 hours
 
@@ -11,7 +12,7 @@ const CACHE_DURATION_HOURS = 24; // Refresh data every 24 hours
  */
 async function shouldRefreshData(): Promise<boolean> {
   try {
-    const log = await FetchLog.findOne({ source: 'ReliefWeb' });
+    const log = await FetchLog.findOne().sort({ lastFetchedAt: -1 });
     
     if (!log) return true; // No fetch log, need to fetch
     
@@ -25,27 +26,34 @@ async function shouldRefreshData(): Promise<boolean> {
 }
 
 /**
- * Refresh opportunities data from ReliefWeb API
+ * Refresh opportunities data from all API sources
  */
 async function refreshOpportunitiesData(): Promise<{ added: number; updated: number; errors: number }> {
-  console.log('🔄 Starting opportunities refresh...');
+  console.log('🔄 Starting multi-source opportunities refresh...');
+  
+  // Step 1: Clean up expired jobs BEFORE fetching new ones
+  await cleanupExpiredJobs();
   
   let added = 0;
   let updated = 0;
   let errors = 0;
 
   try {
-    // Fetch from ReliefWeb
-    const opportunities = await fetchReliefWebOpportunities(100);
+    // Fetch from all sources
+    const opportunities = await fetchAllOpportunities();
     
+    if (opportunities.length === 0) {
+      console.log('⚠️ No opportunities fetched from any source');
+      return { added: 0, updated: 0, errors: 0 };
+    }
+
     // Process each opportunity
     for (const opp of opportunities) {
       try {
         // Check for existing opportunity (duplicate prevention)
         const existing = await Opportunity.findOne({
           title: opp.title,
-          organization: opp.organization,
-          deadline: opp.deadline
+          organization: opp.organization
         });
 
         if (existing) {
@@ -53,8 +61,10 @@ async function refreshOpportunitiesData(): Promise<{ added: number; updated: num
           await Opportunity.updateOne(
             { _id: existing._id },
             {
-              ...opp,
-              updatedAt: new Date()
+              $set: {
+                ...opp,
+                updatedAt: new Date()
+              }
             }
           );
           updated++;
@@ -74,37 +84,46 @@ async function refreshOpportunitiesData(): Promise<{ added: number; updated: num
       }
     }
 
-    // Update fetch log
+    // Get source statistics
+    const sourceStats = getSourceStatistics(opportunities);
+
+    // Update fetch log (upsert to avoid duplicate key errors)
     await FetchLog.findOneAndUpdate(
-      { source: 'ReliefWeb' },
+      { source: 'multi-source' },
       {
-        source: 'ReliefWeb',
+        source: 'multi-source',
         lastFetchedAt: new Date(),
         itemsFetched: opportunities.length,
         status: errors > opportunities.length / 2 ? 'partial' : 'success',
-        errorMessage: errors > 0 ? `${errors} items failed to save` : null
+        errorMessage: errors > 0 ? `${errors} items failed to save` : null,
+        metadata: {
+          added,
+          updated,
+          sources: sourceStats
+        }
       },
-      { upsert: true }
+      { upsert: true, new: true }
     );
 
     console.log(`✅ Refresh complete: ${added} added, ${updated} updated, ${errors} errors`);
+    console.log(`📊 Source breakdown:`, sourceStats);
     
     return { added, updated, errors };
     
   } catch (error) {
     console.error('❌ Fatal error during refresh:', error);
     
-    // Log the failure
+    // Log the failure (upsert to avoid duplicate key errors)
     await FetchLog.findOneAndUpdate(
-      { source: 'ReliefWeb' },
+      { source: 'multi-source' },
       {
-        source: 'ReliefWeb',
+        source: 'multi-source',
         lastFetchedAt: new Date(),
         itemsFetched: 0,
         status: 'failed',
         errorMessage: error instanceof Error ? error.message : 'Unknown error'
       },
-      { upsert: true }
+      { upsert: true, new: true }
     );
     
     throw error;

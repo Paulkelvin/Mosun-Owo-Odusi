@@ -7,6 +7,11 @@ export interface IFetchLog extends Document {
   itemsFetched: number;
   status: 'success' | 'failed' | 'partial';
   errorMessage?: string;
+  metadata?: {
+    added?: number;
+    updated?: number;
+    sources?: Record<string, number>;
+  };
 }
 
 // MongoDB schema for FetchLog
@@ -14,8 +19,7 @@ const FetchLogSchema: Schema = new Schema({
   source: {
     type: String,
     required: true,
-    unique: true,
-    enum: ['ReliefWeb', 'API', 'Manual']
+    enum: ['ReliefWeb', 'Adzuna', 'RemoteOK', 'Arbeitnow', 'TheMuse', 'Findwork', 'GitHubJobs', 'multi-source', 'multi-source-manual', 'API', 'Manual']
   },
   lastFetchedAt: {
     type: Date,
@@ -36,7 +40,14 @@ const FetchLogSchema: Schema = new Schema({
   errorMessage: {
     type: String,
     default: null
+  },
+  metadata: {
+    type: Schema.Types.Mixed,
+    default: {}
   }
 });
+
+// Add index for querying by source and date
+FetchLogSchema.index({ source: 1, lastFetchedAt: -1 });
 
 export default mongoose.models.FetchLog || mongoose.model<IFetchLog>('FetchLog', FetchLogSchema);
