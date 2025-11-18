@@ -272,9 +272,8 @@ export default function Projects() {
     const currentSlide = currentProject.milestones[currentSlideIndex]
     if (!currentSlide) return
     
-    // Calculate reading time based on text length (average 200 words per minute)
-    const textLength = currentSlide.description.length + currentSlide.achievements.join(' ').length
-    const readingTime = Math.max(5000, Math.min(15000, (textLength / 5) * 300)) // Between 5-15 seconds
+    // Shorter reading time for simplified presentation (6-8 seconds)
+    const readingTime = 7000 // 7 seconds per slide
     
     const timer = setTimeout(() => {
       if (currentSlideIndex < currentProject.milestones.length - 1) {
@@ -935,22 +934,12 @@ export default function Projects() {
                       ))}
                     </motion.div>
 
-                    {/* Slide Number */}
-                    <motion.div
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: 0.1 }}
-                      className="text-primary-400 text-sm font-semibold mb-2"
-                    >
-                      {currentSlideIndex + 1} / {currentProject.milestones.length}
-                    </motion.div>
-
                     {/* Period Badge */}
                     <motion.div
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: 0.2 }}
-                      className="inline-flex items-center gap-2 px-3 py-1 bg-primary-500/20 border border-primary-500/30 rounded-full text-sm font-medium text-primary-300 mb-4 w-fit"
+                      transition={{ duration: 0.4, delay: 0.1 }}
+                      className="inline-flex items-center gap-2 px-3 py-1 bg-primary-500/20 border border-primary-500/30 rounded-full text-sm font-medium text-primary-300 mb-6 w-fit"
                     >
                       <Calendar className="w-4 h-4" />
                       {currentProject.milestones[currentSlideIndex].period}
@@ -960,64 +949,42 @@ export default function Projects() {
                     <motion.h3
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                      className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight"
+                      transition={{ duration: 0.5, delay: 0.2 }}
+                      className="text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight"
                     >
                       {currentProject.milestones[currentSlideIndex].title}
                     </motion.h3>
 
-                    {/* Description */}
-                    <motion.p
+                    {/* Key Metrics (show only 2 most important) */}
+                    <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.4 }}
-                      className="text-lg text-slate-300 mb-6 leading-relaxed"
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      className="grid grid-cols-2 gap-4 mb-8"
                     >
-                      {currentProject.milestones[currentSlideIndex].description}
-                    </motion.p>
-
-                    {/* Key Achievements (show only first 3, animate line by line) */}
-                    <div className="space-y-3 mb-6">
-                      {currentProject.milestones[currentSlideIndex].achievements.slice(0, 3).map((achievement, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ duration: 0.4, delay: 0.5 + (index * 0.15) }}
-                          className="flex items-start gap-3"
-                        >
-                          <div className="w-1.5 h-1.5 bg-gold-400 rounded-full mt-2 flex-shrink-0" />
-                          <span className="text-slate-400 text-sm">{achievement}</span>
-                        </motion.div>
-                      ))}
-                    </div>
-
-                    {/* Key Metrics (show 2 most important, animate) */}
-                    <div className="grid grid-cols-2 gap-4">
-                      {Object.entries(currentProject.milestones[currentSlideIndex].metrics).slice(0, 2).map(([key, value], index) => (
-                        <motion.div
+                      {Object.entries(currentProject.milestones[currentSlideIndex].metrics).slice(0, 2).map(([key, value]) => (
+                        <div
                           key={key}
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{ duration: 0.4, delay: 0.95 + (index * 0.1) }}
                           className="bg-slate-800/50 rounded-lg p-4 border border-slate-700"
                         >
                           <div className="text-2xl font-bold text-primary-400 mb-1">{value}</div>
                           <div className="text-xs text-slate-400">{key}</div>
-                        </motion.div>
+                        </div>
                       ))}
-                    </div>
+                    </motion.div>
 
                     {/* Navigation Hint */}
                     <motion.div
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
-                      transition={{ duration: 0.4, delay: 1.2 }}
-                      className="mt-8 flex items-center justify-between text-sm text-slate-500"
+                      transition={{ duration: 0.4, delay: 0.5 }}
+                      className="flex items-center justify-between text-sm text-slate-500"
                     >
                       <div className="flex items-center gap-2">
                         <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
-                        Auto-advancing...
+                        <span className="text-slate-400">
+                          {currentSlideIndex + 1} / {currentProject.milestones.length}
+                        </span>
                       </div>
                       <button
                         onClick={(e) => {
