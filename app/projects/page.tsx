@@ -436,8 +436,10 @@ export default function Projects() {
                 title="Next project"
               >
                 <ChevronRight className="w-5 h-5" />
-                      </button>
-                    </motion.div>            {/* Mobile Navigation - Horizontal */}
+              </button>
+            </div>
+            
+            {/* Mobile Navigation - Horizontal */}
             <div className="lg:hidden flex flex-col items-center gap-4 mb-8">
               {/* Year Navigation - Horizontal on Mobile */}
               <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2 w-full">

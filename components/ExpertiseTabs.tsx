@@ -321,9 +321,9 @@ export default function ExpertiseTabs() {
                             
                             <p className="text-sm text-slate-700 leading-relaxed font-medium">
                               {activeArea.id === 'project-management' 
-                                ? "Led a $250M World Bank initiative achieving 40% efficiency gains and impacting 25,000+ beneficiaries across 5 countries."
+                                ? "Led a $250M World Bank initiative achieving 40% efficiency gains and impacting 65,000+ beneficiaries in Ogun State."
                                 : activeArea.id === 'education-consulting'
-                                ? "Developed national education framework adopted by 12 countries, improving learning outcomes for 2M+ students."
+                                ? "Developed innovative education framework adopted by Amville, improving learning outcomes for over 2,000+ students."
                                 : activeArea.id === 'real-estate'
                                 ? "Identified undervalued markets generating 25%+ returns for institutional investors in emerging economies."
                                 : "Orchestrated organizational transformation resulting in 60% productivity increase and 90% employee retention."
