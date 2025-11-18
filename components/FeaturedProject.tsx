@@ -203,13 +203,13 @@ export default function FeaturedProject() {
               viewport={{ once: true }}
               className="pt-4 lg:pt-2"
             >
-              <Link href="/projects">
+              <Link href="/projects?presentation=ogstep">
                 <motion.div
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
                   className="group inline-flex items-center rounded-lg bg-primary-600 px-5 py-3 text-white shadow-lg transition-colors hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
                 >
-                  Read the Story
+                  See Story
                   <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </motion.div>
               </Link>
