@@ -29,7 +29,7 @@ const testimonials: Testimonial[] = [
     highlights: ['administrator', 'precision', 'professionalism'],
     name: 'Toyosi Babatunde',
     role: 'GLOBAL PARENTING COACH & AUTHOR',
-    project: 'OGSTEP TEAM MEMBER',
+    project: 'PROFESSIONAL COLLEAGUE',
     imageSrc: '/images/Toyosi_Babatunde.jpeg',
   },
 ]
