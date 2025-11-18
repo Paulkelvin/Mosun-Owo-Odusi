@@ -21,7 +21,7 @@ const testimonials: Testimonial[] = [
     name: 'Unyime Eyo',
     role: 'CHARTERED MANAGEMENT CONSULTANT',
     project: 'OGSTEP TEAM MEMBER',
-    imageSrc: '/images/unyime-eyo.png',
+    imageSrc: '/images/Unyime Eyo.jpeg',
   },
   {
     quote:
@@ -30,7 +30,7 @@ const testimonials: Testimonial[] = [
     name: 'Toyosi Babatunde',
     role: 'GLOBAL PARENTING COACH & AUTHOR',
     project: 'OGSTEP TEAM MEMBER',
-    imageSrc: '/images/toyosi-babatunde.png',
+    imageSrc: '/images/Toyosi_Babatunde.jpeg',
   },
 ]
 
