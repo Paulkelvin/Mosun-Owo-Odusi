@@ -47,9 +47,44 @@ export default function ServicesPage() {
           {/* Services Grid */}
           <div className="grid md:grid-cols-3 gap-8 mb-20">
             {[
-              { icon: Target, title: 'Project Management', desc: 'End-to-end project delivery across diverse industries, ensuring results through structure, clarity, and strategic execution.', color: 'from-blue-600 to-blue-400', action: 'Learn More', link: '#project-management' },
-              { icon: Home, title: 'Real Estate Advisory', desc: 'Professional guidance on property acquisition, verification, investment decisions, and documentation — with seamless online payment for consultations.', color: 'from-green-600 to-green-400', action: 'Book a Consultation', link: '#consultation-modal' },
-              { icon: Shield, title: 'Security Services', desc: 'Reliable, trained, and professional security personnel for events, corporate functions, and private engagements.', color: 'from-red-600 to-red-400', action: 'View Security Packages', link: '#security-packages' },
+              { 
+                icon: Target, 
+                title: 'Project Management', 
+                desc: 'End-to-end project delivery across diverse industries, ensuring results through structure, clarity, and strategic execution.',
+                services: [
+                  'Strategic Project Planning',
+                  'Project Execution & Delivery',
+                  'Stakeholder Management',
+                  'Risk Assessment & Mitigation',
+                  'Budget & Resource Management'
+                ],
+                color: 'from-blue-600 to-blue-400', 
+                action: 'Contact Me', 
+                link: '/contact' 
+              },
+              { 
+                icon: Home, 
+                title: 'Real Estate Advisory', 
+                desc: 'Professional guidance on property acquisition, verification, investment decisions, and documentation — with seamless online payment for consultations.',
+                services: [
+                  'Property Verification',
+                  'Investment Advisory',
+                  'Site Inspection Support',
+                  'Documentation Guidance',
+                  'Risk Assessment'
+                ],
+                color: 'from-green-600 to-green-400', 
+                action: 'Book a Consultation', 
+                link: '#consultation-modal' 
+              },
+              { 
+                icon: Shield, 
+                title: 'Security Services', 
+                desc: 'Reliable, trained, and professional security personnel for events, corporate functions, and private engagements.', 
+                color: 'from-red-600 to-red-400', 
+                action: 'View Security Packages', 
+                link: '#security-packages' 
+              },
             ].map((service, index) => {
               const Icon = service.icon
               return (
@@ -59,6 +94,16 @@ export default function ServicesPage() {
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3">{service.title}</h3>
                   <p className="text-slate-600 mb-6 leading-relaxed">{service.desc}</p>
+                  {service.services && (
+                    <ul className="space-y-2 mb-6">
+                      {service.services.map((s) => (
+                        <li key={s} className="flex items-start gap-2 text-sm text-slate-700">
+                          <CheckCircle className="text-primary-600 flex-shrink-0 mt-0.5" size={16} />
+                          <span>{s}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                   <button onClick={() => scrollToSection(service.link)} className="inline-flex items-center gap-2 text-primary-700 font-semibold hover:gap-3 transition-all duration-300">
                     {service.action} <ArrowRight size={18} />
                   </button>
@@ -66,74 +111,6 @@ export default function ServicesPage() {
               )
             })}
           </div>
-        </div>
-      </section>
-
-      {/* Project Management */}
-      <section id="project-management" className="py-20 bg-white">
-        <div className="container-custom">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Project Management <span className="gradient-text">Excellence</span></h2>
-            <p className="text-lg text-slate-600">Delivering results through strategic planning, meticulous execution, and continuous monitoring across diverse industries.</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="card-modern">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2"><Target className="text-primary-600" />Core Services</h3>
-              <ul className="space-y-3">
-                {['Strategic Project Planning', 'Project Execution & Delivery', 'Stakeholder Management', 'Risk Assessment & Mitigation', 'Budget & Resource Management', 'Quality Assurance & Reporting'].map((s) => (
-                  <li key={s} className="flex items-start gap-3"><CheckCircle className="text-primary-600 flex-shrink-0 mt-0.5" size={18} /><span className="text-slate-700">{s}</span></li>
-                ))}
-              </ul>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="card-modern">
-              <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2"><Award className="text-gold-600" />Industries Served</h3>
-              <ul className="space-y-3">
-                {['Education & Skills Development', 'Government & Public Sector', 'Infrastructure & Construction', 'Technology & Innovation', 'Non-Profit & Development', 'Corporate & Consulting'].map((i) => (
-                  <li key={i} className="flex items-start gap-3"><CheckCircle className="text-gold-600 flex-shrink-0 mt-0.5" size={18} /><span className="text-slate-700">{i}</span></li>
-                ))}
-              </ul>
-            </motion.div>
-          </div>
-
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center">
-            <Link href="/contact" className="btn-primary inline-flex items-center gap-2">Hire Me for Your Project <ArrowRight size={20} /></Link>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Real Estate */}
-      <section id="real-estate-advisory" className="py-20 bg-gradient-to-br from-green-50 to-emerald-50">
-        <div className="container-custom">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Real Estate <span className="gradient-text">Advisory</span></h2>
-            <p className="text-lg text-slate-600 mb-8">Get expert real estate advisory covering property verification, due-diligence, valuation insights, and investment guidance. All consultations can be booked and paid for securely online.</p>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {[
-              { icon: FileCheck, title: 'Property Verification', desc: 'Thorough verification of property documents and ownership' },
-              { icon: TrendingUp, title: 'Investment Advisory', desc: 'Strategic guidance on property investment decisions' },
-              { icon: Home, title: 'Site Inspection Support', desc: 'Professional site visits and condition assessment' },
-              { icon: FileCheck, title: 'Documentation Guidance', desc: 'Assistance with legal documents and paperwork' },
-              { icon: Shield, title: 'Risk Assessment', desc: 'Identifying and mitigating property investment risks' },
-              { icon: Lock, title: 'Secure Consultation Payment', desc: 'Safe and convenient online booking and payment' }
-            ].map((f, index) => {
-              const Icon = f.icon
-              return (
-                <motion.div key={f.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: index * 0.1 }} viewport={{ once: true }} className="card-modern text-center">
-                  <div className="w-12 h-12 bg-gradient-to-br from-green-600 to-emerald-500 rounded-xl flex items-center justify-center mx-auto mb-4"><Icon className="text-white" size={24} /></div>
-                  <h4 className="font-bold text-slate-900 mb-2">{f.title}</h4>
-                  <p className="text-sm text-slate-600">{f.desc}</p>
-                </motion.div>
-              )
-            })}
-          </div>
-
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center">
-            <button onClick={() => setShowModal(true)} className="btn-primary inline-flex items-center gap-2">Book a Consultation <Calendar size={20} /></button>
-          </motion.div>
         </div>
       </section>
 
