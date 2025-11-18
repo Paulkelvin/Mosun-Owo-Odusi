@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Hero() {
 
@@ -62,19 +63,20 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            <motion.button
-              onClick={scrollToExpertise}
-              whileHover={{ scale: 1.05, y: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="relative btn-primary group overflow-hidden text-white"
-              style={{ clipPath: 'polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%)' }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-blue-700 transform -skew-x-2" />
-              <span className="relative z-10 flex items-center">
-                Explore Achievements
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-              </span>
-            </motion.button>
+            <Link href="/projects">
+              <motion.button
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="relative btn-primary group overflow-hidden text-white"
+                style={{ clipPath: 'polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%)' }}
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-blue-700 transform -skew-x-2" />
+                <span className="relative z-10 flex items-center">
+                  Explore Achievements
+                  <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+              </motion.button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>
