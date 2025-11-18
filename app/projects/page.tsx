@@ -272,8 +272,8 @@ export default function Projects() {
     const currentSlide = currentProject.milestones[currentSlideIndex]
     if (!currentSlide) return
     
-    // Shorter reading time for simplified presentation (6-8 seconds)
-    const readingTime = 7000 // 7 seconds per slide
+    // Moderate reading time for balanced presentation (9-10 seconds)
+    const readingTime = 9000 // 9 seconds per slide
     
     const timer = setTimeout(() => {
       if (currentSlideIndex < currentProject.milestones.length - 1) {
@@ -939,7 +939,7 @@ export default function Projects() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.4, delay: 0.1 }}
-                      className="inline-flex items-center gap-2 px-3 py-1 bg-primary-500/20 border border-primary-500/30 rounded-full text-sm font-medium text-primary-300 mb-6 w-fit"
+                      className="inline-flex items-center gap-2 px-3 py-1 bg-primary-500/20 border border-primary-500/30 rounded-full text-sm font-medium text-primary-300 mb-4 w-fit"
                     >
                       <Calendar className="w-4 h-4" />
                       {currentProject.milestones[currentSlideIndex].period}
@@ -950,17 +950,27 @@ export default function Projects() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
-                      className="text-3xl lg:text-4xl font-bold text-white mb-6 leading-tight"
+                      className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight"
                     >
                       {currentProject.milestones[currentSlideIndex].title}
                     </motion.h3>
+
+                    {/* Description */}
+                    <motion.p
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, delay: 0.3 }}
+                      className="text-base text-slate-300 mb-6 leading-relaxed"
+                    >
+                      {currentProject.milestones[currentSlideIndex].description}
+                    </motion.p>
 
                     {/* Key Metrics (show only 2 most important) */}
                     <motion.div
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.5, delay: 0.3 }}
-                      className="grid grid-cols-2 gap-4 mb-8"
+                      transition={{ duration: 0.5, delay: 0.4 }}
+                      className="grid grid-cols-2 gap-4 mb-6"
                     >
                       {Object.entries(currentProject.milestones[currentSlideIndex].metrics).slice(0, 2).map(([key, value]) => (
                         <div
