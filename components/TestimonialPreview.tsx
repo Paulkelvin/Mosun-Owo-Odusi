@@ -21,6 +21,7 @@ const testimonials: Testimonial[] = [
     name: 'Unyime Eyo',
     role: 'CHARTERED MANAGEMENT CONSULTANT',
     project: 'OGSTEP TEAM MEMBER',
+    imageSrc: '/images/unyime-eyo.png',
   },
   {
     quote:
@@ -28,23 +29,8 @@ const testimonials: Testimonial[] = [
     highlights: ['administrator', 'precision', 'professionalism'],
     name: 'Toyosi Babatunde',
     role: 'GLOBAL PARENTING COACH & AUTHOR',
-    project: 'PROFESSIONAL RECOMMENDATION',
-  },
-  {
-    quote:
-      'Her strategic thinking and people-first leadership deliver measurable outcomes and sustainable change.',
-    highlights: ['strategic', 'leadership', 'measurable'],
-    name: 'Partner',
-    role: 'PARTNER',
-    project: 'EDUCATION INITIATIVE',
-  },
-  {
-    quote:
-      'Brings structure, empathy, and momentum—teams perform at their best under her guidance.',
-    highlights: ['structure', 'empathy', 'momentum'],
-    name: 'Director',
-    role: 'DIRECTOR',
-    project: 'PROGRAM DELIVERY',
+    project: 'OGSTEP TEAM MEMBER',
+    imageSrc: '/images/toyosi-babatunde.png',
   },
 ]
 
@@ -108,7 +94,7 @@ export default function TestimonialPreview() {
               <div className="flex items-center gap-4 pt-4 border-t border-slate-200">
                 <div className="relative w-12 h-12 rounded-full overflow-hidden bg-slate-200 flex-shrink-0 ring-2 ring-primary-100">
                   <Image
-                    src="/images/mosun-portrait.png"
+                    src={t.imageSrc || '/images/mosun-portrait.png'}
                     alt={`${t.name} profile`}
                     fill
                     className="object-cover"

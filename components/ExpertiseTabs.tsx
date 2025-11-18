@@ -338,17 +338,6 @@ export default function ExpertiseTabs() {
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.4, delay: 0.7 }}
                         >
-                          {/* Accent Banner (CTA Primer) - Premium gradient-bordered callout */}
-                          <div className="relative mt-5 mb-5">
-                            <div className="rounded-xl p-[2px] bg-gradient-to-r from-amber-300 via-amber-400 to-amber-500 shadow-[0_8px_24px_rgba(0,0,0,0.08)]">
-                              <div className="rounded-[10px] bg-white/90 backdrop-blur-sm px-5 py-4">
-                                <div className="flex items-center gap-3">
-                                  <span className="inline-block h-6 w-1.5 rounded-full bg-gradient-to-b from-amber-300 to-amber-500 shadow-[0_0_0_2px_rgba(255,255,255,0.6)_inset]" />
-                                  <span className="font-semibold text-primary-800 text-lg lg:text-xl">                            <span className="relative z-10">Let&apos;s discuss your project goals.</span></span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
                           <Link
                             href="/contact"
                             className="inline-flex items-center rounded-lg bg-primary-600 px-5 py-3 text-white shadow-md transition-colors hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
