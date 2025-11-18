@@ -87,7 +87,7 @@ export default function TestimonialPreview() {
 
               {/* Quote text */}
               <blockquote className="relative z-10 text-base lg:text-lg text-slate-700 leading-relaxed mb-6">
-                "{t.quote}"
+                &ldquo;{t.quote}&rdquo;
               </blockquote>
 
               {/* Attribution */}
