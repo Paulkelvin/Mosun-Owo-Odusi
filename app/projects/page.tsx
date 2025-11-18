@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Users, DollarSign, Calendar, MapPin, Award, TrendingUp, Briefcase, ChevronDown, ChevronUp, Image as ImageIcon } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Users, DollarSign, Calendar, MapPin, Award, TrendingUp, Briefcase, ChevronDown, ChevronUp, Image as ImageIcon, Presentation, X } from 'lucide-react'
 import HighlightText from '@/components/HighlightText'
 import Image from 'next/image'
 
@@ -225,6 +225,10 @@ export default function Projects() {
   const [selectedMilestone, setSelectedMilestone] = useState<string | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [milestoneImageIndex, setMilestoneImageIndex] = useState<{[key: string]: number}>({})
+  
+  // Presentation mode states
+  const [isPresentationMode, setIsPresentationMode] = useState(false)
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
 
   // Auto-play functionality
   useEffect(() => {
@@ -238,6 +242,30 @@ export default function Projects() {
     
     return () => clearInterval(interval)
   }, [isAutoPlay, currentProjectIndex])
+
+  // Presentation mode auto-advance
+  useEffect(() => {
+    if (!isPresentationMode) return
+    
+    const currentSlide = currentProject.milestones[currentSlideIndex]
+    if (!currentSlide) return
+    
+    // Calculate reading time based on text length (average 200 words per minute)
+    const textLength = currentSlide.description.length + currentSlide.achievements.join(' ').length
+    const readingTime = Math.max(5000, Math.min(15000, (textLength / 5) * 300)) // Between 5-15 seconds
+    
+    const timer = setTimeout(() => {
+      if (currentSlideIndex < currentProject.milestones.length - 1) {
+        setCurrentSlideIndex(prev => prev + 1)
+      } else {
+        // End of presentation
+        setIsPresentationMode(false)
+        setCurrentSlideIndex(0)
+      }
+    }, readingTime)
+    
+    return () => clearTimeout(timer)
+  }, [isPresentationMode, currentSlideIndex, currentProject])
 
   const currentProject = projects.find(p => p.year === selectedYear) || projects[0]
   const years = projects.map(p => p.year).sort((a, b) => b - a)
@@ -318,7 +346,7 @@ export default function Projects() {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
-                Transformative <HighlightText highlightColor="gold"><span className="text-gold-300">Projects</span></HighlightText>
+                My <HighlightText highlightColor="gold"><span className="text-gold-300">Work</span></HighlightText>
               </h1>
             </motion.div>
           </div>
@@ -360,15 +388,15 @@ export default function Projects() {
                 <ChevronLeft className="w-5 h-5 text-slate-600" />
               </button>
               <button
-                onClick={() => setIsAutoPlay(!isAutoPlay)}
-                className="p-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
-                title={isAutoPlay ? "Pause auto-play" : "Start auto-play"}
+                onClick={() => {
+                  setIsPresentationMode(true)
+                  setCurrentSlideIndex(0)
+                }}
+                className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                title="Start presentation mode"
               >
-                {isAutoPlay ? (
-                  <Pause className="w-5 h-5 text-primary-600" />
-                ) : (
-                  <Play className="w-5 h-5 text-primary-600" />
-                )}
+                <Presentation className="w-5 h-5" />
+                <span className="hidden sm:inline">Present</span>
               </button>
               <button
                 onClick={handleNext}
@@ -409,15 +437,15 @@ export default function Projects() {
                   <ChevronLeft className="w-5 h-5 text-slate-600" />
                 </button>
                 <button
-                  onClick={() => setIsAutoPlay(!isAutoPlay)}
-                  className="p-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
-                  title={isAutoPlay ? "Pause auto-play" : "Start auto-play"}
+                  onClick={() => {
+                    setIsPresentationMode(true)
+                    setCurrentSlideIndex(0)
+                  }}
+                  className="flex items-center gap-2 px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                  title="Start presentation mode"
                 >
-                  {isAutoPlay ? (
-                    <Pause className="w-5 h-5 text-primary-600" />
-                  ) : (
-                    <Play className="w-5 h-5 text-primary-600" />
-                  )}
+                  <Presentation className="w-5 h-5" />
+                  <span>Present</span>
                 </button>
                 <button
                   onClick={handleNext}
@@ -784,6 +812,139 @@ export default function Projects() {
           </motion.div>
         </div>
       </section>
+
+      {/* Presentation Mode Modal */}
+      <AnimatePresence>
+        {isPresentationMode && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
+            onClick={() => {
+              setIsPresentationMode(false)
+              setCurrentSlideIndex(0)
+            }}
+          >
+            <button
+              onClick={() => {
+                setIsPresentationMode(false)
+                setCurrentSlideIndex(0)
+              }}
+              className="absolute top-4 right-4 p-3 bg-white/10 hover:bg-white/20 rounded-full transition-colors z-10"
+              title="Close presentation"
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
+
+            <motion.div
+              key={currentSlideIndex}
+              initial={{ opacity: 0, x: 100 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -100 }}
+              transition={{ duration: 0.5 }}
+              onClick={(e) => e.stopPropagation()}
+              className="max-w-6xl w-full bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-2xl"
+            >
+              {currentProject.milestones[currentSlideIndex] && (
+                <div className="grid lg:grid-cols-2 gap-0">
+                  {/* Image Section */}
+                  <div className="relative h-64 lg:h-auto bg-slate-800">
+                    <Image
+                      src={currentProject.milestones[currentSlideIndex].images[0]}
+                      alt={currentProject.milestones[currentSlideIndex].title}
+                      fill
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                  </div>
+
+                  {/* Content Section */}
+                  <div className="p-8 lg:p-12 flex flex-col justify-center">
+                    {/* Progress Indicator */}
+                    <div className="flex items-center gap-2 mb-6">
+                      {currentProject.milestones.map((_, index) => (
+                        <div
+                          key={index}
+                          className={`h-1 flex-1 rounded-full transition-all duration-300 ${
+                            index === currentSlideIndex ? 'bg-primary-500' : 'bg-slate-700'
+                          }`}
+                        />
+                      ))}
+                    </div>
+
+                    {/* Slide Number */}
+                    <div className="text-primary-400 text-sm font-semibold mb-2">
+                      {currentSlideIndex + 1} / {currentProject.milestones.length}
+                    </div>
+
+                    {/* Period Badge */}
+                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary-500/20 border border-primary-500/30 rounded-full text-sm font-medium text-primary-300 mb-4 w-fit">
+                      <Calendar className="w-4 h-4" />
+                      {currentProject.milestones[currentSlideIndex].period}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">
+                      {currentProject.milestones[currentSlideIndex].title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-lg text-slate-300 mb-6 leading-relaxed">
+                      {currentProject.milestones[currentSlideIndex].description}
+                    </p>
+
+                    {/* Key Achievements (show only first 3) */}
+                    <div className="space-y-3 mb-6">
+                      {currentProject.milestones[currentSlideIndex].achievements.slice(0, 3).map((achievement, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: index * 0.2 }}
+                          className="flex items-start gap-3"
+                        >
+                          <div className="w-1.5 h-1.5 bg-gold-400 rounded-full mt-2 flex-shrink-0" />
+                          <span className="text-slate-400 text-sm">{achievement}</span>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Key Metrics (show 2 most important) */}
+                    <div className="grid grid-cols-2 gap-4">
+                      {Object.entries(currentProject.milestones[currentSlideIndex].metrics).slice(0, 2).map(([key, value]) => (
+                        <div key={key} className="bg-slate-800/50 rounded-lg p-4 border border-slate-700">
+                          <div className="text-2xl font-bold text-primary-400 mb-1">{value}</div>
+                          <div className="text-xs text-slate-400">{key}</div>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* Navigation Hint */}
+                    <div className="mt-8 flex items-center justify-between text-sm text-slate-500">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
+                        Auto-advancing...
+                      </div>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation()
+                          if (currentSlideIndex < currentProject.milestones.length - 1) {
+                            setCurrentSlideIndex(prev => prev + 1)
+                          }
+                        }}
+                        className="text-primary-400 hover:text-primary-300 transition-colors"
+                      >
+                        Skip →
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
