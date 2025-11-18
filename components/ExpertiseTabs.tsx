@@ -321,7 +321,7 @@ export default function ExpertiseTabs() {
                             
                             <p className="text-sm text-slate-700 leading-relaxed font-medium">
                               {activeArea.id === 'project-management' 
-                                ? "Led a $15M World Bank initiative achieving 40% efficiency gains and impacting 25,000+ beneficiaries across 5 countries."
+                                ? "Led a $250M World Bank initiative achieving 40% efficiency gains and impacting 25,000+ beneficiaries across 5 countries."
                                 : activeArea.id === 'education-consulting'
                                 ? "Developed national education framework adopted by 12 countries, improving learning outcomes for 2M+ students."
                                 : activeArea.id === 'real-estate'
