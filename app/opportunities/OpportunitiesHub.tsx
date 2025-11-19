@@ -158,19 +158,8 @@ export default function OpportunitiesHub() {
         setLastRefreshTime(new Date(storedRefreshTime));
       }
 
-      // Always load existing data first (fast)
+      // Just load existing data - the API route handles background refresh
       await fetchOpportunities();
-
-      // Then trigger background refresh if needed (non-blocking)
-      const shouldAutoRefresh = needsRefresh();
-      if (shouldAutoRefresh) {
-        console.log('🔄 Auto-refreshing opportunities in background (data older than 48 hours)...');
-        // Don't await - let it run in background
-        refreshData().catch(err => {
-          console.error('Background refresh failed:', err);
-          // Silently fail - user already has data from fetchOpportunities
-        });
-      }
     };
 
     initializePage();
