@@ -60,11 +60,11 @@ export default function OpportunitiesHub() {
   const [isRefreshing, setIsRefreshing] = useState(false)
   const [lastRefreshTime, setLastRefreshTime] = useState<Date | null>(null)
 
-  // Check if data needs refresh (older than 24 hours)
+  // Check if data needs refresh (older than 48 hours)
   const needsRefresh = (): boolean => {
     if (!lastRefreshTime) return true;
     const hoursSinceRefresh = (Date.now() - lastRefreshTime.getTime()) / (1000 * 60 * 60);
-    return hoursSinceRefresh >= 24;
+    return hoursSinceRefresh >= 48;
   }
 
   // Fetch opportunities
@@ -110,12 +110,21 @@ export default function OpportunitiesHub() {
   const refreshData = async () => {
     try {
       setIsRefreshing(true)
+      
+      // Add timeout to prevent hanging
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+      
       const response = await fetch('/api/opportunities/refresh', { 
         method: 'POST',
         headers: {
           'Authorization': 'Bearer mosun-refresh-2024'
-        }
+        },
+        signal: controller.signal
       })
+      
+      clearTimeout(timeoutId);
+      
       const result = await response.json()
       
       if (result.success) {
@@ -128,7 +137,13 @@ export default function OpportunitiesHub() {
         await fetchOpportunities()
       }
     } catch (err) {
-      console.error('Error refreshing data:', err)
+      if (err instanceof Error) {
+        if (err.name === 'AbortError') {
+          console.error('Refresh timeout - taking too long, will retry later');
+        } else {
+          console.error('Error refreshing data:', err);
+        }
+      }
     } finally {
       setIsRefreshing(false)
     }
@@ -143,15 +158,18 @@ export default function OpportunitiesHub() {
         setLastRefreshTime(new Date(storedRefreshTime));
       }
 
-      // Check if we need to auto-refresh
+      // Always load existing data first (fast)
+      await fetchOpportunities();
+
+      // Then trigger background refresh if needed (non-blocking)
       const shouldAutoRefresh = needsRefresh();
-      
       if (shouldAutoRefresh) {
-        console.log('🔄 Auto-refreshing opportunities (data older than 24 hours)...');
-        await refreshData();
-      } else {
-        // Just fetch existing data
-        await fetchOpportunities();
+        console.log('🔄 Auto-refreshing opportunities in background (data older than 48 hours)...');
+        // Don't await - let it run in background
+        refreshData().catch(err => {
+          console.error('Background refresh failed:', err);
+          // Silently fail - user already has data from fetchOpportunities
+        });
       }
     };
 
