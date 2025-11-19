@@ -1,0 +1,44 @@
+name: Daily Job Refresh
+
+on:
+  schedule:
+    # Run daily at 6:00 AM UTC (7:00 AM WAT for Nigeria)
+    - cron: '0 6 * * *'
+  workflow_dispatch: # Allow manual trigger from GitHub Actions tab
+
+jobs:
+  refresh-opportunities:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Refresh Job Opportunities
+        run: |
+          echo "🔄 Triggering job refresh..."
+          
+          response=$(curl -s -w "\n%{http_code}" -X POST \
+            https://mosun-owo-odusi.netlify.app/api/opportunities/refresh \
+            -H "Authorization: Bearer ${{ secrets.REFRESH_API_KEY }}" \
+            -H "Content-Type: application/json")
+          
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+          
+          echo "📡 Response Code: $http_code"
+          echo "📊 Response Body: $body"
+          
+          if [ "$http_code" -eq 200 ]; then
+            echo "✅ Job refresh completed successfully!"
+          else
+            echo "❌ Job refresh failed with code $http_code"
+            exit 1
+          fi
+
+      - name: Notify on Success
+        if: success()
+        run: |
+          echo "🎉 Daily job refresh completed at $(date)"
+          
+      - name: Notify on Failure
+        if: failure()
+        run: |
+          echo "⚠️ Daily job refresh failed at $(date)"
