@@ -227,6 +227,10 @@ export async function GET(request: NextRequest) {
       Opportunity.distinct('location')
     ]);
 
+    // Get last refresh time from fetch log
+    const lastLog = await FetchLog.findOne().sort({ lastFetchedAt: -1 });
+    const lastRefresh = lastLog ? lastLog.lastFetchedAt.toISOString() : null;
+
     // Return response
     return NextResponse.json({
       success: true,
@@ -243,7 +247,8 @@ export async function GET(request: NextRequest) {
         filters: {
           categories: categories.sort(),
           locations: locations.sort()
-        }
+        },
+        lastRefresh
       }
     });
 

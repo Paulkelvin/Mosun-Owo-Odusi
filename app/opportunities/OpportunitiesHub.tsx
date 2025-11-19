@@ -58,6 +58,14 @@ export default function OpportunitiesHub() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [isRefreshing, setIsRefreshing] = useState(false)
+  const [lastRefreshTime, setLastRefreshTime] = useState<Date | null>(null)
+
+  // Check if data needs refresh (older than 24 hours)
+  const needsRefresh = (): boolean => {
+    if (!lastRefreshTime) return true;
+    const hoursSinceRefresh = (Date.now() - lastRefreshTime.getTime()) / (1000 * 60 * 60);
+    return hoursSinceRefresh >= 24;
+  }
 
   // Fetch opportunities
   const fetchOpportunities = async (page = 1, search = '', filters = activeFilters) => {
@@ -83,6 +91,12 @@ export default function OpportunitiesHub() {
       setOpportunities(data.data.opportunities)
       setPagination(data.data.pagination)
       setFilters(data.data.filters)
+
+      // Update last refresh time from server metadata if available
+      if (data.data.lastRefresh) {
+        setLastRefreshTime(new Date(data.data.lastRefresh));
+        localStorage.setItem('opportunities_last_refresh', data.data.lastRefresh);
+      }
       
     } catch (err) {
       console.error('Error fetching opportunities:', err)
@@ -105,6 +119,11 @@ export default function OpportunitiesHub() {
       const result = await response.json()
       
       if (result.success) {
+        // Update last refresh time
+        const now = new Date();
+        setLastRefreshTime(now);
+        localStorage.setItem('opportunities_last_refresh', now.toISOString());
+        
         // Refetch the opportunities after refresh
         await fetchOpportunities()
       }
@@ -115,9 +134,28 @@ export default function OpportunitiesHub() {
     }
   }
 
-  // Initial load
+  // Initial load with automatic refresh check
   useEffect(() => {
-    fetchOpportunities()
+    const initializePage = async () => {
+      // Load last refresh time from localStorage
+      const storedRefreshTime = localStorage.getItem('opportunities_last_refresh');
+      if (storedRefreshTime) {
+        setLastRefreshTime(new Date(storedRefreshTime));
+      }
+
+      // Check if we need to auto-refresh
+      const shouldAutoRefresh = needsRefresh();
+      
+      if (shouldAutoRefresh) {
+        console.log('🔄 Auto-refreshing opportunities (data older than 24 hours)...');
+        await refreshData();
+      } else {
+        // Just fetch existing data
+        await fetchOpportunities();
+      }
+    };
+
+    initializePage();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -191,16 +229,24 @@ export default function OpportunitiesHub() {
               <SearchBar onSearch={handleSearch} />
             </div>
             
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={refreshData}
-              disabled={isRefreshing}
-              className="flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 disabled:bg-slate-400 text-white rounded-xl font-medium transition-colors duration-200"
-            >
-              <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
-              {isRefreshing ? 'Refreshing...' : 'Refresh Data'}
-            </motion.button>
+            <div className="flex flex-col items-end gap-2">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                onClick={refreshData}
+                disabled={isRefreshing}
+                className="flex items-center gap-2 px-6 py-3 bg-primary-600 hover:bg-primary-700 disabled:bg-slate-400 text-white rounded-xl font-medium transition-colors duration-200"
+              >
+                <RefreshCw className={`w-4 h-4 ${isRefreshing ? 'animate-spin' : ''}`} />
+                {isRefreshing ? 'Refreshing...' : 'Refresh Data'}
+              </motion.button>
+              
+              {lastRefreshTime && !isRefreshing && (
+                <p className="text-xs text-slate-500">
+                  Last updated: {new Date(lastRefreshTime).toLocaleDateString()} at {new Date(lastRefreshTime).toLocaleTimeString()}
+                </p>
+              )}
+            </div>
           </div>
 
           {/* Filters */}
