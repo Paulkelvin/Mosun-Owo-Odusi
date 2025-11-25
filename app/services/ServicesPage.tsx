@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Target, Shield, Home, CheckCircle, ArrowRight, Briefcase, Award, Users, TrendingUp, Lock, FileCheck, Calendar, Phone, Mail, User, X } from 'lucide-react'
 import Link from 'next/link'
 import { useState } from 'react'
+import AnimatedCounter from '@/components/AnimatedCounter'
 
 export default function ServicesPage() {
   const [showModal, setShowModal] = useState(false)
@@ -161,15 +162,17 @@ export default function ServicesPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { value: '15+', label: 'Years Experience', icon: Award },
-              { value: '50+', label: 'Projects Delivered', icon: Target },
-              { value: '100%', label: 'Client Satisfaction', icon: Users }
+              { value: 15, suffix: '+', label: 'Years Experience', icon: Award },
+              { value: 50, suffix: '+', label: 'Projects Delivered', icon: Target },
+              { value: 100, suffix: '%', label: 'Client Satisfaction', icon: Users }
             ].map((stat, index) => {
               const Icon = stat.icon
               return (
-                <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: index * 0.1 }} viewport={{ once: true }} className="text-center card-modern">
+                <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: index * 0.1 }} viewport={{ once: true }} className="text-center card-modern hover:shadow-large transition-all duration-300">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-4"><Icon className="text-white" size={32} /></div>
-                  <div className="text-5xl font-bold gradient-text mb-2">{stat.value}</div>
+                  <div className="text-5xl font-bold gradient-text mb-2">
+                    <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={2.5} />
+                  </div>
                   <p className="text-slate-700 font-medium text-lg">{stat.label}</p>
                 </motion.div>
               )

@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, RefreshCw, Globe } from 'lucide-react'
+import { toast } from 'sonner'
 import HighlightText from '../../components/HighlightText'
 import SearchBar from '../../components/opportunities/SearchBar'
 import Filters from '../../components/opportunities/Filters'
@@ -110,6 +111,7 @@ export default function OpportunitiesHub() {
   const refreshData = async () => {
     try {
       setIsRefreshing(true)
+      toast.loading('Fetching latest opportunities from all sources...', { id: 'refresh' })
       
       // Add timeout to prevent hanging
       const controller = new AbortController();
@@ -135,13 +137,19 @@ export default function OpportunitiesHub() {
         
         // Refetch the opportunities after refresh
         await fetchOpportunities()
+        
+        toast.success(`Successfully refreshed! ${result.stats.added} new, ${result.stats.updated} updated`, { id: 'refresh' })
+      } else {
+        toast.error('Failed to refresh opportunities', { id: 'refresh' })
       }
     } catch (err) {
       if (err instanceof Error) {
         if (err.name === 'AbortError') {
           console.error('Refresh timeout - taking too long, will retry later');
+          toast.error('Refresh is taking longer than expected. Please try again later.', { id: 'refresh' })
         } else {
           console.error('Error refreshing data:', err);
+          toast.error('Failed to refresh opportunities', { id: 'refresh' })
         }
       }
     } finally {

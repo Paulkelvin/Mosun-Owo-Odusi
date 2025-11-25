@@ -56,10 +56,10 @@ const OpportunityCard = ({ opportunity, index }: OpportunityCardProps) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
       whileHover={{ 
-        y: -4,
-        transition: { duration: 0.2 }
+        y: -8,
+        transition: { duration: 0.3 }
       }}
-      className="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-soft hover:shadow-medium transition-all duration-300 group"
+      className="bg-gray-50 rounded-2xl p-6 border border-gray-200 shadow-soft hover:shadow-large transition-all duration-300 group"
     >
       {/* Header */}
       <div className="flex items-start justify-between mb-4">
