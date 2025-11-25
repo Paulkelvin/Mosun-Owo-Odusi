@@ -200,39 +200,59 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
 export default function Testimonials() {
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section with Banner */}
-      <section className="relative h-96 lg:h-[500px] overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/testimonial-banner.png"
-            alt="Client Testimonials - Mosun Owo-Odusi"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          {/* Light, colorful overlay that enhances rather than darkens */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-50/30 via-transparent to-gold-50/20" />
+      {/* Hero Section */}
+      <section className="relative bg-primary-900 py-20 lg:py-28">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {/* Top right accent */}
+          <div className="absolute top-0 right-0 w-96 h-96 bg-primary-800 rounded-full -translate-y-48 translate-x-48 opacity-50"></div>
+          {/* Bottom left accent */}
+          <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary-800 rounded-full translate-y-40 -translate-x-40 opacity-30"></div>
+          
+          {/* Subtle pattern overlay */}
+          <div className="absolute inset-0 opacity-5" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}></div>
         </div>
 
-        {/* Hero Content Overlay */}
-        <div className="relative z-10 flex items-center justify-center h-full px-6">
+        {/* Content */}
+        <div className="relative z-10 container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl"
+            className="max-w-4xl mx-auto text-center"
           >
-            {/* Light, glassy text container that complements the colorful background */}
-            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-10 border border-white/40 shadow-2xl">
-              <h1 className="text-4xl lg:text-5xl font-bold text-primary-900 mb-6">
-                Client <HighlightText highlightColor="gold"><span className="text-gold-600">Testimonials</span></HighlightText>
-              </h1>
-              <p className="text-xl text-primary-700 max-w-3xl mx-auto font-medium">
-                Discover what colleagues, clients, and partners say about working together to create meaningful impact
-              </p>
-            </div>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 font-medium mb-6 border border-white/20"
+            >
+              <Star className="w-4 h-4 fill-gold-400 text-gold-400" />
+              <span>Trusted by Industry Leaders</span>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            >
+              Client Testimonials
+            </motion.h1>
+
+            {/* Subheading */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto leading-relaxed"
+            >
+              Discover what colleagues, clients, and partners say about working together to create meaningful impact across projects and industries.
+            </motion.p>
           </motion.div>
         </div>
       </section>
