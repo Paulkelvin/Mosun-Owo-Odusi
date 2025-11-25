@@ -282,7 +282,7 @@ export default function Testimonials() {
       </section>
 
       {/* Main Content Section */}
-      <section className="section-padding bg-gradient-to-b from-primary-900/95 via-primary-800/50 to-white">
+      <section className="section-padding bg-gradient-to-br from-white via-primary-50/20 to-gold-50/10">
         <div className="w-full px-4 sm:px-6 lg:px-6">
 
           {/* Testimonials Grid */}
