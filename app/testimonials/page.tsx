@@ -200,40 +200,92 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
 export default function Testimonials() {
   return (
     <div className="min-h-screen pt-20">
-      {/* Hero Section with Banner */}
-      <section className="relative h-96 lg:h-[500px] overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/testimonial-banner.png"
-            alt="Client Testimonials - Mosun Owo-Odusi"
-            fill
-            className="object-cover object-center"
-            priority
-          />
-          {/* Light, colorful overlay that enhances rather than darkens */}
-          <div className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-white/10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary-50/30 via-transparent to-gold-50/20" />
+      {/* Hero Section */}
+      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-950 overflow-hidden">
+        {/* Animated background elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-gold-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
+          <div className="absolute top-40 right-10 w-72 h-72 bg-primary-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-8 left-40 w-72 h-72 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
         </div>
 
-        {/* Hero Content Overlay */}
-        <div className="relative z-10 flex items-center justify-center h-full px-6">
+        {/* Grid pattern overlay */}
+        <div className="absolute inset-0 opacity-5" style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+        }}></div>
+
+        <div className="relative z-10 container-custom py-20 lg:py-32">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-center max-w-4xl"
+            className="max-w-5xl mx-auto text-center"
           >
-            {/* Light, glassy text container that complements the colorful background */}
-            <div className="bg-white/90 backdrop-blur-md rounded-3xl p-10 border border-white/40 shadow-2xl">
-              <h1 className="text-4xl lg:text-5xl font-bold text-primary-900 mb-6">
-                Client <HighlightText highlightColor="gold"><span className="text-gold-600">Testimonials</span></HighlightText>
-              </h1>
-              <p className="text-xl text-primary-700 max-w-3xl mx-auto font-medium">
-                Discover what colleagues, clients, and partners say about working together to create meaningful impact
-              </p>
-            </div>
+            {/* Badge */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 font-medium mb-6 border border-white/20"
+            >
+              <Star className="w-4 h-4 fill-gold-400 text-gold-400" />
+              <span>Trusted by Industry Leaders</span>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight"
+            >
+              Real Results from <br className="hidden sm:block" />
+              <span className="bg-gradient-to-r from-gold-400 via-amber-300 to-gold-400 bg-clip-text text-transparent">
+                Real Partnerships
+              </span>
+            </motion.h1>
+
+            {/* Subheading */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto mb-10 leading-relaxed"
+            >
+              Discover what colleagues, clients, and partners say about working together to create meaningful impact across projects and industries.
+            </motion.p>
+
+            {/* Stats Row */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex flex-wrap items-center justify-center gap-8 lg:gap-12"
+            >
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-white mb-1">15+</div>
+                <div className="text-sm text-primary-200">Years Experience</div>
+              </div>
+              <div className="w-px h-12 bg-white/20 hidden sm:block"></div>
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-white mb-1">10+</div>
+                <div className="text-sm text-primary-200">Major Projects</div>
+              </div>
+              <div className="w-px h-12 bg-white/20 hidden sm:block"></div>
+              <div className="text-center">
+                <div className="text-3xl lg:text-4xl font-bold text-white mb-1">100%</div>
+                <div className="text-sm text-primary-200">Client Satisfaction</div>
+              </div>
+            </motion.div>
           </motion.div>
+        </div>
+
+        {/* Bottom wave decoration */}
+        <div className="absolute bottom-0 left-0 right-0">
+          <svg className="w-full h-auto" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white" fillOpacity="0.1"/>
+            <path d="M0 120L60 112.5C120 105 240 90 360 82.5C480 75 600 75 720 78.75C840 82.5 960 90 1080 93.75C1200 97.5 1320 97.5 1380 97.5L1440 97.5V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="white"/>
+          </svg>
         </div>
       </section>
 
