@@ -11,22 +11,8 @@ import { cleanupExpiredJobs } from '@/lib/cleanup/expiredJobs';
  * Protected by simple API key
  */
 export async function POST(request: NextRequest) {
-  try {
-    // Simple authentication check
-    const authHeader = request.headers.get('authorization');
-    const apiKey = process.env.REFRESH_API_KEY || 'mosun-refresh-2024';
-    
-    if (authHeader !== `Bearer ${apiKey}`) {
-      return NextResponse.json(
-        { success: false, error: 'Unauthorized' },
-        { status: 401 }
-      );
-    }
-
-    await connectToDatabase();
-
-    console.log('🔄 Manual refresh triggered from all sources');
-
+  // Small helper to perform the full refresh logic and return stats
+  const performRefresh = async () => {
     // Step 1: Clean up expired jobs BEFORE fetching new ones
     const cleanupStats = await cleanupExpiredJobs();
 
@@ -36,31 +22,31 @@ export async function POST(request: NextRequest) {
 
     // Fetch from all sources
     const opportunities = await fetchAllOpportunities();
-    
+
     if (opportunities.length === 0) {
-      return NextResponse.json({
-        success: false,
-        message: 'No opportunities fetched from any source',
-        stats: {
-          total: 0,
-          added: 0,
-          updated: 0,
-          errors: 0
+      return {
+        fetched: 0,
+        added: 0,
+        updated: 0,
+        errors: 0,
+        cleanup: {
+          checked: cleanupStats.totalChecked,
+          deletedByAge: cleanupStats.deletedByAge,
+          deletedByDeadline: cleanupStats.deletedByDeadline,
+          totalDeleted: cleanupStats.totalDeleted
         }
-      });
+      };
     }
 
     // Process each opportunity
     for (const opp of opportunities) {
       try {
-        // Check for existing opportunity (duplicate prevention)
         const existing = await Opportunity.findOne({
           title: opp.title,
           organization: opp.organization
         });
 
         if (existing) {
-          // Update existing opportunity
           await Opportunity.updateOne(
             { _id: existing._id },
             {
@@ -72,12 +58,10 @@ export async function POST(request: NextRequest) {
           );
           updated++;
         } else {
-          // Create new opportunity
           await Opportunity.create(opp);
           added++;
         }
       } catch (error: any) {
-        // Skip duplicate key errors
         if (error.code === 11000) {
           console.log(`⚠️ Duplicate skipped: ${opp.title}`);
         } else {
@@ -87,7 +71,6 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Get source statistics
     const sourceStats = getSourceStatistics(opportunities);
     const totalInDB = await Opportunity.countDocuments();
 
@@ -113,29 +96,71 @@ export async function POST(request: NextRequest) {
     console.log(`📊 Source breakdown:`, sourceStats);
     console.log(`📊 Total opportunities in database: ${totalInDB}`);
 
-    return NextResponse.json({
-      success: true,
-      message: 'Opportunities refreshed successfully from all sources',
-      stats: {
-        fetched: opportunities.length,
-        added,
-        updated,
-        errors,
-        totalInDB,
-        sources: sourceStats
-      },
+    return {
+      fetched: opportunities.length,
+      added,
+      updated,
+      errors,
+      totalInDB,
+      sources: sourceStats,
       cleanup: {
         checked: cleanupStats.totalChecked,
         deletedByAge: cleanupStats.deletedByAge,
         deletedByDeadline: cleanupStats.deletedByDeadline,
         totalDeleted: cleanupStats.totalDeleted
       }
+    };
+  };
+
+  try {
+    // Simple authentication check
+    const authHeader = request.headers.get('authorization');
+    const apiKey = process.env.REFRESH_API_KEY || 'mosun-refresh-2024';
+
+    if (authHeader !== `Bearer ${apiKey}`) {
+      return NextResponse.json(
+        { success: false, error: 'Unauthorized' },
+        { status: 401 }
+      );
+    }
+
+    await connectToDatabase();
+
+    console.log('🔄 Manual refresh triggered from all sources');
+
+    // Run the refresh but don't block the response if it takes too long.
+    const REFRESH_TIMEOUT_MS = 25000; // 25s
+    const refreshPromise = performRefresh();
+
+    const race = await Promise.race([
+      refreshPromise.then((r) => ({ finished: true, result: r })),
+      new Promise((resolve) => setTimeout(() => resolve({ finished: false }), REFRESH_TIMEOUT_MS))
+    ]);
+
+    // If performRefresh didn't finish within timeout, let it continue in background
+    if ((race as any).finished === false) {
+      // Don't await — keep running in background and return quickly
+      refreshPromise
+        .then((r) => console.log('Background refresh finished', r))
+        .catch((err) => console.error('Background refresh error:', err));
+
+      return NextResponse.json(
+        { success: true, message: 'Refresh started and is running in background' },
+        { status: 202 }
+      );
+    }
+
+    const finalResult = (race as any).result;
+
+    return NextResponse.json({
+      success: true,
+      message: 'Opportunities refreshed successfully from all sources',
+      stats: finalResult,
     });
 
   } catch (error) {
     console.error('❌ Error in refresh endpoint:', error);
-    
-    // Log the failure (upsert to avoid duplicate key errors)
+
     try {
       await FetchLog.findOneAndUpdate(
         { source: 'multi-source-manual' },
@@ -151,7 +176,7 @@ export async function POST(request: NextRequest) {
     } catch (logError) {
       console.error('Failed to log error:', logError);
     }
-    
+
     return NextResponse.json(
       {
         success: false,

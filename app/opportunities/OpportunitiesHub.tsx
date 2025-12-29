@@ -124,21 +124,28 @@ export default function OpportunitiesHub() {
         },
         signal: controller.signal
       })
-      
+
       clearTimeout(timeoutId);
-      
+
       const result = await response.json()
-      
-      if (result.success) {
+
+      if (response.status === 202) {
+        // Background refresh started — update UI and refetch current data
+        const now = new Date();
+        setLastRefreshTime(now);
+        localStorage.setItem('opportunities_last_refresh', now.toISOString());
+        await fetchOpportunities();
+        toast.success('Refresh started and is running in background', { id: 'refresh' })
+      } else if (result.success) {
         // Update last refresh time
         const now = new Date();
         setLastRefreshTime(now);
         localStorage.setItem('opportunities_last_refresh', now.toISOString());
-        
+
         // Refetch the opportunities after refresh
         await fetchOpportunities()
-        
-        toast.success(`Successfully refreshed! ${result.stats.added} new, ${result.stats.updated} updated`, { id: 'refresh' })
+
+        toast.success(`Successfully refreshed! ${result.stats?.added ?? 0} new, ${result.stats?.updated ?? 0} updated`, { id: 'refresh' })
       } else {
         toast.error('Failed to refresh opportunities', { id: 'refresh' })
       }

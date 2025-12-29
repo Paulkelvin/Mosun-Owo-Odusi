@@ -2,15 +2,23 @@
 
 import { useEffect } from 'react'
 import Lenis from '@studio-freight/lenis'
+import { usePathname } from 'next/navigation'
 
 export default function SmoothScroll() {
+  const pathname = usePathname()
+  
   useEffect(() => {
+    // Disable smooth scroll on projects page to prevent hanging
+    if (pathname === '/projects') {
+      return
+    }
+
     const lenis = new Lenis({
-      duration: 1,
+      duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       smoothWheel: true,
-      wheelMultiplier: 1.5,
+      wheelMultiplier: 1,
       touchMultiplier: 2,
       infinite: false,
     })
@@ -25,7 +33,7 @@ export default function SmoothScroll() {
     return () => {
       lenis.destroy()
     }
-  }, [])
+  }, [pathname])
 
   return null
 }

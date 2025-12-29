@@ -20,25 +20,25 @@ const projects = [
     location: "Ogun State, Nigeria",
     image: "/images/ogun_state_logo.png",
     description: "Leading the coordination of the comprehensive Ogun State Economic Transformation Project, overseeing 4 Project Managers, 15+ Specialist Consultants, and 50+ team members across four critical initiatives: Creating a Business Enabling Environment, Improving Agricultural Value Chain, Skills Development, and Public Sector Reforms.",
-    impact: "Under her capable leadership, this multifaceted program has flourished, fostering collaboration, strategic insight, and innovation while driving significant progress that empowers stakeholders across sectors and contributes to the state's socio-economic growth.",
+    impact: "Under her capable leadership, this World Bank-assisted project has directly benefitted over 72,000 Ogun State residents across agriculture, skills development, and institutional reforms. The program supported 33,075 farmers, trained 39,000+ beneficiaries in employable skills, facilitated over 15,000 Certificates of Occupancy, and enabled the offtake of over 283,000 metric tonnes of agricultural produce into the market.",
     tags: ["World Bank", "Economic Transformation", "Project Coordination", "Public Sector Reform", "Agricultural Development", "Skills Development"],
     milestones: [
       {
         id: "overall_leadership",
-        title: "Project Coordination & Strategic Leadership",
+        title: "Large-Scale Human Capital & Livelihood Impact",
         period: "2019 – Present",
-        description: "Provides overall coordination and leadership for OGSTEP, ensuring alignment with World Bank and government priorities while overseeing programs benefiting 65,000+ residents.",
+        description: "Provides overall coordination and leadership for OGSTEP, overseeing project interventions that directly benefitted over 72,000 Ogun State residents across agriculture, skills development, and institutional reforms.",
         achievements: [
-          "Directing project implementation across all supported components",
-          "Ensuring alignment with World Bank and Ogun State Government development priorities",
-          "Facilitating collaboration among government agencies and development partners",
-          "Overseeing programs that have benefited more than 65,000 residents"
+          "Oversaw project interventions benefitting over 72,000 Ogun State residents - https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/",
+          "Coordinated skills development programmes that trained over 39,000 beneficiaries",
+          "Led implementation of agricultural interventions supporting 33,075 farmers - https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/#:~:text=has%20directly%20supported-,33%2C075,-farmers%20statewide%2C%20including",
+          "Provided strategic leadership ensuring compliance with World Bank fiduciary, environmental, and social standards"
         ],
         metrics: {
-          "Beneficiaries": "65,000+",
-          "Implementation Unit": "1 Coordinated (SPIU)",
-          "Project Timeline": "2019 – 2025",
-          "Coverage": "Statewide Reach"
+          "Total Beneficiaries": "72,000+",
+          "Skills Trainees": "39,000+",
+          "Farmers Supported": "33,075",
+          "Project Timeline": "2019 – 2025"
         },
         images: [
           "/api/placeholder/400/300",
@@ -48,18 +48,21 @@ const projects = [
       },
       {
         id: "establishment",
-        title: "Project Establishment & Institutional Framework",
-        period: "2019 – 2020",
-        description: "Supported institutional structure formation and early project planning for effective OGSTEP multi-sector component rollout.",
+        title: "Agricultural Productivity & Value Chain Support",
+        period: "2019 – Present",
+        description: "Led implementation of comprehensive agricultural interventions supporting 33,075 farmers across crop production, aquaculture, and poultry, with mechanisation covering over 9,000 hectares.",
         achievements: [
-          "Guided establishment of the State Project Implementation Unit",
-          "Coordinated stakeholder consultations during project design",
-          "Ensured readiness for World Bank–assisted implementation"
+          "Supported 27,547 crop farmers, 4,256 aquaculture farmers, and 1,272 poultry farmers",
+          "Facilitated access to critical agricultural inputs including fertilisers, agrochemicals, fish feed, and poultry feed",
+          "Coordinated mechanisation support covering over 9,000 hectares of farmland",
+          "Enabled structured offtake of over 283,000 metric tonnes of agricultural produce - https://guardian.ng/news/ogun-empowers-over-72000-residents-through-ogstep-projects/#:~:text=while%20the%20project%20enabled%20agribusiness%20firms%20to%20offtake%20283%2C582%20tons%20of%20produce%2C%20improving%20market%20access%20and%20value%20chain%20efficiency"
         ],
         metrics: {
-          "Multi-sector Engagement": "Across state agencies",
-          "Stakeholder Consultations": "Completed",
-          "Institutional Framework": "Operational"
+          "Total Farmers": "33,075",
+          "Crop Farmers": "27,547",
+          "Aquaculture Farmers": "4,256",
+          "Hectares Mechanised": "9,000+",
+          "Produce Offtake": "283,000 MT"
         },
         images: [
           "/api/placeholder/400/300",
@@ -69,18 +72,20 @@ const projects = [
       },
       {
         id: "implementation",
-        title: "Implementation & Community Impact",
-        period: "2021 – 2023",
-        description: "Supervised implementation of project activities that delivered measurable social and economic benefits across Ogun State.",
+        title: "Skills Development & Education Infrastructure",
+        period: "2019 – Present",
+        description: "Supervised the rehabilitation and equipping of educational facilities while coordinating capacity-building programmes for teachers and technical instructors across Ogun State.",
         achievements: [
-          "Oversaw interventions improving livelihoods of 65,000+ residents",
-          "Strengthened institutional capacity and service delivery mechanisms",
-          "Advanced inclusive growth through targeted development programs"
+          "Supervised rehabilitation and equipping of 8 technical colleges - https://punchng.com/ogun-upgrades-eight-technical-colleges-to-boost-vocational-training/",
+          "Led upgrade of laboratories in 22 flagship secondary schools and establishment of 3 Job Centres",
+          "Coordinated capacity-building for 1,400 STEM teachers, 100 Quality Assurance Officers, and 120 Technical Instructors",
+          "Coordinated skills development programmes training over 39,000 beneficiaries in employable and entrepreneurial skills"
         ],
         metrics: {
-          "Residents Benefited": "65,000+",
-          "Growth Initiatives": "Inclusive programs implemented",
-          "Institutional Capacity": "Improved"
+          "Technical Colleges": "8 Upgraded",
+          "Secondary Schools": "22 Enhanced",
+          "STEM Teachers Trained": "1,400",
+          "Skills Beneficiaries": "39,000+"
         },
         images: [
           "/api/placeholder/400/300",
@@ -90,18 +95,20 @@ const projects = [
       },
       {
         id: "sustainability",
-        title: "Sustainability & Development Integration",
-        period: "2023 – 2024",
-        description: "Focused on embedding successful interventions into long-term policy frameworks for continuity beyond project lifecycle.",
+        title: "Land Administration & Business Enabling Environment Reforms",
+        period: "2019 – Present",
+        description: "Provided leadership for comprehensive reforms that facilitated the issuance of over 15,000 Certificates of Occupancy and deployment of GIS-based land management systems.",
         achievements: [
-          "Supported sustainability and institutional ownership strategies",
-          "Facilitated alignment with the state's economic development agenda",
-          "Continued collaboration with the World Bank and state partners for impact evaluation"
+          "Led reforms facilitating issuance of over 15,000 Certificates of Occupancy - https://progressivenews.ng/65000-beneficiaries-uplifted-by-oguns-economic-transformation-project-in-five-years/#:~:text=Over%2015%2C000%20Certificates%20of%20Occupancy%20have%20been%20issued%20to%20enhance%20business%20confidence.",
+          "Oversaw rehabilitation of zonal planning offices and deployment of GIS-based land management systems",
+          "Coordinated public service reform initiatives strengthening procurement systems and monitoring frameworks",
+          "Supervised rehabilitation of State Bureau of Statistics to improve data-driven decision-making"
         ],
         metrics: {
-          "Sustainability Plans": "Under implementation",
-          "Development Integration": "Into state frameworks",
-          "Evaluation": "Ongoing reporting"
+          "Certificates Issued": "15,000+",
+          "Land Tenure Security": "Strengthened",
+          "GIS Systems": "Deployed",
+          "Institutional Reforms": "Implemented"
         },
         images: [
           "/api/placeholder/400/300",
@@ -875,12 +882,12 @@ export default function Projects() {
               exit={{ opacity: 0, x: -100 }}
               transition={{ duration: 0.5 }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-6xl w-full bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-2xl"
+              className="max-w-6xl w-full bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] lg:max-h-none"
             >
               {currentProject.milestones[currentSlideIndex] && (
-                <div className="flex flex-col lg:flex-row gap-0">
+                <div className="flex flex-col lg:flex-row gap-0 h-full">
                   {/* Images Section - Auto-sliding carousel */}
-                  <div className="lg:w-1/2 relative bg-slate-800 h-64 lg:h-auto overflow-hidden">
+                  <div className="lg:w-1/2 relative bg-slate-800 h-48 lg:h-auto overflow-hidden flex-shrink-0">
                     <AnimatePresence mode="wait">
                       <motion.div
                         key={`${currentSlideIndex}-${presentationImageIndex}`}
@@ -916,7 +923,7 @@ export default function Projects() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="lg:w-1/2 p-8 lg:p-12 flex flex-col justify-center">
+                  <div className="lg:w-1/2 p-6 lg:p-12 flex flex-col justify-center overflow-y-auto max-h-[calc(90vh-12rem)] lg:max-h-none">
                     {/* Progress Indicator */}
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
@@ -988,11 +995,11 @@ export default function Projects() {
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       transition={{ duration: 0.4, delay: 0.5 }}
-                      className="flex items-center justify-between text-sm text-slate-500"
+                      className="flex items-center justify-between text-sm"
                     >
-                      <div className="flex items-center gap-2">
+                      <div className="flex items-center gap-2 bg-slate-800/70 px-3 py-2 rounded-lg">
                         <div className="w-2 h-2 bg-primary-500 rounded-full animate-pulse" />
-                        <span className="text-slate-400">
+                        <span className="text-slate-300 font-medium">
                           {currentSlideIndex + 1} / {currentProject.milestones.length}
                         </span>
                       </div>
@@ -1004,7 +1011,7 @@ export default function Projects() {
                             setPresentationImageIndex(0)
                           }
                         }}
-                        className="text-primary-400 hover:text-primary-300 transition-colors"
+                        className="bg-primary-500/80 hover:bg-primary-500 text-white px-4 py-2 rounded-lg font-medium transition-colors"
                       >
                         Skip →
                       </button>

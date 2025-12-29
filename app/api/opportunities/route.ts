@@ -195,18 +195,14 @@ export async function GET(request: NextRequest) {
 
     console.log('📊 Database stats:', { totalItems, totalPages, filter });
 
-    // If database is empty, trigger immediate refresh
+    // If database is empty, trigger immediate refresh in background (non-blocking)
     if (totalItems === 0) {
-      console.log('📭 Database empty, triggering immediate refresh...');
-      try {
-        await refreshOpportunitiesData();
-        // Retry the query after refresh
-        const retryTotal = await Opportunity.countDocuments(filter);
-        console.log(`✅ Refresh complete, now have ${retryTotal} opportunities`);
-      } catch (refreshError) {
-        console.error('❌ Failed to refresh data:', refreshError);
-        // Continue anyway to show empty state
-      }
+      console.log('📭 Database empty, triggering background refresh...');
+      // Fire-and-forget background refresh; do not block the request
+      refreshOpportunitiesData()
+        .then((r) => console.log('Background refresh finished', r))
+        .catch((err) => console.error('Background refresh failed:', err));
+      // Continue to return empty state to the client
     }
 
     // Build sort object
