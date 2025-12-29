@@ -16,7 +16,7 @@ jobs:
           echo "🔄 Triggering job refresh..."
           
           response=$(curl -s -w "\n%{http_code}" -X POST \
-            https://mosun-owo-odusi.netlify.app/api/opportunities/refresh \
+            https://mosun-owo-odusi.vercel.app/api/opportunities/refresh \
             -H "Authorization: Bearer ${{ secrets.REFRESH_API_KEY }}" \
             -H "Content-Type: application/json")
           
