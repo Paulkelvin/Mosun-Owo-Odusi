@@ -365,6 +365,30 @@ export default function Projects() {
     return colors[category as keyof typeof colors] || "bg-slate-100 text-slate-700 border-slate-200"
   }
 
+  // Helper function to parse achievements and extract links
+  const parseAchievement = (achievement: string) => {
+    const urlPattern = /(https?:\/\/[^\s]+)/g
+    const parts = achievement.split(urlPattern)
+    
+    return parts.map((part, index) => {
+      if (part.match(urlPattern)) {
+        return (
+          <a
+            key={index}
+            href={part}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-primary-600 hover:text-primary-700 underline"
+            onClick={(e) => e.stopPropagation()}
+          >
+            [Source]
+          </a>
+        )
+      }
+      return part
+    })
+  }
+
   return (
     <div className="min-h-screen pt-20">
       {/* Hero Section */}
@@ -655,10 +679,10 @@ export default function Projects() {
                                     {currentMilestone.images.length > 0 && (
                                       <div className="mb-4">
                                         <div className="relative">
-                                          <div className="flex items-center gap-2">
+                                          <div className="flex lg:flex-col items-center lg:items-stretch gap-2">
                                             {/* Main Image Display */}
                                             <motion.div 
-                                              className="relative w-full lg:w-96 h-48 lg:h-56 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 cursor-grab active:cursor-grabbing"
+                                              className="relative w-full lg:w-full h-48 lg:h-56 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 cursor-grab active:cursor-grabbing"
                                               drag="x"
                                               dragElastic={0.2}
                                               dragConstraints={{ left: 0, right: 0 }}
@@ -705,9 +729,9 @@ export default function Projects() {
                                               )}
                                             </motion.div>
                                             
-                                            {/* Partial Next Image Preview */}
+                                            {/* Partial Next Image Preview - horizontal on mobile, vertical on desktop */}
                                             {currentMilestone.images.length > 1 && (
-                                              <div className="relative w-16 lg:w-20 h-48 lg:h-56 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 opacity-60">
+                                              <div className="relative w-16 lg:w-full h-48 lg:h-32 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 opacity-60">
                                                 <Image
                                                   src={currentMilestone.images[((milestoneImageIndex[currentMilestone.id] || 0) + 1) % currentMilestone.images.length]}
                                                   alt="Next image preview"
@@ -749,7 +773,7 @@ export default function Projects() {
                                           {currentMilestone.achievements.map((achievement, achieveIndex) => (
                                             <div key={achieveIndex} className="flex items-start gap-3">
                                               <div className="w-2 h-2 bg-primary-600 rounded-full mt-2 flex-shrink-0"></div>
-                                              <span className="text-slate-800 text-sm">{achievement}</span>
+                                              <span className="text-slate-800 text-sm">{parseAchievement(achievement)}</span>
                                             </div>
                                           ))}
                                         </div>
