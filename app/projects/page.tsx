@@ -12,16 +12,16 @@ const projects = [
     id: 1,
     year: 2024,
     title: "OGSTEP: Ogun State Economic Transformation Project",
-    category: "Project Coordination",
+    category: "Project Coordinator",
     status: "Ongoing",
     budget: "World Bank Funded",
     beneficiaries: "Ogun State",
-    duration: "2019-2025",
+    duration: "2020-2025",
     location: "Ogun State, Nigeria",
     image: "/images/ogun_state_logo.png",
-    description: "Leading the coordination of the comprehensive Ogun State Economic Transformation Project, overseeing 4 Project Managers, 15+ Specialist Consultants, and 50+ team members across four critical initiatives: Creating a Business Enabling Environment, Improving Agricultural Value Chain, Skills Development, and Public Sector Reforms.",
+    description: "Coordinating a comprehensive World Bank-assisted economic transformation program overseeing 4 Project Managers, 15+ Specialist Consultants, and 50+ team members across Business Enabling Environment, Agricultural Value Chain, Skills Development, and Public Sector Reforms.",
     impact: "Under her capable leadership, this World Bank-assisted project has directly benefitted over 72,000 Ogun State residents across agriculture, skills development, and institutional reforms. The program supported 33,075 farmers, trained 39,000+ beneficiaries in employable skills, facilitated over 15,000 Certificates of Occupancy, and enabled the offtake of over 283,000 metric tonnes of agricultural produce into the market.",
-    tags: ["World Bank", "Economic Transformation", "Project Coordination", "Public Sector Reform", "Agricultural Development", "Skills Development"],
+    tags: ["World Bank", "Economic Transformation", "Project Coordinator", "Public Sector Reform", "Agricultural Development", "Skills Development"],
     milestones: [
       {
         id: "overall_leadership",
@@ -355,6 +355,7 @@ export default function Projects() {
 
   const getCategoryColor = (category: string) => {
     const colors = {
+      "Project Coordinator": "bg-primary-100 text-primary-700 border-primary-200",
       "Project Coordination": "bg-primary-100 text-primary-700 border-primary-200",
       "Educational Leadership": "bg-blue-100 text-blue-700 border-blue-200",
       "Education Consulting": "bg-purple-100 text-purple-700 border-purple-200",
@@ -594,7 +595,6 @@ export default function Projects() {
                           <span className={`px-3 py-1 rounded-full text-sm font-medium border ${getCategoryColor(currentProject.category)}`}>
                             {currentProject.category}
                           </span>
-                          <span className="text-2xl font-bold text-slate-900">{currentProject.year}</span>
                         </div>
                         <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight">
                           {currentProject.title}
@@ -644,7 +644,14 @@ export default function Projects() {
                       <h4 className="text-xl font-bold text-slate-900 mb-6">Project Milestones</h4>
                       <div className="space-y-4">
                         {currentProject.milestones.map((milestone, index) => (
-                          <div key={milestone.id} className="border border-slate-200 rounded-xl overflow-hidden bg-white">
+                          <motion.div
+                            key={milestone.id}
+                            initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                            whileInView={{ opacity: 1, x: 0 }}
+                            viewport={{ once: true, margin: "-50px" }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            className="border border-slate-200 rounded-xl overflow-hidden bg-white"
+                          >
                             <button
                               onClick={() => handleMilestoneClick(milestone.id)}
                               className="w-full flex items-center justify-between p-6 text-left hover:bg-slate-50 transition-colors bg-white"
@@ -795,7 +802,7 @@ export default function Projects() {
                                 </motion.div>
                               )}
                             </AnimatePresence>
-                          </div>
+                          </motion.div>
                         ))}
                       </div>
                     </div>
@@ -947,13 +954,13 @@ export default function Projects() {
                   </div>
 
                   {/* Content Section */}
-                  <div className="lg:w-1/2 p-6 lg:p-12 flex flex-col justify-center overflow-y-auto max-h-[calc(90vh-12rem)] lg:max-h-none">
+                  <div className="lg:w-1/2 p-6 lg:p-8 flex flex-col justify-center overflow-y-auto max-h-[calc(90vh-12rem)] lg:overflow-visible lg:max-h-none">
                     {/* Progress Indicator */}
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.3 }}
-                      className="flex items-center gap-2 mb-6"
+                      className="flex items-center gap-2 mb-4"
                     >
                       {currentProject.milestones.map((_, index) => (
                         <div
@@ -970,9 +977,9 @@ export default function Projects() {
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ duration: 0.4, delay: 0.1 }}
-                      className="inline-flex items-center gap-2 px-3 py-1 bg-primary-500/20 border border-primary-500/30 rounded-full text-sm font-medium text-primary-300 mb-4 w-fit"
+                      className="inline-flex items-center gap-2 px-2 py-1 bg-primary-500/20 border border-primary-500/30 rounded-full text-xs font-medium text-primary-300 mb-3 w-fit"
                     >
-                      <Calendar className="w-4 h-4" />
+                      <Calendar className="w-3 h-3" />
                       {currentProject.milestones[currentSlideIndex].period}
                     </motion.div>
 
@@ -981,7 +988,7 @@ export default function Projects() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.2 }}
-                      className="text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight"
+                      className="text-2xl lg:text-3xl font-bold text-white mb-3 leading-tight"
                     >
                       {currentProject.milestones[currentSlideIndex].title}
                     </motion.h3>
@@ -991,7 +998,7 @@ export default function Projects() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.3 }}
-                      className="text-base text-slate-300 mb-6 leading-relaxed"
+                      className="text-sm text-slate-300 mb-4 leading-relaxed"
                     >
                       {currentProject.milestones[currentSlideIndex].description}
                     </motion.p>
@@ -1001,14 +1008,14 @@ export default function Projects() {
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ duration: 0.5, delay: 0.4 }}
-                      className="grid grid-cols-2 gap-4 mb-6"
+                      className="grid grid-cols-2 gap-3 mb-4"
                     >
                       {Object.entries(currentProject.milestones[currentSlideIndex].metrics).slice(0, 2).map(([key, value]) => (
                         <div
                           key={key}
-                          className="bg-slate-800/50 rounded-lg p-4 border border-slate-700"
+                          className="bg-slate-800/50 rounded-lg p-3 border border-slate-700"
                         >
-                          <div className="text-2xl font-bold text-primary-400 mb-1">{value}</div>
+                          <div className="text-xl font-bold text-primary-400 mb-1">{value}</div>
                           <div className="text-xs text-slate-400">{key}</div>
                         </div>
                       ))}
