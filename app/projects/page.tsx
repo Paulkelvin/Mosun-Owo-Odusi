@@ -19,8 +19,8 @@ const projects = [
     duration: "2020-2025",
     location: "Ogun State, Nigeria",
     image: "/images/ogun_state_logo.png",
-    description: "Coordinating a comprehensive World Bank-assisted economic transformation program overseeing 4 Project Managers, 15+ Specialist Consultants, and 50+ team members across Business Enabling Environment, Agricultural Value Chain, Skills Development, and Public Sector Reforms.",
-    impact: "Under her capable leadership, this World Bank-assisted project has directly benefitted over 72,000 Ogun State residents across agriculture, skills development, and institutional reforms. The program supported 33,075 farmers, trained 39,000+ beneficiaries in employable skills, facilitated over 15,000 Certificates of Occupancy, and enabled the offtake of over 283,000 metric tonnes of agricultural produce into the market.",
+    description: "Coordinating a comprehensive World Bank-assisted economic transformation program overseeing 3 Project Managers, 15+ Specialist Consultants, and 60+ team members across Business Enabling Environment, Agricultural Value Chain, Skills Development, and Public Sector Reforms.",
+    impact: "This World Bank-assisted project has directly benefitted over 72,000 Ogun State residents, supporting 33,075 farmers, training 39,000+ beneficiaries, issuing 15,000+ Certificates of Occupancy, and enabling offtake of 283,000+ metric tonnes of agricultural produce.",
     tags: ["World Bank", "Economic Transformation", "Project Coordinator", "Public Sector Reform", "Agricultural Development", "Skills Development"],
     milestones: [
       {
@@ -279,8 +279,8 @@ export default function Projects() {
     const currentSlide = currentProject.milestones[currentSlideIndex]
     if (!currentSlide) return
     
-    // Moderate reading time for balanced presentation (9-10 seconds)
-    const readingTime = 9000 // 9 seconds per slide
+    // Slower reading time for comfortable viewing (12 seconds)
+    const readingTime = 12000 // 12 seconds per slide
     
     const timer = setTimeout(() => {
       if (currentSlideIndex < currentProject.milestones.length - 1) {
@@ -306,7 +306,7 @@ export default function Projects() {
     
     const imageTimer = setInterval(() => {
       setPresentationImageIndex(prev => (prev + 1) % currentSlide.images.length)
-    }, 3000) // Change image every 3 seconds
+    }, 4000) // Change image every 4 seconds (slower)
     
     return () => clearInterval(imageTimer)
   }, [isPresentationMode, currentSlideIndex, currentProject.milestones])
@@ -422,7 +422,7 @@ export default function Projects() {
           {/* Section Header with Navigation */}
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-              A Journey of <HighlightText highlightColor="blue">Transformation</HighlightText>
+              <span className="whitespace-nowrap">A Journey of</span> <HighlightText highlightColor="blue">Transformation</HighlightText>
             </h2>
             <div className="max-w-3xl mx-auto mb-8">
               <p className="text-xl text-slate-700 mb-4">
@@ -607,7 +607,8 @@ export default function Projects() {
                         </div>
                         
                         <p className="text-lg text-slate-700 leading-relaxed">
-                          {currentProject.description}
+                          <span className="hidden lg:inline">{currentProject.description}</span>
+                          <span className="lg:hidden">Coordinating World Bank-assisted economic transformation program with 3 Project Managers, 15+ Consultants, 60+ team members across multiple critical initiatives.</span>
                         </p>
                       </div>
                       
@@ -648,8 +649,8 @@ export default function Projects() {
                             key={milestone.id}
                             initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                             whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true, margin: "-50px" }}
-                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            viewport={{ once: true, margin: "-150px" }}
+                            transition={{ duration: 0.8, delay: index * 0.15 }}
                             className="border border-slate-200 rounded-xl overflow-hidden bg-white"
                           >
                             <button
@@ -815,7 +816,7 @@ export default function Projects() {
                         </div>
                         <div>
                           <h4 className="text-lg font-bold text-white mb-3">
-                            {currentProject.id === 1 ? "Transformational Leadership Impact" : "Innovation Legacy"}
+                            {currentProject.id === 1 ? "Leadership Impact" : "Innovation Legacy"}
                           </h4>
                           <p className="text-primary-50 leading-relaxed">{currentProject.impact}</p>
                           {currentProject.id === 2 && (
@@ -841,7 +842,7 @@ export default function Projects() {
                         href="https://www.linkedin.com/in/mosun-owo-odusi-mba-pmp-736a1419/" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="flex items-center gap-2 px-6 py-3 bg-gold-500 hover:bg-gold-600 text-white rounded-xl font-medium transition-colors border border-gold-400"
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-gold-500 hover:bg-gold-600 text-white rounded-xl font-medium transition-colors border border-gold-400 w-fit"
                       >
                         <span>View LinkedIn Profile</span>
                         <ExternalLink className="w-4 h-4" />
@@ -871,9 +872,9 @@ export default function Projects() {
               Let&apos;s collaborate to create meaningful impact and drive transformational change in your organization.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white rounded-xl font-semibold transition-colors">
+              <a href="/contact#message" className="px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white rounded-xl font-semibold transition-colors">
                 Schedule a Consultation
-              </button>
+              </a>
               <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 rounded-xl font-semibold transition-colors">
                 Download Portfolio
               </button>
@@ -1044,7 +1045,7 @@ export default function Projects() {
                         }}
                         className="bg-primary-500/80 hover:bg-primary-500 text-white px-4 py-2 rounded-lg font-medium transition-colors"
                       >
-                        Skip →
+                        Next →
                       </button>
                     </motion.div>
                   </div>
