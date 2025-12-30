@@ -307,68 +307,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Coming Soon Section */}
-      <section className="py-20 bg-gradient-to-br from-slate-50 to-white">
-        <div className="container-custom">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto"
-          >
-            <div className="text-center mb-12">
-              <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-                More <span className="text-emerald-600">Coming Soon</span>
-              </h2>
-              <p className="text-lg text-slate-600">
-                Additional sections to provide a comprehensive view of Mosun&apos;s professional journey
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-8">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-medium p-6"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <GraduationCap className="w-8 h-8 text-emerald-600" />
-                  <h3 className="text-xl font-bold text-slate-900">Educational Background</h3>
-                </div>
-                <ul className="space-y-2 text-slate-600">
-                  <li>• Academic qualifications and certifications</li>
-                  <li>• Professional development courses</li>
-                  <li>• Research and publications</li>
-                  <li>• Awards and recognitions</li>
-                </ul>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, delay: 0.4 }}
-                viewport={{ once: true }}
-                className="bg-white rounded-2xl shadow-medium p-6"
-              >
-                <div className="flex items-center gap-3 mb-4">
-                  <Trophy className="w-8 h-8 text-gold-600" />
-                  <h3 className="text-xl font-bold text-slate-900">Personal Mission</h3>
-                </div>
-                <ul className="space-y-2 text-slate-600">
-                  <li>• Core values and philosophy</li>
-                  <li>• Leadership approach</li>
-                  <li>• Vision for education transformation</li>
-                  <li>• Community impact initiatives</li>
-                </ul>
-              </motion.div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Education & Certifications Section */}
       <section className="section-padding bg-gradient-to-br from-slate-50 via-primary-50/30 to-white">
         <div className="container-custom">
@@ -613,7 +551,7 @@ export default function About() {
                         alt="Project Management Institute"
                         width={60}
                         height={60}
-                        className="object-contain bg-white/20 rounded-lg p-2 flex-shrink-0"
+                        className="object-contain bg-white rounded-lg p-2 flex-shrink-0"
                       />
                       <div className="flex-1">
                         <div>
@@ -681,7 +619,7 @@ export default function About() {
                             alt={cert.issuer}
                             width={50}
                             height={50}
-                            className="object-contain bg-white/20 rounded-lg p-2 flex-shrink-0"
+                            className="object-contain bg-white rounded-lg p-2 flex-shrink-0"
                           />
                         )}
                         <div className="flex-1">

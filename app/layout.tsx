@@ -3,7 +3,6 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import SmoothScroll from '@/components/SmoothScroll'
 import ToastProvider from '@/components/ToastProvider'
 
 const inter = Inter({ 
@@ -61,7 +60,6 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.variable}>
       <body className={inter.className}>
-        <SmoothScroll />
         <ToastProvider />
         <div className="min-w-0 overflow-x-hidden">
           <Header />
