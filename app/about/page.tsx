@@ -412,7 +412,7 @@ export default function About() {
                     viewport={{ once: true }}
                     className="relative bg-white rounded-2xl shadow-medium p-6 border-l-4 border-emerald-500"
                   >
-                    <div className="flex items-start justify-between mb-4">
+                    <div className="flex items-start gap-4 mb-4">
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0">
                           <Image
@@ -429,7 +429,6 @@ export default function About() {
                           <p className="text-slate-600 text-sm">Business Administration and Management, General</p>
                         </div>
                       </div>
-                      <span className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold">CURRENT</span>
                     </div>
                     <div className="flex items-center gap-4 text-sm text-slate-500">
                       <span>Oct 2024 – Oct 2025</span>
@@ -617,12 +616,9 @@ export default function About() {
                         className="object-contain bg-white/20 rounded-lg p-2 flex-shrink-0"
                       />
                       <div className="flex-1">
-                        <div className="flex items-start justify-between">
-                          <div>
-                            <h4 className="font-bold text-lg">Project Management Professional (PMP)®</h4>
-                            <p className="text-primary-100">Project Management Institute</p>
-                          </div>
-                          <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-bold">ACTIVE</span>
+                        <div>
+                          <h4 className="font-bold text-lg">Project Management Professional (PMP)®</h4>
+                          <p className="text-primary-100">Project Management Institute</p>
                         </div>
                       </div>
                     </div>
