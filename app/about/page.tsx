@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import HighlightText from '@/components/HighlightText'
 import { Calendar, MapPin, Building2, Trophy, CheckCircle, GraduationCap, Users, Target } from 'lucide-react'
 
@@ -412,10 +413,21 @@ export default function About() {
                     className="relative bg-white rounded-2xl shadow-medium p-6 border-l-4 border-emerald-500"
                   >
                     <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h4 className="font-bold text-slate-900 text-lg">Master of Business Administration - MBA</h4>
-                        <p className="text-emerald-600 font-semibold">Rome Business School Nigeria</p>
-                        <p className="text-slate-600 text-sm">Business Administration and Management, General</p>
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <Image
+                            src="/images/logos/rome_business_school_logo.png"
+                            alt="Rome Business School"
+                            width={60}
+                            height={60}
+                            className="object-contain"
+                          />
+                        </div>
+                        <div>
+                          <h4 className="font-bold text-slate-900 text-lg">Master of Business Administration - MBA</h4>
+                          <p className="text-emerald-600 font-semibold">Rome Business School Nigeria</p>
+                          <p className="text-slate-600 text-sm">Business Administration and Management, General</p>
+                        </div>
                       </div>
                       <span className="px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-bold">CURRENT</span>
                     </div>
@@ -434,7 +446,8 @@ export default function About() {
                       field: "Adult education and Life Long Learning",
                       period: "2018 – 2019",
                       grade: "Distinction",
-                      skills: ["Adult Education"]
+                      skills: ["Adult Education"],
+                      logo: "/images/logos/unilag_logo.png"
                     },
                     {
                       degree: "Master of Business Administration - MBA",
@@ -442,7 +455,8 @@ export default function About() {
                       field: "Business Administration and Management, General", 
                       period: "1996 – 1998",
                       grade: null,
-                      skills: null
+                      skills: null,
+                      logo: "/images/logos/obafemi_awolowo_university_logo.png"
                     },
                     {
                       degree: "Post Graduate Diploma",
@@ -450,7 +464,8 @@ export default function About() {
                       field: "Education",
                       period: "1998",
                       grade: null,
-                      skills: null
+                      skills: null,
+                      logo: "/images/logos/unilag_logo.png"
                     },
                     {
                       degree: "B.Sc",
@@ -458,7 +473,8 @@ export default function About() {
                       field: "Food Science and Technology",
                       period: "1984 – 1991",
                       grade: null,
-                      skills: null
+                      skills: null,
+                      logo: "/images/logos/obafemi_awolowo_university_logo.png"
                     }
                   ].map((edu, index) => (
                     <motion.div
@@ -469,27 +485,40 @@ export default function About() {
                       viewport={{ once: true }}
                       className="bg-white rounded-2xl shadow-soft p-6 hover:shadow-medium transition-all duration-300"
                     >
-                      <h4 className="font-bold text-slate-900">{edu.degree}</h4>
-                      <p className="text-primary-600 font-semibold">{edu.school}</p>
-                      <p className="text-slate-600 text-sm mb-3">{edu.field}</p>
-                      <div className="flex items-center gap-4 text-sm text-slate-500 mb-3">
-                        <span>{edu.period}</span>
-                        {edu.grade && (
-                          <>
-                            <span>•</span>
-                            <span className="font-medium text-emerald-600">{edu.grade}</span>
-                          </>
-                        )}
-                      </div>
-                      {edu.skills && (
-                        <div className="flex flex-wrap gap-2">
-                          {edu.skills.map((skill, idx) => (
-                            <span key={idx} className="px-2 py-1 bg-slate-100 text-slate-700 rounded-lg text-xs">
-                              {skill}
-                            </span>
-                          ))}
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <Image
+                            src={edu.logo}
+                            alt={edu.school}
+                            width={50}
+                            height={50}
+                            className="object-contain"
+                          />
                         </div>
-                      )}
+                        <div className="flex-1">
+                          <h4 className="font-bold text-slate-900">{edu.degree}</h4>
+                          <p className="text-primary-600 font-semibold">{edu.school}</p>
+                          <p className="text-slate-600 text-sm mb-3">{edu.field}</p>
+                          <div className="flex items-center gap-4 text-sm text-slate-500 mb-3">
+                            <span>{edu.period}</span>
+                            {edu.grade && (
+                              <>
+                                <span>•</span>
+                                <span className="font-medium text-emerald-600">{edu.grade}</span>
+                              </>
+                            )}
+                          </div>
+                          {edu.skills && (
+                            <div className="flex flex-wrap gap-2">
+                              {edu.skills.map((skill, idx) => (
+                                <span key={idx} className="px-2 py-1 bg-slate-100 text-slate-700 rounded-lg text-xs">
+                                  {skill}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      </div>
                     </motion.div>
                   ))}
 
@@ -507,26 +536,41 @@ export default function About() {
                         {
                           title: "Business Development Services Professional",
                           school: "Enterprise Development Center, Pan-Atlantic University",
-                          year: "2020"
+                          year: "2020",
+                          logo: "/images/logos/lagos_business_school_logo.png"
                         },
                         {
                           title: "Certificate of Accreditation, Management Trainer", 
                           school: "Centre for Management Development",
-                          year: "2017"
+                          year: "2017",
+                          logo: null
                         },
                         {
                           title: "Certificate in Entrepreneurship Management (CEM)",
                           school: "Lagos Business School, Pan-Atlantic University",
-                          year: "2009"
+                          year: "2009",
+                          logo: "/images/logos/lagos_business_school_logo.png"
                         },
                         {
                           title: "Diploma, Data Processing",
                           school: "Microchips Computer Ltd",
-                          year: "1992"
+                          year: "1992",
+                          logo: null
                         }
                       ].map((cert, idx) => (
                         <div key={idx} className="flex items-start gap-3">
-                          <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                          {cert.logo && (
+                            <Image
+                              src={cert.logo}
+                              alt={cert.school}
+                              width={40}
+                              height={40}
+                              className="object-contain flex-shrink-0"
+                            />
+                          )}
+                          {!cert.logo && (
+                            <div className="w-2 h-2 bg-amber-500 rounded-full mt-2 flex-shrink-0"></div>
+                          )}
                           <div>
                             <p className="font-medium text-slate-900 text-sm">{cert.title}</p>
                             <p className="text-slate-600 text-xs">{cert.school} • {cert.year}</p>
@@ -564,12 +608,23 @@ export default function About() {
                 >
                   <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-full -translate-y-12 translate-x-12"></div>
                   <div className="relative z-10">
-                    <div className="flex items-start justify-between mb-4">
-                      <div>
-                        <h4 className="font-bold text-lg">Project Management Professional (PMP)®</h4>
-                        <p className="text-primary-100">Project Management Institute</p>
+                    <div className="flex items-start gap-4 mb-4">
+                      <Image
+                        src="/images/logos/project_management_institute_logo.png"
+                        alt="Project Management Institute"
+                        width={60}
+                        height={60}
+                        className="object-contain bg-white/20 rounded-lg p-2 flex-shrink-0"
+                      />
+                      <div className="flex-1">
+                        <div className="flex items-start justify-between">
+                          <div>
+                            <h4 className="font-bold text-lg">Project Management Professional (PMP)®</h4>
+                            <p className="text-primary-100">Project Management Institute</p>
+                          </div>
+                          <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-bold">ACTIVE</span>
+                        </div>
                       </div>
-                      <span className="px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-xs font-bold">ACTIVE</span>
                     </div>
                     <p className="text-primary-200 text-sm mb-4">Issued Feb 2025 • Expires Feb 2028</p>
                     <div className="flex flex-wrap gap-2">
@@ -585,28 +640,32 @@ export default function About() {
                     issuer: "Cisco",
                     date: "Issued Sep 2024",
                     skills: ["Cybersecurity", "Penetration Testing"],
-                    color: "bg-gradient-to-br from-emerald-500 to-emerald-600"
+                    color: "bg-gradient-to-br from-emerald-500 to-emerald-600",
+                    logo: "/images/logos/cisco_logo.png"
                   },
                   {
                     title: "Member",
                     issuer: "Project Management Institute",
                     date: "Issued Jan 2024",
                     skills: ["Program Development", "Project Coordination"],
-                    color: "bg-gradient-to-br from-blue-500 to-blue-600"
+                    color: "bg-gradient-to-br from-blue-500 to-blue-600",
+                    logo: "/images/logos/project_management_institute_logo.png"
                   },
                   {
                     title: "Member",
                     issuer: "Institute of Strategic Management Consultants (Chartered)",
                     date: "Issued Jan 2024",
                     skills: ["Business Strategy", "Consulting"],
-                    color: "bg-gradient-to-br from-violet-500 to-violet-600"
+                    color: "bg-gradient-to-br from-violet-500 to-violet-600",
+                    logo: null
                   },
                   {
                     title: "Life member Enterprise Development Centre",
                     issuer: "Lagos Business School, Pan-Atlantic University",
                     date: "Issued Oct 2021",
                     skills: ["Business Strategy", "Entrepreneurship"],
-                    color: "bg-gradient-to-br from-amber-500 to-gold-500"
+                    color: "bg-gradient-to-br from-amber-500 to-gold-500",
+                    logo: "/images/logos/lagos_business_school_logo.png"
                   }
                 ].map((cert, index) => (
                   <motion.div
@@ -619,15 +678,28 @@ export default function About() {
                   >
                     <div className="absolute top-0 right-0 w-20 h-20 bg-white/10 rounded-full -translate-y-10 translate-x-10"></div>
                     <div className="relative z-10">
-                      <h4 className="font-bold text-lg mb-2">{cert.title}</h4>
-                      <p className="text-white/90 mb-2">{cert.issuer}</p>
-                      <p className="text-white/70 text-sm mb-4">{cert.date}</p>
-                      <div className="flex flex-wrap gap-2">
-                        {cert.skills.map((skill, idx) => (
-                          <span key={idx} className="px-2 py-1 bg-white/20 rounded-lg text-xs">
-                            {skill}
-                          </span>
-                        ))}
+                      <div className="flex items-start gap-4 mb-2">
+                        {cert.logo && (
+                          <Image
+                            src={cert.logo}
+                            alt={cert.issuer}
+                            width={50}
+                            height={50}
+                            className="object-contain bg-white/20 rounded-lg p-2 flex-shrink-0"
+                          />
+                        )}
+                        <div className="flex-1">
+                          <h4 className="font-bold text-lg mb-2">{cert.title}</h4>
+                          <p className="text-white/90 mb-2">{cert.issuer}</p>
+                          <p className="text-white/70 text-sm mb-4">{cert.date}</p>
+                          <div className="flex flex-wrap gap-2">
+                            {cert.skills.map((skill, idx) => (
+                              <span key={idx} className="px-2 py-1 bg-white/20 rounded-lg text-xs">
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </motion.div>

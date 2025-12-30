@@ -422,12 +422,12 @@ export default function Projects() {
           {/* Section Header with Navigation */}
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-              <span className="whitespace-nowrap">A Journey of</span> <HighlightText highlightColor="blue">Transformation</HighlightText>
+              <span className="whitespace-nowrap">Leadership</span> <HighlightText highlightColor="blue">Impact</HighlightText>
             </h2>
             <div className="max-w-3xl mx-auto mb-8">
               <p className="text-xl text-slate-700 mb-4">
                 <span className="hidden lg:inline">From pioneering educational innovation since 2011 to leading transformative economic development projects, explore 15+ years of strategic leadership creating lasting impact.</span>
-                <span className="lg:hidden">15+ years of strategic leadership creating lasting impact.</span>
+                <span className="lg:hidden">15+ years of strategic leadership.</span>
               </p>
               <div className="hidden lg:flex flex-wrap items-center justify-center gap-4 text-sm text-slate-600">
                 <div className="flex items-center gap-2">
