@@ -78,6 +78,7 @@ export default function ServicesPage() {
                 action: 'Book a Consultation', 
                 link: '#consultation-modal' 
               },
+              {/* 
               { 
                 icon: Shield, 
                 title: 'Security Services', 
@@ -86,6 +87,7 @@ export default function ServicesPage() {
                 action: 'View Security Packages', 
                 link: '#security-packages' 
               },
+              */}
             ].map((service, index) => {
               const Icon = service.icon
               return (
@@ -116,6 +118,7 @@ export default function ServicesPage() {
       </section>
 
       {/* Security Services */}
+      {/*
       <section id="security-packages" className="py-20 bg-gradient-to-br from-slate-900 to-slate-800 text-white">
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="max-w-4xl mx-auto text-center mb-16">
@@ -152,6 +155,7 @@ export default function ServicesPage() {
           </motion.div>
         </div>
       </section>
+      */}
 
       {/* Why Work With Me */}
       <section className="py-20 bg-white">
