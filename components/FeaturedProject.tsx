@@ -43,16 +43,23 @@ export default function FeaturedProject() {
             className="w-10 h-0.5 bg-gradient-to-r from-primary-600 to-primary-700 mx-auto mb-3"
           />
           
-          {/* Main Heading with Split Font Weight/Color */}
+          {/* Main Heading with Split Font Weight/Color and animated underline */}
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="text-3xl lg:text-4xl mb-6 lg:mb-4"
+            className="text-3xl lg:text-4xl mb-6 lg:mb-4 relative inline-block"
           >
             <span className="font-bold text-slate-900">Featured</span>{' '}
             <span className="font-semibold text-slate-600">Project</span>
+            <motion.div 
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              viewport={{ once: true }}
+              className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-gold-400 to-transparent rounded-full origin-left"
+            />
           </motion.h2>
           
           {/* Sub-heading */}
@@ -138,7 +145,7 @@ export default function FeaturedProject() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4"
+                className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 mt-4 lg:mt-0"
               >
                 OGSTEP: World Bank Economic Transformation Initiative
               </motion.h3>
@@ -150,7 +157,17 @@ export default function FeaturedProject() {
                 viewport={{ once: true }}
                 className="text-lg text-slate-600 leading-relaxed lg:leading-normal mb-6 lg:mb-4"
               >
-                Led a <span className="font-bold text-2xl text-primary-700 inline-block mx-1">$250M</span> World Bank initiative achieving 40% efficiency gains and impacting 65,000+ beneficiaries in Ogun State. As Project Coordinator, spearheaded multi-sectoral strategy spanning private sector participation, agri-food value chains, and statewide skills development.
+                Led a <span className="font-bold text-2xl text-primary-700 inline-block mx-1">$250M</span> World Bank initiative achieving 40% efficiency gains and impacting{' '}
+                <a 
+                  href="https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="font-bold text-primary-600 hover:text-primary-700 underline decoration-2 underline-offset-2"
+                  title="Click to verify from official source"
+                >
+                  72,000+ beneficiaries
+                </a>{' '}
+                in Ogun State. As Project Coordinator, spearheaded multi-sectoral strategy spanning private sector participation, agri-food value chains, and statewide skills development.
               </motion.p>
             </div>
 

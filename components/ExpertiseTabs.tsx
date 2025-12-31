@@ -75,8 +75,15 @@ export default function ExpertiseTabs() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 relative inline-block">
             Core Areas of <HighlightText highlightColor="blue">Expertise</HighlightText>
+            <motion.div 
+              initial={{ scaleX: 0 }}
+              whileInView={{ scaleX: 1 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              viewport={{ once: true }}
+              className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-blue-500 to-transparent rounded-full origin-left"
+            />
           </h2>
           
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
@@ -321,7 +328,7 @@ export default function ExpertiseTabs() {
                             
                             <p className="text-sm text-slate-700 leading-relaxed font-medium">
                               {activeArea.id === 'project-management' 
-                                ? "Led a $250M World Bank initiative achieving 40% efficiency gains and impacting 65,000+ beneficiaries in Ogun State."
+                                ? <>Led a <span className="font-bold text-lg text-primary-600 inline-block mx-0.5">$250M</span> World Bank initiative achieving 40% efficiency gains and impacting <a href="https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary-600 hover:text-primary-700 underline" title="Verified source">72,000+ beneficiaries</a> in Ogun State.</>
                                 : activeArea.id === 'education-consulting'
                                 ? "Developed innovative education framework adopted by Amville, improving learning outcomes for over 2,000+ students."
                                 : activeArea.id === 'real-estate'

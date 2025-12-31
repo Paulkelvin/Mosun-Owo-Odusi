@@ -897,12 +897,26 @@ export default function Projects() {
 
             <motion.div
               key={currentSlideIndex}
-              initial={{ opacity: 0, x: 100 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -100 }}
-              transition={{ duration: 0.5 }}
+              initial={{ opacity: 0, x: 100, rotateY: 15 }}
+              animate={{ opacity: 1, x: 0, rotateY: 0 }}
+              exit={{ opacity: 0, x: -100, rotateY: -15, scale: 0.9 }}
+              transition={{ duration: 0.6, ease: "easeInOut" }}
+              drag="x"
+              dragConstraints={{ left: 0, right: 0 }}
+              dragElastic={0.2}
+              onDragEnd={(e, { offset, velocity }) => {
+                const swipe = offset.x * velocity.x
+                if (swipe < -10000 && currentSlideIndex < currentProject.milestones.length - 1) {
+                  setCurrentSlideIndex(prev => prev + 1)
+                  setPresentationImageIndex(0)
+                } else if (swipe > 10000 && currentSlideIndex > 0) {
+                  setCurrentSlideIndex(prev => prev - 1)
+                  setPresentationImageIndex(0)
+                }
+              }}
               onClick={(e) => e.stopPropagation()}
-              className="max-w-6xl w-full bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] lg:max-h-none"
+              className="max-w-6xl w-full bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] lg:max-h-none cursor-grab active:cursor-grabbing"
+              style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
             >
               {currentProject.milestones[currentSlideIndex] && (
                 <div className="flex flex-col lg:flex-row gap-0 h-full">
@@ -1046,18 +1060,34 @@ export default function Projects() {
                           {currentSlideIndex + 1} / {currentProject.milestones.length}
                         </span>
                       </div>
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation()
-                          if (currentSlideIndex < currentProject.milestones.length - 1) {
-                            setCurrentSlideIndex(prev => prev + 1)
-                            setPresentationImageIndex(0)
-                          }
-                        }}
-                        className="bg-primary-500/80 hover:bg-primary-500 text-white px-4 py-2 rounded-lg font-medium transition-colors"
-                      >
-                        Next →
-                      </button>
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            if (currentSlideIndex > 0) {
+                              setCurrentSlideIndex(prev => prev - 1)
+                              setPresentationImageIndex(0)
+                            }
+                          }}
+                          disabled={currentSlideIndex === 0}
+                          className="bg-slate-700/80 hover:bg-slate-600 disabled:opacity-30 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                        >
+                          ← Previous
+                        </button>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            if (currentSlideIndex < currentProject.milestones.length - 1) {
+                              setCurrentSlideIndex(prev => prev + 1)
+                              setPresentationImageIndex(0)
+                            }
+                          }}
+                          disabled={currentSlideIndex === currentProject.milestones.length - 1}
+                          className="bg-primary-500/80 hover:bg-primary-500 disabled:opacity-30 disabled:cursor-not-allowed text-white px-4 py-2 rounded-lg font-medium transition-colors"
+                        >
+                          Next →
+                        </button>
+                      </div>
                     </motion.div>
                   </div>
                 </div>
