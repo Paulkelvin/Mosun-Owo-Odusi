@@ -168,7 +168,7 @@ export default function FeaturedProject() {
                   title="View World Bank project details"
                 >
                   World Bank
-                </a>-funded initiative designed to drive Ogun State's industrial renaissance. As Project Coordinator, lead a cross-functional delivery team across agriculture, technology, and vocational education, achieving an 85% project success rate state-wide with{' '}
+                </a>-funded initiative designed to drive Ogun State&apos;s industrial renaissance. As Project Coordinator, lead a cross-functional delivery team across agriculture, technology, and vocational education, achieving an 85% project success rate state-wide with{' '}
                 <a 
                   href="https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/" 
                   target="_blank" 
