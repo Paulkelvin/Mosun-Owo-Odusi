@@ -409,7 +409,7 @@ export default function Projects() {
           }} />
         </div>
 
-        <div className="relative z-10 container-custom py-20 lg:py-28 flex items-center min-h-[400px] lg:min-h-[500px]">
+        <div className="relative z-10 container-custom pt-16 pb-20 lg:pt-20 lg:pb-28 flex items-center min-h-[400px] lg:min-h-[500px]">
           <div className="max-w-4xl mx-auto text-center w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
