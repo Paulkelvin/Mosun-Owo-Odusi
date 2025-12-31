@@ -97,17 +97,19 @@ const projects = [
         id: "sustainability",
         title: "Land Administration & Business Enabling Environment Reforms",
         period: "2019 – Present",
-        description: "Provided leadership for comprehensive reforms that facilitated the issuance of over 15,000 Certificates of Occupancy and deployment of GIS-based land management systems.",
+        description: "Provided leadership for comprehensive reforms that facilitated the issuance of over 15,000 Certificates of Occupancy and deployment of cutting-edge GIS/CORS infrastructure and high-tech survey equipment transforming geospatial capacity statewide.",
         achievements: [
           "Led reforms facilitating issuance of over 15,000 Certificates of Occupancy - https://progressivenews.ng/65000-beneficiaries-uplifted-by-oguns-economic-transformation-project-in-five-years/#:~:text=Over%2015%2C000%20Certificates%20of%20Occupancy%20have%20been%20issued%20to%20enhance%20business%20confidence.",
-          "Oversaw rehabilitation of zonal planning offices and deployment of GIS-based land management systems",
-          "Coordinated public service reform initiatives strengthening procurement systems and monitoring frameworks",
-          "Supervised rehabilitation of State Bureau of Statistics to improve data-driven decision-making"
+          "Oversaw deployment of high-tech survey equipment and GIS/CORS (Continuously Operating Reference Stations) infrastructure spanning entire state",
+          "Coordinated implementation of modern geospatial technology unlocking land value for citizens and government, creating wealth through improved land administration",
+          "Supervised rehabilitation of zonal planning offices with GIS-based land management systems",
+          "Led public service reform initiatives strengthening procurement systems and monitoring frameworks",
+          "Oversaw rehabilitation of State Bureau of Statistics to improve data-driven decision-making"
         ],
         metrics: {
           "Certificates Issued": "15,000+",
           "Land Tenure Security": "Strengthened",
-          "GIS Systems": "Deployed",
+          "GIS/CORS Systems": "Statewide",
           "Institutional Reforms": "Implemented"
         },
         images: [
