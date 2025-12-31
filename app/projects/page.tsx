@@ -398,7 +398,7 @@ export default function Projects() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden -mt-16 lg:-mt-20 pt-16 lg:pt-20">
+      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden mt-16 lg:mt-20">
         <DotPattern position="top-right" color="gold" size="md" rows={4} cols={4} opacity={0.5} />
         <DotPattern position="bottom-left" color="blue" size="sm" rows={5} cols={5} opacity={0.4} />
         
@@ -409,7 +409,7 @@ export default function Projects() {
           }} />
         </div>
 
-        <div className="relative z-10 container-custom pt-16 pb-20 lg:pt-20 lg:pb-28 flex items-center min-h-[400px] lg:min-h-[500px]">
+        <div className="relative z-10 container-custom py-16 lg:py-24 flex items-center min-h-[400px] lg:min-h-[500px]">
           <div className="max-w-4xl mx-auto text-center w-full">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
@@ -673,7 +673,7 @@ export default function Projects() {
                                   initial={{ height: 0, opacity: 0 }}
                                   animate={{ height: "auto", opacity: 1 }}
                                   exit={{ height: 0, opacity: 0 }}
-                                  transition={{ duration: 0.3 }}
+                                  transition={{ duration: 0.5, ease: "easeInOut" }}
                                   className="border-t border-slate-200"
                                 >
                                   <div className="p-4 bg-slate-50">

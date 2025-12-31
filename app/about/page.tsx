@@ -161,7 +161,7 @@ export default function About() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-slate-50 to-white border-b-2 border-slate-200">
+      <section className="section-padding bg-gradient-to-br from-slate-50 to-white border-b-2 border-slate-200 mt-16 lg:mt-20">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
