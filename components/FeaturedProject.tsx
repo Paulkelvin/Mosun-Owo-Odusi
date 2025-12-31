@@ -129,7 +129,7 @@ export default function FeaturedProject() {
               className="absolute top-4 right-4 rounded-xl shadow-lg p-4 z-20"
               style={{ backgroundColor: '#F0C419' }}
             >
-              <div className="text-2xl font-bold text-slate-900">65K+</div>
+              <div className="text-2xl font-bold text-slate-900">72K+</div>
               <div className="text-sm text-slate-900/90">Lives Benefited</div>
             </motion.div>
           </motion.div>
@@ -150,7 +150,15 @@ export default function FeaturedProject() {
                 viewport={{ once: true }}
                 className="text-2xl lg:text-3xl font-bold text-slate-900 mb-4 mt-4 lg:mt-0"
               >
-                OGSTEP: World Bank Economic Transformation Initiative
+                <a 
+                  href="https://ogstep.org.ng/about-ogstep" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-primary-700 transition-colors"
+                  title="Learn more about OGSTEP"
+                >
+                  OGSTEP: World Bank Economic Transformation Initiative
+                </a>
               </motion.h3>
               
               <motion.p 
@@ -160,7 +168,16 @@ export default function FeaturedProject() {
                 viewport={{ once: true }}
                 className="text-lg text-slate-600 leading-relaxed lg:leading-normal mb-6 lg:mb-4"
               >
-                Led a <span className="font-bold text-2xl text-primary-700 inline-block mx-1">$250M</span> World Bank initiative achieving 40% efficiency gains and impacting{' '}
+                Directing the OGSTEP project, a <span className="font-bold text-2xl text-primary-700 inline-block mx-1">$250M</span>{' '}
+                <a 
+                  href="https://projects.worldbank.org/en/projects-operations/projects-list?countrycode_exact=NG&title=Nigeria&countryshortname_exact=Nigeria&status_exact=Active&os=0&strdate=01-01-2020&enddate=12-22-2021#:~:text=Ogun%20State%20Economic%20Transformation%20Project" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="font-semibold text-primary-600 hover:text-primary-700 underline decoration-2 underline-offset-2"
+                  title="View World Bank project details"
+                >
+                  World Bank
+                </a>-funded initiative designed to drive Ogun State's industrial renaissance. As Project Coordinator, lead a cross-functional delivery team across agriculture, technology, and vocational education, achieving an 85% project success rate state-wide with{' '}
                 <a 
                   href="https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/" 
                   target="_blank" 
@@ -169,8 +186,7 @@ export default function FeaturedProject() {
                   title="Click to verify from official source"
                 >
                   72,000+ beneficiaries
-                </a>{' '}
-                in Ogun State. As Project Coordinator, spearheaded multi-sectoral strategy spanning private sector participation, agri-food value chains, and statewide skills development.
+                </a>.
               </motion.p>
             </div>
 
@@ -186,19 +202,19 @@ export default function FeaturedProject() {
               {[
                 {
                   icon: <Building2 className="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" />,
-                  text: 'Governance & Business Reform: Streamlining land administration processes (e.g., 15,000+ C of Os issued) and advancing digital governance.'
+                  text: 'Institutional Reform: Digitized land administration via OLARMS, successfully issuing 15,000+ Certificates of Occupancy to unlock private sector investment and improve the Ease of Doing Business.'
                 },
                 {
                   icon: <Users className="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" />,
-                  text: 'Multi-Sectoral Coordination: Successfully aligning the objectives of the World Bank, State Ministries, and numerous private sector stakeholders.'
+                  text: 'Strategic Partnerships: Harmonized policy objectives between the World Bank, Federal Ministries, and private off-takers to ensure sustainable economic growth.'
                 },
                 {
                   icon: <GraduationCap className="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" />,
-                  text: 'Human Capital Development: Overseeing the rehabilitation of 8 Technical Colleges and skills training for 17,000+ beneficiaries.'
+                  text: 'Modern Education: Revitalized 8 Government Technical Colleges and equipped 34 institutions with smart-learning labs and vocational STEM infrastructure under the Skills Development Fund.'
                 },
                 {
                   icon: <Sprout className="w-5 h-5 text-primary-600 mt-0.5 flex-shrink-0" />,
-                  text: 'Agri-food Value Chain: Implementing digital management systems (OGFIMS) that digitized 160,000 farmers and value chain actors.'
+                  text: 'Agricultural Innovation: Launched OGFIMS, a first-of-its-kind digital registry, integrating 160,000 farmers into a modern, commercialized value chain.'
                 }
               ].map((item, index) => (
                 <motion.div
