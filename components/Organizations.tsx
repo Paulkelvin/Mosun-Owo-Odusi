@@ -29,7 +29,7 @@ export default function Organizations() {
                 whileInView={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-gold-500 to-transparent rounded-full origin-left"
+                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-blue-500 to-transparent rounded-full origin-left"
               />
             </h2>
           </motion.div>
