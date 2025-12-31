@@ -1122,8 +1122,9 @@ export default function Projects() {
                 </div>
               )}
             </motion.div>
-          </div>
-          </motion.div>
+          </AnimatePresence>
+        </div>
+        </motion.div>
         )}
       </AnimatePresence>
     </div>
