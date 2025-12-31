@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
+import DotPattern from './DotPattern'
 
 export default function Hero() {
 
@@ -16,6 +17,10 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden" style={{ height: 'calc(100vh - 64px)', minHeight: 'calc(100vh - 64px)' }}>
+      {/* Dot patterns */}
+      <DotPattern position="top-left" color="gold" size="sm" rows={4} cols={5} opacity={0.4} />
+      <DotPattern position="bottom-right" color="blue" size="sm" rows={5} cols={4} opacity={0.3} />
+      
       {/* Background image */}
       <div className="absolute inset-0">
         <Image

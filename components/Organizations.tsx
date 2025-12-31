@@ -15,29 +15,21 @@ export default function Organizations() {
     <section aria-labelledby="orgs-heading" className="w-full bg-white">
       <div className="py-12 md:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Heading block with accent bar to match section styles */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-8"
+            className="text-center mb-16"
           >
-            <motion.div
-              initial={{ opacity: 0, scaleX: 0 }}
-              whileInView={{ opacity: 1, scaleX: 1 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              viewport={{ once: true }}
-              className="w-10 h-0.5 bg-gradient-to-r from-primary-600 to-primary-700 mx-auto mb-3"
-            />
-            <h2 id="orgs-heading" className="text-2xl lg:text-3xl font-semibold text-slate-900 relative inline-block">
+            <h2 id="orgs-heading" className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 relative inline-block">
               Organizations I&apos;ve Worked With
-              <motion.span
+              <motion.div 
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary-500 via-gold-500 to-primary-600 origin-left"
+                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-gold-500 to-transparent rounded-full origin-left"
               />
             </h2>
           </motion.div>

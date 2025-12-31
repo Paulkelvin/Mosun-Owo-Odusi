@@ -6,6 +6,7 @@ import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import HighlightText from './HighlightText'
+import DotPattern from './DotPattern'
 
 export default function FeaturedProject() {
   const ref = useRef<HTMLDivElement>(null)
@@ -25,7 +26,9 @@ export default function FeaturedProject() {
   const glowOpacity = useTransform(scrollYProgress, [0, 0.25, 0.75, 1], [0, 0.38, 0.56, 0.78])
 
   return (
-    <section className="section-padding bg-gradient-to-br from-slate-50 via-white to-primary-50/30 overflow-hidden lg:py-16">
+    <section className="section-padding bg-gradient-to-br from-slate-50 via-white to-primary-50/30 overflow-hidden lg:py-16 relative">
+      <DotPattern position="center-right" color="primary" size="sm" rows={5} cols={5} opacity={0.25} />
+      
       <div className="container-custom max-w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}

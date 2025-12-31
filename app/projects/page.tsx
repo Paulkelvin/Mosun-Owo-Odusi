@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Users, DollarSign, Calendar, MapPin, Award, TrendingUp, Briefcase, ChevronDown, ChevronUp, Image as ImageIcon, Presentation, X } from 'lucide-react'
 import HighlightText from '@/components/HighlightText'
 import Image from 'next/image'
+import DotPattern from '@/components/DotPattern'
 
 // Enhanced project data structure with milestones
 const projects = [
@@ -398,6 +399,9 @@ export default function Projects() {
     <div className="min-h-screen">
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden -mt-16 lg:-mt-20 pt-16 lg:pt-20">
+        <DotPattern position="top-right" color="gold" size="md" rows={4} cols={4} opacity={0.5} />
+        <DotPattern position="bottom-left" color="blue" size="sm" rows={5} cols={5} opacity={0.4} />
+        
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
