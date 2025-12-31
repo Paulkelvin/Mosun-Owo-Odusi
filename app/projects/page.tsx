@@ -100,7 +100,7 @@ const projects = [
         description: "Provided leadership for comprehensive reforms that facilitated the issuance of over 15,000 Certificates of Occupancy and deployment of cutting-edge GIS/CORS infrastructure and high-tech survey equipment transforming geospatial capacity statewide.",
         achievements: [
           "Led reforms facilitating issuance of over 15,000 Certificates of Occupancy - https://progressivenews.ng/65000-beneficiaries-uplifted-by-oguns-economic-transformation-project-in-five-years/#:~:text=Over%2015%2C000%20Certificates%20of%20Occupancy%20have%20been%20issued%20to%20enhance%20business%20confidence.",
-          "Oversaw deployment of high-tech survey equipment and GIS/CORS (Continuously Operating Reference Stations) infrastructure spanning entire state",
+          "Oversaw deployment of high-tech survey equipment and GIS/CORS (Continuously Operating Reference Stations) infrastructure spanning entire state - https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/#:~:text=Owo%2DOdusi%20said%20that%20the%20project,the%20entire%20state%2C%20transforming%20geospatial%20capacity.",
           "Coordinated implementation of modern geospatial technology unlocking land value for citizens and government, creating wealth through improved land administration",
           "Supervised rehabilitation of zonal planning offices with GIS-based land management systems",
           "Led public service reform initiatives strengthening procurement systems and monitoring frameworks",
@@ -397,7 +397,7 @@ export default function Projects() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden pt-16 lg:pt-20">
+      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{

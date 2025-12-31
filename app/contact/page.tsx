@@ -9,7 +9,7 @@ export default function Contact() {
   return (
     <div className="min-h-screen">
       {/* Hero Section with Image */}
-      <section className="relative h-96 lg:h-[500px] overflow-hidden pt-16 lg:pt-20">
+      <section className="relative h-96 lg:h-[500px] overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
