@@ -397,7 +397,7 @@ export default function Projects() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden -mt-16 lg:-mt-20 pt-16 lg:pt-20">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
@@ -677,7 +677,7 @@ export default function Projects() {
                                     {currentMilestone.images.length > 0 && (
                                       <div className="mb-4">
                                         <div className="relative">
-                                          <div className="flex lg:flex-col items-center lg:items-stretch gap-2">
+                                          <div className="flex lg:flex-row items-center lg:items-stretch gap-2">
                                             {/* Main Image Display */}
                                             <motion.div 
                                               className="relative w-full lg:w-full h-48 lg:h-56 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 cursor-grab active:cursor-grabbing"

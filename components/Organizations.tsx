@@ -30,8 +30,15 @@ export default function Organizations() {
               viewport={{ once: true }}
               className="w-10 h-0.5 bg-gradient-to-r from-primary-600 to-primary-700 mx-auto mb-3"
             />
-            <h2 id="orgs-heading" className="text-2xl lg:text-3xl font-semibold text-slate-900">
+            <h2 id="orgs-heading" className="text-2xl lg:text-3xl font-semibold text-slate-900 relative inline-block">
               Organizations I&apos;ve Worked With
+              <motion.span
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+                viewport={{ once: true }}
+                className="absolute -bottom-1 left-0 right-0 h-0.5 bg-gradient-to-r from-primary-500 via-gold-500 to-primary-600 origin-left"
+              />
             </h2>
           </motion.div>
           
