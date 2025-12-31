@@ -66,9 +66,10 @@ const projects = [
           "Produce Offtake": "283,000 MT"
         },
         images: [
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300"
+          "/images/Agric_OGSFAFA.JPG",
+          "/images/Agric_OGSFAFA2.JPG",
+          "/images/OGSTEP_Agric.JPG",
+          "/images/OGSTEP_Agric (1).JPG"
         ]
       },
       {
@@ -89,9 +90,7 @@ const projects = [
           "Skills Beneficiaries": "39,000+"
         },
         images: [
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300"
+          "/images/OGSTEP_skills.JPG"
         ]
       },
       {
@@ -240,6 +239,7 @@ export default function Projects() {
   const [isPresentationMode, setIsPresentationMode] = useState(false)
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0)
   const [presentationImageIndex, setPresentationImageIndex] = useState(0)
+  const [slideDirection, setSlideDirection] = useState<1 | -1>(1)
 
   // Check URL for presentation parameter
   useEffect(() => {
@@ -287,6 +287,7 @@ export default function Projects() {
     
     const timer = setTimeout(() => {
       if (currentSlideIndex < currentProject.milestones.length - 1) {
+        setSlideDirection(1)
         setCurrentSlideIndex(prev => prev + 1)
         setPresentationImageIndex(0) // Reset image index for new slide
       } else {
@@ -906,29 +907,44 @@ export default function Projects() {
               <div className="pointer-events-none absolute inset-0 translate-y-6 scale-[0.96] -rotate-3 rounded-2xl bg-slate-900/80 border border-slate-800/80 shadow-[0_40px_80px_rgba(15,23,42,0.7)]" />
               <div className="pointer-events-none absolute inset-0 translate-y-3 scale-[0.98] rotate-2 rounded-2xl bg-slate-900/90 border border-slate-700/80" />
 
-              <motion.div
-                key={currentSlideIndex}
-                initial={{ opacity: 0, x: 80, rotateZ: 6, scale: 0.96 }}
-                animate={{ opacity: 1, x: 0, rotateZ: 0, scale: 1 }}
-                exit={{ opacity: 0, x: -80, rotateZ: -6, scale: 0.96 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-                drag="x"
-                dragConstraints={{ left: 0, right: 0 }}
-                dragElastic={0.2}
-                onDragEnd={(e, { offset, velocity }) => {
-                  const swipe = offset.x * velocity.x
-                  if (swipe < -10000 && currentSlideIndex < currentProject.milestones.length - 1) {
-                    setCurrentSlideIndex(prev => prev + 1)
-                    setPresentationImageIndex(0)
-                  } else if (swipe > 10000 && currentSlideIndex > 0) {
-                    setCurrentSlideIndex(prev => prev - 1)
-                    setPresentationImageIndex(0)
-                  }
-                }}
-                onClick={(e) => e.stopPropagation()}
-                className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-2xl cursor-grab active:cursor-grabbing border border-slate-700/80"
-                style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
-              >
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={currentSlideIndex}
+                  initial={{
+                    opacity: 0,
+                    x: slideDirection === 1 ? 140 : -140,
+                    rotateZ: slideDirection === 1 ? 6 : -6,
+                    scale: 0.96
+                  }}
+                  animate={{ opacity: 1, x: 0, rotateZ: 0, scale: 1 }}
+                  exit={{
+                    opacity: 0,
+                    x: slideDirection === 1 ? -140 : 140,
+                    rotateZ: slideDirection === 1 ? -6 : 6,
+                    scale: 0.96
+                  }}
+                  transition={{ duration: 0.6, ease: "easeInOut" }}
+                  drag="x"
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.2}
+                  onDragEnd={(_e, info) => {
+                    const swipePower = Math.abs(info.offset.x) * info.velocity.x
+                    const swipeThreshold = 2000
+
+                    if ((info.offset.x < -60 || swipePower < -swipeThreshold) && currentSlideIndex < currentProject.milestones.length - 1) {
+                      setSlideDirection(1)
+                      setCurrentSlideIndex(prev => prev + 1)
+                      setPresentationImageIndex(0)
+                    } else if ((info.offset.x > 60 || swipePower > swipeThreshold) && currentSlideIndex > 0) {
+                      setSlideDirection(-1)
+                      setCurrentSlideIndex(prev => prev - 1)
+                      setPresentationImageIndex(0)
+                    }
+                  }}
+                  onClick={(e) => e.stopPropagation()}
+                  className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-2xl cursor-grab active:cursor-grabbing border border-slate-700/80"
+                  style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+                >
               {currentProject.milestones[currentSlideIndex] && (
                 <div className="flex flex-col lg:flex-row gap-0 h-full">
                   {/* Images Section - Horizontal grid on desktop, carousel on mobile */}
@@ -1076,6 +1092,7 @@ export default function Projects() {
                           onClick={(e) => {
                             e.stopPropagation()
                             if (currentSlideIndex > 0) {
+                              setSlideDirection(-1)
                               setCurrentSlideIndex(prev => prev - 1)
                               setPresentationImageIndex(0)
                             }
@@ -1089,6 +1106,7 @@ export default function Projects() {
                           onClick={(e) => {
                             e.stopPropagation()
                             if (currentSlideIndex < currentProject.milestones.length - 1) {
+                              setSlideDirection(1)
                               setCurrentSlideIndex(prev => prev + 1)
                               setPresentationImageIndex(0)
                             }
