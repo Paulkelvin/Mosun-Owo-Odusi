@@ -37,15 +37,6 @@ export default function FeaturedProject() {
           viewport={{ once: true }}
           className="text-center mb-6 lg:mb-10"
         >
-          {/* Partial Bar Accent */}
-          <motion.div
-            initial={{ opacity: 0, scaleX: 0 }}
-            whileInView={{ opacity: 1, scaleX: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            viewport={{ once: true }}
-            className="w-10 h-0.5 bg-gradient-to-r from-primary-600 to-primary-700 mx-auto mb-3"
-          />
-          
           {/* Main Heading with Split Font Weight/Color and animated underline */}
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
