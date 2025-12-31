@@ -108,7 +108,7 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
 
         {/* Video Container */}
         <div className="relative mb-6 rounded-2xl overflow-hidden bg-slate-100">
-          <div className="aspect-[16/9] lg:aspect-[2/1] relative">
+          <div className="aspect-[16/9] lg:aspect-[5/3] xl:aspect-[16/7] relative">
             {!isLoaded && (
               <div 
                 className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center cursor-pointer"

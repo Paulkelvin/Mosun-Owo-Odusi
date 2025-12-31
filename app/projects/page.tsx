@@ -901,29 +901,34 @@ export default function Projects() {
               <X className="w-6 h-6 text-white" />
             </button>
 
-            <motion.div
-              key={currentSlideIndex}
-              initial={{ opacity: 0, x: 100, rotateY: 15 }}
-              animate={{ opacity: 1, x: 0, rotateY: 0 }}
-              exit={{ opacity: 0, x: -100, rotateY: -15, scale: 0.9 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              drag="x"
-              dragConstraints={{ left: 0, right: 0 }}
-              dragElastic={0.2}
-              onDragEnd={(e, { offset, velocity }) => {
-                const swipe = offset.x * velocity.x
-                if (swipe < -10000 && currentSlideIndex < currentProject.milestones.length - 1) {
-                  setCurrentSlideIndex(prev => prev + 1)
-                  setPresentationImageIndex(0)
-                } else if (swipe > 10000 && currentSlideIndex > 0) {
-                  setCurrentSlideIndex(prev => prev - 1)
-                  setPresentationImageIndex(0)
-                }
-              }}
-              onClick={(e) => e.stopPropagation()}
-              className="max-w-6xl w-full bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-2xl max-h-[90vh] lg:max-h-none cursor-grab active:cursor-grabbing"
-              style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
-            >
+            <div className="relative max-w-6xl w-full max-h-[90vh] lg:max-h-none">
+              {/* Stacked background cards for slanted deck effect */}
+              <div className="pointer-events-none absolute inset-0 translate-y-6 scale-[0.96] -rotate-3 rounded-2xl bg-slate-900/80 border border-slate-800/80 shadow-[0_40px_80px_rgba(15,23,42,0.7)]" />
+              <div className="pointer-events-none absolute inset-0 translate-y-3 scale-[0.98] rotate-2 rounded-2xl bg-slate-900/90 border border-slate-700/80" />
+
+              <motion.div
+                key={currentSlideIndex}
+                initial={{ opacity: 0, x: 80, rotateZ: 6, scale: 0.96 }}
+                animate={{ opacity: 1, x: 0, rotateZ: 0, scale: 1 }}
+                exit={{ opacity: 0, x: -80, rotateZ: -6, scale: 0.96 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.2}
+                onDragEnd={(e, { offset, velocity }) => {
+                  const swipe = offset.x * velocity.x
+                  if (swipe < -10000 && currentSlideIndex < currentProject.milestones.length - 1) {
+                    setCurrentSlideIndex(prev => prev + 1)
+                    setPresentationImageIndex(0)
+                  } else if (swipe > 10000 && currentSlideIndex > 0) {
+                    setCurrentSlideIndex(prev => prev - 1)
+                    setPresentationImageIndex(0)
+                  }
+                }}
+                onClick={(e) => e.stopPropagation()}
+                className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-2xl overflow-hidden shadow-2xl cursor-grab active:cursor-grabbing border border-slate-700/80"
+                style={{ transformStyle: 'preserve-3d', perspective: '1000px' }}
+              >
               {currentProject.milestones[currentSlideIndex] && (
                 <div className="flex flex-col lg:flex-row gap-0 h-full">
                   {/* Images Section - Horizontal grid on desktop, carousel on mobile */}
@@ -1099,6 +1104,7 @@ export default function Projects() {
                 </div>
               )}
             </motion.div>
+          </div>
           </motion.div>
         )}
       </AnimatePresence>
