@@ -461,10 +461,10 @@ export default function Projects() {
               </button>
               <button
                 onClick={handleNext}
-                className="p-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                className="p-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
                 title="Next project"
               >
-                <ChevronRight className="w-5 h-5" />
+                <ChevronRight className="w-5 h-5 text-slate-600" />
               </button>
             </div>
             
@@ -510,10 +510,10 @@ export default function Projects() {
                 </button>
                 <button
                   onClick={handleNext}
-                  className="p-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors"
+                  className="p-2 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors"
                   title="Next project"
                 >
-                  <ChevronRight className="w-5 h-5" />
+                  <ChevronRight className="w-5 h-5 text-slate-600" />
                 </button>
               </div>
             </div>
