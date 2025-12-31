@@ -427,20 +427,10 @@ export default function Projects() {
               <span className="whitespace-nowrap">Leadership</span> <HighlightText highlightColor="blue">Impact</HighlightText>
             </h2>
             <div className="max-w-3xl mx-auto mb-8">
-              <p className="text-xl text-slate-700 mb-4">
+              <p className="text-xl text-slate-700">
                 <span className="hidden lg:inline">From pioneering educational innovation since 2011 to leading transformative economic development projects, explore 15+ years of strategic leadership creating lasting impact.</span>
-                <span className="lg:hidden">15+ years of strategic leadership.</span>
+                <span className="lg:hidden">Explore 15+ years of strategic leadership and transformative impact.</span>
               </p>
-              <div className="hidden lg:flex flex-wrap items-center justify-center gap-4 text-sm text-slate-600">
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                  <span className="font-medium">2011-Present: Educational Innovation Era</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-3 h-3 bg-primary-500 rounded-full"></div>
-                  <span className="font-medium">2019-Present: Economic Development Leadership</span>
-                </div>
-              </div>
             </div>
             
             {/* Desktop Controls - Moved to top */}
@@ -532,10 +522,6 @@ export default function Projects() {
                 {/* Timeline Header */}
                 <div className="mb-8">
                   <h3 className="text-lg font-semibold text-slate-900 mb-2">Project Timeline</h3>
-                  <div className="text-sm text-slate-600">
-                    <div className="mb-1">📚 <strong>2011-Present:</strong> Educational Innovation</div>
-                    <div>🏛️ <strong>2019-Present:</strong> Economic Development</div>
-                  </div>
                 </div>
 
                 {/* Year Navigation */}
@@ -920,40 +906,57 @@ export default function Projects() {
             >
               {currentProject.milestones[currentSlideIndex] && (
                 <div className="flex flex-col lg:flex-row gap-0 h-full">
-                  {/* Images Section - Auto-sliding carousel */}
-                  <div className="lg:w-1/2 relative bg-slate-800 h-48 lg:h-auto overflow-hidden flex-shrink-0">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={`${currentSlideIndex}-${presentationImageIndex}`}
-                        initial={{ opacity: 0, x: 100 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -100 }}
-                        transition={{ duration: 0.5 }}
-                        className="absolute inset-0"
-                      >
-                        <Image
-                          src={currentProject.milestones[currentSlideIndex].images[presentationImageIndex]}
-                          alt={`${currentProject.milestones[currentSlideIndex].title} - Image ${presentationImageIndex + 1}`}
-                          fill
-                          className="object-cover"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
-                        
-                        {/* Image indicator dots */}
-                        {currentProject.milestones[currentSlideIndex].images.length > 1 && (
-                          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                            {currentProject.milestones[currentSlideIndex].images.map((_, idx) => (
-                              <div
-                                key={idx}
-                                className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                                  idx === presentationImageIndex ? 'bg-white w-8' : 'bg-white/50'
-                                }`}
-                              />
-                            ))}
-                          </div>
-                        )}
-                      </motion.div>
-                    </AnimatePresence>
+                  {/* Images Section - Horizontal grid on desktop, carousel on mobile */}
+                  <div className="lg:w-1/2 relative bg-slate-800 overflow-hidden flex-shrink-0">
+                    {/* Desktop: Show all 3 images in a grid */}
+                    <div className="hidden lg:grid lg:grid-cols-3 gap-2 p-4 h-full">
+                      {currentProject.milestones[currentSlideIndex].images.map((image, idx) => (
+                        <div key={idx} className="relative rounded-lg overflow-hidden">
+                          <Image
+                            src={image}
+                            alt={`${currentProject.milestones[currentSlideIndex].title} - Image ${idx + 1}`}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Mobile: Carousel with auto-sliding */}
+                    <div className="lg:hidden h-48 relative">
+                      <AnimatePresence mode="wait">
+                        <motion.div
+                          key={`${currentSlideIndex}-${presentationImageIndex}`}
+                          initial={{ opacity: 0, x: 100 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          exit={{ opacity: 0, x: -100 }}
+                          transition={{ duration: 0.5 }}
+                          className="absolute inset-0"
+                        >
+                          <Image
+                            src={currentProject.milestones[currentSlideIndex].images[presentationImageIndex]}
+                            alt={`${currentProject.milestones[currentSlideIndex].title} - Image ${presentationImageIndex + 1}`}
+                            fill
+                            className="object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent"></div>
+                          
+                          {/* Image indicator dots */}
+                          {currentProject.milestones[currentSlideIndex].images.length > 1 && (
+                            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                              {currentProject.milestones[currentSlideIndex].images.map((_, dotIdx) => (
+                                <div
+                                  key={dotIdx}
+                                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                    dotIdx === presentationImageIndex ? 'bg-white w-8' : 'bg-white/50'
+                                  }`}
+                                />
+                              ))}
+                            </div>
+                          )}
+                        </motion.div>
+                      </AnimatePresence>
+                    </div>
                   </div>
 
                   {/* Content Section */}
