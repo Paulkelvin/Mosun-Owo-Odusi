@@ -379,10 +379,12 @@ export default function Projects() {
             href={part}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-primary-600 hover:text-primary-700 underline"
+            className="inline-flex items-center gap-1 text-primary-600 hover:text-primary-700 font-medium ml-1"
             onClick={(e) => e.stopPropagation()}
+            title="Click to verify from official source"
           >
-            [Source]
+            <ExternalLink className="w-3.5 h-3.5" />
+            <span className="text-xs underline">Verified Source</span>
           </a>
         )
       }
@@ -1001,7 +1003,13 @@ export default function Projects() {
                       transition={{ duration: 0.5, delay: 0.3 }}
                       className="text-sm text-slate-300 mb-4 leading-relaxed"
                     >
-                      {currentProject.milestones[currentSlideIndex].description}
+                      <span className="font-semibold text-primary-300">Mosun Owo-Odusi</span>{' '}
+                      {currentProject.milestones[currentSlideIndex].description.toLowerCase().startsWith('provides') || 
+                       currentProject.milestones[currentSlideIndex].description.toLowerCase().startsWith('led') ||
+                       currentProject.milestones[currentSlideIndex].description.toLowerCase().startsWith('supervised') ||
+                       currentProject.milestones[currentSlideIndex].description.toLowerCase().startsWith('coordinated') ? 
+                        currentProject.milestones[currentSlideIndex].description.charAt(0).toLowerCase() + currentProject.milestones[currentSlideIndex].description.slice(1) : 
+                        'led ' + currentProject.milestones[currentSlideIndex].description.charAt(0).toLowerCase() + currentProject.milestones[currentSlideIndex].description.slice(1)}
                     </motion.p>
 
                     {/* Key Metrics (show only 2 most important) */}

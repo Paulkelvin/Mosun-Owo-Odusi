@@ -150,7 +150,7 @@ export default function FeaturedProject() {
                 viewport={{ once: true }}
                 className="text-lg text-slate-600 leading-relaxed lg:leading-normal mb-6 lg:mb-4"
               >
-                Spearheading a $250M World Bank-financed project focused on boosting private sector participation, enhancing agri-food value chains, and upgrading skills across Ogun State. As Project Coordinator, I led the multi-sectoral strategy and execution that drove these statewide reforms.
+                Led a <span className="font-bold text-2xl text-primary-700 inline-block mx-1">$250M</span> World Bank initiative achieving 40% efficiency gains and impacting 65,000+ beneficiaries in Ogun State. As Project Coordinator, spearheaded multi-sectoral strategy spanning private sector participation, agri-food value chains, and statewide skills development.
               </motion.p>
             </div>
 

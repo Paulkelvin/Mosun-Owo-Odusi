@@ -47,8 +47,8 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.1 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-6"
           >
-            <span className="block sm:inline">Driving Impact</span>{' '}
-            <span className="block sm:inline">Through Leadership</span>
+            <span className="block sm:inline">Transforming Communities,</span>{' '}
+            <span className="block sm:inline">One Project at a Time</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -67,10 +67,8 @@ export default function Hero() {
               <motion.button
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="relative btn-primary group overflow-hidden text-white"
-                style={{ clipPath: 'polygon(0% 0%, 95% 0%, 100% 100%, 5% 100%)' }}
+                className="btn-primary group text-white shadow-xl"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-primary-600 to-blue-700 transform -skew-x-2" />
                 <span className="relative z-10 flex items-center">
                   Explore Achievements
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
