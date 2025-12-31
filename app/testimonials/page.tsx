@@ -201,7 +201,7 @@ export default function Testimonials() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-primary-900 py-20 lg:py-28">
+      <section className="relative bg-primary-900 py-20 lg:py-28 mt-16 lg:mt-20">
         {/* Decorative elements */}
         <div className="absolute inset-0 overflow-hidden">
           {/* Top right accent */}

@@ -210,7 +210,7 @@ export default function OpportunitiesHub() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-50/30 via-white to-gold-50/20 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-primary-50/30 via-white to-gold-50/20 overflow-hidden mt-16 lg:mt-20">
         {/* Subtle background pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0" style={{
