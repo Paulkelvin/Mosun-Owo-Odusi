@@ -33,7 +33,7 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-primary-50">
       {/* Hero */}
-      <section className="section-padding pt-32 lg:pt-40">
+      <section className="section-padding pt-16 lg:pt-20">
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-4xl mx-auto mb-16">
             <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 rounded-full mb-6">

@@ -7,9 +7,9 @@ import Image from 'next/image'
 
 export default function Contact() {
   return (
-    <div className="min-h-screen pt-20">
+    <div className="min-h-screen">
       {/* Hero Section with Image */}
-      <section className="relative h-96 lg:h-[500px] overflow-hidden">
+      <section className="relative h-96 lg:h-[500px] overflow-hidden pt-16 lg:pt-20">
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image

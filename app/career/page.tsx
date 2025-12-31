@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function Career() {
   return (
-    <div className="min-h-screen pt-20 section-padding">
+    <div className="min-h-screen section-padding pt-16 lg:pt-20">
       <div className="container-custom">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
