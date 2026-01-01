@@ -19,7 +19,6 @@ export default function FeaturedProject() {
   // Ensure the image is fully scaled (1) as soon as the section heading appears,
   // then allow a subtle growth beyond 1 later in the scroll for depth
   const scale = useTransform(scrollYProgress, [0, 0.6, 1], [1, 1, 1.08])
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0.8])
 
   // Enhanced surround glow that becomes more visible as the section scrolls into view (solid color)
   const glowScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.92, 1, 1.08])
@@ -72,7 +71,7 @@ export default function FeaturedProject() {
           
           {/* Project Image with Parallax */}
           <motion.div 
-            style={{ y, opacity }}
+	        style={{ y }}
             className="relative overflow-hidden rounded-2xl"
           >
             {/* Surround Gradient Glow */}
@@ -90,13 +89,18 @@ export default function FeaturedProject() {
             >
               {/* Featured Project Image */}
               <Image
-                src="/images/Mosun_Owo-Odusi_OGSTEP_skills.JPG"
-                alt="Mosun Owo-Odusi speaking at OGSTEP skills development event"
+	        src="/images/OGSTEP_Agric (1).JPG"
+	        alt="OGSTEP agricultural field engagement with farmers"
                 fill
                 className="object-cover object-center"
                 priority
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
+              {/* Dark overlay to increase contrast and avoid washed-out appearance */}
+	      <div
+	        aria-hidden
+	        className="pointer-events-none absolute inset-0 bg-slate-900/35"
+	      />
             </motion.div>
             
             {/* Floating Stats - Gold background cards matching testimonial accent */}
