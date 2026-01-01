@@ -13,7 +13,7 @@ export default function Contact() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <Image
-            src="/images/mosun-portrait.png"
+	        src="/images/mosun_owo-odusi_portrait.png"
             alt="Mosun Owo-Odusi - Contact"
             fill
             className="object-cover object-center"

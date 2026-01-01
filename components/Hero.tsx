@@ -24,7 +24,7 @@ export default function Hero() {
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/mosun-portrait.png"
+	      src="/images/mosun_owo-odusi_portrait.png"
           alt="Mosun Owo-Odusi - Professional Portrait"
           fill
           className="object-cover object-center"

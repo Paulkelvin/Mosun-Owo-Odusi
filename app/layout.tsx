@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     siteName: 'Mosun Owo-Odusi Professional Website',
     images: [
       {
-        url: '/images/mosun-portrait.png',
+	        url: '/images/mosun_owo-odusi_portrait.png',
         width: 1200,
         height: 630,
         alt: 'Mosun Owo-Odusi - Professional Portrait',
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
     description: 'Mosun is a strategic leader specializing in project management, education consultancy, and real estate advisory with extensive World Bank experience.',
-    images: ['/images/mosun-portrait.png'],
+	    images: ['/images/mosun_owo-odusi_portrait.png'],
   },
   viewport: {
     width: 'device-width',

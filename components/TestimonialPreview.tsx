@@ -94,7 +94,7 @@ export default function TestimonialPreview() {
               <div className="flex items-center gap-4 pt-4 border-t border-slate-200">
                 <div className="relative w-12 h-12 rounded-full overflow-hidden bg-slate-200 flex-shrink-0 ring-2 ring-primary-100">
                   <Image
-                    src={t.imageSrc || '/images/mosun-portrait.png'}
+	                src={t.imageSrc || '/images/mosun_owo-odusi_portrait.png'}
                     alt={`${t.name} profile`}
                     fill
                     className="object-cover"
