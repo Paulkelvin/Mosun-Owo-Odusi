@@ -90,8 +90,8 @@ export default function FeaturedProject() {
             >
               {/* Featured Project Image */}
               <Image
-                src="/images/featured-project.png"
-                alt="Featured Project - Transformative Community Initiative"
+                src="/images/Mosun_Owo-Odusi_OGSTEP_skills.JPG"
+                alt="Mosun Owo-Odusi speaking at OGSTEP skills development event"
                 fill
                 className="object-cover object-center"
                 priority
