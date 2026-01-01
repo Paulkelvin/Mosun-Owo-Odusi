@@ -27,7 +27,7 @@ const projects = [
       {
         id: "overall_leadership",
         title: "Large-Scale Human Capital & Livelihood Impact",
-        period: "2019 – Present",
+        period: "2020 – 2025",
         description: "Provides overall coordination and leadership for OGSTEP, overseeing project interventions that directly benefitted over 72,000 Ogun State residents across agriculture, skills development, and institutional reforms.",
         achievements: [
           "Oversaw project interventions benefitting over 72,000 Ogun State residents - https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/",
@@ -39,7 +39,7 @@ const projects = [
           "Total Beneficiaries": "72,000+",
           "Skills Trainees": "39,000+",
           "Farmers Supported": "33,075",
-          "Project Timeline": "2019 – 2025"
+          "Project Timeline": "2020 – 2025"
         },
         images: [
           "/api/placeholder/400/300",
@@ -50,7 +50,7 @@ const projects = [
       {
         id: "establishment",
         title: "Agricultural Productivity & Value Chain Support",
-        period: "2019 – Present",
+        period: "2020 – 2025",
         description: "Led implementation of comprehensive agricultural interventions supporting 33,075 farmers across crop production, aquaculture, and poultry, with mechanisation covering over 9,000 hectares.",
         achievements: [
           "Supported 27,547 crop farmers, 4,256 aquaculture farmers, and 1,272 poultry farmers",
@@ -75,7 +75,7 @@ const projects = [
       {
         id: "implementation",
         title: "Skills Development & Education Infrastructure",
-        period: "2019 – Present",
+        period: "2020 – 2025",
         description: "Supervised the rehabilitation and equipping of educational facilities while coordinating capacity-building programmes for teachers and technical instructors across Ogun State.",
         achievements: [
           "Supervised rehabilitation and equipping of 8 technical colleges - https://punchng.com/ogun-upgrades-eight-technical-colleges-to-boost-vocational-training/",
@@ -96,7 +96,7 @@ const projects = [
       {
         id: "sustainability",
         title: "Land Administration & Business Enabling Environment Reforms",
-        period: "2019 – Present",
+        period: "2020 – 2025",
         description: "Provided leadership for comprehensive reforms that facilitated the issuance of over 15,000 Certificates of Occupancy and deployment of cutting-edge GIS/CORS infrastructure and high-tech survey equipment transforming geospatial capacity statewide.",
         achievements: [
           "Led reforms facilitating issuance of over 15,000 Certificates of Occupancy - https://progressivenews.ng/65000-beneficiaries-uplifted-by-oguns-economic-transformation-project-in-five-years/#:~:text=Over%2015%2C000%20Certificates%20of%20Occupancy%20have%20been%20issued%20to%20enhance%20business%20confidence.",
@@ -699,12 +699,23 @@ export default function Projects() {
                                                 }
                                               }}
                                             >
-                                              <Image
-                                                src={currentMilestone.images[milestoneImageIndex[currentMilestone.id] || 0]}
-                                                alt={`${currentMilestone.title} - Image ${(milestoneImageIndex[currentMilestone.id] || 0) + 1}`}
-                                                fill
-                                                className="object-cover"
-                                              />
+                                              <AnimatePresence mode="wait" initial={false}>
+                                                <motion.div
+                                                  key={milestoneImageIndex[currentMilestone.id] || 0}
+                                                  initial={{ opacity: 0, x: 40 }}
+                                                  animate={{ opacity: 1, x: 0 }}
+                                                  exit={{ opacity: 0, x: -40 }}
+                                                  transition={{ duration: 0.35, ease: "easeInOut" }}
+                                                  className="absolute inset-0"
+                                                >
+                                                  <Image
+                                                    src={currentMilestone.images[milestoneImageIndex[currentMilestone.id] || 0]}
+                                                    alt={`${currentMilestone.title} - Image ${(milestoneImageIndex[currentMilestone.id] || 0) + 1}`}
+                                                    fill
+                                                    className="object-cover"
+                                                  />
+                                                </motion.div>
+                                              </AnimatePresence>
                                               
                                               {/* Navigation Buttons */}
                                               {currentMilestone.images.length > 1 && (
@@ -734,7 +745,7 @@ export default function Projects() {
                                             
                                             {/* Partial Next Image Preview - horizontal on mobile, vertical on desktop */}
                                             {currentMilestone.images.length > 1 && (
-                                              <div className="relative w-16 lg:w-full h-48 lg:h-32 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 opacity-60">
+                                              <div className="relative w-16 lg:w-full h-48 lg:h-56 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 opacity-60">
                                                 <Image
                                                   src={currentMilestone.images[((milestoneImageIndex[currentMilestone.id] || 0) + 1) % currentMilestone.images.length]}
                                                   alt="Next image preview"
