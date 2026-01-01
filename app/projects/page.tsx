@@ -113,8 +113,12 @@ const projects = [
           "Institutional Reforms": "Implemented"
         },
         images: [
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300"
+          "/images/OGSTEP_CORS.webp",
+          "/images/OGSTEP_CORS2.webp",
+          "/images/OGSTEP_CORS_indoor_unit.webp",
+          "/images/OGSTEP_CORS_indoor_unit2.webp",
+          "/images/OGSTEP_CORS_Training_by_sivan_design.webp",
+          "/images/OGSTEP_surveying_equipment_training_by_Sivan_Design.webp"
         ]
       }
     ]
