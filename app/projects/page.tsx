@@ -403,11 +403,20 @@ export default function Projects() {
         <DotPattern position="top-right" color="gold" size="md" rows={4} cols={4} opacity={0.5} />
         <DotPattern position="bottom-left" color="blue" size="sm" rows={5} cols={5} opacity={0.4} />
         
-        {/* Background Pattern */}
+        {/* Background Pattern & Stripes */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Ccircle cx='30' cy='30' r='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
           }} />
+          {/* Subtle diagonal stripes on right half */}
+          <div
+            className="absolute inset-y-0 right-0 w-1/2"
+            style={{
+              backgroundImage:
+                "linear-gradient(135deg, rgba(255,255,255,0.12) 8%, transparent 8%, transparent 50%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.12) 58%, transparent 58%, transparent 100%)",
+              backgroundSize: '28px 28px',
+            }}
+          />
         </div>
 
         <div className="relative z-10 container-custom py-16 lg:py-24 flex items-center min-h-[400px] lg:min-h-[500px]">
@@ -426,8 +435,17 @@ export default function Projects() {
       </section>
 
       {/* Interactive Timeline Section */}
-      <section className="section-padding bg-slate-50">
-        <div className="container-custom max-w-full">
+      <section className="relative section-padding bg-slate-50 overflow-hidden">
+        {/* Decorative diagonal stripes in background */}
+        <div
+          className="pointer-events-none absolute -top-24 -left-24 w-72 h-72 opacity-10 rotate-3"
+          style={{
+            backgroundImage:
+              "linear-gradient(135deg, rgba(15,23,42,0.12) 8%, transparent 8%, transparent 50%, rgba(15,23,42,0.12) 50%, rgba(15,23,42,0.12) 58%, transparent 58%, transparent 100%)",
+            backgroundSize: '26px 26px',
+          }}
+        />
+        <div className="container-custom max-w-full relative z-10">
           {/* Section Header with Navigation */}
           <div className="text-center mb-12">
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
@@ -469,26 +487,8 @@ export default function Projects() {
               </button>
             </div>
             
-            {/* Mobile Navigation - Horizontal */}
+            {/* Mobile Navigation - Controls Only */}
             <div className="lg:hidden flex flex-col items-center gap-4 mb-8">
-              {/* Year Navigation - Horizontal on Mobile */}
-              <div className="flex items-center justify-center gap-2 overflow-x-auto pb-2 w-full">
-                {projects.map((project) => (
-                  <button
-                    key={project.id}
-                    onClick={() => handleYearClick(project.year)}
-                    className={`px-4 py-2 rounded-lg font-semibold transition-all duration-300 whitespace-nowrap ${
-                      selectedYear === project.year
-                        ? 'bg-primary-600 text-white shadow-lg'
-                        : 'bg-white text-slate-600 hover:bg-primary-50 border border-slate-200'
-                    }`}
-                  >
-                    <div className="text-sm font-bold">{project.duration}</div>
-                    <div className="text-xs opacity-75">{project.category.split(' ')[0]}</div>
-                  </button>
-                ))}
-              </div>
-              
               {/* Mobile Controls */}
               <div className="flex items-center gap-2">
                 <button
@@ -863,8 +863,17 @@ export default function Projects() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="section-padding bg-gradient-to-r from-primary-600 to-primary-700">
-        <div className="container-custom text-center">
+      <section className="relative section-padding bg-gradient-to-r from-primary-600 to-primary-700 overflow-hidden">
+        {/* Soft diagonal stripes behind CTA */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              "linear-gradient(135deg, rgba(15,23,42,0.18) 6%, transparent 6%, transparent 50%, rgba(15,23,42,0.18) 50%, rgba(15,23,42,0.18) 56%, transparent 56%, transparent 100%)",
+            backgroundSize: '32px 32px',
+          }}
+        />
+        <div className="container-custom text-center relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -877,13 +886,13 @@ export default function Projects() {
             <p className="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
               Let&apos;s collaborate to create meaningful impact and drive transformational change in your organization.
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/contact#message" className="px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white rounded-xl font-semibold transition-colors">
+            <div className="flex flex-col items-center justify-center">
+              <a
+                href="/contact#message"
+                className="px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white rounded-xl font-semibold transition-colors w-full sm:w-auto text-center"
+              >
                 Schedule a Consultation
               </a>
-              <button className="px-8 py-4 bg-white/10 hover:bg-white/20 text-white border border-white/30 rounded-xl font-semibold transition-colors">
-                Download Portfolio
-              </button>
             </div>
           </motion.div>
         </div>
