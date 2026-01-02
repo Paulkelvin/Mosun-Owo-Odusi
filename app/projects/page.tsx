@@ -229,6 +229,127 @@ const projects = [
   }
 ]
 
+type GalleryImage = {
+  src: string
+  alt: string
+  category: string
+}
+
+const galleryImages: GalleryImage[] = [
+  // OGSTEP leadership & outreach
+  {
+    src: '/images/OGSTEP_outreach.JPG',
+    alt: 'OGSTEP outreach session with community members',
+    category: 'Leadership & Outreach',
+  },
+  {
+    src: '/images/OGSTEP_Mosun_Owo-Odusi.JPG',
+    alt: 'Mosun Owo-Odusi speaking during OGSTEP session',
+    category: 'Leadership & Outreach',
+  },
+  {
+    src: '/images/OGSTEP_Agric2.JPG',
+    alt: 'OGSTEP field engagement with farmers',
+    category: 'Leadership & Outreach',
+  },
+  // Agric value chain
+  {
+    src: '/images/Agric_OGSFAFA.JPG',
+    alt: 'Farmers participating in OGSTEP agricultural programme',
+    category: 'Agriculture & Value Chains',
+  },
+  {
+    src: '/images/Agric_OGSFAFA2.JPG',
+    alt: 'OGSTEP-supported agricultural activities in Ogun State',
+    category: 'Agriculture & Value Chains',
+  },
+  {
+    src: '/images/OGSTEP_Agric.JPG',
+    alt: 'OGSTEP agricultural training and demonstration',
+    category: 'Agriculture & Value Chains',
+  },
+  {
+    src: '/images/OGSTEP_Agric (1).JPG',
+    alt: 'Featured OGSTEP agricultural field visit',
+    category: 'Agriculture & Value Chains',
+  },
+  // Skills & education
+  {
+    src: '/images/OGSTEP_skills.JPG',
+    alt: 'Skills development session under OGSTEP',
+    category: 'Skills & Education',
+  },
+  {
+    src: '/images/OGSTEP_skills1.jpeg',
+    alt: 'Participants at OGSTEP skills training',
+    category: 'Skills & Education',
+  },
+  {
+    src: '/images/OGSTEP_skills2.jpeg',
+    alt: 'Hands-on technical training session',
+    category: 'Skills & Education',
+  },
+  {
+    src: '/images/OGSTEP_skills3.jpeg',
+    alt: 'Group photo from OGSTEP skills programme',
+    category: 'Skills & Education',
+  },
+  // Land administration & CORS infrastructure
+  {
+    src: '/images/OGSTEP_CORS.webp',
+    alt: 'OGSTEP CORS geospatial infrastructure mast',
+    category: 'Land Administration & GIS',
+  },
+  {
+    src: '/images/OGSTEP_CORS2.webp',
+    alt: 'CORS station equipment installed outdoors',
+    category: 'Land Administration & GIS',
+  },
+  {
+    src: '/images/OGSTEP_CORS_indoor_unit.webp',
+    alt: 'Indoor CORS control unit rack',
+    category: 'Land Administration & GIS',
+  },
+  {
+    src: '/images/OGSTEP_CORS_indoor_unit2.webp',
+    alt: 'Detail view of CORS indoor equipment',
+    category: 'Land Administration & GIS',
+  },
+  {
+    src: '/images/OGSTEP_CORS_Training_by_sivan_design.webp',
+    alt: 'Training on geospatial systems by technical partners',
+    category: 'Land Administration & GIS',
+  },
+  {
+    src: '/images/OGSTEP_surveying_equipment_training_by_Sivan_Design.webp',
+    alt: 'Surveying equipment demonstration during OGSTEP training',
+    category: 'Land Administration & GIS',
+  },
+  // Additional gallery images (compressed set)
+  { src: '/images/gallery/IMG_0807.jpg', alt: 'Project field photo 1', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0808.jpg', alt: 'Project field photo 2', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0815.jpg', alt: 'Project field photo 3', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0816.jpg', alt: 'Project field photo 4', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0817.jpg', alt: 'Project field photo 5', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0818.jpg', alt: 'Project field photo 6', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0819.jpg', alt: 'Project field photo 7', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0820.jpg', alt: 'Project field photo 8', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0821.jpg', alt: 'Project field photo 9', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0822.jpg', alt: 'Project field photo 10', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0823.jpg', alt: 'Project field photo 11', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0824.jpg', alt: 'Project field photo 12', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0827.jpg', alt: 'Project field photo 13', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0828.jpg', alt: 'Project field photo 14', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0829.jpg', alt: 'Project field photo 15', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0830.jpg', alt: 'Project field photo 16', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0831.jpg', alt: 'Project field photo 17', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0833.jpg', alt: 'Project field photo 18', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0834.jpg', alt: 'Project field photo 19', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0835.jpg', alt: 'Project field photo 20', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0836.jpg', alt: 'Project field photo 21', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0837.jpg', alt: 'Project field photo 22', category: 'Field Highlights' },
+]
+
 export default function Projects() {
   const [selectedYear, setSelectedYear] = useState(2024)
   const [isAutoPlay, setIsAutoPlay] = useState(false)
@@ -692,11 +813,10 @@ export default function Projects() {
                                               dragElastic={0.2}
                                               dragConstraints={{ left: 0, right: 0 }}
                                               onDragEnd={(_e, info) => {
-                                                const swipeConfidence = (offset: number, velocity: number) => Math.abs(offset) * velocity
-                                                const swipe = swipeConfidence(info.offset.x, info.velocity.x)
-                                                if (info.offset.x < -50 || swipe < -4000) {
+                                                const threshold = 50
+                                                if (info.offset.x < -threshold) {
                                                   handleMilestoneImageNext(currentMilestone.id, currentMilestone.images.length)
-                                                } else if (info.offset.x > 50 || swipe > 4000) {
+                                                } else if (info.offset.x > threshold) {
                                                   handleMilestoneImagePrev(currentMilestone.id, currentMilestone.images.length)
                                                 }
                                               }}
@@ -864,6 +984,73 @@ export default function Projects() {
         </div>
       </section>
 
+      {/* Visual Gallery Section */}
+      <section className="section-padding bg-slate-950 relative overflow-hidden">
+        <DotPattern position="top-left" color="gold" size="sm" rows={4} cols={5} opacity={0.4} />
+        <DotPattern position="bottom-right" color="blue" size="sm" rows={5} cols={4} opacity={0.35} />
+
+        {/* Soft radial glow */}
+        <div className="pointer-events-none absolute inset-0 opacity-40">
+          <div className="absolute -top-32 right-0 w-80 h-80 bg-primary-500/30 blur-3xl rounded-full" />
+          <div className="absolute -bottom-32 left-0 w-80 h-80 bg-gold-500/20 blur-3xl rounded-full" />
+        </div>
+
+        <div className="container-custom relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-10 lg:mb-14"
+          >
+            <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              Project Gallery
+            </h2>
+            <p className="text-slate-200/80 max-w-2xl mx-auto text-lg">
+              A visual story of agricultural transformation, skills development, and geospatial reforms across the OGSTEP portfolio.
+            </p>
+          </motion.div>
+
+          {/* Masonry-style animated gallery */}
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">{/* masonry container */}
+            {galleryImages.map((img, index) => (
+              <motion.div
+                key={img.src + index}
+                className="mb-4 break-inside-avoid rounded-2xl overflow-hidden relative group shadow-[0_18px_45px_rgba(15,23,42,0.6)] border border-slate-800/60 bg-slate-900/70"
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.03 }}
+                whileHover={{ y: -6 }}
+              >
+                <div className="relative w-full overflow-hidden">
+                  <div className="relative w-full h-64">
+                    <Image
+                      src={img.src}
+                      alt={img.alt}
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
+                  </div>
+
+                  {/* Label overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-col gap-1">
+                    <span className="inline-flex px-2.5 py-1 rounded-full text-[11px] font-medium bg-slate-900/80 text-slate-100 border border-slate-700/80 w-fit">
+                      {img.category}
+                    </span>
+                    <p className="text-sm text-slate-100/95 leading-snug text-left">
+                      {img.alt}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Call to Action Section */}
       <section className="relative section-padding bg-gradient-to-r from-primary-600 to-primary-700 overflow-hidden">
         {/* Soft diagonal stripes behind CTA */}
@@ -950,14 +1137,13 @@ export default function Projects() {
                   dragConstraints={{ left: 0, right: 0 }}
                   dragElastic={0.2}
                   onDragEnd={(_e, info) => {
-                    const swipePower = Math.abs(info.offset.x) * info.velocity.x
-                    const swipeThreshold = 2000
+                    const threshold = 60
 
-                    if ((info.offset.x < -60 || swipePower < -swipeThreshold) && currentSlideIndex < currentProject.milestones.length - 1) {
+                    if (info.offset.x < -threshold && currentSlideIndex < currentProject.milestones.length - 1) {
                       setSlideDirection(1)
                       setCurrentSlideIndex(prev => prev + 1)
                       setPresentationImageIndex(0)
-                    } else if ((info.offset.x > 60 || swipePower > swipeThreshold) && currentSlideIndex > 0) {
+                    } else if (info.offset.x > threshold && currentSlideIndex > 0) {
                       setSlideDirection(-1)
                       setCurrentSlideIndex(prev => prev - 1)
                       setPresentationImageIndex(0)
