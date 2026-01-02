@@ -206,7 +206,7 @@ export default function About() {
   return (
     <div className="min-h-screen">
       {/* Hero Section with Background Image */}
-      <section className="relative overflow-hidden mt-16 lg:mt-20">
+      <section id="about-hero" className="relative overflow-hidden mt-16 lg:mt-20">
         <div className="absolute inset-0">
           <Image
             src="/images/mosun_owo-odusi_portrait.png"
@@ -239,7 +239,7 @@ export default function About() {
       </section>
 
       {/* Client About Input Section */}
-      <section className="py-16 bg-slate-50 border-b border-slate-200">
+      <section id="about-share" className="py-16 bg-slate-50 border-b border-slate-200">
         <div className="container-custom max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -415,7 +415,7 @@ export default function About() {
       </section>
 
       {/* Education & Certifications Section */}
-      <section className="section-padding bg-gradient-to-br from-slate-50 via-primary-50/30 to-white">
+      <section id="about-education" className="section-padding bg-gradient-to-br from-slate-50 via-primary-50/30 to-white">
         <div className="container-custom">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -750,7 +750,7 @@ export default function About() {
           </div>
         </div>
       </section>
-      <ScrollControls showNextSection nextSectionId="career-timeline" />
+      <ScrollControls sections={["about-hero", "about-share", "career-timeline", "about-education"]} />
     </div>
   )
 }

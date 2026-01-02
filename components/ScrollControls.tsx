@@ -7,10 +7,13 @@ import { ChevronUp, ChevronDown, ArrowDownRight } from "lucide-react"
 interface ScrollControlsProps {
   showNextSection?: boolean
   nextSectionId?: string
+  sections?: string[]
 }
-const ScrollControls = ({ showNextSection = false, nextSectionId, sections }: ScrollControlsProps & { sections?: string[] }) => {
+
+const ScrollControls = ({ showNextSection = false, nextSectionId, sections }: ScrollControlsProps) => {
   const [isVisible, setIsVisible] = useState(false)
   const [activeSectionIndex, setActiveSectionIndex] = useState(0)
+  const [scrollDirection, setScrollDirection] = useState<'down' | 'up'>('down')
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -81,22 +84,55 @@ const ScrollControls = ({ showNextSection = false, nextSectionId, sections }: Sc
       }
 
       setActiveSectionIndex(prev => (prev !== closest.index ? closest.index : prev))
+
+      // At the very top, default direction is "down"; at the very bottom, "up".
+      if (closest.index === 0 && scrollDirection !== 'down') {
+        setScrollDirection('down')
+      } else if (closest.index === sections.length - 1 && scrollDirection !== 'up') {
+        setScrollDirection('up')
+      }
     }
 
     handleSectionScroll()
     window.addEventListener("scroll", handleSectionScroll)
     return () => window.removeEventListener("scroll", handleSectionScroll)
-  }, [sections])
+  }, [sections, scrollDirection])
 
   const handleDynamicMiddleClick = () => {
     if (!sections || sections.length === 0) return
+    const lastIndex = sections.length - 1
 
-    if (activeSectionIndex < sections.length - 1) {
-      scrollToSectionId(sections[activeSectionIndex + 1])
-    } else if (activeSectionIndex > 0) {
-      scrollToSectionId(sections[activeSectionIndex - 1])
-    } else if (sections.length > 1) {
-      scrollToSectionId(sections[1])
+    if (scrollDirection === 'down') {
+      // Move down until we hit the last section, then flip direction
+      if (activeSectionIndex < lastIndex) {
+        const nextIndex = activeSectionIndex + 1
+        scrollToSectionId(sections[nextIndex])
+        setActiveSectionIndex(nextIndex)
+        if (nextIndex === lastIndex) {
+          setScrollDirection('up')
+        }
+      } else if (activeSectionIndex === lastIndex && lastIndex > 0) {
+        const prevIndex = lastIndex - 1
+        scrollToSectionId(sections[prevIndex])
+        setActiveSectionIndex(prevIndex)
+        setScrollDirection('up')
+      }
+    } else {
+      // scrollDirection === 'up'
+      // Move up until we reach the top, then flip direction
+      if (activeSectionIndex > 0) {
+        const prevIndex = activeSectionIndex - 1
+        scrollToSectionId(sections[prevIndex])
+        setActiveSectionIndex(prevIndex)
+        if (prevIndex === 0 && sections.length > 1) {
+          setScrollDirection('down')
+        }
+      } else if (activeSectionIndex === 0 && lastIndex > 0) {
+        const nextIndex = 1
+        scrollToSectionId(sections[nextIndex])
+        setActiveSectionIndex(nextIndex)
+        setScrollDirection('down')
+      }
     }
   }
 
@@ -125,9 +161,9 @@ const ScrollControls = ({ showNextSection = false, nextSectionId, sections }: Sc
                 type="button"
                 onClick={handleDynamicMiddleClick}
                 className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/60 hover:bg-slate-700/80 text-slate-100 transition-colors text-[11px]"
-                aria-label={activeSectionIndex === sections.length - 1 && sections.length > 1 ? "Scroll to previous section" : "Scroll to next section"}
+                aria-label={scrollDirection === 'up' ? "Scroll to previous section" : "Scroll to next section"}
               >
-                {activeSectionIndex === sections.length - 1 && sections.length > 1 ? (
+                {scrollDirection === 'up' ? (
                   <ChevronUp className="h-4 w-4" />
                 ) : (
                   <ChevronDown className="h-4 w-4" />
