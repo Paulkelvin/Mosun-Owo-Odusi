@@ -531,7 +531,7 @@ export default function Projects() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden mt-16 lg:mt-20">
+      <section id="projects-hero" className="relative bg-gradient-to-br from-primary-900 via-primary-800 to-primary-900 overflow-hidden mt-16 lg:mt-20">
         <DotPattern position="top-right" color="gold" size="md" rows={4} cols={4} opacity={0.5} />
         <DotPattern position="bottom-left" color="blue" size="sm" rows={5} cols={5} opacity={0.4} />
         
@@ -567,7 +567,7 @@ export default function Projects() {
       </section>
 
       {/* Interactive Timeline Section */}
-      <section className="relative section-padding bg-slate-50 overflow-hidden">
+      <section id="projects-timeline" className="relative section-padding bg-slate-50 overflow-hidden">
         {/* Decorative diagonal stripes in background */}
         <div
           className="pointer-events-none absolute -top-24 -left-24 w-72 h-72 opacity-10 rotate-3"
@@ -994,7 +994,7 @@ export default function Projects() {
       </section>
 
       {/* Visual Gallery Section */}
-      <section className="section-padding bg-slate-950 relative overflow-hidden">
+      <section id="projects-gallery" className="section-padding bg-slate-950 relative overflow-hidden">
         <DotPattern position="top-left" color="gold" size="sm" rows={4} cols={5} opacity={0.4} />
         <DotPattern position="bottom-right" color="blue" size="sm" rows={5} cols={4} opacity={0.35} />
 
@@ -1098,7 +1098,7 @@ export default function Projects() {
       </section>
 
       {/* Call to Action Section */}
-      <section className="relative section-padding bg-gradient-to-r from-primary-600 to-primary-700 overflow-hidden">
+      <section id="projects-cta" className="relative section-padding bg-gradient-to-r from-primary-600 to-primary-700 overflow-hidden">
         {/* Soft diagonal stripes behind CTA */}
         <div
           className="pointer-events-none absolute inset-0 opacity-20"
@@ -1381,7 +1381,7 @@ export default function Projects() {
         </motion.div>
         )}
       </AnimatePresence>
-      <ScrollControls />
+      <ScrollControls sections={["projects-hero", "projects-timeline", "projects-gallery", "projects-cta"]} />
     </div>
   )
 }

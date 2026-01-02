@@ -8,9 +8,9 @@ interface ScrollControlsProps {
   showNextSection?: boolean
   nextSectionId?: string
 }
-
-const ScrollControls = ({ showNextSection = false, nextSectionId }: ScrollControlsProps) => {
+const ScrollControls = ({ showNextSection = false, nextSectionId, sections }: ScrollControlsProps & { sections?: string[] }) => {
   const [isVisible, setIsVisible] = useState(false)
+  const [activeSectionIndex, setActiveSectionIndex] = useState(0)
 
   useEffect(() => {
     if (typeof window === "undefined") return
@@ -46,6 +46,60 @@ const ScrollControls = ({ showNextSection = false, nextSectionId }: ScrollContro
     }
   }
 
+  const scrollToSectionId = (id: string) => {
+    if (typeof window === "undefined") return
+    const el = document.getElementById(id)
+    if (!el) return
+    const headerOffset = 80
+    const elementPosition = el.getBoundingClientRect().top + window.scrollY
+    const offsetPosition = elementPosition - headerOffset
+    window.scrollTo({ top: offsetPosition, behavior: "smooth" })
+  }
+
+  useEffect(() => {
+    if (typeof window === "undefined" || !sections || sections.length === 0) return
+
+    const handleSectionScroll = () => {
+      const headerOffset = 120
+      const distances: { index: number; distance: number }[] = []
+
+      sections.forEach((id, index) => {
+        const el = document.getElementById(id)
+        if (!el) return
+        const rect = el.getBoundingClientRect()
+        const distance = Math.abs(rect.top - headerOffset)
+        distances.push({ index, distance })
+      })
+
+      if (!distances.length) return
+
+      let closest = distances[0]
+      for (const entry of distances) {
+        if (entry.distance < closest.distance) {
+          closest = entry
+        }
+      }
+
+      setActiveSectionIndex(prev => (prev !== closest.index ? closest.index : prev))
+    }
+
+    handleSectionScroll()
+    window.addEventListener("scroll", handleSectionScroll)
+    return () => window.removeEventListener("scroll", handleSectionScroll)
+  }, [sections])
+
+  const handleDynamicMiddleClick = () => {
+    if (!sections || sections.length === 0) return
+
+    if (activeSectionIndex < sections.length - 1) {
+      scrollToSectionId(sections[activeSectionIndex + 1])
+    } else if (activeSectionIndex > 0) {
+      scrollToSectionId(sections[activeSectionIndex - 1])
+    } else if (sections.length > 1) {
+      scrollToSectionId(sections[1])
+    }
+  }
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -66,15 +120,30 @@ const ScrollControls = ({ showNextSection = false, nextSectionId }: ScrollContro
               <ChevronUp className="h-4 w-4" />
             </button>
 
-            {showNextSection && nextSectionId && (
+            {sections && sections.length > 0 ? (
               <button
                 type="button"
-                onClick={scrollToNextSection}
+                onClick={handleDynamicMiddleClick}
                 className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/60 hover:bg-slate-700/80 text-slate-100 transition-colors text-[11px]"
-                aria-label="Scroll to next section"
+                aria-label={activeSectionIndex === sections.length - 1 && sections.length > 1 ? "Scroll to previous section" : "Scroll to next section"}
               >
-                <ArrowDownRight className="h-4 w-4" />
+                {activeSectionIndex === sections.length - 1 && sections.length > 1 ? (
+                  <ChevronUp className="h-4 w-4" />
+                ) : (
+                  <ChevronDown className="h-4 w-4" />
+                )}
               </button>
+            ) : (
+              showNextSection && nextSectionId && (
+                <button
+                  type="button"
+                  onClick={scrollToNextSection}
+                  className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/60 hover:bg-slate-700/80 text-slate-100 transition-colors text-[11px]"
+                  aria-label="Scroll to next section"
+                >
+                  <ArrowDownRight className="h-4 w-4" />
+                </button>
+              )
             )}
 
             <button

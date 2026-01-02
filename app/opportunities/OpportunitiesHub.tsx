@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { ChevronLeft, ChevronRight, RefreshCw, Globe } from 'lucide-react'
 import { toast } from 'sonner'
-import HighlightText from '../../components/HighlightText'
 import SearchBar from '../../components/opportunities/SearchBar'
 import Filters from '../../components/opportunities/Filters'
 import OpportunitiesList from '../../components/opportunities/OpportunitiesList'
@@ -231,7 +230,7 @@ export default function OpportunitiesHub() {
               </div>
               
               <h1 className="text-5xl lg:text-6xl font-bold text-slate-900 mb-6">
-                Global <HighlightText highlightColor="gold">Opportunities</HighlightText> Hub
+                Global <span className="text-primary-700">Opportunities</span> Hub
               </h1>
               
               <p className="text-xl text-slate-700 max-w-3xl mx-auto leading-relaxed">

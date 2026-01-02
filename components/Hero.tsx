@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
-import DotPattern from './DotPattern'
+// DotPattern intentionally not used here anymore to keep the hero clean
 
 export default function Hero() {
 
@@ -17,10 +17,6 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden" style={{ height: 'calc(100vh - 64px)', minHeight: 'calc(100vh - 64px)' }}>
-      {/* Dot patterns */}
-      <DotPattern position="top-left" color="gold" size="sm" rows={4} cols={5} opacity={0.4} />
-      <DotPattern position="bottom-right" color="blue" size="sm" rows={5} cols={4} opacity={0.3} />
-      
       {/* Background image */}
       <div className="absolute inset-0">
         <Image
@@ -52,8 +48,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.1 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-3"
           >
-            <span className="block sm:inline">Leading Change,</span>{' '}
-            <span className="block sm:inline">Improving Lives</span>
+            <span className="whitespace-nowrap">Leading Change, Improving Lives</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
