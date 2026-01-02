@@ -1,10 +1,12 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import HighlightText from '@/components/HighlightText'
 import { Calendar, MapPin, Building2, Trophy, CheckCircle, GraduationCap, Users, Target } from 'lucide-react'
+import { toast } from 'sonner'
 
 export default function About() {
   const careerMilestones = [
@@ -147,6 +149,10 @@ export default function About() {
     }
   ]
 
+  const [clientName, setClientName] = useState('')
+  const [clientAbout, setClientAbout] = useState('')
+  const [isSubmittingAbout, setIsSubmittingAbout] = useState(false)
+
   const getIconForPosition = (title: string) => {
     if (title.includes('Coordinator') || title.includes('Manager')) {
       return <Target className="w-6 h-6 text-primary-600" />
@@ -156,6 +162,46 @@ export default function About() {
       return <Users className="w-6 h-6 text-emerald-600" />
     }
     return <CheckCircle className="w-6 h-6 text-purple-600" />
+  }
+
+  const handleAboutSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (isSubmittingAbout) return
+
+    if (!clientAbout.trim()) {
+      toast.error('Please enter your About text before sending.')
+      return
+    }
+
+    try {
+      setIsSubmittingAbout(true)
+      const response = await fetch('/api/client-about', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: clientName.trim() || undefined,
+          about: clientAbout.trim(),
+        }),
+      })
+
+      const data = await response.json().catch(() => null)
+
+      if (!response.ok || !data?.ok) {
+        const errorMessage = data?.error || 'Unable to send your About text. Please try again.'
+        toast.error(errorMessage)
+        return
+      }
+
+      toast.success('Thank you! Your About text has been sent.')
+      setClientAbout('')
+    } catch (error) {
+      console.error('Error sending About text', error)
+      toast.error('Something went wrong while sending your About text.')
+    } finally {
+      setIsSubmittingAbout(false)
+    }
   }
 
   return (
@@ -177,6 +223,69 @@ export default function About() {
               </p>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Client About Input Section */}
+      <section className="py-16 bg-slate-50 border-b border-slate-200">
+        <div className="container-custom max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="bg-white rounded-3xl shadow-large border border-slate-100 p-6 sm:p-8"
+          >
+            <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-3">
+              Share Your <span className="text-primary-600">About</span>
+            </h2>
+            <p className="text-slate-600 mb-6 text-sm sm:text-base">
+              In your own words, describe who you are, the work you do, and the kind of impact you want visitors to understand when they read your About section. Write as if you were speaking directly to your ideal audience.
+            </p>
+
+            <form onSubmit={handleAboutSubmit} className="space-y-5">
+              <div className="space-y-2">
+                <label htmlFor="clientName" className="block text-sm font-medium text-slate-800">
+                  Your name or organization (optional)
+                </label>
+                <input
+                  id="clientName"
+                  type="text"
+                  value={clientName}
+                  onChange={(e) => setClientName(e.target.value)}
+                  placeholder="e.g. Mosun Owo-Odusi, OGSTEP, or your organization name"
+                  className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm sm:text-base text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-primary-500 placeholder:text-slate-400"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="clientAbout" className="block text-sm font-medium text-slate-800">
+                  Your About text
+                </label>
+                <textarea
+                  id="clientAbout"
+                  value={clientAbout}
+                  onChange={(e) => setClientAbout(e.target.value)}
+                  rows={6}
+                  placeholder="For example: I am a project leader who helps government and development partners turn complex ideas into results people can feel in their daily lives..."
+                  className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm sm:text-base text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-primary-500 placeholder:text-slate-400 resize-vertical min-h-[160px]"
+                />
+                <p className="text-xs text-slate-500">
+                  Feel free to write in your natural voice. We&apos;ll refine wording and structure later into a polished About section draft.
+                </p>
+              </div>
+
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  disabled={isSubmittingAbout}
+                  className="inline-flex items-center justify-center rounded-xl bg-primary-600 px-5 sm:px-6 py-2.5 text-sm sm:text-base font-semibold text-white shadow-sm hover:bg-primary-700 disabled:opacity-60 disabled:cursor-not-allowed transition-colors"
+                >
+                  {isSubmittingAbout ? 'Sending...' : 'Send About Text'}
+                </button>
+              </div>
+            </form>
+          </motion.div>
         </div>
       </section>
 

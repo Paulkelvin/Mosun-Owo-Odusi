@@ -357,6 +357,7 @@ export default function Projects() {
   const [selectedMilestone, setSelectedMilestone] = useState<string | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [milestoneImageIndex, setMilestoneImageIndex] = useState<{[key: string]: number}>({})
+  const [showFullGallery, setShowFullGallery] = useState(false)
   
   // Presentation mode states
   const [isPresentationMode, setIsPresentationMode] = useState(false)
@@ -397,6 +398,8 @@ export default function Projects() {
   const currentMilestone = selectedMilestone 
     ? currentProject.milestones.find(m => m.id === selectedMilestone)
     : null
+
+  const visibleGalleryImages = showFullGallery ? galleryImages : galleryImages.slice(0, 12)
 
   // Presentation mode auto-advance
   useEffect(() => {
@@ -1013,7 +1016,7 @@ export default function Projects() {
 
           {/* Masonry-style animated gallery */}
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">{/* masonry container */}
-            {galleryImages.map((img, index) => (
+            {visibleGalleryImages.map((img, index) => (
               <motion.div
                 key={img.src + index}
                 className="mb-4 break-inside-avoid rounded-2xl overflow-hidden relative group shadow-[0_18px_45px_rgba(15,23,42,0.6)] border border-slate-800/60 bg-slate-900/70"
@@ -1047,6 +1050,22 @@ export default function Projects() {
                 </div>
               </motion.div>
             ))}
+          </div>
+
+          {/* Gallery toggle */}
+          <div className="mt-8 flex flex-col items-center gap-2">
+            {!showFullGallery && (
+              <p className="text-xs text-slate-400">
+                Showing {visibleGalleryImages.length} of {galleryImages.length} photos
+              </p>
+            )}
+            <button
+              type="button"
+              onClick={() => setShowFullGallery(prev => !prev)}
+              className="inline-flex items-center justify-center rounded-xl border border-slate-700 bg-slate-900/70 px-5 py-2.5 text-sm font-semibold text-slate-50 shadow-sm hover:bg-slate-800/80 transition-colors"
+           >
+              {showFullGallery ? 'Show fewer photos' : 'View full gallery'}
+            </button>
           </div>
         </div>
       </section>

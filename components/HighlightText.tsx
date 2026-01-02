@@ -25,7 +25,7 @@ const HighlightText = ({
 
   return (
     <span className={`relative inline-block ${className}`}>
-      {/* Highlight Strip with Simple Animation */}
+      {/* Highlight underline with simple animation */}
       <motion.span
         initial={{ opacity: 0, scaleX: 0 }}
         animate={{ opacity: 1, scaleX: 1 }}
@@ -34,7 +34,7 @@ const HighlightText = ({
           delay: delay,
           ease: "easeOut" 
         }}
-        className={`absolute inset-0 ${colorVariants[highlightColor]} rounded-lg -z-10 origin-left`}
+        className={`absolute left-1/2 bottom-1 h-2 w-3/4 -translate-x-1/2 ${colorVariants[highlightColor]} rounded-full -z-10 origin-center`}
       />
       
       {/* Optional soft shadow for depth */}
@@ -46,7 +46,7 @@ const HighlightText = ({
           delay: delay + 0.1,
           ease: "easeOut" 
         }}
-        className="absolute inset-0 bg-black/5 rounded-lg blur-sm -z-20 transform translate-y-1"
+        className="absolute left-1/2 bottom-0 h-3 w-4/5 -translate-x-1/2 bg-black/5 rounded-full blur-md -z-20"
       />
       
       {/* Text Content */}
