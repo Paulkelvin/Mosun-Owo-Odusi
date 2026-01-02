@@ -229,32 +229,6 @@ export default function ExpertiseTabs() {
                         >
                           {activeArea.title}
                         </motion.h3>
-                        {/* Curly Underline - animated draw effect in gold with gentle looping wave */}
-                        <motion.svg
-                          viewBox="0 0 120 12"
-                          className="mt-1 w-28 h-3"
-                        >
-                          <motion.path
-                            initial={{ pathLength: 0 }}
-                            animate={{
-                              pathLength: 1,
-                              d: [
-                                'M2 6 C 15 2, 30 10, 45 6 S 75 2, 90 6 S 110 10, 118 6',
-                                'M2 6 C 15 3, 30 9, 45 6 S 75 3, 90 6 S 110 9, 118 6',
-                                'M2 6 C 15 4, 30 8, 45 6 S 75 4, 90 6 S 110 8, 118 6',
-                                'M2 6 C 15 2, 30 10, 45 6 S 75 2, 90 6 S 110 10, 118 6'
-                              ]
-                            }}
-                            transition={{
-                              pathLength: { duration: 0.8, delay: 0.25, ease: 'easeInOut' },
-                              d: { duration: 6, repeat: Infinity, repeatType: 'mirror', ease: 'easeInOut' }
-                            }}
-                            fill="none"
-                            stroke="#F0C419"
-                            strokeWidth="3"
-                            strokeLinecap="round"
-                          />
-                        </motion.svg>
                       </div>
                     </div>
 

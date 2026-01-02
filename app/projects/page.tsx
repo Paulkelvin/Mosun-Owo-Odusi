@@ -29,7 +29,7 @@ const projects = [
         id: "overall_leadership",
         title: "Large-Scale Human Capital & Livelihood Impact",
         period: "2020 – 2025",
-        description: "Provides overall coordination and leadership for OGSTEP, overseeing project interventions that directly benefitted over 72,000 Ogun State residents across agriculture, skills development, and institutional reforms.",
+        description: "Provided overall coordination and leadership for OGSTEP, overseeing project interventions that directly benefitted over 72,000 Ogun State residents across agriculture, skills development, and institutional reforms.",
         achievements: [
           "Oversaw project interventions benefitting over 72,000 Ogun State residents - https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/",
           "Coordinated skills development programmes that trained over 39,000 beneficiaries",
@@ -358,7 +358,7 @@ export default function Projects() {
   const [selectedMilestone, setSelectedMilestone] = useState<string | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [milestoneImageIndex, setMilestoneImageIndex] = useState<{[key: string]: number}>({})
-  const [showFullGallery, setShowFullGallery] = useState(false)
+  const [galleryMode, setGalleryMode] = useState<'preview' | 'expanded' | 'full'>('preview')
   
   // Presentation mode states
   const [isPresentationMode, setIsPresentationMode] = useState(false)
@@ -400,7 +400,12 @@ export default function Projects() {
     ? currentProject.milestones.find(m => m.id === selectedMilestone)
     : null
 
-  const visibleGalleryImages = showFullGallery ? galleryImages : galleryImages.slice(0, 12)
+  const visibleGalleryImages =
+    galleryMode === 'preview'
+      ? galleryImages.slice(0, 6)
+      : galleryMode === 'expanded'
+        ? galleryImages.slice(0, 12)
+        : galleryImages
 
   // Presentation mode auto-advance
   useEffect(() => {
@@ -1055,17 +1060,38 @@ export default function Projects() {
 
           {/* Gallery toggle */}
           <div className="mt-8 flex flex-col items-center gap-2">
-            {!showFullGallery && (
-              <p className="text-xs text-slate-400">
-                Showing {visibleGalleryImages.length} of {galleryImages.length} photos
-              </p>
-            )}
+            <p className="text-xs text-slate-400">
+              Showing {visibleGalleryImages.length} of {galleryImages.length} photos
+            </p>
             <button
               type="button"
-              onClick={() => setShowFullGallery(prev => !prev)}
-              className="inline-flex items-center justify-center rounded-xl border border-slate-700 bg-slate-900/70 px-5 py-2.5 text-sm font-semibold text-slate-50 shadow-sm hover:bg-slate-800/80 transition-colors"
+              onClick={() => {
+                setGalleryMode(prev => {
+                  if (prev === 'preview') return 'expanded'
+                  if (prev === 'expanded') return 'full'
+                  return 'preview'
+                })
+              }}
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 bg-slate-900/70 px-5 py-2.5 text-sm font-semibold text-slate-50 shadow-sm hover:bg-slate-800/80 transition-colors"
            >
-              {showFullGallery ? 'Show fewer photos' : 'View full gallery'}
+              {galleryMode === 'preview' && (
+                <>
+                  <span>See more photos</span>
+                  <ChevronDown className="h-4 w-4" />
+                </>
+              )}
+              {galleryMode === 'expanded' && (
+                <>
+                  <span>View full gallery</span>
+                  <ChevronDown className="h-4 w-4" />
+                </>
+              )}
+              {galleryMode === 'full' && (
+                <>
+                  <span>Show fewer photos</span>
+                  <ChevronUp className="h-4 w-4" />
+                </>
+              )}
             </button>
           </div>
         </div>

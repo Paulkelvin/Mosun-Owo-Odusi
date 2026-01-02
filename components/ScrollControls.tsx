@@ -56,7 +56,7 @@ const ScrollControls = ({ showNextSection = false, nextSectionId }: ScrollContro
           transition={{ duration: 0.25 }}
           className="fixed right-4 bottom-6 z-40 flex flex-col items-center gap-1 text-slate-200 sm:right-6 sm:bottom-8"
         >
-          <div className="rounded-2xl bg-slate-900/65 border border-slate-700/80 shadow-[0_18px_45px_rgba(15,23,42,0.7)] backdrop-blur-md px-1.5 py-1 flex flex-col items-center gap-1.5">
+          <div className="rounded-2xl bg-slate-900/65 border border-slate-700/80 backdrop-blur-md px-1.5 py-1 flex flex-col items-center gap-1.5">
             <button
               type="button"
               onClick={scrollToTop}

@@ -205,22 +205,38 @@ export default function About() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-slate-50 to-white border-b-2 border-slate-200 mt-16 lg:mt-20">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-            >
-              <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
-                <HighlightText highlightColor="emerald">About</HighlightText> <span className="gradient-text">Mosun</span>
-              </h1>
-              <p className="text-xl text-slate-600 mb-12 leading-relaxed">
-                A dedicated professional with over 20 years of experience in education, project management, and organizational leadership across Nigeria
-              </p>
-            </motion.div>
+      {/* Hero Section with Background Image */}
+      <section className="relative overflow-hidden mt-16 lg:mt-20">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/mosun_owo-odusi_portrait.png"
+            alt="Mosun Owo-Odusi - Professional Portrait"
+            fill
+            className="object-cover object-center"
+            priority
+          />
+          <div
+            className="absolute inset-0"
+            style={{ backgroundColor: 'rgba(248, 250, 252, 0.82)' }}
+          />
+        </div>
+
+        <div className="relative section-padding border-b-2 border-slate-200">
+          <div className="container-custom">
+            <div className="max-w-4xl mx-auto text-center">
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
+              >
+                <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+                  <HighlightText highlightColor="emerald">About</HighlightText> <span className="gradient-text">Mosun</span>
+                </h1>
+                <p className="text-xl text-slate-700 mb-12 leading-relaxed">
+                  A dedicated professional with over 20 years of experience in education, project management, and organizational leadership across Nigeria
+                </p>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>

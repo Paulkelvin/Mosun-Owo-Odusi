@@ -152,7 +152,7 @@ export default function FeaturedProject() {
                   className="hover:text-primary-700 transition-colors"
                   title="Learn more about OGSTEP"
                 >
-                  OGSTEP: World Bank Economic Transformation Initiative
+                  OGSTEP: Ogun State Economic Transformation Project
                 </a>
               </motion.h3>
               
@@ -171,8 +171,9 @@ export default function FeaturedProject() {
                   className="font-semibold text-primary-600 hover:text-primary-700 underline decoration-2 underline-offset-2"
                   title="View World Bank project details"
                 >
-                  World Bank
-                </a>-funded initiative designed to drive Ogun State&apos;s industrial renaissance. As Project Coordinator, lead a cross-functional delivery team across agriculture, technology, and vocational education, achieving an 85% project success rate state-wide with{' '}
+                  World Bank-funded
+                </a>{' '}
+                initiative designed to drive Ogun State&apos;s industrial renaissance. As Project Coordinator, lead a cross-functional delivery team across agriculture, technology, and vocational education, achieving an 85% project success rate state-wide with{' '}
                 <a 
                   href="https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/" 
                   target="_blank" 

@@ -3,7 +3,6 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Calendar, Clock, Globe, Send, MessageSquare, User, ArrowRight } from 'lucide-react'
-import HighlightText from '@/components/HighlightText'
 import Image from 'next/image'
 import { toast } from 'sonner'
 
@@ -39,7 +38,7 @@ export default function Contact() {
             className="text-center max-w-4xl"
           >
             <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Let&apos;s <HighlightText highlightColor="gold"><span className="text-gold-300">Connect</span></HighlightText>
+              Let&apos;s <span className="text-gold-300">Connect</span>
             </h1>
             <p className="text-xl text-slate-200 max-w-2xl mx-auto mb-8">
               Ready to discuss your next project? Let&apos;s create meaningful impact together.
