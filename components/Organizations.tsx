@@ -22,14 +22,14 @@ export default function Organizations() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 id="orgs-heading" className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 relative inline-block">
+            <h2 id="orgs-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 relative inline-block">
               Organizations I&apos;ve Worked With
               <motion.div 
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
                 viewport={{ once: true }}
-                className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-blue-500 to-transparent rounded-full origin-left"
+                className="absolute -bottom-2 left-1/2 h-1 w-28 -translate-x-1/2 bg-gradient-to-r from-primary-500 via-blue-500 to-transparent rounded-full origin-center"
               />
             </h2>
           </motion.div>

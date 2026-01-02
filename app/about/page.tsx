@@ -150,7 +150,6 @@ export default function About() {
     }
   ]
 
-  const [clientName, setClientName] = useState('')
   const [clientAbout, setClientAbout] = useState('')
   const [isSubmittingAbout, setIsSubmittingAbout] = useState(false)
 
@@ -182,7 +181,6 @@ export default function About() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          name: clientName.trim() || undefined,
           about: clientAbout.trim(),
         }),
       })
@@ -246,20 +244,6 @@ export default function About() {
 
             <form onSubmit={handleAboutSubmit} className="space-y-5">
               <div className="space-y-2">
-                <label htmlFor="clientName" className="block text-sm font-medium text-slate-800">
-                  Your name or organization (optional)
-                </label>
-                <input
-                  id="clientName"
-                  type="text"
-                  value={clientName}
-                  onChange={(e) => setClientName(e.target.value)}
-                  placeholder="e.g. Mosun Owo-Odusi, OGSTEP, or your organization name"
-                  className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm sm:text-base text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-primary-500 placeholder:text-slate-400"
-                />
-              </div>
-
-              <div className="space-y-2">
                 <label htmlFor="clientAbout" className="block text-sm font-medium text-slate-800">
                   Your About text
                 </label>
@@ -268,7 +252,7 @@ export default function About() {
                   value={clientAbout}
                   onChange={(e) => setClientAbout(e.target.value)}
                   rows={6}
-                  placeholder="For example: I am a project leader who helps government and development partners turn complex ideas into results people can feel in their daily lives..."
+                  placeholder="For example: I am passionate about economic transformation, education, or human development because... Share what drives your work, what you care deeply about, the people you most want to serve, and any personal story or moment that captures why this work matters to you."
                   className="w-full rounded-xl border border-slate-200 bg-white px-3.5 py-2.5 text-sm sm:text-base text-slate-900 shadow-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:border-primary-500 placeholder:text-slate-400 resize-vertical min-h-[160px]"
                 />
                 <p className="text-xs text-slate-500">

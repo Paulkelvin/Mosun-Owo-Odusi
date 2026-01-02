@@ -554,7 +554,7 @@ export default function Projects() {
               transition={{ duration: 0.8 }}
             >
               <h1 className="text-5xl lg:text-6xl font-bold text-white mb-6">
-                My <HighlightText highlightColor="gold"><span className="text-gold-300">Work</span></HighlightText>
+                My <span className="text-gold-300">Work</span>
               </h1>
             </motion.div>
           </div>

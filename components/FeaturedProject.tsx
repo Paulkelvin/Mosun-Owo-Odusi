@@ -42,7 +42,7 @@ export default function FeaturedProject() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
             viewport={{ once: true }}
-            className="text-3xl lg:text-4xl mb-6 lg:mb-4 relative inline-block"
+            className="text-2xl sm:text-3xl lg:text-4xl mb-6 lg:mb-4 relative inline-block"
           >
             <span className="font-bold text-slate-900">Featured</span>{' '}
             <span className="font-semibold text-slate-600">Project</span>
@@ -51,7 +51,7 @@ export default function FeaturedProject() {
               whileInView={{ scaleX: 1 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               viewport={{ once: true }}
-              className="absolute -bottom-2 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 via-blue-500 to-transparent rounded-full origin-left"
+              className="absolute -bottom-2 left-1/2 h-1 w-28 -translate-x-1/2 bg-gradient-to-r from-primary-500 via-blue-500 to-transparent rounded-full origin-center"
             />
           </motion.h2>
           
