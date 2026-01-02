@@ -29,7 +29,8 @@ export async function POST(req: Request) {
 
     if (error) {
       console.error('Resend error', error)
-      return NextResponse.json({ ok: false, error: 'Email service failed to send message.' }, { status: 502 })
+      const message = typeof error === 'string' ? error : (error as Error).message || 'Email service failed to send message.'
+      return NextResponse.json({ ok: false, error: message }, { status: 502 })
     }
 
     return NextResponse.json({ ok: true, id: data?.id })
