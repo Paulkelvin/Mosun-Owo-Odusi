@@ -32,7 +32,7 @@ export default function Footer() {
               >
                 <Link
                   href={link.href}
-                  className="text-white/80 hover:text-gold-400 font-medium transition-colors duration-300 hover:underline"
+                  className="text-white/80 hover:text-white font-medium transition-colors duration-300"
                 >
                   {link.name}
                 </Link>

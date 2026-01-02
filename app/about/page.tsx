@@ -215,10 +215,7 @@ export default function About() {
             className="object-cover object-center"
             priority
           />
-          <div
-            className="absolute inset-0"
-            style={{ backgroundColor: 'rgba(248, 250, 252, 0.82)' }}
-          />
+          <div className="absolute inset-0 bg-slate-900/65" />
         </div>
 
         <div className="relative section-padding border-b-2 border-slate-200">
@@ -229,10 +226,10 @@ export default function About() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
-                <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 mb-6">
+                <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                   <HighlightText highlightColor="emerald">About</HighlightText> <span className="gradient-text">Mosun</span>
                 </h1>
-                <p className="text-xl text-slate-700 mb-12 leading-relaxed">
+                <p className="text-xl text-slate-100 mb-12 leading-relaxed">
                   A dedicated professional with over 20 years of experience in education, project management, and organizational leadership across Nigeria
                 </p>
               </motion.div>
