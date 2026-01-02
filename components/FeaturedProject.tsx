@@ -112,8 +112,8 @@ export default function FeaturedProject() {
               className="absolute bottom-4 left-4 rounded-xl shadow-lg p-4 z-20"
               style={{ backgroundColor: '#F0C419' }}
             >
-              <div className="text-2xl font-bold text-slate-900">$250M</div>
-              <div className="text-sm text-slate-900/90">Value Managed</div>
+              <div className="text-2xl font-bold text-slate-900">72K+</div>
+	      <div className="text-sm text-slate-900/90">Lives Benefited</div>
             </motion.div>
             
             <motion.div
@@ -124,8 +124,8 @@ export default function FeaturedProject() {
               className="absolute top-4 right-4 rounded-xl shadow-lg p-4 z-20"
               style={{ backgroundColor: '#F0C419' }}
             >
-              <div className="text-2xl font-bold text-slate-900">72K+</div>
-              <div className="text-sm text-slate-900/90">Lives Benefited</div>
+              <div className="text-2xl font-bold text-slate-900">$250M</div>
+	      <div className="text-sm text-slate-900/90">Value Managed</div>
             </motion.div>
           </motion.div>
 
@@ -240,7 +240,7 @@ export default function FeaturedProject() {
                   whileTap={{ scale: 0.98 }}
                   className="group inline-flex items-center rounded-lg bg-primary-600 px-5 py-3 text-white shadow-lg transition-colors hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2"
                 >
-                  See Story
+                  See More
                   <ChevronRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </motion.div>
               </Link>

@@ -90,7 +90,35 @@ export default function Contact() {
                   </p>
                 </div></div>
 
-              <form className="space-y-6">
+              <form
+          className="space-y-6"
+          onSubmit={async (e) => {
+            e.preventDefault()
+            const form = e.currentTarget as HTMLFormElement
+            const formData = new FormData(form)
+            const body = {
+              name: formData.get('name'),
+              email: formData.get('email'),
+              subject: formData.get('subject'),
+              message: formData.get('message'),
+            }
+            try {
+              const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
+              })
+              if (res.ok) {
+                form.reset()
+                alert('Thank you, your message has been sent.')
+              } else {
+                alert('Sorry, something went wrong. Please try again.')
+              }
+            } catch (err) {
+              alert('Network error. Please try again.')
+            }
+          }}
+        >
                 {/* Name Field */}
                 <div>
                   <label htmlFor="name" className="block text-sm font-semibold text-slate-700 mb-2">

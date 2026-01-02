@@ -42,9 +42,9 @@ const projects = [
           "Project Timeline": "2020 – 2025"
         },
         images: [
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300"
+	        "/images/OGSTEP_outreach.JPG",
+	        "/images/OGSTEP_Mosun_Owo-Odusi.JPG",
+	        "/images/OGSTEP_Agric2.JPG"
         ]
       },
       {
@@ -90,7 +90,10 @@ const projects = [
           "Skills Beneficiaries": "39,000+"
         },
         images: [
-          "/images/OGSTEP_skills.JPG"
+	        "/images/OGSTEP_skills.JPG",
+	        "/images/OGSTEP_skills1.jpeg",
+	        "/images/OGSTEP_skills2.jpeg",
+	        "/images/OGSTEP_skills3.jpeg"
         ]
       },
       {
@@ -156,8 +159,7 @@ const projects = [
           "Student Engagement": "High"
         },
         images: [
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300"
+	        
         ]
       },
       {
@@ -178,9 +180,7 @@ const projects = [
           "Learning Outcomes": "Enhanced"
         },
         images: [
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300"
+	        
         ]
       },
       {
@@ -201,8 +201,7 @@ const projects = [
           "Improvement Rate": "Significant"
         },
         images: [
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300"
+	        
         ]
       },
       {
@@ -223,8 +222,7 @@ const projects = [
           "Student Participation": "100%"
         },
         images: [
-          "/api/placeholder/400/300",
-          "/api/placeholder/400/300"
+	        
         ]
       }
     ]
@@ -689,7 +687,7 @@ export default function Projects() {
                                           <div className="flex lg:flex-row items-center lg:items-stretch gap-2">
                                             {/* Main Image Display */}
                                             <motion.div 
-                                              className="relative w-full lg:w-full h-48 lg:h-56 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 cursor-grab active:cursor-grabbing"
+	                                          className="relative w-full lg:w-full h-72 lg:h-56 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 cursor-grab active:cursor-grabbing"
                                               drag="x"
                                               dragElastic={0.2}
                                               dragConstraints={{ left: 0, right: 0 }}
@@ -749,7 +747,7 @@ export default function Projects() {
                                             
                                             {/* Partial Next Image Preview - horizontal on mobile, vertical on desktop */}
                                             {currentMilestone.images.length > 1 && (
-                                              <div className="relative w-16 lg:w-full h-48 lg:h-56 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 opacity-60">
+	                                          <div className="relative w-20 lg:w-full h-72 lg:h-56 rounded-lg overflow-hidden bg-slate-200 border border-slate-300 opacity-60">
                                                 <Image
                                                   src={currentMilestone.images[((milestoneImageIndex[currentMilestone.id] || 0) + 1) % currentMilestone.images.length]}
                                                   alt="Next image preview"
