@@ -1,11 +1,15 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { MapPin, Calendar, Clock, Globe, Send, MessageSquare, User, ArrowRight } from 'lucide-react'
 import HighlightText from '@/components/HighlightText'
 import Image from 'next/image'
+import { toast } from 'sonner'
 
 export default function Contact() {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
   return (
     <div className="min-h-screen">
       {/* Hero Section with Image */}
@@ -94,6 +98,8 @@ export default function Contact() {
           className="space-y-6"
           onSubmit={async (e) => {
             e.preventDefault()
+            if (isSubmitting) return
+            setIsSubmitting(true)
             const form = e.currentTarget as HTMLFormElement
             const formData = new FormData(form)
             const body = {
@@ -108,14 +114,24 @@ export default function Contact() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(body),
               })
-              if (res.ok) {
+              const data = await res.json().catch(() => null)
+              if (res.ok && data?.ok) {
                 form.reset()
-                alert('Thank you, your message has been sent.')
+                toast.success('Message sent successfully', {
+                  description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+                })
               } else {
-                alert('Sorry, something went wrong. Please try again.')
+                const errorMessage = data?.error || 'Something went wrong while sending your message.'
+                toast.error('Unable to send message', {
+                  description: errorMessage,
+                })
               }
             } catch (err) {
-              alert('Network error. Please try again.')
+              toast.error('Network error', {
+                description: 'Please check your connection and try again.',
+              })
+            } finally {
+              setIsSubmitting(false)
             }
           }}
         >
@@ -202,9 +218,10 @@ export default function Contact() {
                   type="submit"
                   whileHover={{ scale: 1.02, y: -2 }}
                   whileTap={{ scale: 0.98 }}
-                  className="w-full bg-gradient-to-r from-primary-700 to-primary-600 text-white py-4 px-6 rounded-xl font-semibold shadow-medium hover:shadow-large transition-all duration-300 flex items-center justify-center gap-3"
+                  className="w-full bg-gradient-to-r from-primary-700 to-primary-600 text-white py-4 px-6 rounded-xl font-semibold shadow-medium hover:shadow-large transition-all duration-300 flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed"
+                  disabled={isSubmitting}
                 >
-                  Send Message
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                   <Send className="w-5 h-5" />
                 </motion.button>
               </form>
