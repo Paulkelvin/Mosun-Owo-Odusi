@@ -11,8 +11,8 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
-  title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
-  description: 'Mosun is a strategic leader specializing in project management, education consultancy, and real estate advisory with extensive experience in World Bank initiatives and development projects.',
+  title: 'Mosun Owo-Odusi | Leadership, Project Management & Advisory',
+  description: 'Portfolio of Mosun Owo-Odusi, showcasing 20+ years of leading high-impact projects across public and private sectors, including her role as former Project Coordinator of the Ogun State Economic Transformation Project (OGSTEP).',
   keywords: ['project management', 'education consulting', 'real estate advisory', 'leadership', 'strategy', 'world bank', 'development projects'],
   authors: [{ name: 'Mosun Owo-Odusi' }],
   creator: 'Mosun Owo-Odusi',
@@ -24,10 +24,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mosun-owo-odusi.netlify.app',
-    title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
-    description: 'Mosun is a strategic leader specializing in project management, education consultancy, and real estate advisory with extensive World Bank experience.',
-    siteName: 'Mosun Owo-Odusi Professional Website',
+    url: 'https://mosun-owo-odusi.vercel.app',
+    title: 'Mosun Owo-Odusi | Leadership, Project Management & Advisory',
+    description: 'Explore the work of Mosun Owo-Odusi, a leader on high-impact public and private sector projects, and former Project Coordinator of the Ogun State Economic Transformation Project (OGSTEP).',
+    siteName: 'Mosun Owo-Odusi',
     images: [
       {
 	        url: '/images/mosun_owo-odusi_portrait.png',
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
-    description: 'Mosun is a strategic leader specializing in project management, education consultancy, and real estate advisory with extensive World Bank experience.',
-	    images: ['/images/mosun_owo-odusi_portrait.png'],
+    title: 'Mosun Owo-Odusi | Leadership, Project Management & Advisory',
+    description: 'Mosun Owo-Odusi leads high-impact projects across public and private sectors and previously coordinated the Ogun State Economic Transformation Project (OGSTEP).',
+    images: ['/images/mosun_owo-odusi_portrait.png'],
   },
   viewport: {
     width: 'device-width',
