@@ -6,6 +6,7 @@ import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Users, DollarSign
 import HighlightText from '@/components/HighlightText'
 import Image from 'next/image'
 import DotPattern from '@/components/DotPattern'
+import ScrollControls from '@/components/ScrollControls'
 
 // Enhanced project data structure with milestones
 const projects = [
@@ -1354,6 +1355,7 @@ export default function Projects() {
         </motion.div>
         )}
       </AnimatePresence>
+      <ScrollControls />
     </div>
   )
 }

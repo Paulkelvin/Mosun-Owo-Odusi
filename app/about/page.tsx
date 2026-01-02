@@ -6,6 +6,7 @@ import type { Metadata } from 'next'
 import Image from 'next/image'
 import HighlightText from '@/components/HighlightText'
 import { Calendar, MapPin, Building2, Trophy, CheckCircle, GraduationCap, Users, Target } from 'lucide-react'
+import ScrollControls from '@/components/ScrollControls'
 import { toast } from 'sonner'
 
 export default function About() {
@@ -290,7 +291,7 @@ export default function About() {
       </section>
 
       {/* Career Timeline */}
-      <section className="py-20 bg-white">
+      <section id="career-timeline" className="py-20 bg-white">
         <div className="px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto"> {/* Expanded container */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -752,6 +753,7 @@ export default function About() {
           </div>
         </div>
       </section>
+      <ScrollControls showNextSection nextSectionId="career-timeline" />
     </div>
   )
 }
