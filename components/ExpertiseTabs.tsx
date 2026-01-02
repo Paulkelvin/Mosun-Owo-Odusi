@@ -75,8 +75,8 @@ export default function ExpertiseTabs() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-	  <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 relative inline-block">
-	    Core Areas of <HighlightText highlightColor="blue">Expertise</HighlightText>
+    <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 relative inline-block">
+      Core Areas of <span className="text-slate-900">Expertise</span>
 	    <motion.div 
 	      initial={{ scaleX: 0 }}
 	      whileInView={{ scaleX: 1 }}
