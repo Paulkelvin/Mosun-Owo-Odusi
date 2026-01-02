@@ -78,7 +78,7 @@ export default function ServicesPage() {
                   'Risk Assessment'
                 ],
                 color: 'from-green-600 to-green-400', 
-                action: 'Book a Consultation', 
+                action: 'Consult me', 
                 link: '#consultation-modal' 
               }
               // Security Services card commented out - see full section below
@@ -124,7 +124,7 @@ export default function ServicesPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { value: 15, suffix: '+', label: 'Years Experience', icon: Award },
+              { value: 20, suffix: '+', label: 'Years Experience', icon: Award },
               { value: 10, suffix: '+', label: 'Projects Delivered', icon: Target },
               { value: 100, suffix: '%', label: 'Client Satisfaction', icon: Users }
             ].map((stat, index) => {
