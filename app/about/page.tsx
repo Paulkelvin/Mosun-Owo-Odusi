@@ -20,7 +20,7 @@ export default function About() {
       location: 'Abeokuta, Ogun State, Nigeria',
       type: 'Full-time',
       highlights: [
-        'Oversee day-to-day implementation and monitoring of $250M World Bank project',
+    	'Oversee day-to-day implementation and monitoring of over $205M World Bank project',
         'Budget, scheduling and resource management',
         'Quality assurance for all reports to government and World Bank',
         'Stakeholder management (Internal and External)',

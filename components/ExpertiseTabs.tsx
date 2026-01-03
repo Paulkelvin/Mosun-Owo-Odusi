@@ -302,7 +302,7 @@ export default function ExpertiseTabs() {
                             
                             <p className="text-sm text-slate-700 leading-relaxed font-medium">
                               {activeArea.id === 'project-management' 
-                                ? <>Led a <span className="font-bold text-lg text-primary-600 inline-block mx-0.5">$250M</span> World Bank initiative achieving 40% efficiency gains and impacting <a href="https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary-600 hover:text-primary-700 underline" title="Verified source">72,000+ beneficiaries</a> in Ogun State.</>
+				? <>Led an over <span className="font-bold text-lg text-primary-600 inline-block mx-0.5">$205M</span> World Bank initiative achieving 40% efficiency gains and impacting <a href="https://punchng.com/ogun-empowers-over-72000-residents-with-agric-skills/" target="_blank" rel="noopener noreferrer" className="font-semibold text-primary-600 hover:text-primary-700 underline" title="Verified source">72,000+ beneficiaries</a> in Ogun State.</>
                                 : activeArea.id === 'education-consulting'
                                 ? "Developed innovative education framework adopted by Amville, improving learning outcomes for over 2,000+ students."
                                 : activeArea.id === 'real-estate'

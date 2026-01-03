@@ -124,7 +124,7 @@ export default function FeaturedProject() {
               className="absolute top-4 right-4 rounded-xl shadow-lg p-4 z-20"
               style={{ backgroundColor: '#F0C419' }}
             >
-              <div className="text-2xl font-bold text-slate-900">$250M</div>
+	      <div className="text-2xl font-bold text-slate-900">$205M+</div>
 	      <div className="text-sm text-slate-900/90">Value Managed</div>
             </motion.div>
           </motion.div>
@@ -163,7 +163,7 @@ export default function FeaturedProject() {
                 viewport={{ once: true }}
                 className="text-lg text-slate-600 leading-relaxed lg:leading-normal mb-6 lg:mb-4"
               >
-                Directing the OGSTEP project, a <span className="font-bold text-2xl text-primary-700 inline-block mx-1">$250M</span>{' '}
+                Directing the OGSTEP project, a <span className="font-bold text-2xl text-primary-700 inline-block mx-1">over $205M</span>{' '}
                 <a 
                   href="https://projects.worldbank.org/en/projects-operations/projects-list?countrycode_exact=NG&title=Nigeria&countryshortname_exact=Nigeria&status_exact=Active&os=0&strdate=01-01-2020&enddate=12-22-2021#:~:text=Ogun%20State%20Economic%20Transformation%20Project" 
                   target="_blank" 
