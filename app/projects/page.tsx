@@ -249,6 +249,21 @@ const galleryImages: GalleryImage[] = [
     category: 'Leadership & Outreach',
   },
   {
+    src: '/images/Mosun Owo-Odusi.jpg',
+    alt: 'Professional portrait of Mosun Owo-Odusi',
+    category: 'Leadership & Outreach',
+  },
+  {
+    src: '/images/Mosun Owo-Odusi.png',
+    alt: 'Alternate portrait of Mosun Owo-Odusi',
+    category: 'Leadership & Outreach',
+  },
+  {
+    src: '/images/Mosun Owo-Odusi-OGSTEP_project_coordinator.jpg',
+    alt: 'Mosun Owo-Odusi as OGSTEP Project Coordinator',
+    category: 'Leadership & Outreach',
+  },
+  {
     src: '/images/OGSTEP_Agric2.JPG',
     alt: 'OGSTEP field engagement with farmers',
     category: 'Leadership & Outreach',
