@@ -15,16 +15,16 @@ export default function About() {
       id: 1,
       period: 'May 2022 - Present',
       duration: '3 yrs 7 mos',
-      title: 'Project Coordinator',
+      title: 'State Project Coordinator',
       organization: 'Ogun State Economic Transformation Project (World Bank Sponsored)',
       location: 'Abeokuta, Ogun State, Nigeria',
       type: 'Full-time',
       highlights: [
-    	'Oversee day-to-day implementation and monitoring of over $205M World Bank project',
-        'Budget, scheduling and resource management',
-        'Quality assurance for all reports to government and World Bank',
-        'Stakeholder management (Internal and External)',
-        'Gender-sensitive and environmentally friendly interventions'
+	'Led a multi-sectoral team of 18 consultants and specialists to deliver OGSTEP’s Project Development Objectives and Disbursement Linked Results (DLRs).',
+        'Coordinated annual budgeting and financial management for an over $205M World Bank portfolio, ensuring fiduciary compliance and timely external audits.',
+        'Facilitated high-level policy dialogues and six Implementation Support Missions (ISMs) with the World Bank Task Team, driving sector reforms and capacity building across implementing agencies.',
+        'Oversaw sectoral reform implementation across education, skills development and economic transformation, tracking results against the Project Appraisal Document (PAD).',
+        'Implemented robust stakeholder management and communication strategies, aligning ministries, agencies and the Project Home Ministry.'
       ],
       skills: ['Organizational Leadership', 'Program Development', 'Project Coordination'],
       side: 'left'
@@ -48,17 +48,17 @@ export default function About() {
     },
     {
       id: 3,
-      period: 'May 2021 - May 2022',
-      duration: '1 yr 1 mo',
-      title: 'Project Manager - Skills Development Sector',
+      period: 'May 2021 - Sep 2022',
+      duration: '1 yr 5 mos',
+      title: 'Project Manager (Skills Development)',
       organization: 'Ogun State Economic Transformation Project (World Bank Sponsored)',
-      location: 'Nigeria',
+      location: 'Abeokuta, Ogun State, Nigeria',
       type: 'Full-time',
       highlights: [
-        'Oversees all three sub-components with a $90M USD portfolio',
-        'Led sector to achieve 75% of first-year implementation deliverables',
-        'Facilitated stakeholder engagement with ministries & agencies',
-        'Prepared and managed budget, tracked work plan activities'
+        'Coordinated monitoring and evaluation of technical reforms in education, skills development and human capital, in line with the Project Appraisal Document (PAD).',
+        'Managed the critical results-based financing link between sector performance and achievement of Disbursement Linked Results (DLRs), enabling release of funding tranches.',
+        'Facilitated targeted capacity-building workshops for civil servants and stakeholders on new education policies, data systems and institutional strengthening.',
+        'Worked with the State Ministry of Education and implementing agencies to promote evidence-based decision-making and data-driven policy dialogue.'
       ],
       skills: ['Organizational Leadership', 'Program Development', 'Project Coordination', 'Management Consulting'],
       side: 'left'
@@ -136,16 +136,48 @@ export default function About() {
       period: 'Aug 2003 - Aug 2006',
       duration: '3 yrs 1 mo',
       title: 'Principal',
-      organization: 'Corona Schools',
-      location: 'Lagos, Lagos State, Nigeria',
+      organization: 'Corona Secondary School',
+      location: 'Agbara, Ogun State, Nigeria',
       type: 'Full-time',
       highlights: [
-        'Introduced and implemented the first e-learning school in Nigeria',
-        'Continuous training for up to 150 staff',
-        'Introduced first blended programme in the school',
-        'Oversaw daily operations (500 student capacity)'
+        'Introduced and implemented one of the first e-learning secondary schools in Nigeria, integrating ICT into teaching and learning.',
+        'Led a team of over 50 staff and 500 students, driving continuous capacity development and performance improvement.',
+        'Supported the development of a campus expansion and rehabilitation blueprint and oversaw phased implementation.',
+        'Led rebranding and stakeholder engagement initiatives that improved academic outcomes, college acceptance rates and new enrolments.'
       ],
       skills: ['Organizational Leadership', 'Educational Leadership', 'Educational Technology'],
+      side: 'right'
+    },
+    {
+      id: 9,
+      period: 'Jul 2015 - Present',
+      duration: '9 yrs 6 mos',
+      title: 'Lead Realtor / Founder',
+      organization: 'Divilux Realty Limited',
+      location: 'Ilupeju, Lagos, Nigeria',
+      type: 'Founder / Lead Realtor',
+      highlights: [
+        'Provide market analysis, coordinate property showings and facilitate closing processes across residential and commercial real estate.',
+        'Support developers in conceptualising projects, optimising space utilisation and positioning assets for investment.',
+        'Oversee property sales, management, janitorial and facility management services for a diverse client base.'
+      ],
+      skills: ['Real Estate Advisory', 'Client Relationship Management', 'Property Management'],
+      side: 'left'
+    },
+    {
+      id: 10,
+      period: 'Sep 2002 - Aug 2003',
+      duration: '1 yr',
+      title: 'Deputy Head Teacher (Secondary) & Design and Technology Teacher',
+      organization: 'Grange School',
+      location: 'Ikeja, Lagos State, Nigeria',
+      type: 'Full-time',
+      highlights: [
+        'Designed and introduced Design and Technology subjects into the curriculum.',
+        'Monitored lesson delivery, mentored teachers and contributed to recruitment processes.',
+        'Facilitated student leadership and capacity-building programmes for staff and learners.'
+      ],
+      skills: ['Educational Leadership', 'Curriculum Design', 'Teacher Development'],
       side: 'right'
     }
   ]
@@ -469,56 +501,56 @@ export default function About() {
                           />
                         </div>
                         <div>
-                          <h4 className="font-bold text-slate-900 text-lg">Master of Business Administration - MBA</h4>
-                          <p className="text-emerald-600 font-semibold">Rome Business School Nigeria</p>
-                          <p className="text-slate-600 text-sm">Business Administration and Management, General</p>
+                          <h4 className="font-bold text-slate-900 text-lg">Master of Business Administration (MBA)</h4>
+                          <p className="text-emerald-600 font-semibold">Rome Business School, Italy</p>
+                          <p className="text-slate-600 text-sm">Business Administration and Management</p>
                         </div>
                       </div>
                     </div>
                     <div className="flex items-center gap-4 text-sm text-slate-500">
-                      <span>Oct 2024 – Oct 2025</span>
+                      <span>2024 – 2025</span>
                       <span>•</span>
-                      <span>Grade: MBA</span>
+                      <span>Completed 2025</span>
                     </div>
                   </motion.div>
 
                   {/* Past Education */}
                   {[
                     {
-                      degree: "M.ed Adult Education Management",
-                      school: "University of Lagos",
-                      field: "Adult education and Life Long Learning",
+                      degree: "M.Ed. Adult Education Management",
+                      school: "University of Lagos, Akoka",
+                      field: "Adult Education Management",
                       period: "2018 – 2019",
                       grade: "Distinction",
                       skills: ["Adult Education"],
                       logo: "/images/logos/unilag_logo.png"
                     },
                     {
-                      degree: "Master of Business Administration - MBA",
-                      school: "Obafemi Awolowo University",
-                      field: "Business Administration and Management, General", 
-                      period: "1996 – 1998",
-                      grade: null,
-                      skills: null,
-                      logo: "/images/logos/obafemi_awolowo_university_logo.png"
-                    },
-                    {
-                      degree: "Post Graduate Diploma",
+                      degree: "Post Graduate Diploma in Education (PGDE)",
                       school: "University of Lagos",
-                      field: "Education",
+                      field: "Education Management",
                       period: "1998",
                       grade: null,
                       skills: null,
                       logo: "/images/logos/unilag_logo.png"
                     },
                     {
-                      degree: "B.Sc",
-                      school: "Obafemi Awolowo University",
+                      degree: "B.Sc. Food Science and Technology",
+                      school: "Obafemi Awolowo University, Ile-Ife",
                       field: "Food Science and Technology",
-                      period: "1984 – 1991",
+                      period: "1984 – 1990",
                       grade: null,
                       skills: null,
                       logo: "/images/logos/obafemi_awolowo_university_logo.png"
+                    },
+                    {
+                      degree: "West African School Leaving Certificate",
+                      school: "St. Louis Grammar School, Ibadan",
+                      field: "Secondary Education",
+                      period: "1984",
+                      grade: null,
+                      skills: null,
+                      logo: null
                     }
                   ].map((edu, index) => (
                     <motion.div
@@ -578,22 +610,28 @@ export default function About() {
                     <div className="space-y-3">
                       {[
                         {
-                          title: "Business Development Services Professional",
-                          school: "Enterprise Development Center, Pan-Atlantic University",
+                          title: "Business Development Services Professional Certificate",
+                          school: "Enterprise Development Centre, Pan-Atlantic University",
                           year: "2020",
                           logo: "/images/logos/lagos_business_school_logo.png"
                         },
                         {
-                          title: "Certificate of Accreditation, Management Trainer", 
-                          school: "Centre for Management Development",
+                          title: "Certificate of Accreditation – Management Trainer", 
+                          school: "Centre for Management Development, Lagos",
                           year: "2017",
                           logo: null
                         },
                         {
                           title: "Certificate in Entrepreneurship Management (CEM)",
-                          school: "Lagos Business School, Pan-Atlantic University",
+                          school: "Enterprise Development Centre, Pan-Atlantic University",
                           year: "2009",
                           logo: "/images/logos/lagos_business_school_logo.png"
+                        },
+                        {
+                          title: "Certificate in Course-based Assessment (Food Science)",
+                          school: "Cambridge International Examinations (CIE)",
+                          year: "2003",
+                          logo: null
                         },
                         {
                           title: "Diploma, Data Processing",
@@ -675,36 +713,36 @@ export default function About() {
                 </motion.div>
 
                 {/* Other Certifications */}
-                {[
+                {[ 
                   {
-                    title: "Introduction to Cybersecurity",
-                    issuer: "Cisco",
-                    date: "Issued Sep 2024",
-                    skills: ["Cybersecurity", "Penetration Testing"],
+                    title: "Associate Member",
+                    issuer: "Women in Management, Business and Public Service (WIMBIZ)",
+                    date: "Professional membership",
+                    skills: ["Women in Leadership", "Mentoring"],
                     color: "bg-gradient-to-br from-emerald-500 to-emerald-600",
-                    logo: "/images/logos/cisco_logo.png"
+                    logo: null
                   },
                   {
                     title: "Member",
-                    issuer: "Project Management Institute",
-                    date: "Issued Jan 2024",
-                    skills: ["Program Development", "Project Coordination"],
+                    issuer: "Project Management Institute (PMI)",
+                    date: "Professional membership",
+                    skills: ["Project Management", "Program Development"],
                     color: "bg-gradient-to-br from-blue-500 to-blue-600",
                     logo: "/images/logos/project_management_institute_logo.png"
                   },
                   {
                     title: "Member",
-                    issuer: "Institute of Strategic Management Consultants (Chartered)",
-                    date: "Issued Jan 2024",
-                    skills: ["Business Strategy", "Consulting"],
+                    issuer: "Institute of Strategic Management Nigeria (Chartered)",
+                    date: "Professional membership",
+                    skills: ["Strategic Management", "Consulting", "MSN"],
                     color: "bg-gradient-to-br from-violet-500 to-violet-600",
                     logo: null
                   },
                   {
-                    title: "Life member Enterprise Development Centre",
-                    issuer: "Lagos Business School, Pan-Atlantic University",
-                    date: "Issued Oct 2021",
-                    skills: ["Business Strategy", "Entrepreneurship"],
+                    title: "Life Member, Enterprise Development Centre",
+                    issuer: "Enterprise Development Centre, Pan-Atlantic University",
+                    date: "Professional membership",
+                    skills: ["Entrepreneurship", "EDC", "NNEW", "APEN", "GYLC Educator"],
                     color: "bg-gradient-to-br from-amber-500 to-gold-500",
                     logo: "/images/logos/lagos_business_school_logo.png"
                   }
