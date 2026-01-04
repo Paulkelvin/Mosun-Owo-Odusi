@@ -562,15 +562,19 @@ export default function About() {
                       className="bg-white rounded-2xl shadow-soft p-6 hover:shadow-medium transition-all duration-300"
                     >
                       <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0">
-                          <Image
-                            src={edu.logo}
-                            alt={edu.school}
-                            width={50}
-                            height={50}
-                            className="object-contain"
-                          />
-                        </div>
+                        {edu.logo ? (
+                          <div className="flex-shrink-0">
+                            <Image
+                              src={edu.logo}
+                              alt={edu.school}
+                              width={50}
+                              height={50}
+                              className="object-contain"
+                            />
+                          </div>
+                        ) : (
+                          <div className="w-2 h-2 bg-emerald-500 rounded-full mt-2 flex-shrink-0" />
+                        )}
                         <div className="flex-1">
                           <h4 className="font-bold text-slate-900">{edu.degree}</h4>
                           <p className="text-primary-600 font-semibold">{edu.school}</p>

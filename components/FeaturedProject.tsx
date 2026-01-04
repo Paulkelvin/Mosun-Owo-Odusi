@@ -165,7 +165,7 @@ export default function FeaturedProject() {
               >
                 Directing the OGSTEP project, a <span className="font-bold text-2xl text-primary-700 inline-block mx-1">over $205M</span>{' '}
                 <a 
-                  href="https://projects.worldbank.org/en/projects-operations/projects-list?countrycode_exact=NG&title=Nigeria&countryshortname_exact=Nigeria&status_exact=Active&os=0&strdate=01-01-2020&enddate=12-22-2021#:~:text=Ogun%20State%20Economic%20Transformation%20Project" 
+	          href="https://projects.worldbank.org/en/projects-operations/projects-list?countrycode_exact=NG&title=Nigeria&countryshortname_exact=Nigeria&status_exact=Active&os=0&strdate=01-01-2020&enddate=01-01-2021#:~:text=Ogun%20State%20Economic,Bank%20Approved" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="font-semibold text-primary-600 hover:text-primary-700 underline decoration-2 underline-offset-2"
