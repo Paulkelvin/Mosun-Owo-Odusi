@@ -136,8 +136,8 @@ const projects = [
     budget: "Multi-client",
     beneficiaries: "Students & Educators",
     duration: "2011-Present",
-    location: "Nigeria",
-    image: "/api/placeholder/600/400",
+    location: "Lagos, Nigeria",
+    image: "/images/amVille_SCHOOL_logo.png",
     description: "Leading comprehensive educational consulting and program development through Amville School and Amville Consults, delivering innovative learning solutions, institutional audits, and transformative educational experiences across multiple educational institutions.",
     impact: "Transformed educational experiences for thousands of students while strengthening institutional capacity through innovative literacy programs, e-learning initiatives, staff development, and comprehensive school audits.",
     tags: ["Educational Consulting", "E-Learning", "Literacy Programs", "Institutional Development", "Staff Training"],
@@ -417,6 +417,21 @@ const galleryImages: GalleryImage[] = [
   { src: '/images/gallery/IMG_0837.jpg', alt: 'Project field photo 22', category: 'Field Highlights' },
 ]
 
+// Before/after images that should appear only in the dedicated strip,
+// not duplicated in the masonry grid, but still be part of the zoom set
+const beforeAfterGallerySrcs = new Set<string>([
+  '/images/Government_Technical_College_Before_Rehabilitation.png',
+  '/images/Government_Technical_College_After_Rehabilitation.png',
+  '/images/Before1.png',
+  '/images/After1.png',
+  '/images/Before2.png',
+  '/images/After2.png',
+  '/images/Before3.png',
+  '/images/After3.png',
+  '/images/Before4.png',
+  '/images/After4.png',
+])
+
 export default function Projects() {
   const [selectedYear, setSelectedYear] = useState(2024)
   const [isAutoPlay, setIsAutoPlay] = useState(false)
@@ -552,12 +567,24 @@ export default function Projects() {
     zoomPanY.set(0)
   }
 
+  // Helper: open zoom viewer from a specific image src (used by before/after strip)
+  const openZoomForSrc = (src: string) => {
+    const img = galleryImages.find((g) => g.src === src)
+    if (img) {
+      openZoomForImage(img)
+    }
+  }
+
+  const nonBeforeAfterImages = galleryImages.filter(
+    (img) => !beforeAfterGallerySrcs.has(img.src)
+  )
+
   const visibleGalleryImages =
     galleryMode === 'preview'
-      ? galleryImages.slice(0, 6)
+      ? nonBeforeAfterImages.slice(0, 6)
       : galleryMode === 'expanded'
-        ? galleryImages.slice(0, 12)
-        : galleryImages
+        ? nonBeforeAfterImages.slice(0, 12)
+        : nonBeforeAfterImages
 
   // Presentation mode auto-advance
   useEffect(() => {
@@ -886,8 +913,14 @@ export default function Projects() {
                         </div>
                         
                         <p className="text-lg text-slate-700 leading-relaxed">
-                          <span className="hidden lg:inline">{currentProject.description}</span>
-                          <span className="lg:hidden">Coordinating World Bank-assisted economic transformation program with 3 Project Managers, 15+ Consultants, 60+ team members across multiple critical initiatives.</span>
+                          {currentProject.id === 1 ? (
+                            <>
+                              <span className="hidden lg:inline">{currentProject.description}</span>
+                              <span className="lg:hidden">Coordinating World Bank-assisted economic transformation program with 3 Project Managers, 15+ Consultants, 60+ team members across multiple critical initiatives.</span>
+                            </>
+                          ) : (
+                            <span className="block">{currentProject.description}</span>
+                          )}
                         </p>
                       </div>
                       
@@ -905,12 +938,19 @@ export default function Projects() {
 
                     {/* Key Metrics */}
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-6">
-                      {[
-                        { label: "Budget", value: currentProject.budget, icon: DollarSign },
-                        { label: "Beneficiaries", value: currentProject.beneficiaries, icon: Users },
-                        { label: "Duration", value: currentProject.duration, icon: Calendar },
-                        { label: "Location", value: currentProject.location, icon: MapPin }
-                      ].map((metric, index) => (
+                      {(currentProject.id === 2
+                        ? [
+                            { label: "Beneficiaries", value: currentProject.beneficiaries, icon: Users },
+                            { label: "Duration", value: currentProject.duration, icon: Calendar },
+                            { label: "Location", value: currentProject.location, icon: MapPin },
+                          ]
+                        : [
+                            { label: "Budget", value: currentProject.budget, icon: DollarSign },
+                            { label: "Beneficiaries", value: currentProject.beneficiaries, icon: Users },
+                            { label: "Duration", value: currentProject.duration, icon: Calendar },
+                            { label: "Location", value: currentProject.location, icon: MapPin },
+                          ]
+                      ).map((metric, index) => (
                         <div key={metric.label} className="text-center p-4 bg-slate-50 rounded-xl border border-slate-100">
                           <metric.icon className="w-6 h-6 text-primary-600 mx-auto mb-2" />
                           <div className="text-sm font-bold text-slate-900">{metric.value}</div>
@@ -1199,7 +1239,7 @@ export default function Projects() {
               </div>
             </div>
 
-            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 select-none">
               {beforeAfterPairs.map((pair) => (
                 <div
                   key={pair.label}
@@ -1211,26 +1251,42 @@ export default function Projects() {
                         src={pair.before}
                         alt={`${pair.label} - before`}
                         fill
-                        className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03] pointer-events-none select-none"
                         sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 220px"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                       <div className="absolute left-2 top-2 rounded-full bg-red-500/90 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-sm">
                         Before
                       </div>
+                      <button
+                        type="button"
+                        onClick={() => openZoomForSrc(pair.before)}
+                        className="absolute inset-0"
+                        aria-label={`${pair.label} before - view larger`}
+                      >
+                        <span className="sr-only">View before image</span>
+                      </button>
                     </div>
                     <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
                       <Image
                         src={pair.after}
                         alt={`${pair.label} - after`}
                         fill
-                        className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03] pointer-events-none select-none"
                         sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 220px"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
                       <div className="absolute left-2 top-2 rounded-full bg-emerald-500/95 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-sm">
                         After
                       </div>
+                      <button
+                        type="button"
+                        onClick={() => openZoomForSrc(pair.after)}
+                        className="absolute inset-0"
+                        aria-label={`${pair.label} after - view larger`}
+                      >
+                        <span className="sr-only">View after image</span>
+                      </button>
                     </div>
                   </div>
                   <div className="px-3.5 py-3 border-t border-slate-800/80 bg-slate-950/80">
