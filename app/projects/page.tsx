@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Users, DollarSign, Calendar, MapPin, Award, TrendingUp, Briefcase, ChevronDown, ChevronUp, Image as ImageIcon, Presentation, X } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Users, DollarSign, Calendar, MapPin, Award, TrendingUp, Briefcase, ChevronDown, ChevronUp, Image as ImageIcon, Presentation, X, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react'
 import HighlightText from '@/components/HighlightText'
 import Image from 'next/image'
 import DotPattern from '@/components/DotPattern'
@@ -498,6 +498,47 @@ export default function Projects() {
       after: '/images/After4.png',
     },
   ] as const
+
+  const [isImageZoomOpen, setIsImageZoomOpen] = useState(false)
+  const [zoomImageIndex, setZoomImageIndex] = useState<number | null>(null)
+  const [zoomLevel, setZoomLevel] = useState(1)
+
+  const openZoomForImage = (img: GalleryImage) => {
+    const index = galleryImages.findIndex(
+      (g) => g.src === img.src && g.alt === img.alt && g.category === img.category
+    )
+    if (index !== -1) {
+      setZoomImageIndex(index)
+      setZoomLevel(1)
+      setIsImageZoomOpen(true)
+    }
+  }
+
+  const closeZoom = () => {
+    setIsImageZoomOpen(false)
+    setZoomImageIndex(null)
+    setZoomLevel(1)
+  }
+
+  const goToZoomImage = (direction: 1 | -1) => {
+    if (zoomImageIndex === null) return
+    const total = galleryImages.length
+    const nextIndex = (zoomImageIndex + direction + total) % total
+    setZoomImageIndex(nextIndex)
+    setZoomLevel(1)
+  }
+
+  const handleZoomIn = () => {
+    setZoomLevel((prev) => Math.min(prev + 0.3, 2.5))
+  }
+
+  const handleZoomOut = () => {
+    setZoomLevel((prev) => Math.max(prev - 0.3, 1))
+  }
+
+  const handleZoomReset = () => {
+    setZoomLevel(1)
+  }
 
   const visibleGalleryImages =
     galleryMode === 'preview'
@@ -1196,9 +1237,11 @@ export default function Projects() {
           {/* Masonry-style animated gallery */}
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">{/* masonry container */}
             {visibleGalleryImages.map((img, index) => (
-              <motion.div
+              <motion.button
                 key={img.src + index}
-                className="mb-4 break-inside-avoid rounded-2xl overflow-hidden relative group shadow-[0_18px_45px_rgba(15,23,42,0.6)] border border-slate-800/60 bg-slate-900/70"
+                type="button"
+                onClick={() => openZoomForImage(img)}
+                className="mb-4 block w-full text-left break-inside-avoid rounded-2xl overflow-hidden relative group shadow-[0_18px_45px_rgba(15,23,42,0.6)] border border-slate-800/60 bg-slate-900/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -1227,7 +1270,7 @@ export default function Projects() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </motion.button>
             ))}
           </div>
 
@@ -1269,6 +1312,149 @@ export default function Projects() {
           </div>
         </div>
       </section>
+
+      {/* Image Zoom Lightbox */}
+      <AnimatePresence>
+        {isImageZoomOpen && zoomImageIndex !== null && (
+          <motion.div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={closeZoom}
+          >
+            <motion.div
+              className="relative max-w-5xl w-full mx-4 bg-slate-950/95 border border-slate-700/80 rounded-2xl shadow-[0_24px_80px_rgba(0,0,0,0.8)] overflow-hidden"
+              initial={{ opacity: 0, y: 40, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: 20, scale: 0.96 }}
+              transition={{ type: "spring", stiffness: 260, damping: 24 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between px-4 sm:px-6 py-3 border-b border-slate-800/80 bg-slate-900/80">
+                <div className="flex items-center gap-2 min-w-0">
+                  <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-semibold">
+                    {(zoomImageIndex + 1).toString().padStart(2, "0")}
+                  </span>
+                  <p className="text-sm sm:text-base font-medium text-slate-100 truncate">
+                    {galleryImages[zoomImageIndex].category}
+                  </p>
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={handleZoomReset}
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-200 hover:bg-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
+                    aria-label="Reset zoom"
+                  >
+                    <Maximize2 className="h-4 w-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleZoomOut}
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-200 hover:bg-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
+                    aria-label="Zoom out"
+                  >
+                    <ZoomOut className="h-4 w-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={handleZoomIn}
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-200 hover:bg-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
+                    aria-label="Zoom in"
+                  >
+                    <ZoomIn className="h-4 w-4" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={closeZoom}
+                    className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-800/80 text-slate-300 hover:bg-slate-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-400 ml-1.5"
+                    aria-label="Close image viewer"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+              </div>
+
+              <div className="relative flex flex-col sm:flex-row items-center gap-3 sm:gap-4 px-4 sm:px-6 py-4 sm:py-5">
+                <button
+                  type="button"
+                  onClick={() => goToZoomImage(-1)}
+                  className="hidden sm:inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-900/80 text-slate-200 hover:bg-slate-800 border border-slate-700/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
+                  aria-label="Previous image"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+
+                <div className="relative flex-1 w-full">
+                  <div className="relative w-full max-h-[70vh] sm:max-h-[65vh] flex items-center justify-center overflow-hidden rounded-xl bg-slate-900/80 border border-slate-800/80">
+                    <div
+                      className="relative w-full h-[55vh] sm:h-[60vh] md:h-[65vh] flex items-center justify-center"
+                      style={{
+                        transform: `scale(${zoomLevel})`,
+                        transition: "transform 200ms ease-out",
+                      }}
+                    >
+                      <Image
+                        src={galleryImages[zoomImageIndex].src}
+                        alt={galleryImages[zoomImageIndex].alt}
+                        fill
+                        sizes="(min-width: 1024px) 800px, 100vw"
+                        className="object-contain select-none pointer-events-none"
+                        priority
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => goToZoomImage(1)}
+                  className="hidden sm:inline-flex h-9 w-9 items-center justify-center rounded-full bg-slate-900/80 text-slate-200 hover:bg-slate-800 border border-slate-700/80 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400"
+                  aria-label="Next image"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+              </div>
+
+              <div className="px-4 sm:px-6 pb-4 sm:pb-5 border-t border-slate-800/80 bg-slate-900/80">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <p className="text-xs sm:text-sm text-slate-200/90 max-w-2xl">
+                    {galleryImages[zoomImageIndex].alt}
+                  </p>
+                  <div className="flex items-center gap-2 justify-between sm:justify-end">
+                    <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
+                      <span>
+                        Image {zoomImageIndex + 1} of {galleryImages.length}
+                      </span>
+                      <span className="mx-1 text-slate-600">•</span>
+                      <span>{Math.round(zoomLevel * 100)}% zoom</span>
+                    </div>
+                    <div className="flex items-center gap-1.5 sm:hidden">
+                      <button
+                        type="button"
+                        onClick={() => goToZoomImage(-1)}
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900/80 text-slate-200 hover:bg-slate-800 border border-slate-700/80"
+                        aria-label="Previous image"
+                      >
+                        <ChevronLeft className="h-3 w-3" />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => goToZoomImage(1)}
+                        className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-slate-900/80 text-slate-200 hover:bg-slate-800 border border-slate-700/80"
+                        aria-label="Next image"
+                      >
+                        <ChevronRight className="h-3 w-3" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Call to Action Section */}
       <section id="projects-cta" className="relative section-padding bg-gradient-to-r from-primary-600 to-primary-700 overflow-hidden">
