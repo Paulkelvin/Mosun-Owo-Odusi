@@ -266,9 +266,6 @@ export default function About() {
                   <span className="inline-flex items-center rounded-full bg-slate-900/80 px-3 py-1 text-[11px] font-medium text-slate-100 border border-slate-700/70 w-fit">
                     Leadership & Outreach
                   </span>
-                  <p className="text-sm text-slate-100/95 leading-snug">
-                    Professional portrait of Mosun Owo-Odusi
-                  </p>
                 </div>
               </div>
             </div>
