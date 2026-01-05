@@ -84,7 +84,7 @@ export async function fetchFindworkJobs(): Promise<TransformedOpportunity[]> {
     console.log('🌐 Fetching from Findwork API...');
     
     // Search for relevant roles
-    const keywords = ['project manager', 'program manager', 'consultant', 'director'];
+    const keywords = ['project manager', 'program manager', 'consultant', 'director', 'product manager'];
     const allJobs: FindworkJob[] = [];
     
     for (const keyword of keywords) {
@@ -106,7 +106,7 @@ export async function fetchFindworkJobs(): Promise<TransformedOpportunity[]> {
         const data: FindworkResponse = await response.json();
         
         if (data.results && Array.isArray(data.results)) {
-          allJobs.push(...data.results.slice(0, 10)); // Take 10 from each search
+          allJobs.push(...data.results.slice(0, 15)); // Take up to 15 from each search
         }
 
         // Rate limiting

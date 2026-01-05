@@ -98,7 +98,7 @@ export async function fetchGitHubJobs(): Promise<TransformedOpportunity[]> {
     console.log('🌐 Fetching from GitHub Jobs API...');
     
     // Search for relevant roles
-    const searches = ['project manager', 'program manager', 'technical manager'];
+    const searches = ['project manager', 'program manager', 'technical manager', 'product manager'];
     const allJobs: GitHubJob[] = [];
     
     for (const search of searches) {
@@ -120,7 +120,7 @@ export async function fetchGitHubJobs(): Promise<TransformedOpportunity[]> {
         const data: GitHubJob[] = await response.json();
         
         if (Array.isArray(data)) {
-          allJobs.push(...data.slice(0, 15));
+          allJobs.push(...data.slice(0, 20));
         }
 
         // Rate limiting

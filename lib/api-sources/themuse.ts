@@ -135,7 +135,7 @@ export async function fetchTheMuseJobs(): Promise<TransformedOpportunity[]> {
         const data: MuseResponse = await response.json();
         
         if (data.results && Array.isArray(data.results)) {
-          allJobs.push(...data.results.slice(0, 15)); // Take 15 from each category
+          allJobs.push(...data.results.slice(0, 25)); // Take up to 25 from each category
         }
 
         // Rate limiting

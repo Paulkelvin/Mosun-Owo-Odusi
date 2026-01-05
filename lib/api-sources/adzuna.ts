@@ -126,7 +126,7 @@ export async function fetchAdzunaJobs(): Promise<TransformedOpportunity[]> {
     for (const country of countries) {
       for (const keyword of keywords) {
         try {
-          const url = `https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${appId}&app_key=${appKey}&what=${encodeURIComponent(keyword)}&results_per_page=20&content-type=application/json`;
+          const url = `https://api.adzuna.com/v1/api/jobs/${country}/search/1?app_id=${appId}&app_key=${appKey}&what=${encodeURIComponent(keyword)}&results_per_page=40&content-type=application/json`;
           
           const response = await fetch(url, {
             headers: { 'Accept': 'application/json' }

@@ -168,8 +168,8 @@ export async function fetchArbeitnowJobs(): Promise<TransformedOpportunity[]> {
 
     console.log(`✅ Fetched ${relevantJobs.length} English jobs from Arbeitnow (filtered from ${jobs.length} total)`);
 
-    // Transform to our schema (limit to 30 most recent)
-    const transformed = relevantJobs.slice(0, 30).map((job): TransformedOpportunity => ({
+    // Transform to our schema (limit to 60 most recent)
+    const transformed = relevantJobs.slice(0, 60).map((job): TransformedOpportunity => ({
       title: job.title,
       organization: job.company_name,
       category: categorizeJob(job.title, job.tags || []),

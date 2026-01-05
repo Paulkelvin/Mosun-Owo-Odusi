@@ -10,6 +10,7 @@ import { fetchReliefWebJobs } from './reliefweb';
 import { fetchTheMuseJobs } from './themuse';
 import { fetchFindworkJobs } from './findwork';
 import { fetchGitHubJobs } from './githubjobs';
+import { fetchRemotiveJobs } from './remotive';
 
 export interface OpportunityData {
   title: string;
@@ -36,11 +37,12 @@ export async function fetchAllOpportunities(): Promise<OpportunityData[]> {
     fetchReliefWebJobs(),
     fetchTheMuseJobs(),
     fetchFindworkJobs(),
-    fetchGitHubJobs()
+    fetchGitHubJobs(),
+    fetchRemotiveJobs()
   ]);
 
   const allOpportunities: OpportunityData[] = [];
-  const sources = ['Adzuna', 'RemoteOK', 'Arbeitnow', 'ReliefWeb', 'TheMuse', 'Findwork', 'GitHubJobs'];
+  const sources = ['Adzuna', 'RemoteOK', 'Arbeitnow', 'ReliefWeb', 'TheMuse', 'Findwork', 'GitHubJobs', 'Remotive'];
 
   // Collect results from each source
   results.forEach((result, index) => {

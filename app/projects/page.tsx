@@ -1241,7 +1241,7 @@ export default function Projects() {
                 key={img.src + index}
                 type="button"
                 onClick={() => openZoomForImage(img)}
-                className="mb-4 block w-full text-left break-inside-avoid rounded-2xl overflow-hidden relative group shadow-[0_18px_45px_rgba(15,23,42,0.6)] border border-slate-800/60 bg-slate-900/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900"
+                className="mb-4 block w-full text-left break-inside-avoid rounded-2xl overflow-hidden relative group shadow-[0_18px_45px_rgba(15,23,42,0.6)] border border-slate-800/60 bg-slate-900/70 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-900 select-none"
                 initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
@@ -1255,7 +1255,7 @@ export default function Projects() {
                       alt={img.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105 pointer-events-none select-none"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
                   </div>

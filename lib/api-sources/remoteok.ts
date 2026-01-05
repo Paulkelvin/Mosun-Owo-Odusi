@@ -138,8 +138,8 @@ export async function fetchRemoteOKJobs(): Promise<TransformedOpportunity[]> {
 
     console.log(`✅ Fetched ${relevantJobs.length} relevant jobs from RemoteOK (filtered from ${jobs.length})`);
 
-    // Transform to our schema (limit to 50 most recent)
-    const transformed = relevantJobs.slice(0, 50).map((job): TransformedOpportunity => ({
+    // Transform to our schema (limit to 100 most recent)
+    const transformed = relevantJobs.slice(0, 100).map((job): TransformedOpportunity => ({
       title: job.position,
       organization: job.company,
       category: categorizeFromTags(job.tags || [], job.position),
