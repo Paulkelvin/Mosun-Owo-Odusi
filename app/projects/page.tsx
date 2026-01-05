@@ -310,6 +310,57 @@ const galleryImages: GalleryImage[] = [
     alt: 'Group photo from OGSTEP skills programme',
     category: 'Skills & Education',
   },
+  // Technical colleges before/after rehabilitation
+  {
+    src: '/images/Government_Technical_College_Before_Rehabilitation.png',
+    alt: 'Government Technical College buildings before rehabilitation under OGSTEP',
+    category: 'Before & After: Technical Colleges',
+  },
+  {
+    src: '/images/Government_Technical_College_After_Rehabilitation.png',
+    alt: 'Government Technical College buildings after rehabilitation under OGSTEP',
+    category: 'Before & After: Technical Colleges',
+  },
+  {
+    src: '/images/Before1.png',
+    alt: 'Project site condition before intervention (1)',
+    category: 'Before & After: Project Sites',
+  },
+  {
+    src: '/images/After1.png',
+    alt: 'Project site condition after intervention (1)',
+    category: 'Before & After: Project Sites',
+  },
+  {
+    src: '/images/Before2.png',
+    alt: 'Project site condition before intervention (2)',
+    category: 'Before & After: Project Sites',
+  },
+  {
+    src: '/images/After2.png',
+    alt: 'Project site condition after intervention (2)',
+    category: 'Before & After: Project Sites',
+  },
+  {
+    src: '/images/Before3.png',
+    alt: 'Project site condition before intervention (3)',
+    category: 'Before & After: Project Sites',
+  },
+  {
+    src: '/images/After3.png',
+    alt: 'Project site condition after intervention (3)',
+    category: 'Before & After: Project Sites',
+  },
+  {
+    src: '/images/Before4.png',
+    alt: 'Project site condition before intervention (4)',
+    category: 'Before & After: Project Sites',
+  },
+  {
+    src: '/images/After4.png',
+    alt: 'Project site condition after intervention (4)',
+    category: 'Before & After: Project Sites',
+  },
   // Land administration & CORS infrastructure
   {
     src: '/images/OGSTEP_CORS.webp',
@@ -414,6 +465,39 @@ export default function Projects() {
   const currentMilestone = selectedMilestone 
     ? currentProject.milestones.find(m => m.id === selectedMilestone)
     : null
+
+  const beforeAfterPairs = [
+    {
+      label: 'Government Technical College Rehabilitation',
+      context: 'One of eight Government Technical Colleges upgraded under OGSTEP to modern, skills-focused learning environments.',
+      before: '/images/Government_Technical_College_Before_Rehabilitation.png',
+      after: '/images/Government_Technical_College_After_Rehabilitation.png',
+    },
+    {
+      label: 'Project Site Transformation 1',
+      context: 'Illustrative transformation of learning and community environments before and after OGSTEP and related interventions.',
+      before: '/images/Before1.png',
+      after: '/images/After1.png',
+    },
+    {
+      label: 'Project Site Transformation 2',
+      context: 'Improved infrastructure and usability following targeted investment and rehabilitation.',
+      before: '/images/Before2.png',
+      after: '/images/After2.png',
+    },
+    {
+      label: 'Project Site Transformation 3',
+      context: 'Upgraded facilities supporting safer, more effective learning and workspaces.',
+      before: '/images/Before3.png',
+      after: '/images/After3.png',
+    },
+    {
+      label: 'Project Site Transformation 4',
+      context: 'Visible upgrade from informal settings to more structured, well-equipped environments.',
+      before: '/images/Before4.png',
+      after: '/images/After4.png',
+    },
+  ] as const
 
   const visibleGalleryImages =
     galleryMode === 'preview'
@@ -1035,6 +1119,80 @@ export default function Projects() {
             </p>
           </motion.div>
 
+          {/* Before & After highlight row */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="mt-4 mb-8 rounded-2xl border border-slate-800/70 bg-slate-900/80 px-4 py-6 sm:px-6 sm:py-7 shadow-[0_18px_45px_rgba(15,23,42,0.85)]"
+          >
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <h3 className="text-lg sm:text-xl font-semibold text-slate-50 mb-1">
+                  Before &amp; After: Infrastructure Transformation
+                </h3>
+                <p className="text-sm text-slate-300 max-w-3xl">
+                  See how OGSTEP investments transformed Government Technical Colleges and key project sites from under-resourced spaces into modern, skills-ready environments.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-2 text-[11px] text-slate-300">
+                <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 border border-emerald-400/40 text-emerald-200">
+                  8 Technical Colleges Upgraded
+                </span>
+                <span className="inline-flex items-center rounded-full bg-sky-500/10 px-3 py-1 border border-sky-400/40 text-sky-200">
+                  Learning Environments Modernised
+                </span>
+              </div>
+            </div>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {beforeAfterPairs.map((pair) => (
+                <div
+                  key={pair.label}
+                  className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 shadow-[0_14px_36px_rgba(15,23,42,0.9)]"
+                >
+                  <div className="grid grid-cols-2 gap-px bg-slate-900/60">
+                    <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
+                      <Image
+                        src={pair.before}
+                        alt={`${pair.label} - before`}
+                        fill
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 220px"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                      <div className="absolute left-2 top-2 rounded-full bg-red-500/90 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-sm">
+                        Before
+                      </div>
+                    </div>
+                    <div className="relative aspect-[4/3] overflow-hidden bg-slate-900">
+                      <Image
+                        src={pair.after}
+                        alt={`${pair.label} - after`}
+                        fill
+                        className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.03]"
+                        sizes="(max-width: 768px) 50vw, (max-width: 1024px) 25vw, 220px"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent to-transparent" />
+                      <div className="absolute left-2 top-2 rounded-full bg-emerald-500/95 px-2.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.14em] text-white shadow-sm">
+                        After
+                      </div>
+                    </div>
+                  </div>
+                  <div className="px-3.5 py-3 border-t border-slate-800/80 bg-slate-950/80">
+                    <p className="text-xs font-semibold text-slate-100 mb-1 line-clamp-2">
+                      {pair.label}
+                    </p>
+                    <p className="text-[11px] text-slate-400 leading-snug line-clamp-3">
+                      {pair.context}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
           {/* Masonry-style animated gallery */}
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">{/* masonry container */}
             {visibleGalleryImages.map((img, index) => (
@@ -1054,7 +1212,7 @@ export default function Projects() {
                       alt={img.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
                   </div>
