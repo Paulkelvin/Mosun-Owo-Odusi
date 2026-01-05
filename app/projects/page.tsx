@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, useMotionValue } from 'framer-motion'
 import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Users, DollarSign, Calendar, MapPin, Award, TrendingUp, Briefcase, ChevronDown, ChevronUp, Image as ImageIcon, Presentation, X, ZoomIn, ZoomOut, Maximize2 } from 'lucide-react'
 import HighlightText from '@/components/HighlightText'
 import Image from 'next/image'
@@ -503,6 +503,10 @@ export default function Projects() {
   const [zoomImageIndex, setZoomImageIndex] = useState<number | null>(null)
   const [zoomLevel, setZoomLevel] = useState(1)
 
+  // Pan offsets for zoomed image in lightbox
+  const zoomPanX = useMotionValue(0)
+  const zoomPanY = useMotionValue(0)
+
   const openZoomForImage = (img: GalleryImage) => {
     const index = galleryImages.findIndex(
       (g) => g.src === img.src && g.alt === img.alt && g.category === img.category
@@ -510,6 +514,8 @@ export default function Projects() {
     if (index !== -1) {
       setZoomImageIndex(index)
       setZoomLevel(1)
+      zoomPanX.set(0)
+      zoomPanY.set(0)
       setIsImageZoomOpen(true)
     }
   }
@@ -518,6 +524,8 @@ export default function Projects() {
     setIsImageZoomOpen(false)
     setZoomImageIndex(null)
     setZoomLevel(1)
+    zoomPanX.set(0)
+    zoomPanY.set(0)
   }
 
   const goToZoomImage = (direction: 1 | -1) => {
@@ -526,6 +534,8 @@ export default function Projects() {
     const nextIndex = (zoomImageIndex + direction + total) % total
     setZoomImageIndex(nextIndex)
     setZoomLevel(1)
+    zoomPanX.set(0)
+    zoomPanY.set(0)
   }
 
   const handleZoomIn = () => {
@@ -538,6 +548,8 @@ export default function Projects() {
 
   const handleZoomReset = () => {
     setZoomLevel(1)
+    zoomPanX.set(0)
+    zoomPanY.set(0)
   }
 
   const visibleGalleryImages =
@@ -1258,6 +1270,13 @@ export default function Projects() {
                       className="object-cover object-top transition-transform duration-500 group-hover:scale-105 pointer-events-none select-none"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
+                    {/* Mobile/hover affordance: subtle "View" pill */}
+                    <div
+                      className="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1 rounded-full bg-slate-950/85 px-2.5 py-1 text-[10px] font-medium text-slate-50 shadow-sm opacity-90 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-1 sm:group-hover:translate-y-0 transition-all duration-200"
+                    >
+                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold-400" />
+                      <span>View</span>
+                    </div>
                   </div>
 
                   {/* Label overlay */}
@@ -1388,12 +1407,17 @@ export default function Projects() {
 
                 <div className="relative flex-1 w-full">
                   <div className="relative w-full max-h-[70vh] sm:max-h-[65vh] flex items-center justify-center overflow-hidden rounded-xl bg-slate-900/80 border border-slate-800/80">
-                    <div
-                      className="relative w-full h-[55vh] sm:h-[60vh] md:h-[65vh] flex items-center justify-center"
+                    <motion.div
+                      className="relative w-full h-[55vh] sm:h-[60vh] md:h-[65vh] flex items-center justify-center cursor-grab active:cursor-grabbing"
                       style={{
-                        transform: `scale(${zoomLevel})`,
-                        transition: "transform 200ms ease-out",
+                        scale: zoomLevel,
+                        x: zoomPanX,
+                        y: zoomPanY,
                       }}
+                      drag={zoomLevel > 1}
+                      dragMomentum={false}
+                      dragElastic={0.18}
+                      dragConstraints={{ left: -220, right: 220, top: -220, bottom: 220 }}
                     >
                       <Image
                         src={galleryImages[zoomImageIndex].src}
@@ -1403,7 +1427,7 @@ export default function Projects() {
                         className="object-contain select-none pointer-events-none"
                         priority
                       />
-                    </div>
+                    </motion.div>
                   </div>
                 </div>
 

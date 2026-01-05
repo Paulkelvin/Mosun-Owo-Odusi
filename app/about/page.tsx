@@ -217,9 +217,6 @@ export default function About() {
                 <h1 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                   <HighlightText highlightColor="emerald">About</HighlightText> <span className="gradient-text">Mosun</span>
                 </h1>
-                <p className="text-xl text-slate-100 mb-12 leading-relaxed">
-                  A dedicated professional with over 20 years of experience in education, project management, and organizational leadership across Nigeria
-                </p>
               </motion.div>
             </div>
           </div>
