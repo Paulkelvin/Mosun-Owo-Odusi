@@ -72,10 +72,17 @@ function deduplicateOpportunities(opportunities: OpportunityData[]): Opportunity
   const unique: OpportunityData[] = [];
 
   for (const opp of opportunities) {
-    // Create a normalized key from title and organization
-    const key = `${opp.title.toLowerCase()}-${opp.organization.toLowerCase()}`
+    // Create a normalized key from title and organization, with safe fallbacks
+    const safeTitle = (opp.title || '').toLowerCase();
+    const safeOrg = (opp.organization || '').toLowerCase();
+    const baseKey = `${safeTitle}-${safeOrg}`
       .replace(/\s+/g, '')
       .replace(/[^\w-]/g, '');
+
+    // If title/organization are missing or extremely short, fall back to using the link
+    const key = baseKey && baseKey.length > 3
+      ? baseKey
+      : (opp.link || '').toLowerCase().replace(/[^\w-]/g, '');
     
     if (!seen.has(key)) {
       seen.add(key);

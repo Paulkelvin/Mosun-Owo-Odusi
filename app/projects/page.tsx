@@ -432,6 +432,50 @@ const beforeAfterGallerySrcs = new Set<string>([
   '/images/After4.png',
 ])
 
+type VideoHighlight = {
+  id: string
+  title: string
+  src: string
+}
+
+const videoHighlights: VideoHighlight[] = [
+  {
+    id: 'mosun-fish-harvest-ijebu',
+    title: 'Mosun Owo-Odusi – Speech at launch of fish harvest (Ijebu)',
+    src: 'https://drive.google.com/file/d/1wEswzM9QHRxg4VFNLAasEADnXA5cJG8R/preview',
+  },
+  {
+    id: 'mosun-video-highlight-2',
+    title: 'Mosun Owo-Odusi – OGSTEP video highlight',
+    src: 'https://drive.google.com/file/d/1cHiu1R03JwsCWPQa-nWFRDPtD8kf9Irt/preview',
+  },
+  {
+    id: 'mosun-award-ogstep',
+    title: 'Mosun Owo-Odusi receiving an award on behalf of OGSTEP',
+    src: 'https://drive.google.com/file/d/1LldvxNnzTPhSm8hNFmN7vGwvdg98xJ45/preview',
+  },
+  {
+    id: 'mosun-pc-interview',
+    title: 'Mosun Owo-Odusi – Project Coordinator interview',
+    src: 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview',
+  },
+  {
+    id: 'mosun-interview-journalist-1',
+    title: 'Mosun Owo-Odusi interview session with a journalist',
+    src: 'https://drive.google.com/file/d/1MeifnduMzvgMBdhwZE9kntXKUqkDfq-B/preview',
+  },
+  {
+    id: 'mosun-interview-journalist-2',
+    title: 'Mosun Owo-Odusi interview session with a journalist (2)',
+    src: 'https://drive.google.com/file/d/1ixQo30q24xNnRzOCR7o8x0IgiboPw6nM/preview',
+  },
+  {
+    id: 'mosun-matter-resolution',
+    title: 'Mosun Owo-Odusi interview session on matter resolution',
+    src: 'https://drive.google.com/file/d/1Qs6fQAiH44-FLLpMjZhIzL7N9A68f_u2/preview',
+  },
+]
+
 export default function Projects() {
   const [selectedYear, setSelectedYear] = useState(2024)
   const [isAutoPlay, setIsAutoPlay] = useState(false)
@@ -1301,6 +1345,53 @@ export default function Projects() {
               ))}
             </div>
           </motion.div>
+
+          {/* Video Highlights */}
+          {videoHighlights.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              viewport={{ once: true }}
+              className="mb-10 rounded-2xl border border-slate-800/70 bg-slate-900/80 px-4 py-6 sm:px-6 sm:py-7 shadow-[0_18px_45px_rgba(15,23,42,0.85)]"
+            >
+              <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-50 mb-1">
+                    Video Highlights
+                  </h3>
+                  <p className="text-sm text-slate-300 max-w-3xl">
+                    Short clips capturing speeches, interviews and recognition moments from Mosun Owo-Odusi&apos;s leadership on OGSTEP.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                {videoHighlights.map((video) => (
+                  <div
+                    key={video.id}
+                    className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 shadow-[0_16px_40px_rgba(15,23,42,0.9)]"
+                  >
+                    <div className="relative w-full aspect-video bg-slate-900">
+                      <iframe
+                        src={video.src}
+                        title={video.title}
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full border-0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                    </div>
+                    <div className="px-3.5 py-3 border-t border-slate-800/80 bg-slate-950/90">
+                      <p className="text-xs sm:text-sm font-semibold text-slate-50 leading-snug">
+                        {video.title}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          )}
 
           {/* Masonry-style animated gallery */}
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">{/* masonry container */}

@@ -104,17 +104,28 @@ export async function fetchRemotiveJobs(): Promise<TransformedOpportunity[]> {
     });
 
     if (!response.ok) {
-      console.log(`⚠️  Remotive API returned ${response.status}`);
+      if (response.status === 429) {
+        console.log('⚠️  Remotive API rate limit (429) – skipping this refresh run.');
+      } else {
+        console.log(`⚠️  Remotive API returned ${response.status}`);
+      }
       return [];
     }
 
-    const data: RemotiveResponse = await response.json();
+    const raw = await response.json();
+
+    // Defensive parsing: handle unexpected shapes without throwing
+    const data: RemotiveResponse = {
+      job_count: typeof raw?.job_count === 'number' ? raw.job_count : 0,
+      jobs: Array.isArray(raw?.jobs) ? raw.jobs : [],
+    };
+
     const jobs = data.jobs || [];
 
     // Filter for management / leadership / consulting style roles
     const filtered = jobs.filter((job) => {
-      const title = job.title?.toLowerCase() || '';
-      const category = job.category?.toLowerCase() || '';
+      const title = job?.title ? String(job.title).toLowerCase() : '';
+      const category = job?.category ? String(job.category).toLowerCase() : '';
 
       return (
         title.includes('project') ||
@@ -133,16 +144,23 @@ export async function fetchRemotiveJobs(): Promise<TransformedOpportunity[]> {
     console.log(`✅ Fetched ${filtered.length} relevant jobs from Remotive (from ${jobs.length} total)`);
 
     // Transform to our schema, limit to 80 to avoid overload
-    const transformed: TransformedOpportunity[] = filtered.slice(0, 80).map((job) => ({
-      title: job.title,
-      organization: job.company_name,
-      category: categorizeRemotiveJob(job.category, job.title, job.job_type),
-      location: job.candidate_required_location || 'Remote',
-      deadline: null,
-      link: job.url,
-      description: cleanDescription(job.description),
-      source: 'Remotive'
-    }));
+    const transformed: TransformedOpportunity[] = filtered
+      .slice(0, 80)
+      .map((job) => {
+        const title = job?.title || 'Untitled role';
+        const organization = job?.company_name || 'Unknown Organization';
+
+        return {
+          title,
+          organization,
+          category: categorizeRemotiveJob(job?.category || '', title, job?.job_type || ''),
+          location: job?.candidate_required_location || 'Remote',
+          deadline: null,
+          link: job?.url || 'https://remotive.com/remote-jobs',
+          description: cleanDescription(job?.description),
+          source: 'Remotive',
+        };
+      });
 
     return transformed;
   } catch (error) {
