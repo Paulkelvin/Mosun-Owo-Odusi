@@ -25,12 +25,13 @@ export async function POST(req: Request) {
     const cleanedAbout = about.trim()
     const cleanedName = typeof name === 'string' ? name.trim() : ''
 
-    const textBody = `${cleanedName ? `Client name/organization: ${cleanedName}\n\n` : ''}About content submitted from the About page form:\n\n${cleanedAbout}`
+    const textBody = `${cleanedName ? `Client name/organization: ${cleanedName}\n\n` : ''}About content submitted from the About page form on mosunowoodusi.com:\n\n${cleanedAbout}`
 
     const { data, error } = await resend.emails.send({
-      from: 'Mosun Portfolio <onboarding@resend.dev>',
-      to: ['ibukunadesanya0@gmail.com'],
-      subject: 'New About page content draft',
+      from: 'Mosun Website <contact@mosunowoodusi.com>',
+      to: ['paulopackager@gmail.com'],
+      replyTo: 'paulopackager@gmail.com',
+      subject: 'New message from mosunowoodusi.com about form',
       text: textBody,
     })
 

@@ -90,7 +90,7 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="bg-white rounded-3xl shadow-large p-6 lg:p-8 relative overflow-hidden lg:col-span-2"
+      className="bg-white rounded-3xl shadow-large p-6 relative overflow-hidden lg:col-span-2"
     >
       {/* Subtle background accent */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-50/30 to-gold-50/30 rounded-full -translate-y-16 translate-x-16"></div>
@@ -107,8 +107,8 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
         </div>
 
         {/* Video Container */}
-        <div className="relative mb-6 rounded-2xl overflow-hidden bg-slate-100">
-          <div className="aspect-video relative">
+        <div className="relative mb-5 lg:mb-4 rounded-2xl overflow-hidden bg-slate-100">
+          <div className="aspect-video lg:aspect-[16/7] relative">
             {!isLoaded && (
               <div 
                 className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center cursor-pointer"

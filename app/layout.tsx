@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://mosun-owo-odusi.vercel.app',
+    url: 'https://mosunowoodusi.com',
     title: 'Mosun Owo-Odusi | Leadership, Project Management & Advisory',
     description: 'Explore the work of Mosun Owo-Odusi, a leader on high-impact public and private sector projects, and former Project Coordinator of the Ogun State Economic Transformation Project (OGSTEP).',
     siteName: 'Mosun Owo-Odusi',
