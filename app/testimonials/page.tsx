@@ -90,7 +90,7 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="bg-white rounded-3xl shadow-large p-8 lg:p-10 relative overflow-hidden lg:col-span-2"
+      className="bg-white rounded-3xl shadow-large p-6 lg:p-8 relative overflow-hidden lg:col-span-2"
     >
       {/* Subtle background accent */}
       <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-50/30 to-gold-50/30 rounded-full -translate-y-16 translate-x-16"></div>
@@ -108,7 +108,7 @@ function VideoTestimonial({ testimonial, index }: { testimonial: any, index: num
 
         {/* Video Container */}
         <div className="relative mb-6 rounded-2xl overflow-hidden bg-slate-100">
-          <div className="aspect-[16/9] lg:aspect-[5/3] xl:aspect-[16/7] relative">
+          <div className="aspect-video relative">
             {!isLoaded && (
               <div 
                 className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center cursor-pointer"
@@ -251,7 +251,7 @@ export default function Testimonials() {
               transition={{ duration: 0.8, delay: 0.4 }}
               className="text-xl md:text-2xl text-primary-100 max-w-3xl mx-auto leading-relaxed"
             >
-              Discover what colleagues, clients, and partners say about working together to create meaningful impact across projects and industries.
+              Discover what colleagues, clients, and partners say about working together.
             </motion.p>
           </motion.div>
         </div>

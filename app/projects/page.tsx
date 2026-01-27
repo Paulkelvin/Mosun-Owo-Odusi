@@ -234,6 +234,7 @@ type GalleryImage = {
   src: string
   alt: string
   category: string
+  caption?: string
 }
 
 const galleryImages: GalleryImage[] = [
@@ -409,11 +410,23 @@ const galleryImages: GalleryImage[] = [
   { src: '/images/gallery/IMG_0828.jpg', alt: 'Project field photo 14', category: 'Field Highlights' },
   { src: '/images/gallery/IMG_0829.jpg', alt: 'Project field photo 15', category: 'Field Highlights' },
   { src: '/images/gallery/IMG_0830.jpg', alt: 'Project field photo 16', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0831.jpg', alt: 'Project field photo 17', category: 'Field Highlights' },
+  {
+    src: '/images/gallery/IMG_0831.jpg',
+    alt: 'Physical monitoring of the rehabilitation of Government Technical College Ijebu-Ode by the Project Coordinator, accompanied by the Chief Economic Adviser and Honourable Commissioner for Finance who also serves as OGSTEP Project Steering Committee Chair, Mr Dapo Okubadejo, alongside other members of the State Executive Council.',
+    category: 'Field Highlights',
+    caption:
+      'Physical monitoring of Government Technical College Ijebu-Ode rehabilitation with OGSTEP leadership and State Executive Council.',
+  },
   { src: '/images/gallery/IMG_0833.jpg', alt: 'Project field photo 18', category: 'Field Highlights' },
   { src: '/images/gallery/IMG_0834.jpg', alt: 'Project field photo 19', category: 'Field Highlights' },
   { src: '/images/gallery/IMG_0835.jpg', alt: 'Project field photo 20', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0836.jpg', alt: 'Project field photo 21', category: 'Field Highlights' },
+  {
+    src: '/images/gallery/IMG_0836.jpg',
+    alt: 'Group field photo during the physical monitoring of the rehabilitation of Government Technical College Ijebu-Ode by the Project Coordinator, joined by the Chief Economic Adviser and Honourable Commissioner for Finance, OGSTEP Project Steering Committee Chair Mr Dapo Okubadejo, and other members of the State Executive Council at the same site visit.',
+    category: 'Field Highlights',
+    caption:
+      'Physical monitoring of Government Technical College Ijebu-Ode rehabilitation with OGSTEP leadership and State Executive Council.',
+  },
   { src: '/images/gallery/IMG_0837.jpg', alt: 'Project field photo 22', category: 'Field Highlights' },
 ]
 
@@ -1262,7 +1275,7 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.1 }}
             viewport={{ once: true }}
-            className="mt-4 mb-8 rounded-2xl border border-slate-800/70 bg-slate-900/80 px-4 py-6 sm:px-6 sm:py-7 shadow-[0_18px_45px_rgba(15,23,42,0.85)]"
+            className="mt-4 mb-8 rounded-2xl border border-slate-800/70 bg-slate-900/80 px-4 py-6 sm:px-6 sm:py-7 shadow-[0_18px_45px_rgba(15,23,42,0.85)] -mx-2 sm:mx-0"
           >
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <div>
@@ -1353,7 +1366,7 @@ export default function Projects() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15 }}
               viewport={{ once: true }}
-              className="mb-10 rounded-2xl border border-slate-800/70 bg-slate-900/80 px-4 py-6 sm:px-6 sm:py-7 shadow-[0_18px_45px_rgba(15,23,42,0.85)]"
+              className="mb-10 rounded-2xl border border-slate-800/70 bg-slate-900/80 px-4 py-6 sm:px-6 sm:py-7 shadow-[0_18px_45px_rgba(15,23,42,0.85)] -mx-2 sm:mx-0"
             >
               <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                 <div>
@@ -1381,6 +1394,10 @@ export default function Projects() {
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
                       />
+                      {/* Overlay small area to intercept clicks on the Drive pop-out icon */}
+                      <div className="pointer-events-none absolute inset-0">
+                        <div className="pointer-events-auto absolute top-0 right-0 h-8 w-10" aria-hidden="true" />
+                      </div>
                     </div>
                     <div className="px-3.5 py-3 border-t border-slate-800/80 bg-slate-950/90">
                       <p className="text-xs sm:text-sm font-semibold text-slate-50 leading-snug">
@@ -1394,7 +1411,7 @@ export default function Projects() {
           )}
 
           {/* Masonry-style animated gallery */}
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance]">{/* masonry container */}
+          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 [column-fill:_balance] -mx-2 sm:mx-0">{/* masonry container */}
             {visibleGalleryImages.map((img, index) => (
               <motion.button
                 key={img.src + index}
@@ -1419,10 +1436,10 @@ export default function Projects() {
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
                     {/* Mobile/hover affordance: subtle "View" pill */}
                     <div
-                      className="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1 rounded-full bg-slate-950/85 px-2.5 py-1 text-[10px] font-medium text-slate-50 shadow-sm opacity-90 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-1 sm:group-hover:translate-y-0 transition-all duration-200"
+                      className="pointer-events-none absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-slate-950/85 px-2.5 py-1 text-[10px] font-medium text-slate-50 shadow-sm opacity-90 sm:opacity-0 sm:group-hover:opacity-100 sm:translate-y-1 sm:group-hover:translate-y-0 transition-all duration-200"
                     >
-                      <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold-400" />
-                      <span>View</span>
+                      <ImageIcon className="h-3 w-3" />
+                      <span>View photo</span>
                     </div>
                   </div>
 
@@ -1432,7 +1449,7 @@ export default function Projects() {
                       {img.category}
                     </span>
                     <p className="text-sm text-slate-100/95 leading-snug text-left">
-                      {img.alt}
+                      {img.caption ?? img.alt}
                     </p>
                   </div>
                 </div>
@@ -1553,7 +1570,22 @@ export default function Projects() {
                 </button>
 
                 <div className="relative flex-1 w-full">
-                  <div className="relative w-full max-h-[70vh] sm:max-h-[65vh] flex items-center justify-center overflow-hidden rounded-xl bg-slate-900/80 border border-slate-800/80">
+                  <motion.div
+                    className="relative w-full max-h-[70vh] sm:max-h-[65vh] flex items-center justify-center overflow-hidden rounded-xl bg-slate-900/80 border border-slate-800/80"
+                    drag="x"
+                    dragListener={zoomLevel === 1}
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={0.2}
+                    onDragEnd={(_e, info) => {
+                      if (zoomLevel !== 1) return
+                      const threshold = 50
+                      if (info.offset.x < -threshold) {
+                        goToZoomImage(1)
+                      } else if (info.offset.x > threshold) {
+                        goToZoomImage(-1)
+                      }
+                    }}
+                  >
                     <motion.div
                       className="relative w-full h-[55vh] sm:h-[60vh] md:h-[65vh] flex items-center justify-center cursor-grab active:cursor-grabbing"
                       style={{
@@ -1575,7 +1607,7 @@ export default function Projects() {
                         priority
                       />
                     </motion.div>
-                  </div>
+                  </motion.div>
                 </div>
 
                 <button
@@ -1591,7 +1623,7 @@ export default function Projects() {
               <div className="px-4 sm:px-6 pb-4 sm:pb-5 border-t border-slate-800/80 bg-slate-900/80">
                 <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
                   <p className="text-xs sm:text-sm text-slate-200/90 max-w-2xl">
-                    {galleryImages[zoomImageIndex].alt}
+                    {galleryImages[zoomImageIndex].caption ?? galleryImages[zoomImageIndex].alt}
                   </p>
                   <div className="flex items-center gap-2 justify-between sm:justify-end">
                     <div className="flex items-center gap-1.5 text-[11px] text-slate-400">
