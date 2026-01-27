@@ -218,7 +218,7 @@ export default function About() {
                   <HighlightText highlightColor="emerald">About</HighlightText> <span className="gradient-text">Mosun</span>
                 </h1>
                 <p className="text-sm sm:text-base text-slate-100/85 max-w-2xl mx-auto">
-                  Entrepreneurship &amp; Innovation  b7 Project Management  b7 Business Development  b7 Real Estate Advisory
+                  Entrepreneurship &amp; Innovation | Project Management | Business Development | Real Estate Advisory
                 </p>
               </motion.div>
             </div>
@@ -261,11 +261,6 @@ export default function About() {
                     sizes="(max-width: 768px) 80vw, (max-width: 1024px) 40vw, 360px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent" />
-                </div>
-                <div className="absolute left-4 bottom-4 right-4 flex flex-col gap-1">
-                  <span className="inline-flex items-center rounded-full bg-slate-900/80 px-3 py-1 text-[11px] font-medium text-slate-100 border border-slate-700/70 w-fit">
-                    Leadership & Outreach
-                  </span>
                 </div>
               </div>
             </div>

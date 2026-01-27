@@ -1,34 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Target, Home, CheckCircle, ArrowRight, Briefcase, Award, Users, Lock, Calendar, Phone, Mail, User, X } from 'lucide-react'
+import { Target, Home, CheckCircle, ArrowRight, Briefcase, Award, Users } from 'lucide-react'
 import Link from 'next/link'
-import { useState } from 'react'
 import AnimatedCounter from '@/components/AnimatedCounter'
 
 export default function ServicesPage() {
-  const [showModal, setShowModal] = useState(false)
-  const [formData, setFormData] = useState({
-    name: '', email: '', phone: '', consultationType: '', date: '', time: ''
-  })
-
-  // Get today's date in YYYY-MM-DD format for date input min attribute
-  const today = new Date().toISOString().split('T')[0]
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    alert('Payment integration coming soon! Your consultation request has been received.')
-    setShowModal(false)
-  }
-
-  const scrollToSection = (href: string) => {
-    if (href === '#consultation-modal') {
-      setShowModal(true)
-      return
-    }
-    const element = document.querySelector(href)
-    if (element) element.scrollIntoView({ behavior: 'smooth', block: 'start' })
-  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-primary-50">
@@ -64,7 +41,7 @@ export default function ServicesPage() {
                 ],
                 color: 'from-blue-600 to-blue-400', 
                 action: 'Contact Me', 
-                link: '/contact' 
+                link: '/contact#message' 
               },
               { 
                 icon: Home, 
@@ -79,7 +56,7 @@ export default function ServicesPage() {
                 ],
                 color: 'from-green-600 to-green-400', 
                 action: 'Consult me', 
-                link: '#consultation-modal' 
+                link: '/contact#message' 
               }
               // Security Services card commented out - see full section below
             ].map((service, index) => {
@@ -101,9 +78,9 @@ export default function ServicesPage() {
                       ))}
                     </ul>
                   )}
-                  <button onClick={() => scrollToSection(service.link)} className="inline-flex items-center gap-2 text-primary-700 font-semibold hover:gap-3 transition-all duration-300">
+                  <Link href={service.link} className="inline-flex items-center gap-2 text-primary-700 font-semibold hover:gap-3 transition-all duration-300">
                     {service.action} <ArrowRight size={18} />
-                  </button>
+                  </Link>
                 </motion.div>
               )
             })}
@@ -150,82 +127,12 @@ export default function ServicesPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
             <p className="text-lg text-slate-600 mb-8">Let&apos;s discuss how I can help you achieve your organizational goals through strategic consulting and expert project management.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact" className="btn-primary inline-flex items-center gap-2">Get in Touch <ArrowRight size={20} /></Link>
+              <Link href="/contact#message" className="btn-primary inline-flex items-center gap-2">Get in Touch <ArrowRight size={20} /></Link>
               <Link href="/opportunities" className="btn-secondary inline-flex items-center gap-2">View Job Opportunities <ArrowRight size={20} /></Link>
             </div>
           </motion.div>
         </div>
       </section>
-
-      {/* Modal */}
-      {showModal && (
-        <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
-          onClick={() => setShowModal(false)}
-          role="dialog"
-          aria-modal="true"
-          aria-labelledby="modal-title"
-        >
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }} 
-            animate={{ opacity: 1, scale: 1 }} 
-            exit={{ opacity: 0, scale: 0.9 }}
-            onClick={(e) => e.stopPropagation()}
-            className="bg-white rounded-2xl shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto"
-          >
-            <div className="p-6 border-b border-slate-200 flex items-center justify-between sticky top-0 bg-white z-10">
-              <h3 id="modal-title" className="text-2xl font-bold text-slate-900">Book a Consultation</h3>
-              <button onClick={() => setShowModal(false)} className="p-2 hover:bg-slate-100 rounded-lg transition-colors"><X size={24} /></button>
-            </div>
-
-            <form onSubmit={handleSubmit} className="p-6 space-y-6">
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2"><User className="inline mr-2" size={16} />Full Name</label>
-                <input type="text" required value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="John Doe" />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2"><Mail className="inline mr-2" size={16} />Email Address</label>
-                <input type="email" required value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="john@example.com" />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2"><Phone className="inline mr-2" size={16} />Phone Number</label>
-                <input type="tel" required value={formData.phone} onChange={(e) => setFormData({...formData, phone: e.target.value})} className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" placeholder="+234 XXX XXX XXXX" />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-slate-700 mb-2"><Home className="inline mr-2" size={16} />Consultation Type</label>
-                <select required value={formData.consultationType} onChange={(e) => setFormData({...formData, consultationType: e.target.value})} className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent">
-                  <option value="">Select consultation type</option>
-                  <option value="property-verification">Property Verification</option>
-                  <option value="investment-advisory">Investment Advisory</option>
-                  <option value="site-inspection">Site Inspection</option>
-                  <option value="documentation">Documentation Guidance</option>
-                  <option value="risk-assessment">Risk Assessment</option>
-                </select>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2"><Calendar className="inline mr-2" size={16} />Preferred Date</label>
-                  <input type="date" required value={formData.date} onChange={(e) => setFormData({...formData, date: e.target.value})} min={today} className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
-                </div>
-
-                <div>
-                  <label className="block text-sm font-semibold text-slate-700 mb-2">Preferred Time</label>
-                  <input type="time" required value={formData.time} onChange={(e) => setFormData({...formData, time: e.target.value})} className="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent" />
-                </div>
-              </div>
-
-              <div className="pt-4 border-t border-slate-200">
-                <button type="submit" className="w-full btn-primary flex items-center justify-center gap-2"><Lock size={20} />Proceed to Secure Payment</button>
-                <p className="text-sm text-slate-500 text-center mt-4">Payment integration coming soon. Your information is secure.</p>
-              </div>
-            </form>
-          </motion.div>
-        </div>
-      )}
     </div>
   )
 }

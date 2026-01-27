@@ -65,14 +65,14 @@ export default function Contact() {
       <section id="message" className="section-padding bg-gradient-to-br from-white via-primary-50/20 to-gold-50/10">
         <div className="w-full">
           {/* Contact Cards Grid */}
-          <div className="grid lg:grid-cols-2 gap-4 lg:gap-32 max-w-none mx-auto px-4 sm:px-6 lg:px-6">
+          <div className="grid lg:grid-cols-2 gap-4 lg:gap-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-10">
             
             {/* Left Column - Contact Form */}
-            <motion.div
+              <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-white rounded-3xl shadow-large p-3 sm:p-4 lg:p-10 relative overflow-hidden self-start"
+              className="bg-white rounded-3xl shadow-large p-3 sm:p-4 lg:p-8 relative overflow-hidden self-start max-w-xl w-full lg:mx-0 mx-auto"
             >
               {/* Subtle color accents */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-100/30 to-gold-100/30 rounded-full -translate-y-16 translate-x-16"></div>
@@ -94,7 +94,7 @@ export default function Contact() {
                 </div></div>
 
               <form
-          className="space-y-6"
+	  className="space-y-5"
           onSubmit={async (e) => {
             e.preventDefault()
             if (isSubmitting) return
@@ -146,7 +146,7 @@ export default function Contact() {
                       id="name"
                       name="name"
                       required
-                      className="w-full pl-12 pr-4 py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-gradient-to-r from-slate-50/50 to-primary-50/20 hover:from-primary-50/30 hover:to-gold-50/20"
+                      className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-gradient-to-r from-slate-50/50 to-primary-50/20 hover:from-primary-50/30 hover:to-gold-50/20"
                       placeholder="Your full name"
                     />
                   </div>
@@ -166,7 +166,7 @@ export default function Contact() {
                       id="email"
                       name="email"
                       required
-                      className="w-full pl-12 pr-4 py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-gradient-to-r from-slate-50/50 to-primary-50/20 hover:from-primary-50/30 hover:to-gold-50/20"
+                      className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-gradient-to-r from-slate-50/50 to-primary-50/20 hover:from-primary-50/30 hover:to-gold-50/20"
                       placeholder="your.email@example.com"
                     />
                   </div>
@@ -181,7 +181,7 @@ export default function Contact() {
                     id="subject"
                     name="subject"
                     required
-                    className="w-full px-4 py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-gradient-to-r from-slate-50/50 to-primary-50/20 hover:from-primary-50/30 hover:to-gold-50/20"
+                    className="w-full px-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-gradient-to-r from-slate-50/50 to-primary-50/20 hover:from-primary-50/30 hover:to-gold-50/20"
                   >
                     <option value="">Select inquiry type</option>
                     <option value="project-management">Project Management Consulting</option>
@@ -202,9 +202,9 @@ export default function Contact() {
                     <textarea
                       id="message"
                       name="message"
-                      rows={5}
+                      rows={4}
                       required
-                      className="w-full pl-12 pr-4 py-4 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-gradient-to-r from-slate-50/50 to-primary-50/20 hover:from-primary-50/30 hover:to-gold-50/20 resize-none"
+                      className="w-full pl-12 pr-4 py-3 border border-slate-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 bg-gradient-to-r from-slate-50/50 to-primary-50/20 hover:from-primary-50/30 hover:to-gold-50/20 resize-none"
                       placeholder="Tell me about your project, goals, and how I can help..."
                     />
                   </div>
