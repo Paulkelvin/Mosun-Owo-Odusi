@@ -118,6 +118,11 @@ export default function Contact() {
                 form.reset()
                 toast.success('Message sent successfully', {
                   description: "Thank you for reaching out. I'll get back to you within 24 hours.",
+                  style: {
+                    background: '#16a34a',
+                    color: '#ecfdf5',
+                    border: '1px solid #22c55e',
+                  },
                 })
               } else {
                 const errorMessage = data?.error || 'Something went wrong while sending your message.'
