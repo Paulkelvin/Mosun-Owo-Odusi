@@ -65,14 +65,14 @@ export default function Contact() {
       <section id="message" className="section-padding bg-gradient-to-br from-white via-primary-50/20 to-gold-50/10">
         <div className="w-full">
           {/* Contact Cards Grid */}
-          <div className="grid lg:grid-cols-2 gap-4 lg:gap-20 max-w-6xl mx-auto px-4 sm:px-6 lg:px-10">
+          <div className="grid lg:grid-cols-2 gap-4 lg:gap-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             {/* Left Column - Contact Form */}
               <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="bg-white rounded-3xl shadow-large p-3 sm:p-4 lg:p-8 relative overflow-hidden self-start max-w-xl w-full lg:mx-0 mx-auto"
+              className="bg-white rounded-3xl shadow-large p-3 sm:p-4 lg:p-8 relative overflow-hidden self-start max-w-xl lg:max-w-2xl w-full lg:mx-0 mx-auto"
             >
               {/* Subtle color accents */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-100/30 to-gold-100/30 rounded-full -translate-y-16 translate-x-16"></div>

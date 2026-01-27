@@ -43,6 +43,21 @@ export default function ServicesPage() {
                 action: 'Contact Me', 
                 link: '/contact#message' 
               },
+              {
+                icon: Briefcase,
+                title: 'Entrepreneurship & Innovation',
+                desc: 'Support to design, launch, and scale impactful ventures — from idea clarity to execution and systems that sustain growth.',
+                services: [
+                  'Clarifying vision, value proposition, and positioning',
+                  'Structuring business models and revenue streams',
+                  'Translating ideas into lean, testable pilots',
+                  'Designing simple operating structures and roles',
+                  'Mentoring founders on execution discipline'
+                ],
+                color: 'from-purple-600 to-indigo-400',
+                action: 'Consult me',
+                link: '/contact#message'
+              },
               { 
                 icon: Home, 
                 title: 'Real Estate Advisory', 
@@ -57,12 +72,33 @@ export default function ServicesPage() {
                 color: 'from-green-600 to-green-400', 
                 action: 'Consult me', 
                 link: '/contact#message' 
+              },
+              {
+                icon: Users,
+                title: 'Business Development',
+                desc: 'Practical support to strengthen your pipeline, deepen relationships, and convert interest into repeat business.',
+                services: [
+                  'Mapping and prioritising ideal client segments',
+                  'Designing outreach and follow-up routines that fit your context',
+                  'Improving proposals and presentations for decision-makers',
+                  'Creating simple dashboards to track leads and conversions',
+                  'Aligning team roles to support sustainable growth'
+                ],
+                color: 'from-amber-600 to-orange-400',
+                action: 'Contact Me',
+                link: '/contact#message'
               }
               // Security Services card commented out - see full section below
             ].map((service, index) => {
               const Icon = service.icon
               return (
-                <motion.div key={service.title} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: index * 0.2 }} className="card-modern group hover:shadow-large transition-all duration-500">
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                  className="card-modern group hover:shadow-large transition-all duration-500 border border-slate-100/80 bg-gradient-to-b from-white via-slate-50 to-slate-100/40"
+                >
                   <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${service.color} p-4 mb-6 group-hover:scale-110 transition-transform duration-300`}>
                     <Icon className="w-full h-full text-white" />
                   </div>
