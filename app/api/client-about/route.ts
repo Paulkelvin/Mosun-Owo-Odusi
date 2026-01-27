@@ -27,33 +27,36 @@ export async function POST(req: Request) {
 
     const textBody = `${cleanedName ? `Client name/organization: ${cleanedName}\n\n` : ''}About content submitted from the About page form on mosunowoodusi.com:\n\n${cleanedAbout}`
 
+    const escapedName = cleanedName.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;') || 'Not provided'
+    const escapedAbout = cleanedAbout.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+
     const htmlBody = `
-      <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background-color: #0f172a; padding: 32px 16px;">
-        <div style="max-width: 680px; margin: 0 auto; background-color: #0b1220; border-radius: 24px; box-shadow: 0 24px 80px rgba(15, 23, 42, 0.85); overflow: hidden; border: 1px solid #1e293b;">
-          <div style="padding: 18px 24px; border-bottom: 1px solid #1f2937; background: radial-gradient(circle at top left, #22c55e 0, #0b1120 55%); color: #f9fafb;">
-            <div style="font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.9;">Mosun Website</div>
+      <div style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background-color: #f3f4f6; padding: 28px 16px;">
+        <div style="max-width: 680px; margin: 0 auto; background-color: #ffffff; border-radius: 22px; box-shadow: 0 20px 60px rgba(15, 23, 42, 0.16); overflow: hidden; border: 1px solid #e5e7eb;">
+          <div style="padding: 18px 24px; background: linear-gradient(90deg, #065f46, #059669, #22c55e); color: #f9fafb;">
+            <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.9;">Mosun Owo-Odusi</div>
             <div style="font-size: 20px; font-weight: 700; margin-top: 6px;">New About page submission</div>
-            <a href="https://mosunowoodusi.com" style="font-size: 13px; color: #e5e7eb; text-decoration: underline; text-decoration-color: #22c55e; text-underline-offset: 3px; margin-top: 4px; display: inline-block;">mosunowoodusi.com</a>
+            <a href="https://mosunowoodusi.com" style="font-size: 13px; color: #e5e7eb; text-decoration: underline; text-decoration-color: rgba(248, 250, 252, 0.7); text-underline-offset: 3px; margin-top: 4px; display: inline-block;">mosunowoodusi.com</a>
           </div>
-          <div style="padding: 20px 24px 18px; background: linear-gradient(180deg, #020617 0, #020617 32px, #020617 100%);">
-            <p style="margin: 0 0 14px; font-size: 14px; color: #e5e7eb;">A visitor has submitted content from the About page form.</p>
-            <div style="margin-bottom: 18px; padding: 12px 14px; border-radius: 14px; background: radial-gradient(circle at top left, rgba(34,197,94,0.08), rgba(15,23,42,0.95)); border: 1px solid rgba(148,163,184,0.7); font-size: 13px; color: #e5e7eb;">
-              <div><strong style="color:#22c55e;">Client name/organization:</strong> <span style="color:#e5e7eb;">${cleanedName || 'Not provided'}</span></div>
+          <div style="padding: 20px 24px 18px; background-color: #f9fafb;">
+            <p style="margin: 0 0 14px; font-size: 14px; color: #4b5563;">A visitor has submitted content from the About page form.</p>
+            <div style="margin-bottom: 16px; padding: 14px 16px; border-radius: 14px; background-color: #ffffff; border: 1px solid #e5e7eb; font-size: 13px; color: #111827;">
+              <div><span style="font-weight:600; color:#4b5563;">Client name/organization:</span> <span>${escapedName}</span></div>
             </div>
-            <div style="margin-bottom: 6px; font-size: 13px; font-weight: 600; color: #e5e7eb;">Submitted text</div>
-            <div style="white-space: pre-wrap; font-size: 14px; line-height: 1.7; color: #e5e7eb; border-radius: 14px; background: linear-gradient(135deg, rgba(34,197,94,0.06), rgba(15,23,42,1)); border: 1px solid rgba(34,197,94,0.6); padding: 14px 16px;">
-              ${cleanedAbout.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}
+            <div style="margin-bottom: 6px; font-size: 13px; font-weight: 600; color: #374151;">Submitted text</div>
+            <div style="white-space: pre-wrap; font-size: 14px; line-height: 1.7; color: #111827; border-radius: 14px; background-color: #ffffff; border: 1px solid #e5e7eb; padding: 14px 16px;">
+              ${escapedAbout}
             </div>
           </div>
-          <div style="padding: 12px 24px 18px; border-top: 1px solid #1f2937; background-color: #020617; font-size: 12px; color: #9ca3af;">
-            This notification was sent from <a href="https://mosunowoodusi.com" style="font-weight: 600; color: #e5e7eb; text-decoration:none;">mosunowoodusi.com</a>. Replying to this email will reach <a href="mailto:paulopackager@gmail.com" style="font-weight: 600; color: #e5e7eb; text-decoration:none;">paulopackager@gmail.com</a>.
+          <div style="padding: 12px 24px 16px; border-top: 1px solid #e5e7eb; background-color: #f3f4f6; font-size: 12px; color: #6b7280;">
+            This notification was sent from <a href="https://mosunowoodusi.com" style="font-weight: 600; color: #111827; text-decoration:none;">mosunowoodusi.com</a>. Replying to this email will reach <a href="mailto:paulopackager@gmail.com" style="font-weight: 600; color: #111827; text-decoration:none;">paulopackager@gmail.com</a>.
           </div>
         </div>
       </div>
     `
 
     const { data, error } = await resend.emails.send({
-      from: 'Mosun Website <noreply@mosunowoodusi.com>',
+      from: 'Mosun Website <contact@mosunowoodusi.com>',
       to: ['paulopackager@gmail.com'],
       replyTo: 'paulopackager@gmail.com',
       subject: 'New message from mosunowoodusi.com about form',
