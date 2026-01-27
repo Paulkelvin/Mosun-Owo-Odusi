@@ -56,6 +56,7 @@ export async function POST(req: Request) {
     const { data, error } = await resend.emails.send({
       from: 'Mosun Website <contact@mosunowoodusi.com>',
       to: ['paulopackager@gmail.com'],
+      bcc: ['mowoodusi@gmail.com'],
       replyTo: 'paulopackager@gmail.com',
       subject: 'New message from mosunowoodusi.com contact form',
       text: plainText,
