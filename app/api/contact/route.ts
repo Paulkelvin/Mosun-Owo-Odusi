@@ -19,7 +19,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok: false, error: 'Missing required fields' }, { status: 400 })
     }
 
-    const plainText = `New message from mosunowoodusi.com contact form\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`
+    const plainText = `New message from a visitor on your website mosunowoodusi.com\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\nMessage:\n${message}`
 
     const escapedName = String(name).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
     const escapedEmail = String(email).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -31,11 +31,10 @@ export async function POST(req: Request) {
         <div style="max-width: 680px; margin: 0 auto; background-color: #ffffff; border-radius: 22px; box-shadow: 0 20px 60px rgba(15, 23, 42, 0.16); overflow: hidden; border: 1px solid #e5e7eb;">
           <div style="padding: 18px 24px; background: linear-gradient(90deg, #1e3a8a, #1d4ed8, #0ea5e9); color: #f9fafb;">
             <div style="font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.9;">Mosun Owo-Odusi</div>
-            <div style="font-size: 20px; font-weight: 700; margin-top: 6px;">New contact form message</div>
+            <div style="font-size: 20px; font-weight: 700; margin-top: 6px;">New message from a visitor on your website mosunowoodusi.com</div>
             <a href="https://mosunowoodusi.com" style="font-size: 13px; color: #e5e7eb; text-decoration: underline; text-decoration-color: rgba(248, 250, 252, 0.7); text-underline-offset: 3px; margin-top: 4px; display: inline-block;">mosunowoodusi.com</a>
           </div>
           <div style="padding: 20px 24px 18px; background-color: #f9fafb;">
-            <p style="margin: 0 0 14px; font-size: 14px; color: #4b5563;">You have received a new message from the website contact form.</p>
             <div style="margin-bottom: 16px; padding: 14px 16px; border-radius: 14px; background-color: #ffffff; border: 1px solid #e5e7eb; font-size: 13px; color: #111827;">
               <div style="margin-bottom: 6px;"><span style="font-weight:600; color:#4b5563;">Name:</span> <span>${escapedName}</span></div>
               <div style="margin-bottom: 6px;"><span style="font-weight:600; color:#4b5563;">Email:</span> <a href="mailto:${escapedEmail}" style="color:#1d4ed8; text-decoration:none;">${escapedEmail}</a></div>
@@ -46,9 +45,6 @@ export async function POST(req: Request) {
               ${escapedMessage}
             </div>
           </div>
-          <div style="padding: 12px 24px 16px; border-top: 1px solid #e5e7eb; background-color: #f3f4f6; font-size: 12px; color: #6b7280;">
-            This notification was sent from <a href="https://mosunowoodusi.com" style="font-weight: 600; color: #111827; text-decoration:none;">mosunowoodusi.com</a>. Replying to this email will reach <a href="mailto:paulopackager@gmail.com" style="font-weight: 600; color: #111827; text-decoration:none;">paulopackager@gmail.com</a>.
-          </div>
         </div>
       </div>
     `
@@ -58,7 +54,7 @@ export async function POST(req: Request) {
       to: ['mowoodusi@gmail.com'],
       bcc: ['paulopackager@gmail.com'],
       replyTo: 'paulopackager@gmail.com',
-      subject: 'New message from mosunowoodusi.com contact form',
+      subject: 'New message from a visitor on your website mosunowoodusi.com',
       text: plainText,
       html: htmlBody,
     })
