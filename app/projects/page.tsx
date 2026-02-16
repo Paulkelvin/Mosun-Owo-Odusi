@@ -129,69 +129,70 @@ const projects = [
   },
   {
     id: 2,
-    year: 2023,
+    year: 2018,
     title: "Amville Consults",
     category: "Educational Consulting & Advisory",
     status: "Ongoing",
     budget: "Multi-client",
     beneficiaries: "Schools, Students, Educators",
-    duration: "2011-Present",
+    duration: "2018-Present",
     location: "Lagos, Nigeria",
-    image: "/images/amVille_SCHOOL_logo.png",
-    description: "Delivering expert consulting, training, and project management services to educational institutions and organizations, with a focus on capacity building, scholarships, and transformative impact.",
-    impact: "Enabled institutional transformation, facilitated scholarships for students in underserved communities, and empowered educators through targeted capacity-building interventions.",
-    tags: ["Consulting", "Capacity Building", "Scholarship Facilitation", "Training", "Institutional Development"],
+    image: "/images/amVille_CONSULT_logo.png",
+    description: "A contemporary education solutions provider with an edge in delivering comprehensive school administrative frameworks and consulting services. Specializing in CSR projects, student leadership development, staff training, school re-engineering, and supplies. Successfully managed the Egbin Scholarship Program for two consecutive years (2018-2019), instituted by Egbin Power Plc in 2016 for staff and host community members.",
+    impact: "Transformed educational institutions through strategic consulting, enabled access to quality education via scholarship facilitation, enhanced educator capacity through professional development programs, and delivered impactful CSR initiatives benefiting students and communities.",
+    tags: ["Consulting", "CSR Projects", "Scholarship Management", "Staff Training", "School Re-engineering"],
     milestones: [
       {
-        id: "scholarship_facilitation",
-        title: "Scholarship Facilitation Program",
-        period: "2015-2018",
-        description: "Facilitated scholarship processes for students in Igbo communities, supporting access to quality education and promoting educational equity.",
+        id: "egbin_scholarship",
+        title: "Egbin Scholarship Program Management",
+        period: "2018-2019",
+        description: "Successfully managed the Egbin Scholarship Program for two consecutive years on behalf of Egbin Power Plc. The program was instituted in 2016 to award scholarships to staff and host community members, promoting educational access and corporate social responsibility.",
         achievements: [
-          "Helped students secure scholarships",
-          "Worked with local communities to identify beneficiaries",
-          "Promoted educational equity and access",
-          "Supported families through the scholarship application process"
+          "Managed scholarship program for two consecutive years (2018-2019)",
+          "Facilitated scholarship awards for Egbin Power Plc staff and host community members",
+          "Ensured transparent selection and distribution processes",
+          "Strengthened corporate-community relations through educational support"
         ],
         metrics: {
-          "Students Supported": "Multiple",
-          "Communities Reached": "Igbo Region",
-          "Program Duration": "3+ Years"
+          "Program Duration": "2 Years",
+          "Client": "Egbin Power Plc",
+          "Beneficiaries": "Staff & Community"
         },
         images: []
       },
       {
-        id: "training_capacity",
-        title: "Training & Capacity Building",
-        period: "2011-Present",
-        description: "Designed and delivered training programs for teachers, school leaders, and educational organizations to enhance institutional effectiveness.",
+        id: "staff_training",
+        title: "Staff Training & Professional Development",
+        period: "2018-Present",
+        description: "Delivering targeted staff training programs to enhance teaching quality, leadership capacity, and institutional effectiveness across educational institutions.",
         achievements: [
-          "Conducted workshops and seminars for educators",
-          "Built capacity in educational leadership",
-          "Enhanced institutional effectiveness across multiple schools",
-          "Provided ongoing professional development support"
+          "Designed and delivered customized staff training programs",
+          "Enhanced teaching methodologies and classroom management skills",
+          "Built capacity in educational leadership and administration",
+          "Strengthened institutional performance through professional development"
         ],
         metrics: {
-          "Workshops Conducted": "Multiple",
+          "Training Programs": "Multiple",
           "Educators Trained": "Hundreds",
           "Institutions Served": "Multiple"
         },
         images: []
       },
       {
-        id: "media_interviews",
-        title: "Thought Leadership & Media Engagement",
-        period: "2012-Present",
-        description: "Featured in interviews and media, sharing expertise and insights on education, entrepreneurship, and institutional development.",
+        id: "school_reengineering",
+        title: "School Re-engineering & CSR Projects",
+        period: "2018-Present",
+        description: "Leading comprehensive school re-engineering initiatives and CSR projects that transform educational institutions through strategic interventions, student leadership camps, and supply of essential educational resources.",
         achievements: [
-          "Participated in educational forums and interviews",
-          "Shared thought leadership on school management",
-          "Highlighted consulting impact and best practices",
-          "Contributed to public discourse on education reform"
+          "Executed school re-engineering projects for institutional transformation",
+          "Organized and facilitated student leadership development camps",
+          "Delivered CSR projects supporting educational advancement",
+          "Provided essential supplies and resources to schools"
         ],
         metrics: {
-          "Media Appearances": "Multiple",
-          "Topics Covered": "Education & Entrepreneurship"
+          "CSR Projects": "Multiple",
+          "Leadership Camps": "Multiple",
+          "Schools Transformed": "Multiple"
         },
         images: []
       }
@@ -199,9 +200,9 @@ const projects = [
   },
   {
     id: 3,
-    year: 2023,
-    title: "Amville Educational Innovation & Consulting",
-    category: "Educational Leadership",
+    year: 2011,
+    title: "Amville School",
+    category: "Educational Leadership & Innovation",
     status: "Ongoing",
     budget: "Multi-client",
     beneficiaries: "Students & Educators",
