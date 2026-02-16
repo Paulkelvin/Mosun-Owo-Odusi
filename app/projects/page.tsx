@@ -130,6 +130,76 @@ const projects = [
   {
     id: 2,
     year: 2023,
+    title: "Amville Consults",
+    category: "Educational Consulting & Advisory",
+    status: "Ongoing",
+    budget: "Multi-client",
+    beneficiaries: "Schools, Students, Educators",
+    duration: "2011-Present",
+    location: "Lagos, Nigeria",
+    image: "/images/amVille_SCHOOL_logo.png",
+    description: "Delivering expert consulting, training, and project management services to educational institutions and organizations, with a focus on capacity building, scholarships, and transformative impact.",
+    impact: "Enabled institutional transformation, facilitated scholarships for students in underserved communities, and empowered educators through targeted capacity-building interventions.",
+    tags: ["Consulting", "Capacity Building", "Scholarship Facilitation", "Training", "Institutional Development"],
+    milestones: [
+      {
+        id: "scholarship_facilitation",
+        title: "Scholarship Facilitation Program",
+        period: "2015-2018",
+        description: "Facilitated scholarship processes for students in Igbo communities, supporting access to quality education and promoting educational equity.",
+        achievements: [
+          "Helped students secure scholarships",
+          "Worked with local communities to identify beneficiaries",
+          "Promoted educational equity and access",
+          "Supported families through the scholarship application process"
+        ],
+        metrics: {
+          "Students Supported": "Multiple",
+          "Communities Reached": "Igbo Region",
+          "Program Duration": "3+ Years"
+        },
+        images: []
+      },
+      {
+        id: "training_capacity",
+        title: "Training & Capacity Building",
+        period: "2011-Present",
+        description: "Designed and delivered training programs for teachers, school leaders, and educational organizations to enhance institutional effectiveness.",
+        achievements: [
+          "Conducted workshops and seminars for educators",
+          "Built capacity in educational leadership",
+          "Enhanced institutional effectiveness across multiple schools",
+          "Provided ongoing professional development support"
+        ],
+        metrics: {
+          "Workshops Conducted": "Multiple",
+          "Educators Trained": "Hundreds",
+          "Institutions Served": "Multiple"
+        },
+        images: []
+      },
+      {
+        id: "media_interviews",
+        title: "Thought Leadership & Media Engagement",
+        period: "2012-Present",
+        description: "Featured in interviews and media, sharing expertise and insights on education, entrepreneurship, and institutional development.",
+        achievements: [
+          "Participated in educational forums and interviews",
+          "Shared thought leadership on school management",
+          "Highlighted consulting impact and best practices",
+          "Contributed to public discourse on education reform"
+        ],
+        metrics: {
+          "Media Appearances": "Multiple",
+          "Topics Covered": "Education & Entrepreneurship"
+        },
+        images: []
+      }
+    ]
+  },
+  {
+    id: 3,
+    year: 2023,
     title: "Amville Educational Innovation & Consulting",
     category: "Educational Leadership",
     status: "Ongoing",

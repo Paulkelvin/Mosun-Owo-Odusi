@@ -29,14 +29,16 @@ const expertiseAreas: ExpertiseArea[] = [
   },
   {
     id: 'education-consulting',
-    title: 'Education Consulting',
+    title: 'Educational Consulting & Entrepreneurship',
     icon: <GraduationCap className="w-6 h-6" />,
-    description: 'Creating transformative impact through policy reform, capacity building, and learning innovation.',
+    description: 'Driving educational transformation and entrepreneurial ventures through policy reform, capacity building, school leadership, and innovative business models.',
     details: [
       'Educational policy development and implementation',
       'Institutional capacity building and training programs',
+      'Entrepreneurial school leadership and management',
       'Learning outcome assessment and improvement strategies',
-      'Stakeholder engagement in educational transformation'
+      'Stakeholder engagement in educational transformation',
+      'Business model innovation in education'
     ]
   },
   {
