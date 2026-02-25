@@ -12,9 +12,9 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://mosunowoodusi.com'),
-  title: 'Mosun Owo-Odusi | World Bank Project Coordinator & Strategic Advisor',
-  description: 'Strategic advisor with 20+ years leading World Bank-funded transformations. 72,000+ lives impacted across project management and public sector reform.',
-  keywords: ['project management', 'education consulting', 'real estate advisory', 'leadership', 'strategy', 'world bank', 'development projects', 'economic transformation', 'strategic advisor'],
+  title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
+  description: 'Project manager with 15+ years experience including leading OGSTEP, World Bank-funded project with 72,000+ beneficiaries impacted.',
+  keywords: ['project management', 'education consulting', 'real estate advisory', 'leadership', 'world bank', 'OGSTEP', 'development projects', 'economic transformation', 'PMP'],
   authors: [{ name: 'Mosun Owo-Odusi' }],
   creator: 'Mosun Owo-Odusi',
   publisher: 'Mosun Owo-Odusi',
@@ -29,8 +29,8 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://mosunowoodusi.com',
-    title: 'Mosun Owo-Odusi | World Bank Project Coordinator & Strategic Advisor',
-    description: 'Strategic advisor with 20+ years leading World Bank-funded transformations. 72,000+ lives impacted across project management and public sector reform.',
+    title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
+    description: 'Project manager with 15+ years experience including leading OGSTEP, World Bank-funded project with 72,000+ beneficiaries impacted.',
     siteName: 'Mosun Owo-Odusi',
     images: [
       {
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Mosun Owo-Odusi | World Bank Project Coordinator & Strategic Advisor',
-    description: 'Strategic advisor with 20+ years leading World Bank-funded transformations. 72,000+ lives impacted.',
+    title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
+    description: 'Project manager with 15+ years experience leading OGSTEP, World Bank-funded project. 72,000+ beneficiaries.',
     images: ['/images/mosun_owo-odusi_portrait.png'],
   },
   viewport: {
@@ -65,8 +65,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Mosun Owo-Odusi",
-    "jobTitle": "Project Coordinator & Strategic Advisor",
-    "description": "Strategic advisor specializing in World Bank-funded economic transformations, project management, education consultancy, and real estate advisory",
+    "jobTitle": "Project Manager & Education Consultant",
+    "description": "Project manager specializing in World Bank-funded projects, education consultancy, and strategic development. Led OGSTEP coordinating 72,000+ beneficiaries.",
     "url": "https://mosunowoodusi.com",
     "image": "https://mosunowoodusi.com/images/mosun_owo-odusi_portrait.png",
     "sameAs": [
@@ -79,10 +79,10 @@ export default function RootLayout({
     "hasCredential": ["MBA", "PMP"],
     "knowsAbout": [
       "Project Management",
-      "Economic Transformation",
       "Education Consultancy",
-      "Real Estate Advisory",
       "World Bank Projects",
+      "Economic Transformation",
+      "Real Estate Advisory",
       "Strategic Leadership"
     ],
     "address": {
@@ -98,7 +98,7 @@ export default function RootLayout({
     "name": "Mosun Owo-Odusi",
     "url": "https://mosunowoodusi.com",
     "logo": "https://mosunowoodusi.com/images/mosun_owo-odusi_portrait.png",
-    "description": "Strategic consulting in project management, education reform, and real estate advisory",
+    "description": "Professional project management and education consulting services. Specialized in World Bank projects and institutional development.",
     "founder": {
       "@type": "Person",
       "name": "Mosun Owo-Odusi"
