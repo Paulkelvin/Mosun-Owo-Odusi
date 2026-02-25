@@ -1614,13 +1614,17 @@ export default function Projects() {
                 whileHover={{ y: -6 }}
               >
                 <div className="relative w-full overflow-hidden">
-                  <div className="relative w-full h-64">
+                  <div className={`relative w-full ${img.project === 'consults' ? 'h-80' : 'h-72'}`}>
                     <Image
                       src={img.src}
                       alt={img.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105 pointer-events-none select-none"
+                      className={`transition-transform duration-500 group-hover:scale-105 pointer-events-none select-none ${
+                        img.project === 'consults' 
+                          ? 'object-contain object-center' 
+                          : 'object-cover object-top'
+                      }`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
                     {/* Mobile/hover affordance: subtle "View" pill */}
@@ -1632,15 +1636,17 @@ export default function Projects() {
                     </div>
                   </div>
 
-                  {/* Label overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-col gap-1">
-                    <span className="inline-flex px-2.5 py-1 rounded-full text-[11px] font-medium bg-slate-900/80 text-slate-100 border border-slate-700/80 w-fit">
-                      {img.category}
-                    </span>
-                    <p className="text-sm text-slate-100/95 leading-snug text-left">
-                      {img.caption ?? img.alt}
-                    </p>
-                  </div>
+                  {/* Label overlay - Hidden for Amville Consults */}
+                  {img.project !== 'consults' && (
+                    <div className="absolute bottom-0 left-0 right-0 p-4 flex flex-col gap-1">
+                      <span className="inline-flex px-2.5 py-1 rounded-full text-[11px] font-medium bg-slate-900/80 text-slate-100 border border-slate-700/80 w-fit">
+                        {img.category}
+                      </span>
+                      <p className="text-sm text-slate-100/95 leading-snug text-left">
+                        {img.caption ?? img.alt}
+                      </p>
+                    </div>
+                  )}
                 </div>
               </motion.button>
             ))}
