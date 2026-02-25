@@ -66,24 +66,24 @@ export default function FeaturedWork() {
         <div className="absolute bottom-20 right-10 w-96 h-96 bg-gold-500 rounded-full blur-3xl" />
       </div>
 
-      <div className="container-custom relative z-10">
+      <div className="container-custom max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
           viewport={{ once: true }}
-          className="text-center mb-12 lg:mb-16"
+          className="text-center mb-10"
         >
-          <h2 className="text-3xl lg:text-5xl font-bold text-slate-900 mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
             Featured Work
           </h2>
-          <p className="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto">
+          <p className="text-base lg:text-lg text-slate-600 max-w-3xl mx-auto">
             Visual highlights from 15+ years of transformative leadership across education, agriculture, and institutional development
           </p>
         </motion.div>
 
         {/* Bento Grid */}
-        <div className="grid grid-cols-4 lg:grid-cols-6 gap-3 lg:gap-4 mb-10">
+        <div className="grid grid-cols-4 lg:grid-cols-6 gap-3 lg:gap-4 mb-8">
           {/* Large Hero - OGSTEP Impact (Top Left) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -94,7 +94,7 @@ export default function FeaturedWork() {
           >
             <Link 
               href={featuredImages[0].filterLink}
-              className="group relative block h-full min-h-[280px] lg:min-h-[400px] rounded-3xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
+              className="group relative block h-full min-h-[240px] lg:min-h-[340px] rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2"
             >
               <Image
                 src={featuredImages[0].src}
@@ -106,16 +106,16 @@ export default function FeaturedWork() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
               
               {/* Content Overlay */}
-              <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8 transform transition-transform duration-500 group-hover:translate-y-0 translate-y-2">
-                <span className="inline-block px-3 py-1 bg-primary-600 text-white text-xs font-semibold rounded-full mb-3">
+              <div className="absolute bottom-0 left-0 right-0 p-5 lg:p-6 transform transition-transform duration-500 group-hover:translate-y-0 translate-y-2">
+                <span className="inline-block px-3 py-1 bg-primary-600 text-white text-xs font-semibold rounded-full mb-2">
                   {featuredImages[0].projectName}
                 </span>
-                <p className="text-white text-lg lg:text-2xl font-bold mb-2">
+                <p className="text-white text-base lg:text-xl font-bold mb-1">
                   {featuredImages[0].caption}
                 </p>
-                <div className="flex items-center gap-2 text-white/90 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="flex items-center gap-2 text-white/90 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                   <span>View Project Gallery</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </div>
             </Link>
@@ -131,7 +131,7 @@ export default function FeaturedWork() {
           >
             <Link
               href={featuredImages[1].filterLink}
-              className="group relative block h-full min-h-[180px] lg:min-h-[195px] rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:rotate-1 hover:-translate-y-1"
+              className="group relative block h-full min-h-[140px] lg:min-h-[165px] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:rotate-1 hover:-translate-y-1"
             >
               <Image
                 src={featuredImages[1].src}
@@ -142,11 +142,11 @@ export default function FeaturedWork() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-500" />
               
-              <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6">
+              <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5">
                 <span className="inline-block px-2.5 py-1 bg-gold-600 text-white text-xs font-semibold rounded-full mb-2">
                   {featuredImages[1].projectName}
                 </span>
-                <p className="text-white text-base lg:text-lg font-bold">
+                <p className="text-white text-sm lg:text-base font-bold">
                   {featuredImages[1].caption}
                 </p>
               </div>
@@ -163,7 +163,7 @@ export default function FeaturedWork() {
           >
             <Link
               href={featuredImages[2].filterLink}
-              className="group relative block h-full min-h-[180px] lg:min-h-[195px] rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-rotate-1 hover:-translate-y-1"
+              className="group relative block h-full min-h-[140px] lg:min-h-[165px] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-rotate-1 hover:-translate-y-1"
             >
               <Image
                 src={featuredImages[2].src}
@@ -178,7 +178,7 @@ export default function FeaturedWork() {
                 <span className="inline-block px-2 py-0.5 bg-gold-600 text-white text-[10px] font-semibold rounded-full mb-1.5">
                   {featuredImages[2].projectName}
                 </span>
-                <p className="text-white text-sm lg:text-base font-bold line-clamp-2">
+                <p className="text-white text-xs lg:text-sm font-bold line-clamp-2">
                   {featuredImages[2].caption}
                 </p>
               </div>
@@ -195,7 +195,7 @@ export default function FeaturedWork() {
           >
             <Link
               href={featuredImages[3].filterLink}
-              className="group relative block h-full min-h-[180px] lg:min-h-[195px] rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:translate-y-1"
+              className="group relative block h-full min-h-[140px] lg:min-h-[165px] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:translate-y-1"
             >
               <Image
                 src={featuredImages[3].src}
@@ -227,7 +227,7 @@ export default function FeaturedWork() {
           >
             <Link
               href={featuredImages[4].filterLink}
-              className="group relative block h-full min-h-[180px] lg:min-h-[195px] rounded-3xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
+              className="group relative block h-full min-h-[140px] lg:min-h-[165px] rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-1"
             >
               <Image
                 src={featuredImages[4].src}
@@ -238,11 +238,11 @@ export default function FeaturedWork() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-70 group-hover:opacity-85 transition-opacity duration-500" />
               
-              <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6">
-                <span className="inline-block px-2.5 py-1 bg-gold-600 text-white text-xs font-semibold rounded-full mb-2">
+              <div className="absolute bottom-0 left-0 right-0 p-3 lg:p-4">
+                <span className="inline-block px-2 py-0.5 bg-gold-600 text-white text-[10px] font-semibold rounded-full mb-1.5">
                   {featuredImages[4].projectName}
                 </span>
-                <p className="text-white text-base lg:text-lg font-bold">
+                <p className="text-white text-xs lg:text-sm font-bold">
                   {featuredImages[4].caption}
                 </p>
               </div>
