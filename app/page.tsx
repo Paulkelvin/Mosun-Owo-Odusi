@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero'
 import ExpertiseTabs from '@/components/ExpertiseTabs'
+import FeaturedWork from '@/components/FeaturedWork'
 import FeaturedProject from '@/components/FeaturedProject'
 import TestimonialPreview from '@/components/TestimonialPreview'
 import Organizations from '@/components/Organizations'
@@ -10,6 +11,7 @@ export default function Home() {
       <Hero />
       <Organizations />
       <ExpertiseTabs />
+      <FeaturedWork />
       <FeaturedProject />
       <TestimonialPreview />
     </div>
