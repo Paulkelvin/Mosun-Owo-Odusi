@@ -13,7 +13,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL('https://mosunowoodusi.com'),
   title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
-  description: 'Project manager with 15+ years experience including leading OGSTEP, World Bank-funded project with 72,000+ beneficiaries impacted.',
+  description: 'Project leader with 15+ years experience driving education reform, including OGSTEP, a World Bank-funded initiative impacting 72,000+ beneficiaries.',
   keywords: ['project management', 'education consulting', 'real estate advisory', 'leadership', 'world bank', 'OGSTEP', 'development projects', 'economic transformation', 'PMP'],
   authors: [{ name: 'Mosun Owo-Odusi' }],
   creator: 'Mosun Owo-Odusi',
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     locale: 'en_US',
     url: 'https://mosunowoodusi.com',
     title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
-    description: 'Project manager with 15+ years experience including leading OGSTEP, World Bank-funded project with 72,000+ beneficiaries impacted.',
+    description: 'Project leader with 15+ years experience driving education reform, including OGSTEP, a World Bank-funded initiative impacting 72,000+ beneficiaries.',
     siteName: 'Mosun Owo-Odusi',
     images: [
       {
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Mosun Owo-Odusi | Project Manager & Education Consultant',
-    description: 'Project manager with 15+ years experience leading OGSTEP, World Bank-funded project. 72,000+ beneficiaries.',
+    description: 'Project leader with 15+ years experience driving education reform. OGSTEP: World Bank-funded, 72,000+ beneficiaries.',
     images: ['/images/mosun_owo-odusi_portrait.png'],
   },
   viewport: {
