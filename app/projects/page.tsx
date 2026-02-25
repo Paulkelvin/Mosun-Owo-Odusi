@@ -1620,11 +1620,7 @@ export default function Projects() {
                       alt={img.alt}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className={`transition-transform duration-500 group-hover:scale-105 pointer-events-none select-none ${
-                        img.project === 'consults' 
-                          ? 'object-contain object-center' 
-                          : 'object-cover object-top'
-                      }`}
+                      className="object-cover object-center transition-transform duration-500 group-hover:scale-105 pointer-events-none select-none"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/10 to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
                     {/* Mobile/hover affordance: subtle "View" pill */}
