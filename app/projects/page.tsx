@@ -305,6 +305,7 @@ type GalleryImage = {
   src: string
   alt: string
   category: string
+  project: 'ogstep' | 'consults' | 'school'
   caption?: string
 }
 
@@ -314,191 +315,237 @@ const galleryImages: GalleryImage[] = [
     src: '/images/OGSTEP_outreach.JPG',
     alt: 'OGSTEP outreach session with community members',
     category: 'Leadership & Outreach',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_Mosun_Owo-Odusi.JPG',
     alt: 'Mosun Owo-Odusi speaking during OGSTEP session',
     category: 'Leadership & Outreach',
+    project: 'ogstep',
   },
   {
     src: '/images/Mosun Owo-Odusi.jpg',
     alt: 'Professional portrait of Mosun Owo-Odusi',
     category: 'Leadership & Outreach',
+    project: 'ogstep',
   },
   {
     src: '/images/Mosun Owo-Odusi.png',
     alt: 'Alternate portrait of Mosun Owo-Odusi',
     category: 'Leadership & Outreach',
+    project: 'ogstep',
   },
   {
     src: '/images/Mosun Owo-Odusi-OGSTEP_project_coordinator.jpg',
     alt: 'Mosun Owo-Odusi as OGSTEP Project Coordinator',
     category: 'Leadership & Outreach',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_Agric2.JPG',
     alt: 'OGSTEP field engagement with farmers',
     category: 'Leadership & Outreach',
+    project: 'ogstep',
   },
   // Agric value chain
   {
     src: '/images/Agric_OGSFAFA.JPG',
     alt: 'Farmers participating in OGSTEP agricultural programme',
     category: 'Agriculture & Value Chains',
+    project: 'ogstep',
   },
   {
     src: '/images/Agric_OGSFAFA2.JPG',
     alt: 'OGSTEP-supported agricultural activities in Ogun State',
     category: 'Agriculture & Value Chains',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_Agric.JPG',
     alt: 'OGSTEP agricultural training and demonstration',
     category: 'Agriculture & Value Chains',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_Agric (1).JPG',
     alt: 'Featured OGSTEP agricultural field visit',
     category: 'Agriculture & Value Chains',
+    project: 'ogstep',
   },
   // Skills & education
   {
     src: '/images/OGSTEP_skills.JPG',
     alt: 'Skills development session under OGSTEP',
     category: 'Skills & Education',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_skills1.jpeg',
     alt: 'Participants at OGSTEP skills training',
     category: 'Skills & Education',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_skills2.jpeg',
     alt: 'Hands-on technical training session',
     category: 'Skills & Education',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_skills3.jpeg',
     alt: 'Group photo from OGSTEP skills programme',
     category: 'Skills & Education',
+    project: 'ogstep',
   },
   // Technical colleges before/after rehabilitation
   {
     src: '/images/Government_Technical_College_Before_Rehabilitation.png',
     alt: 'Government Technical College buildings before rehabilitation under OGSTEP',
     category: 'Before & After: Technical Colleges',
+    project: 'ogstep',
   },
   {
     src: '/images/Government_Technical_College_After_Rehabilitation.png',
     alt: 'Government Technical College buildings after rehabilitation under OGSTEP',
     category: 'Before & After: Technical Colleges',
+    project: 'ogstep',
   },
   {
     src: '/images/Before1.png',
     alt: 'Project site condition before intervention (1)',
     category: 'Before & After: Project Sites',
+    project: 'ogstep',
   },
   {
     src: '/images/After1.png',
     alt: 'Project site condition after intervention (1)',
     category: 'Before & After: Project Sites',
+    project: 'ogstep',
   },
   {
     src: '/images/Before2.png',
     alt: 'Project site condition before intervention (2)',
     category: 'Before & After: Project Sites',
+    project: 'ogstep',
   },
   {
     src: '/images/After2.png',
     alt: 'Project site condition after intervention (2)',
     category: 'Before & After: Project Sites',
+    project: 'ogstep',
   },
   {
     src: '/images/Before3.png',
     alt: 'Project site condition before intervention (3)',
     category: 'Before & After: Project Sites',
+    project: 'ogstep',
   },
   {
     src: '/images/After3.png',
     alt: 'Project site condition after intervention (3)',
     category: 'Before & After: Project Sites',
+    project: 'ogstep',
   },
   {
     src: '/images/Before4.png',
     alt: 'Project site condition before intervention (4)',
     category: 'Before & After: Project Sites',
+    project: 'ogstep',
   },
   {
     src: '/images/After4.png',
     alt: 'Project site condition after intervention (4)',
     category: 'Before & After: Project Sites',
+    project: 'ogstep',
   },
   // Land administration & CORS infrastructure
   {
     src: '/images/OGSTEP_CORS.webp',
     alt: 'OGSTEP CORS geospatial infrastructure mast',
     category: 'Land Administration & GIS',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_CORS2.webp',
     alt: 'CORS station equipment installed outdoors',
     category: 'Land Administration & GIS',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_CORS_indoor_unit.webp',
     alt: 'Indoor CORS control unit rack',
     category: 'Land Administration & GIS',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_CORS_indoor_unit2.webp',
     alt: 'Detail view of CORS indoor equipment',
     category: 'Land Administration & GIS',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_CORS_Training_by_sivan_design.webp',
     alt: 'Training on geospatial systems by technical partners',
     category: 'Land Administration & GIS',
+    project: 'ogstep',
   },
   {
     src: '/images/OGSTEP_surveying_equipment_training_by_Sivan_Design.webp',
     alt: 'Surveying equipment demonstration during OGSTEP training',
     category: 'Land Administration & GIS',
+    project: 'ogstep',
   },
   // Additional gallery images (compressed set)
-  { src: '/images/gallery/IMG_0807.jpg', alt: 'Project field photo 1', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0808.jpg', alt: 'Project field photo 2', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0815.jpg', alt: 'Project field photo 3', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0816.jpg', alt: 'Project field photo 4', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0817.jpg', alt: 'Project field photo 5', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0818.jpg', alt: 'Project field photo 6', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0819.jpg', alt: 'Project field photo 7', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0820.jpg', alt: 'Project field photo 8', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0821.jpg', alt: 'Project field photo 9', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0822.jpg', alt: 'Project field photo 10', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0823.jpg', alt: 'Project field photo 11', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0824.jpg', alt: 'Project field photo 12', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0827.jpg', alt: 'Project field photo 13', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0828.jpg', alt: 'Project field photo 14', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0829.jpg', alt: 'Project field photo 15', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0830.jpg', alt: 'Project field photo 16', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0807.jpg', alt: 'Project field photo 1', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0808.jpg', alt: 'Project field photo 2', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0815.jpg', alt: 'Project field photo 3', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0816.jpg', alt: 'Project field photo 4', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0817.jpg', alt: 'Project field photo 5', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0818.jpg', alt: 'Project field photo 6', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0819.jpg', alt: 'Project field photo 7', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0820.jpg', alt: 'Project field photo 8', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0821.jpg', alt: 'Project field photo 9', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0822.jpg', alt: 'Project field photo 10', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0823.jpg', alt: 'Project field photo 11', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0824.jpg', alt: 'Project field photo 12', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0827.jpg', alt: 'Project field photo 13', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0828.jpg', alt: 'Project field photo 14', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0829.jpg', alt: 'Project field photo 15', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0830.jpg', alt: 'Project field photo 16', category: 'Field Highlights', project: 'ogstep' },
   {
     src: '/images/gallery/IMG_0831.jpg',
     alt: 'Physical monitoring of the rehabilitation of Government Technical College Ijebu-Ode by the Project Coordinator, accompanied by the Chief Economic Adviser and Honourable Commissioner for Finance who also serves as OGSTEP Project Steering Committee Chair, Mr Dapo Okubadejo, alongside other members of the State Executive Council.',
     category: 'Field Highlights',
+    project: 'ogstep',
     caption:
       'Physical monitoring of Government Technical College Ijebu-Ode rehabilitation with OGSTEP leadership and State Executive Council.',
   },
-  { src: '/images/gallery/IMG_0833.jpg', alt: 'Project field photo 18', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0834.jpg', alt: 'Project field photo 19', category: 'Field Highlights' },
-  { src: '/images/gallery/IMG_0835.jpg', alt: 'Project field photo 20', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0833.jpg', alt: 'Project field photo 18', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0834.jpg', alt: 'Project field photo 19', category: 'Field Highlights', project: 'ogstep' },
+  { src: '/images/gallery/IMG_0835.jpg', alt: 'Project field photo 20', category: 'Field Highlights', project: 'ogstep' },
   {
     src: '/images/gallery/IMG_0836.jpg',
     alt: 'Group field photo during the physical monitoring of the rehabilitation of Government Technical College Ijebu-Ode by the Project Coordinator, joined by the Chief Economic Adviser and Honourable Commissioner for Finance, OGSTEP Project Steering Committee Chair Mr Dapo Okubadejo, and other members of the State Executive Council at the same site visit.',
     category: 'Field Highlights',
+    project: 'ogstep',
     caption:
       'Physical monitoring of Government Technical College Ijebu-Ode rehabilitation with OGSTEP leadership and State Executive Council.',
   },
-  { src: '/images/gallery/IMG_0837.jpg', alt: 'Project field photo 22', category: 'Field Highlights' },
+  { src: '/images/gallery/IMG_0837.jpg', alt: 'Project field photo 22', category: 'Field Highlights', project: 'ogstep' },
+  
+  // Amville Consults - Educational Consulting & CSR Projects
+  { src: '/images/amville-consults/09cb198b-093a-4ba4-b305-3a207acadac7.JPG', alt: 'Amville Consults educational consulting session', category: 'Consulting & Training', project: 'consults' },
+  { src: '/images/amville-consults/348e8c2b-ac52-4da6-a9f4-443e96904519.JPG', alt: 'Amville Consults staff training program', category: 'Consulting & Training', project: 'consults' },
+  { src: '/images/amville-consults/4df97697-2737-4a5d-b94a-f787c4b0a95d.JPG', alt: 'Amville Consults workshop with educators', category: 'Consulting & Training', project: 'consults' },
+  { src: '/images/amville-consults/8f8f2a42-c972-4edc-9059-60e977b56dc9.JPG', alt: 'Amville Consults CSR project implementation', category: 'CSR & Community', project: 'consults' },
+  { src: '/images/amville-consults/940d84d9-2c69-4eea-813a-b8a3535c9427.JPG', alt: 'Amville Consults student leadership camp', category: 'Student Leadership', project: 'consults' },
+  { src: '/images/amville-consults/a872e439-a81b-4278-b440-d838586c96e3.JPG', alt: 'Amville Consults school re-engineering project', category: 'School Re-engineering', project: 'consults' },
+  { src: '/images/amville-consults/b29b85aa-3f83-4920-b2a6-a1a26f8c6a95.JPG', alt: 'Amville Consults professional development session', category: 'Consulting & Training', project: 'consults' },
+  { src: '/images/amville-consults/c8c45d4b-c691-40ec-ab3e-6e9096ec3ae2.JPG', alt: 'Amville Consults capacity building workshop', category: 'Consulting & Training', project: 'consults' },
+  { src: '/images/amville-consults/cafe7245-01e4-4457-89c0-45bc110d3ca6.JPG', alt: 'Amville Consults scholarship program event', category: 'Scholarships & Awards', project: 'consults' },
+  { src: '/images/amville-consults/dc97410a-cb60-4730-af7c-70bb963be437.JPG', alt: 'Amville Consults educational leadership session', category: 'Consulting & Training', project: 'consults' },
+  { src: '/images/amville-consults/f50119ae-fcf2-42f8-aac6-7fba05f225bf.JPG', alt: 'Amville Consults team collaboration', category: 'CSR & Community', project: 'consults' },
+  { src: '/images/amville-consults/f82400ed-90fc-4e4c-94b6-cc996c58d63e.JPG', alt: 'Amville Consults impact moment', category: 'CSR & Community', project: 'consults' },
 ]
 
 // Before/after images that should appear only in the dedicated strip,
@@ -520,6 +567,7 @@ type VideoHighlight = {
   id: string
   title: string
   src: string
+  project: 'ogstep' | 'consults' | 'school'
 }
 
 const videoHighlights: VideoHighlight[] = [
@@ -527,36 +575,43 @@ const videoHighlights: VideoHighlight[] = [
     id: 'mosun-fish-harvest-ijebu',
     title: 'Mosun Owo-Odusi – Speech at launch of fish harvest (Ijebu)',
     src: 'https://drive.google.com/file/d/1wEswzM9QHRxg4VFNLAasEADnXA5cJG8R/preview',
+    project: 'ogstep',
   },
   {
     id: 'mosun-video-highlight-2',
     title: 'Mosun Owo-Odusi – OGSTEP video highlight',
     src: 'https://drive.google.com/file/d/1cHiu1R03JwsCWPQa-nWFRDPtD8kf9Irt/preview',
+    project: 'ogstep',
   },
   {
     id: 'mosun-award-ogstep',
     title: 'Mosun Owo-Odusi receiving an award on behalf of OGSTEP',
     src: 'https://drive.google.com/file/d/1LldvxNnzTPhSm8hNFmN7vGwvdg98xJ45/preview',
+    project: 'ogstep',
   },
   {
     id: 'mosun-pc-interview',
     title: 'Mosun Owo-Odusi – Project Coordinator interview',
     src: 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview',
+    project: 'ogstep',
   },
   {
     id: 'mosun-interview-journalist-1',
     title: 'Mosun Owo-Odusi interview session with a journalist',
     src: 'https://drive.google.com/file/d/1MeifnduMzvgMBdhwZE9kntXKUqkDfq-B/preview',
+    project: 'ogstep',
   },
   {
     id: 'mosun-interview-journalist-2',
     title: 'Mosun Owo-Odusi interview session with a journalist (2)',
     src: 'https://drive.google.com/file/d/1ixQo30q24xNnRzOCR7o8x0IgiboPw6nM/preview',
+    project: 'ogstep',
   },
   {
     id: 'mosun-matter-resolution',
     title: 'Mosun Owo-Odusi interview session on matter resolution',
     src: 'https://drive.google.com/file/d/1Qs6fQAiH44-FLLpMjZhIzL7N9A68f_u2/preview',
+    project: 'ogstep',
   },
 ]
 
@@ -568,6 +623,7 @@ export default function Projects() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [milestoneImageIndex, setMilestoneImageIndex] = useState<{[key: string]: number}>({})
   const [galleryMode, setGalleryMode] = useState<'preview' | 'expanded' | 'full'>('preview')
+  const [galleryFilter, setGalleryFilter] = useState<'all' | 'ogstep' | 'consults' | 'school'>('all')
   
   // Presentation mode states
   const [isPresentationMode, setIsPresentationMode] = useState(false)
@@ -707,12 +763,22 @@ export default function Projects() {
     (img) => !beforeAfterGallerySrcs.has(img.src)
   )
 
+  // Filter images by selected project
+  const filteredImages = galleryFilter === 'all' 
+    ? nonBeforeAfterImages 
+    : nonBeforeAfterImages.filter(img => img.project === galleryFilter)
+
+  // Filter videos by selected project
+  const filteredVideos = galleryFilter === 'all'
+    ? videoHighlights
+    : videoHighlights.filter(video => video.project === galleryFilter)
+
   const visibleGalleryImages =
     galleryMode === 'preview'
-      ? nonBeforeAfterImages.slice(0, 6)
+      ? filteredImages.slice(0, 6)
       : galleryMode === 'expanded'
-        ? nonBeforeAfterImages.slice(0, 12)
-        : nonBeforeAfterImages
+        ? filteredImages.slice(0, 12)
+        : filteredImages
 
   // Presentation mode auto-advance
   useEffect(() => {
@@ -1330,33 +1396,81 @@ export default function Projects() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-center mb-10 lg:mb-14"
+            className="text-center mb-6 lg:mb-8"
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
               Project Gallery
             </h2>
-            <p className="text-slate-200/80 max-w-2xl mx-auto text-lg">
-              A visual story of agricultural transformation, skills development, and geospatial reforms across the OGSTEP portfolio.
+            <p className="text-slate-200/80 max-w-2xl mx-auto text-lg mb-6">
+              {galleryFilter === 'all' && 'Visual highlights from 15+ years of transformative leadership across OGSTEP, Amville Consults, and Amville School.'}
+              {galleryFilter === 'ogstep' && 'A visual story of agricultural transformation, skills development, and geospatial reforms across the OGSTEP portfolio.'}
+              {galleryFilter === 'consults' && 'Showcasing educational consulting excellence, CSR projects, and capacity-building initiatives through Amville Consults.'}
+              {galleryFilter === 'school' && 'Celebrating innovative educational programs and transformative learning experiences at Amville School.'}
             </p>
+
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap items-center justify-center gap-2">
+              <button
+                onClick={() => setGalleryFilter('all')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  galleryFilter === 'all'
+                    ? 'bg-primary-600 text-white shadow-lg border-2 border-primary-500'
+                    : 'bg-slate-800/60 text-slate-300 hover:bg-slate-700/60 border-2 border-slate-700/50 hover:border-slate-600/50'
+                }`}
+              >
+                All Projects
+              </button>
+              <button
+                onClick={() => setGalleryFilter('ogstep')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  galleryFilter === 'ogstep'
+                    ? 'bg-primary-600 text-white shadow-lg border-2 border-primary-500'
+                    : 'bg-slate-800/60 text-slate-300 hover:bg-slate-700/60 border-2 border-slate-700/50 hover:border-slate-600/50'
+                }`}
+              >
+                OGSTEP
+              </button>
+              <button
+                onClick={() => setGalleryFilter('consults')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  galleryFilter === 'consults'
+                    ? 'bg-primary-600 text-white shadow-lg border-2 border-primary-500'
+                    : 'bg-slate-800/60 text-slate-300 hover:bg-slate-700/60 border-2 border-slate-700/50 hover:border-slate-600/50'
+                }`}
+              >
+                Amville Consults
+              </button>
+              <button
+                onClick={() => setGalleryFilter('school')}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  galleryFilter === 'school'
+                    ? 'bg-primary-600 text-white shadow-lg border-2 border-primary-500'
+                    : 'bg-slate-800/60 text-slate-300 hover:bg-slate-700/60 border-2 border-slate-700/50 hover:border-slate-600/50'
+                }`}
+              >
+                Amville School
+              </button>
+            </div>
           </motion.div>
 
-          {/* Before & After highlight row */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.1 }}
-            viewport={{ once: true }}
-            className="mt-4 mb-8 rounded-2xl border border-slate-800/70 bg-slate-900/80 px-4 py-6 sm:px-6 sm:py-7 shadow-[0_18px_45px_rgba(15,23,42,0.85)] -mx-2 sm:mx-0"
-          >
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <h3 className="text-lg sm:text-xl font-semibold text-slate-50 mb-1">
-                  Before &amp; After: Infrastructure Transformation
-                </h3>
-                <p className="text-sm text-slate-300 max-w-3xl">
-                  See how OGSTEP investments transformed Government Technical Colleges and key project sites from under-resourced spaces into modern, skills-ready environments.
-                </p>
-              </div>
+          {/* Before & After highlight row - Only show for OGSTEP or All */}
+          {(galleryFilter === 'all' || galleryFilter === 'ogstep') && (
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              viewport={{ once: true }}
+              className="mt-4 mb-8 rounded-2xl border border-slate-800/70 bg-slate-900/80 px-4 py-6 sm:px-6 sm:py-7 shadow-[0_18px_45px_rgba(15,23,42,0.85)] -mx-2 sm:mx-0"
+            >
+              <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+                <div>
+                  <h3 className="text-lg sm:text-xl font-semibold text-slate-50 mb-1">
+                    Before &amp; After: Infrastructure Transformation
+                  </h3>
+                  <p className="text-sm text-slate-300 max-w-3xl">
+                    See how OGSTEP investments transformed Government Technical Colleges and key project sites from under-resourced spaces into modern, skills-ready environments.
+                  </p>
+                </div>
               <div className="flex flex-wrap gap-2 text-[11px] text-slate-300">
                 <span className="inline-flex items-center rounded-full bg-emerald-500/10 px-3 py-1 border border-emerald-400/40 text-emerald-200">
                   8 Technical Colleges Upgraded
@@ -1429,9 +1543,10 @@ export default function Projects() {
               ))}
             </div>
           </motion.div>
+          )}
 
           {/* Video Highlights */}
-          {videoHighlights.length > 0 && (
+          {filteredVideos.length > 0 && (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -1445,13 +1560,16 @@ export default function Projects() {
                     Video Highlights
                   </h3>
                   <p className="text-sm text-slate-300 max-w-3xl">
-                    Short clips capturing speeches, interviews and recognition moments from Mosun Owo-Odusi&apos;s leadership on OGSTEP.
+                    {galleryFilter === 'all' && 'Short clips capturing speeches, interviews, and recognition moments from transformative leadership.'}
+                    {galleryFilter === 'ogstep' && 'Short clips capturing speeches, interviews and recognition moments from Mosun Owo-Odusi\'s leadership on OGSTEP.'}
+                    {galleryFilter === 'consults' && 'Video highlights showcasing Amville Consults\' impact on educational transformation.'}
+                    {galleryFilter === 'school' && 'Video moments celebrating innovation and excellence at Amville School.'}
                   </p>
                 </div>
               </div>
 
               <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-                {videoHighlights.map((video) => (
+                {filteredVideos.map((video) => (
                   <div
                     key={video.id}
                     className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 shadow-[0_16px_40px_rgba(15,23,42,0.9)]"
@@ -1531,7 +1649,8 @@ export default function Projects() {
           {/* Gallery toggle */}
           <div className="mt-8 flex flex-col items-center gap-2">
             <p className="text-xs text-slate-400">
-              Showing {visibleGalleryImages.length} of {galleryImages.length} photos
+              Showing {visibleGalleryImages.length} of {filteredImages.length} photos
+              {galleryFilter !== 'all' && ` (${galleryFilter === 'ogstep' ? 'OGSTEP' : galleryFilter === 'consults' ? 'Amville Consults' : 'Amville School'})`}
             </p>
             <button
               type="button"
