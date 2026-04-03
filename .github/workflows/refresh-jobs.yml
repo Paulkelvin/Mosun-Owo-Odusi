@@ -19,11 +19,12 @@ jobs:
 
           DEFAULT_KEY="mosun-refresh-2024"
           API_KEY="${REFRESH_API_KEY:-$DEFAULT_KEY}"
+          REFRESH_URL="https://mosun-owo-odusi.vercel.app/api/opportunities/refresh"
 
           call_refresh() {
             local key="$1"
             curl -s -L --max-redirs 5 -w "\n%{http_code}" -X POST \
-              https://mosunowoodusi.com/api/opportunities/refresh \
+              "$REFRESH_URL" \
               -H "Authorization: Bearer ${key}" \
               -H "Content-Type: application/json"
           }
