@@ -63,9 +63,6 @@ jobs:
           
           if [ "$success" = true ]; then
             echo "✅ Job refresh accepted successfully!"
-          elif [ "$http_code" = "500" ]; then
-            echo "⚠️ Refresh endpoint is reachable/authenticated but backend failed (likely temporary DB issue)."
-            echo "ℹ️ Marking workflow as successful to avoid false-negative auth failures."
           else
             echo "❌ Job refresh failed with code $http_code"
             exit 1
