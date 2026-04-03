@@ -9,19 +9,37 @@ on:
 jobs:
   refresh-opportunities:
     runs-on: ubuntu-latest
+    env:
+      REFRESH_API_KEY: ${{ secrets.REFRESH_API_KEY }}
     
     steps:
       - name: Refresh Job Opportunities
         run: |
           echo "🔄 Triggering job refresh..."
+
+          DEFAULT_KEY="mosun-refresh-2024"
+          API_KEY="${REFRESH_API_KEY:-$DEFAULT_KEY}"
+
+          call_refresh() {
+            local key="$1"
+            curl -s -L --max-redirs 5 -w "\n%{http_code}" -X POST \
+              https://mosunowoodusi.com/api/opportunities/refresh \
+              -H "Authorization: Bearer ${key}" \
+              -H "Content-Type: application/json"
+          }
           
-          response=$(curl -s -L --max-redirs 5 -w "\n%{http_code}" -X POST \
-            https://mosunowoodusi.com/api/opportunities/refresh \
-            -H "Authorization: Bearer ${{ secrets.REFRESH_API_KEY }}" \
-            -H "Content-Type: application/json")
+          response=$(call_refresh "$API_KEY")
           
           http_code=$(echo "$response" | tail -n1)
           body=$(echo "$response" | sed '$d')
+
+          # If secret is set but mismatched, retry once with the route default.
+          if [ "$http_code" -eq 401 ] && [ "$API_KEY" != "$DEFAULT_KEY" ]; then
+            echo "🔁 Received 401 with configured secret, retrying with default key..."
+            response=$(call_refresh "$DEFAULT_KEY")
+            http_code=$(echo "$response" | tail -n1)
+            body=$(echo "$response" | sed '$d')
+          fi
           
           echo "📡 Response Code: $http_code"
           echo "📊 Response Body: $body"
