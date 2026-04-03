@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "🔄 Triggering job refresh..."
           
-          response=$(curl -s -w "\n%{http_code}" -X POST \
+          response=$(curl -s -L --max-redirs 5 -w "\n%{http_code}" -X POST \
             https://mosunowoodusi.com/api/opportunities/refresh \
             -H "Authorization: Bearer ${{ secrets.REFRESH_API_KEY }}" \
             -H "Content-Type: application/json")
@@ -26,8 +26,8 @@ jobs:
           echo "📡 Response Code: $http_code"
           echo "📊 Response Body: $body"
           
-          if [ "$http_code" -eq 200 ]; then
-            echo "✅ Job refresh completed successfully!"
+          if [ "$http_code" -eq 200 ] || [ "$http_code" -eq 202 ]; then
+            echo "✅ Job refresh accepted successfully!"
           else
             echo "❌ Job refresh failed with code $http_code"
             exit 1
