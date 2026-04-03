@@ -115,9 +115,15 @@ export async function POST(request: NextRequest) {
   try {
     // Simple authentication check
     const authHeader = request.headers.get('authorization');
+    const xApiKey = request.headers.get('x-api-key');
     const apiKey = process.env.REFRESH_API_KEY || 'mosun-refresh-2024';
 
-    if (authHeader !== `Bearer ${apiKey}`) {
+    const bearerToken = authHeader?.startsWith('Bearer ')
+      ? authHeader.slice('Bearer '.length)
+      : null;
+    const isAuthorized = bearerToken === apiKey || xApiKey === apiKey;
+
+    if (!isAuthorized) {
       return NextResponse.json(
         { success: false, error: 'Unauthorized' },
         { status: 401 }
