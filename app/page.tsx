@@ -4,6 +4,7 @@ import FeaturedWork from '@/components/FeaturedWork'
 import FeaturedProject from '@/components/FeaturedProject'
 import TestimonialPreview from '@/components/TestimonialPreview'
 import Organizations from '@/components/Organizations'
+import OGSTEPImpactSection from '@/components/OGSTEPImpactSection'
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <ExpertiseTabs />
       <FeaturedWork />
       <FeaturedProject />
+      <OGSTEPImpactSection />
       <TestimonialPreview />
     </div>
   )
