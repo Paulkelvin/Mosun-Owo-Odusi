@@ -1,11 +1,8 @@
 'use client'
 
-import type { Metadata } from 'next'
 import { motion } from 'framer-motion'
-import { Star, Quote, Linkedin, Mail, Building2, Users, GraduationCap, TrendingUp, Play, Pause } from 'lucide-react'
-import HighlightText from '@/components/HighlightText'
-import Image from 'next/image'
-import { useState, useRef } from 'react'
+import { Star, Quote, Linkedin, Building2, Users, GraduationCap, TrendingUp } from 'lucide-react'
+import { useState } from 'react'
 
 const testimonials = [
   {
@@ -14,13 +11,9 @@ const testimonials = [
     title: "Competitive Strategy Consultant",
     company: "ChMC - Professional LinkedIn Recommendation",
     image: "/api/placeholder/80/80",
-    content: "Mosun is a very committed and focused person and team player. When she took over the OGSTEP coordination, the partnership and collaboration between team members improved significantly, and the implementation of the project moved faster. I enjoyed working under her leadership.",
+    content: "Under her capable leadership, this multifaceted program has flourished. She fosters collaboration, strategic insight, and innovation, driving significant progress that empowers stakeholders across sectors.",
     rating: 5,
     category: "Project Management",
-    type: "video",
-    videoUrl: "/videos/testimonial-sarah-williams.mp4",
-    videoPoster: "/images/testimonials/sarah-williams-poster.jpg",
-    videoDuration: "1:45",
     social: {
       linkedin: "https://www.linkedin.com/in/unyimeabasieyo"
     }
@@ -36,6 +29,19 @@ const testimonials = [
     category: "Leadership & Strategy",
     social: {
       linkedin: "https://www.linkedin.com/in/toyosi-babatunde-91031637"
+    }
+  },
+  {
+    id: 4,
+    name: "Kehinde Victoria Omojola",
+    title: "Development Consultant",
+    company: "Professional Recommendation",
+    image: "/api/placeholder/80/80",
+    content: "I have known Mosun Owo Odusi for over two decades, and during that time she has consistently demonstrated exceptional professionalism, resilience, and leadership. We first became colleagues at Grange School Lagos in 2000, and our friendship began when we were jointly tasked with training our colleagues on the British Curriculum. At the time, the school was transitioning from a mixed Nigerian-British model to a fully British-based curriculum. This required significant self-development on our part-researching the curriculum structure, understanding its pedagogical expectations, and then delivering effective training to our peers. Mosun approached this challenge with characteristic diligence, intellectual curiosity, and professionalism, setting the tone for the many impactful collaborations we would go on to share.\n\nIn 2002, I had the privilege of taking over her class when she was appointed Deputy Head, a role she stepped into with confidence and competence. Our professional relationship continued to grow, and I later worked with her to train her teachers and managed a short-term consultancy at Amville School, where her openness to innovation and commitment to school improvement made the work both meaningful and productive. She also joined me on several Sycamore Edge School Improvement Projects, contributing her insight, discipline, and deep understanding of educational systems.\n\nMosun is diligent, highly focused, and results-driven. She brings clarity and purpose to every assignment, and she has a remarkable ability to remain steady and solution-oriented even in challenging situations. Her resilience is one of her greatest strengths-she consistently rises to meet complex demands with calm confidence and strategic thinking.\n\nHer dedication has been evident in the many projects she went on to lead at Ogun State, where her leadership, project management skills, and commitment to educational development made a significant impact. Mosun is the kind of professional who elevates every team she joins and strengthens every system she touches.\n\nI wholeheartedly recommend Mosun Owo Odusi for any leadership, educational development, or project management role. She brings experience, integrity, and an unwavering commitment to excellence-qualities that make her an asset in any environment.",
+    rating: 5,
+    category: "Education Consulting",
+    social: {
+      linkedin: "https://www.linkedin.com/in/kehinde-victoria-omojola-3a65b516/"
     }
   },
   {
@@ -67,137 +73,15 @@ const categoryColors = {
   "Leadership & Strategy": "text-violet-600 bg-violet-100"
 }
 
-// Video Testimonial Component
-function VideoTestimonial({ testimonial, index }: { testimonial: any, index: number }) {
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [isLoaded, setIsLoaded] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
+export default function Testimonials() {
+  const [expandedMap, setExpandedMap] = useState<Record<number, boolean>>({})
 
-  const handlePlayPause = () => {
-    if (videoRef.current) {
-      if (isPlaying) {
-        videoRef.current.pause()
-        setIsPlaying(false)
-      } else {
-        videoRef.current.play()
-        setIsPlaying(true)
-      }
-    }
+  const toggleExpanded = (id: number) => {
+    setExpandedMap((prev) => ({ ...prev, [id]: !prev[id] }))
   }
 
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: index * 0.1 }}
-      className="bg-white rounded-3xl shadow-large p-6 relative overflow-hidden lg:col-span-2"
-    >
-      {/* Subtle background accent */}
-      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-50/30 to-gold-50/30 rounded-full -translate-y-16 translate-x-16"></div>
-      
-      <div className="relative z-10">
-        {/* Featured Badge */}
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center gap-3">
-            <div className="px-3 py-1 bg-gradient-to-r from-gold-500 to-amber-500 text-white rounded-full text-xs font-bold">
-              FEATURED VIDEO
-            </div>
-          </div>
-          <span className="text-xs text-slate-500 font-medium">{testimonial.videoDuration}</span>
-        </div>
+  const contentPreviewLength = 620
 
-        {/* Video Container */}
-        <div className="relative mb-5 lg:mb-4 rounded-2xl overflow-hidden bg-slate-100">
-          <div className="aspect-video lg:aspect-[16/7] relative">
-            {!isLoaded && (
-              <div 
-                className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-300 flex items-center justify-center cursor-pointer"
-                onClick={() => setIsLoaded(true)}
-              >
-                <div className="text-center">
-                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-white/90 rounded-full flex items-center justify-center mb-3 lg:mb-4 mx-auto shadow-lg">
-                    <Play className="w-4 h-4 lg:w-6 lg:h-6 text-primary-600 ml-1" />
-                  </div>
-                  <p className="text-slate-600 font-medium text-sm lg:text-base">Click to load video</p>
-                  <p className="text-xs lg:text-sm text-slate-500">Lightweight loading for better performance</p>
-                </div>
-              </div>
-            )}
-            
-            {isLoaded && (
-              <>
-                <video
-                  ref={videoRef}
-                  className="w-full h-full object-cover"
-                  poster={testimonial.videoPoster}
-                  preload="metadata"
-                  onPlay={() => setIsPlaying(true)}
-                  onPause={() => setIsPlaying(false)}
-                  onEnded={() => setIsPlaying(false)}
-                >
-                  <source src={testimonial.videoUrl} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                
-                {/* Video Controls Overlay */}
-                <div className="absolute inset-0 bg-black/20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                  <button
-                    onClick={handlePlayPause}
-                    className="w-12 h-12 lg:w-16 lg:h-16 bg-white/90 rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform duration-200"
-                  >
-                    {isPlaying ? (
-                      <Pause className="w-4 h-4 lg:w-6 lg:h-6 text-primary-600" />
-                    ) : (
-                      <Play className="w-4 h-4 lg:w-6 lg:h-6 text-primary-600 ml-1" />
-                    )}
-                  </button>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Testimonial Content - Removed for video testimonials */}
-        {/* Video testimonials focus on visual content */}
-
-        {/* Rating */}
-        <div className="flex items-center gap-1 mb-6">
-          {[...Array(testimonial.rating)].map((_, i) => (
-            <Star key={i} className="w-5 h-5 fill-gold-400 text-gold-400" />
-          ))}
-        </div>
-
-        {/* Author Info */}
-        <div className="flex items-center gap-4">
-          <div className="w-16 h-16 bg-gradient-to-br from-primary-100 to-gold-100 rounded-2xl flex items-center justify-center">
-            <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-gold-500 rounded-xl flex items-center justify-center text-white font-bold text-lg">
-              {testimonial.name.split(' ').map((n: string) => n[0]).join('')}
-            </div>
-          </div>
-          
-          <div className="flex-1">
-            <h3 className="font-bold text-slate-900 text-lg">{testimonial.name}</h3>
-            <p className="text-slate-600 font-medium">{testimonial.title}</p>
-          </div>
-
-          {/* Social Icons */}
-          <div className="flex items-center gap-2">
-            {testimonial.social.linkedin && (
-              <a 
-                href={testimonial.social.linkedin}
-                className="w-10 h-10 bg-slate-100 hover:bg-primary-100 rounded-xl flex items-center justify-center transition-colors duration-200"
-              >
-                <Linkedin className="w-5 h-5 text-slate-600 hover:text-primary-600" />
-              </a>
-            )}
-          </div>
-        </div>
-      </div>
-    </motion.div>
-  )
-}
-
-export default function Testimonials() {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -264,12 +148,12 @@ export default function Testimonials() {
           {/* Testimonials Grid */}
           <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
             {testimonials.map((testimonial, index) => {
-              // Render video testimonial component for video type
-              if (testimonial.type === 'video') {
-                return <VideoTestimonial key={testimonial.id} testimonial={testimonial} index={index} />
-              }
-
-              // Regular testimonial card
+              const isExpanded = !!expandedMap[testimonial.id]
+              const isLong = testimonial.content.length > contentPreviewLength
+              const visibleContent =
+                isLong && !isExpanded
+                  ? `${testimonial.content.slice(0, contentPreviewLength).trim()}...`
+                  : testimonial.content
               
               return (
                 <motion.div
@@ -277,7 +161,7 @@ export default function Testimonials() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-3xl shadow-large p-8 lg:p-10 relative overflow-hidden"
+                  className="bg-white rounded-3xl shadow-large p-8 lg:p-10 relative overflow-hidden min-h-[620px] h-full flex flex-col"
                 >
                   {/* Subtle background accent */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-50/30 to-gold-50/30 rounded-full -translate-y-16 translate-x-16"></div>
@@ -286,12 +170,35 @@ export default function Testimonials() {
                     {/* Quote Icon */}
                     <div className="flex items-center justify-between mb-6">
                       <Quote className="w-8 h-8 text-primary-200" />
+                      <div className="inline-flex items-center gap-2">
+                        {(() => {
+                          const Icon = categoryIcons[testimonial.category as keyof typeof categoryIcons]
+                          return Icon ? (
+                            <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold ${categoryColors[testimonial.category as keyof typeof categoryColors]}`}>
+                              <Icon className="w-3.5 h-3.5" />
+                              {testimonial.category}
+                            </span>
+                          ) : null
+                        })()}
+                      </div>
                     </div>
 
                     {/* Testimonial Content */}
-                    <blockquote className="text-slate-700 leading-relaxed mb-6 text-lg">
-                      &ldquo;{testimonial.content}&rdquo;
-                    </blockquote>
+                    <div className="mb-6 h-[260px]">
+                      <blockquote className={`text-slate-700 leading-relaxed text-lg whitespace-pre-line h-full ${isExpanded ? 'overflow-y-auto pr-2' : 'overflow-hidden'}`}>
+                        &ldquo;{visibleContent}&rdquo;
+                      </blockquote>
+                    </div>
+
+                    {isLong && (
+                      <button
+                        type="button"
+                        onClick={() => toggleExpanded(testimonial.id)}
+                        className="mb-6 self-start text-sm font-semibold text-primary-700 hover:text-primary-800 transition-colors"
+                      >
+                        {isExpanded ? 'See less' : 'See more'}
+                      </button>
+                    )}
 
                     {/* Rating */}
                     <div className="flex items-center gap-1 mb-6">
@@ -318,6 +225,8 @@ export default function Testimonials() {
                         {testimonial.social.linkedin && (
                           <a 
                             href={testimonial.social.linkedin}
+                            target="_blank"
+                            rel="noreferrer"
                             className="w-10 h-10 bg-slate-100 hover:bg-primary-100 rounded-xl flex items-center justify-center transition-colors duration-200"
                           >
                             <Linkedin className="w-5 h-5 text-slate-600 hover:text-primary-600" />
