@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Star, Quote, Linkedin, Building2, Users, GraduationCap, TrendingUp } from 'lucide-react'
+import { Star, Quote, Linkedin, Building2, Users, GraduationCap, TrendingUp, ChevronDown, ChevronUp } from 'lucide-react'
 import { useState } from 'react'
 
 const testimonials = [
@@ -11,7 +11,7 @@ const testimonials = [
     title: "Competitive Strategy Consultant",
     company: "ChMC - Professional LinkedIn Recommendation",
     image: "/api/placeholder/80/80",
-    content: "Under her capable leadership, this multifaceted program has flourished. She fosters collaboration, strategic insight, and innovation, driving significant progress that empowers stakeholders across sectors.",
+    content: "It is my privilege to talk about Mosun Owo-Odusi, the remarkable Project Coordinator of the Ogun State Economic Transformation Project. Under her capable leadership, this multifaceted program, comprising four critical projects—Creating a Business Enabling Environment, Improving the Agricultural Value Chain, Skills Development, and Public Sector Reforms—has flourished. She oversees 4 Project Managers, more than 15 Specialist Consultants, and over 50 other Team Members. Under her leadership, she fosters collaboration, strategic insight, and innovation. Her deep commitment to achieving measurable results has driven significant progress, empowering stakeholders across sectors and contributing to the state's socio-economic growth.\n\nMosun stands out for her exceptional leadership qualities, guiding the team through complex challenges with confidence, vision, and resilience. She has demonstrated an unparalleled ability to align project objectives with overarching goals of the program, ensuring that every team member contributes meaningfully to the program's success. Her strategic acumen and unwavering dedication have not only steered the program to achieve its milestones but have also laid a foundation for sustainable development in the state.\n\nHer approach to leadership is collaborative and inclusive, fostering a work environment where every team member feels valued and empowered to bring their best ideas to the table. This has resulted in innovative solutions to the state's challenges in agriculture, public sector efficiency, and skills development. She is also deeply committed to improving the ease of doing business in Ogun State, directly contributing to increased investment opportunities and economic growth. Her contributions to Ogun State through the Ogun State Economic Transformation Project will leave a lasting impact for years to come.\n\nIn addition to her professional excellence, Mosun is an inspiring leader who invests in the personal and professional growth of her team. Her mentoring has significantly enhanced the capacity of project managers, consultants and team members, leading to improved project outcomes and a stronger, more resilient workforce.\n\nI am glad to have worked under her leadership and without hesitation, I strongly recommend Mosun for any recognition or assignment that values transformative leadership, strategic vision, and a commitment to socio-economic development.",
     rating: 5,
     category: "Project Management",
     social: {
@@ -80,8 +80,6 @@ export default function Testimonials() {
     setExpandedMap((prev) => ({ ...prev, [id]: !prev[id] }))
   }
 
-  const contentPreviewLength = 620
-
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
@@ -149,11 +147,7 @@ export default function Testimonials() {
           <div className="grid lg:grid-cols-2 gap-8 max-w-7xl mx-auto">
             {testimonials.map((testimonial, index) => {
               const isExpanded = !!expandedMap[testimonial.id]
-              const isLong = testimonial.content.length > contentPreviewLength
-              const visibleContent =
-                isLong && !isExpanded
-                  ? `${testimonial.content.slice(0, contentPreviewLength).trim()}...`
-                  : testimonial.content
+              const isLong = testimonial.content.length > 400
               
               return (
                 <motion.div
@@ -161,7 +155,7 @@ export default function Testimonials() {
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className="bg-white rounded-3xl shadow-large p-8 lg:p-10 relative overflow-hidden min-h-[620px] h-full flex flex-col"
+                  className="bg-white rounded-3xl shadow-large p-8 lg:p-10 relative overflow-hidden"
                 >
                   {/* Subtle background accent */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-primary-50/30 to-gold-50/30 rounded-full -translate-y-16 translate-x-16"></div>
@@ -184,19 +178,29 @@ export default function Testimonials() {
                     </div>
 
                     {/* Testimonial Content */}
-                    <div className="mb-6 h-[260px]">
-                      <blockquote className={`text-slate-700 leading-relaxed text-lg whitespace-pre-line h-full ${isExpanded ? 'overflow-y-auto pr-2' : 'overflow-hidden'}`}>
-                        &ldquo;{visibleContent}&rdquo;
+                    <div className="relative mb-3">
+                      <blockquote
+                        className={`text-slate-700 leading-relaxed text-lg ${
+                          isExpanded ? 'whitespace-pre-line' : 'line-clamp-6'
+                        }`}
+                      >
+                        &ldquo;{testimonial.content}&rdquo;
                       </blockquote>
+                      {!isExpanded && isLong && (
+                        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-white to-transparent" />
+                      )}
                     </div>
 
                     {isLong && (
                       <button
                         type="button"
                         onClick={() => toggleExpanded(testimonial.id)}
-                        className="mb-6 self-start text-sm font-semibold text-primary-700 hover:text-primary-800 transition-colors"
+                        className="mb-6 flex items-center gap-1 text-sm font-semibold text-primary-700 hover:text-primary-800 transition-colors"
                       >
-                        {isExpanded ? 'See less' : 'See more'}
+                        {isExpanded ? (
+                          <>See less <ChevronUp className="w-4 h-4" /></>
+                        ) : (
+                          <>See more <ChevronDown className="w-4 h-4" /></>)}
                       </button>
                     )}
 
