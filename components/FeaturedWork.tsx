@@ -32,11 +32,11 @@ const featuredImages: FeaturedImage[] = [
     filterLink: '/projects#projects-gallery'
   },
   {
-    src: '/images/amville-consults/940d84d9-2c69-4eea-813a-b8a3535c9427.JPG',
-    alt: 'Amville Consults student leadership camp',
-    project: 'consults',
-    projectName: 'Amville Consults',
-    caption: 'Student Leadership',
+    src: '/images/amville-school/Teachers day.jpg',
+    alt: 'Amville School community celebration',
+    project: 'school',
+    projectName: 'Amville School',
+    caption: 'School Community Impact',
     filterLink: '/projects#projects-gallery'
   },
   {
@@ -80,6 +80,33 @@ export default function FeaturedWork() {
           <p className="text-base lg:text-lg text-slate-600 max-w-3xl mx-auto">
             Visual highlights from 15+ years of transformative leadership across education, agriculture, and institutional development
           </p>
+        </motion.div>
+
+        {/* OGSTEP documentary feature */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          viewport={{ once: true }}
+          className="mb-8 rounded-2xl border border-slate-200 bg-white p-4 lg:p-5 shadow-soft"
+        >
+          <div className="mb-3 flex items-center justify-between gap-3">
+            <h3 className="text-lg lg:text-xl font-bold text-slate-900">OGSTEP Achievements Documentary</h3>
+            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary-100 text-primary-700">Featured Video</span>
+          </div>
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-100">
+            <iframe
+              src="https://drive.google.com/file/d/1EwkTDB1JdZlX7mNIeR2w-bazeYMMAJ3W/preview"
+              title="OGSTEP documentary achievements"
+              loading="lazy"
+              className="absolute inset-0 h-full w-full border-0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+            <div className="pointer-events-none absolute inset-0">
+              <div className="pointer-events-auto absolute top-0 right-0 h-8 w-10" aria-hidden="true" />
+            </div>
+          </div>
         </motion.div>
 
         {/* Bento Grid */}

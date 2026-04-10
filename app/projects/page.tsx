@@ -309,6 +309,53 @@ type GalleryImage = {
   caption?: string
 }
 
+const amvilleSchoolImageFiles = [
+  '32191531_1010647379101058_8761177463532290048_n.jpg',
+  '32207341_1010647345767728_532342968497995776_n.jpg',
+  '492395805_3131546687011106_3819763382899474398_n.jpg',
+  '492513519_3133084366857338_7106916571808794356_n.jpg',
+  '492665641_3133084323524009_1421421123952328601_n.jpg',
+  '493274069_3129988460500262_7435562253635418984_n.jpg',
+  '493464755_3126501487515626_2666500780543568394_n.jpg',
+  '494042548_3131367793695662_3861622649842334219_n.jpg',
+  '494065573_3131546703677771_3882267901815472522_n.jpg',
+  '494149103_3133082936857481_4677482530327605050_n.jpg',
+  '494151786_3131546507011124_7424147878127108594_n.jpg',
+  '494153182_3133084186857356_5563635929799904145_n.jpg',
+  '494198837_3133734243459017_2743691675309893103_n.jpg',
+  '494203869_3133084356857339_5694652705001493492_n.jpg',
+  '494351832_3135118066653968_2498478728279829794_n.jpg',
+  '494486803_3133082943524147_5868692918113333919_n.jpg',
+  '494718595_3133734376792337_7672212559214372656_n.jpg',
+  '494718626_3133084363524005_3056439979516402545_n.jpg',
+  '494757206_3133734223459019_5649304177932934833_n.jpg',
+  '494927901_3133082890190819_8683606523473826316_n.jpg',
+  '495345181_3142609959238112_1021782434635614634_n.jpg',
+  '495467024_3142876449211463_3207262548734877107_n.jpg',
+  '495560006_3143204062512035_8647700429587335525_n.jpg',
+  '495605240_3142876469211461_3819089734391182584_n.jpg',
+  '495929228_3143204072512034_4082905641541503189_n.jpg',
+  '496004702_3143204112512030_8916848118325411841_n.jpg',
+  '496039857_3142871889211919_2016862950273819946_n.jpg',
+  '496093308_3146150692217372_855948467040405015_n.jpg',
+  '496094370_3146150728884035_5640144519273671681_n.jpg',
+  '496302717_3142871955878579_7436781047252273618_n.jpg',
+  '496431027_3142872209211887_8381447793832270055_n.jpg',
+  '496768458_3142872139211894_8981526268468525852_n.jpg',
+  '496846026_3143204475845327_181464409054056447_n.jpg',
+  '496861406_3146150808884027_6318276303912791107_n.jpg',
+  '497733032_3150207031811738_816517799275278899_n.jpg',
+  '497786046_3146150718884036_7528200555851012017_n.jpg',
+  '497922003_3150207035145071_9167000127100969446_n (1).jpg',
+  '497922003_3150207035145071_9167000127100969446_n.jpg',
+  '498637218_3149477605218014_2378160504742126547_n.jpg',
+  '501309677_3160904207408687_3437259377520491577_n.jpg',
+  '506629156_3182339745265133_6156151194386877499_n.jpg',
+  '88316779_1544154315750359_6180190968071847936_n.jpg',
+  'Amville School Children @ the Little Saints Orphanage.jpg',
+  'Teachers day.jpg',
+] as const
+
 const galleryImages: GalleryImage[] = [
   // OGSTEP leadership & outreach
   {
@@ -546,6 +593,14 @@ const galleryImages: GalleryImage[] = [
   { src: '/images/amville-consults/dc97410a-cb60-4730-af7c-70bb963be437.JPG', alt: 'Amville Consults educational leadership session', category: 'Consulting & Training', project: 'consults' },
   { src: '/images/amville-consults/f50119ae-fcf2-42f8-aac6-7fba05f225bf.JPG', alt: 'Amville Consults team collaboration', category: 'CSR & Community', project: 'consults' },
   { src: '/images/amville-consults/f82400ed-90fc-4e4c-94b6-cc996c58d63e.JPG', alt: 'Amville Consults impact moment', category: 'CSR & Community', project: 'consults' },
+
+  // Amville School - Learning & Community Highlights
+  ...amvilleSchoolImageFiles.map((fileName, index) => ({
+    src: `/images/amville-school/${fileName}`,
+    alt: `Amville School highlight ${index + 1}`,
+    category: 'Amville School Highlights',
+    project: 'school' as const,
+  })),
 ]
 
 // Before/after images that should appear only in the dedicated strip,
@@ -567,51 +622,80 @@ type VideoHighlight = {
   id: string
   title: string
   src: string
+  kind?: 'iframe' | 'mp4'
   project: 'ogstep' | 'consults' | 'school'
 }
 
 const videoHighlights: VideoHighlight[] = [
   {
+    id: 'ogstep-documentary-achievements',
+    title: 'OGSTEP Documentary: Achievements Overview',
+    src: 'https://drive.google.com/file/d/1EwkTDB1JdZlX7mNIeR2w-bazeYMMAJ3W/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+  },
+  {
     id: 'mosun-fish-harvest-ijebu',
     title: 'Mosun Owo-Odusi – Speech at launch of fish harvest (Ijebu)',
     src: 'https://drive.google.com/file/d/1wEswzM9QHRxg4VFNLAasEADnXA5cJG8R/preview',
+    kind: 'iframe',
     project: 'ogstep',
   },
   {
     id: 'mosun-video-highlight-2',
     title: 'Mosun Owo-Odusi – OGSTEP video highlight',
     src: 'https://drive.google.com/file/d/1cHiu1R03JwsCWPQa-nWFRDPtD8kf9Irt/preview',
+    kind: 'iframe',
     project: 'ogstep',
   },
   {
     id: 'mosun-award-ogstep',
     title: 'Mosun Owo-Odusi receiving an award on behalf of OGSTEP',
     src: 'https://drive.google.com/file/d/1LldvxNnzTPhSm8hNFmN7vGwvdg98xJ45/preview',
+    kind: 'iframe',
     project: 'ogstep',
   },
   {
     id: 'mosun-pc-interview',
     title: 'Mosun Owo-Odusi – Project Coordinator interview',
     src: 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview',
+    kind: 'iframe',
     project: 'ogstep',
   },
   {
     id: 'mosun-interview-journalist-1',
     title: 'Mosun Owo-Odusi interview session with a journalist',
     src: 'https://drive.google.com/file/d/1MeifnduMzvgMBdhwZE9kntXKUqkDfq-B/preview',
+    kind: 'iframe',
     project: 'ogstep',
   },
   {
     id: 'mosun-interview-journalist-2',
     title: 'Mosun Owo-Odusi interview session with a journalist (2)',
     src: 'https://drive.google.com/file/d/1ixQo30q24xNnRzOCR7o8x0IgiboPw6nM/preview',
+    kind: 'iframe',
     project: 'ogstep',
   },
   {
     id: 'mosun-matter-resolution',
     title: 'Mosun Owo-Odusi interview session on matter resolution',
     src: 'https://drive.google.com/file/d/1Qs6fQAiH44-FLLpMjZhIzL7N9A68f_u2/preview',
+    kind: 'iframe',
     project: 'ogstep',
+  },
+  {
+    id: 'amville-school-video-1',
+    title: 'Amville School Video Highlight 1',
+    src: '/images/amville-school/AQNzwG2CsMq3htCToofp3Br6ramI6LAbgKpWRyG0kCKczhfSUMGN2J4Wteu9XniZt3pqxNMf-MXVP-_BsQhMi6uC.mp4',
+    kind: 'mp4',
+    project: 'school',
+  },
+  {
+    id: 'amville-school-video-2',
+    title: 'Amville School Video Highlight 2',
+    src: '/images/amville-school/AQOfeAmIX2zzNCYS7t1NjWWSH7B3g1E1XwLAAsd70arW4mEim3veHoCnUO_akGz6htUXj10WYWcKQLZRIuVyMuM.mp4',
+    kind: 'mp4',
+    project: 'school',
   },
 ]
 
@@ -1575,18 +1659,32 @@ export default function Projects() {
                     className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 shadow-[0_16px_40px_rgba(15,23,42,0.9)]"
                   >
                     <div className="relative w-full aspect-video bg-slate-900">
-                      <iframe
-                        src={video.src}
-                        title={video.title}
-                        loading="lazy"
-                        className="absolute inset-0 h-full w-full border-0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      />
-                      {/* Overlay small area to intercept clicks on the Drive pop-out icon */}
-                      <div className="pointer-events-none absolute inset-0">
-                        <div className="pointer-events-auto absolute top-0 right-0 h-8 w-10" aria-hidden="true" />
-                      </div>
+                      {video.kind === 'mp4' ? (
+                        <video
+                          src={video.src}
+                          title={video.title}
+                          controls
+                          preload="metadata"
+                          controlsList="nodownload noplaybackrate"
+                          disablePictureInPicture
+                          className="absolute inset-0 h-full w-full object-cover"
+                        />
+                      ) : (
+                        <>
+                          <iframe
+                            src={video.src}
+                            title={video.title}
+                            loading="lazy"
+                            className="absolute inset-0 h-full w-full border-0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                          />
+                          {/* Overlay small area to intercept clicks on the Drive pop-out icon */}
+                          <div className="pointer-events-none absolute inset-0">
+                            <div className="pointer-events-auto absolute top-0 right-0 h-8 w-10" aria-hidden="true" />
+                          </div>
+                        </>
+                      )}
                     </div>
                     <div className="px-3.5 py-3 border-t border-slate-800/80 bg-slate-950/90">
                       <p className="text-xs sm:text-sm font-semibold text-slate-50 leading-snug">
