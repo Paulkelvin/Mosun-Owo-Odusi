@@ -1676,13 +1676,15 @@ export default function Projects() {
                             title={video.title}
                             loading="lazy"
                             className="absolute inset-0 h-full w-full border-0"
+                            referrerPolicy="no-referrer"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
                           />
-                          {/* Overlay small area to intercept clicks on the Drive pop-out icon */}
-                          <div className="pointer-events-none absolute inset-0">
-                            <div className="pointer-events-auto absolute top-0 right-0 h-8 w-10" aria-hidden="true" />
-                          </div>
+                          {/* Block top-right Drive source/open icon zone */}
+                          <div
+                            className="absolute right-0 top-0 z-20 h-12 w-28 bg-slate-900/95"
+                            aria-hidden="true"
+                          />
                         </>
                       )}
                     </div>

@@ -100,12 +100,14 @@ export default function FeaturedWork() {
               title="OGSTEP documentary achievements"
               loading="lazy"
               className="absolute inset-0 h-full w-full border-0"
+              referrerPolicy="no-referrer"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
-            <div className="pointer-events-none absolute inset-0">
-              <div className="pointer-events-auto absolute top-0 right-0 h-8 w-10" aria-hidden="true" />
-            </div>
+            <div
+              className="absolute right-0 top-0 z-20 h-12 w-28 bg-slate-100/95"
+              aria-hidden="true"
+            />
           </div>
         </motion.div>
 
