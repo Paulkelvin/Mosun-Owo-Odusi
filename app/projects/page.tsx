@@ -1658,7 +1658,7 @@ export default function Projects() {
                     key={video.id}
                     className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 shadow-[0_16px_40px_rgba(15,23,42,0.9)]"
                   >
-                    <div className="relative w-full aspect-video bg-slate-900">
+                    <div className={`relative w-full bg-slate-900 ${video.kind === 'mp4' ? 'aspect-video' : 'aspect-[16/10]'}`}>
                       {video.kind === 'mp4' ? (
                         <video
                           src={video.src}
@@ -1675,15 +1675,10 @@ export default function Projects() {
                             src={video.src}
                             title={video.title}
                             loading="lazy"
-                            className="absolute inset-0 h-full w-full border-0"
+                            className="absolute inset-y-0 left-0 -right-16 h-full w-[calc(100%+4rem)] border-0"
                             referrerPolicy="no-referrer"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
-                          />
-                          {/* Block top-right Drive source/open icon zone */}
-                          <div
-                            className="absolute right-0 top-0 z-20 h-12 w-28 bg-transparent"
-                            aria-hidden="true"
                           />
                         </>
                       )}

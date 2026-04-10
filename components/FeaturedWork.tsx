@@ -94,19 +94,15 @@ export default function FeaturedWork() {
             <h3 className="text-lg lg:text-xl font-bold text-slate-900">OGSTEP Achievements Documentary</h3>
             <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary-100 text-primary-700">Featured Video</span>
           </div>
-          <div className="relative w-full aspect-video rounded-xl overflow-hidden bg-slate-100">
+          <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-slate-100">
             <iframe
               src="https://drive.google.com/file/d/1EwkTDB1JdZlX7mNIeR2w-bazeYMMAJ3W/preview"
               title="OGSTEP documentary achievements"
               loading="lazy"
-              className="absolute inset-0 h-full w-full border-0"
+              className="absolute inset-y-0 left-0 -right-16 h-full w-[calc(100%+4rem)] border-0"
               referrerPolicy="no-referrer"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
-            />
-            <div
-              className="absolute right-0 top-0 z-20 h-12 w-28 bg-transparent"
-              aria-hidden="true"
             />
           </div>
         </motion.div>
