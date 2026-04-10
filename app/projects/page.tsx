@@ -1682,7 +1682,7 @@ export default function Projects() {
                           />
                           {/* Block top-right Drive source/open icon zone */}
                           <div
-                            className="absolute right-0 top-0 z-20 h-12 w-28 bg-slate-900/95"
+                            className="absolute right-0 top-0 z-20 h-12 w-28 bg-transparent"
                             aria-hidden="true"
                           />
                         </>

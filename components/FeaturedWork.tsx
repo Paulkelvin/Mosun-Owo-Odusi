@@ -105,7 +105,7 @@ export default function FeaturedWork() {
               allowFullScreen
             />
             <div
-              className="absolute right-0 top-0 z-20 h-12 w-28 bg-slate-100/95"
+              className="absolute right-0 top-0 z-20 h-12 w-28 bg-transparent"
               aria-hidden="true"
             />
           </div>
