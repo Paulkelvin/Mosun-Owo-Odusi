@@ -14,6 +14,7 @@ import {
   Users,
   Wheat,
   X,
+  PlayCircle,
 } from 'lucide-react'
 import AnimatedCounter from '@/components/AnimatedCounter'
 
@@ -268,6 +269,14 @@ export default function OGSTEPImpactSection() {
           >
             View Intervention Sites Breakdown
             <ArrowUpRight className="h-4 w-4" />
+          </a>
+
+          <a
+            href="/projects#video-highlights"
+            className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-500/10 px-5 py-3 text-sm font-semibold text-emerald-300 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-500/20"
+          >
+            Watch Documentary Series
+            <PlayCircle className="h-4 w-4" />
           </a>
         </motion.div>
       </div>

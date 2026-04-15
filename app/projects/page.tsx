@@ -1760,8 +1760,8 @@ export default function Projects() {
                   }, {} as Record<string, typeof filteredVideos>);
                   
                   const sortedKeys = Object.keys(groupedVideos).sort((a, b) => {
-                    if (a === 'General Highlights') return -1;
-                    if (b === 'General Highlights') return 1;
+                    if (a === 'General Highlights') return 1;
+                    if (b === 'General Highlights') return -1;
                     return a.localeCompare(b);
                   });
 

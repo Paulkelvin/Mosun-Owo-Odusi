@@ -1,7 +1,8 @@
 "use client"
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Quote, Star } from 'lucide-react'
+import { Quote, Star, ChevronDown, ChevronUp } from 'lucide-react'
 import Image from 'next/image'
 
 type Testimonial = {
@@ -16,7 +17,7 @@ type Testimonial = {
 const testimonials: Testimonial[] = [
   {
     quote:
-      'Under her capable leadership, this multifaceted program has flourished. She fosters collaboration, strategic insight, and innovation, driving significant progress that empowers stakeholders across sectors.',
+      "It is my privilege to talk about Mosun Owo-Odusi, the remarkable Project Coordinator of the Ogun State Economic Transformation Project. Under her capable leadership, this multifaceted program, comprising four critical projects—Creating a Business Enabling Environment, Improving the Agricultural Value Chain, Skills Development, and Public Sector Reforms—has flourished. She oversees 4 Project Managers, more than 15 Specialist Consultants, and over 50 other Team Members. Under her leadership, she fosters collaboration, strategic insight, and innovation. Her deep commitment to achieving measurable results has driven significant progress, empowering stakeholders across sectors and contributing to the state's socio-economic growth.\n\nMosun stands out for her exceptional leadership qualities, guiding the team through complex challenges with confidence, vision, and resilience. She has demonstrated an unparalleled ability to align project objectives with overarching goals of the program, ensuring that every team member contributes meaningfully to the program's success. Her strategic acumen and unwavering dedication have not only steered the program to achieve its milestones but have also laid a foundation for sustainable development in the state.\n\nHer approach to leadership is collaborative and inclusive, fostering a work environment where every team member feels valued and empowered to bring their best ideas to the table. This has resulted in innovative solutions to the state's challenges in agriculture, public sector efficiency, and skills development. She is also deeply committed to improving the ease of doing business in Ogun State, directly contributing to increased investment opportunities and economic growth. Her contributions to Ogun State through the Ogun State Economic Transformation Project will leave a lasting impact for years to come.\n\nIn addition to her professional excellence, Mosun is an inspiring leader who invests in the personal and professional growth of her team. Her mentoring has significantly enhanced the capacity of project managers, consultants and team members, leading to improved project outcomes and a stronger, more resilient workforce.\n\nI am glad to have worked under her leadership and without hesitation, I strongly recommend Mosun for any recognition or assignment that values transformative leadership, strategic vision, and a commitment to socio-economic development.",
     highlights: ['collaboration', 'strategic', 'innovation'],
     name: 'Unyime Eyo',
     role: 'CHARTERED MANAGEMENT CONSULTANT',
@@ -35,6 +36,12 @@ const testimonials: Testimonial[] = [
 ]
 
 export default function TestimonialPreview() {
+  const [expandedMap, setExpandedMap] = useState<Record<number, boolean>>({})
+
+  const toggleExpanded = (index: number) => {
+    setExpandedMap((prev) => ({ ...prev, [index]: !prev[index] }))
+  }
+
   return (
     <section className="section-padding bg-white relative overflow-hidden">
       {/* Subtle background pattern */}
@@ -64,31 +71,58 @@ export default function TestimonialPreview() {
 
         {/* Testimonials Grid */}
         <div className="grid md:grid-cols-2 gap-6 lg:gap-8 max-w-6xl mx-auto">
-          {testimonials.map((t, i) => (
+          {testimonials.map((t, i) => {
+            const isExpanded = !!expandedMap[i]
+            const isLong = t.quote.length > 250
+
+            return (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="group relative bg-gradient-to-br from-slate-50 to-white rounded-2xl p-6 lg:p-8 shadow-soft hover:shadow-medium transition-all duration-300 border border-slate-100"
+              className="group relative bg-gradient-to-br from-slate-50 to-white rounded-2xl p-6 lg:p-8 shadow-soft hover:shadow-medium transition-all duration-300 border border-slate-100 flex flex-col"
             >
-              {/* Quote icon */}
-              <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Quote className="w-16 h-16 text-primary-600" />
-              </div>
+              <div className="flex-1">
+                {/* Quote icon */}
+                <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
+                  <Quote className="w-16 h-16 text-primary-600" />
+                </div>
 
-              {/* Star rating */}
-              <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((_, idx) => (
-                  <Star key={idx} className="w-4 h-4 fill-gold-400 text-gold-400" />
-                ))}
-              </div>
+                {/* Star rating */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, idx) => (
+                    <Star key={idx} className="w-4 h-4 fill-gold-400 text-gold-400" />
+                  ))}
+                </div>
 
-              {/* Quote text */}
-              <blockquote className="relative z-10 text-base lg:text-lg text-slate-700 leading-relaxed mb-6">
-                &ldquo;{t.quote}&rdquo;
-              </blockquote>
+                {/* Quote text */}
+                <div className="relative mb-3">
+                  <blockquote className={`relative z-10 text-base lg:text-lg text-slate-700 leading-relaxed ${
+                    isExpanded ? 'whitespace-pre-line' : 'line-clamp-6'
+                  }`}>
+                    &ldquo;{t.quote}&rdquo;
+                  </blockquote>
+                  {!isExpanded && isLong && (
+                    <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent" />
+                  )}
+                </div>
+                
+                {isLong && (
+                  <button
+                    type="button"
+                    onClick={() => toggleExpanded(i)}
+                    className="mb-6 flex items-center gap-1 text-sm font-semibold text-primary-700 hover:text-primary-800 transition-colors z-20 relative"
+                  >
+                    {isExpanded ? (
+                      <>See less <ChevronUp className="w-4 h-4" /></>
+                    ) : (
+                      <>See more <ChevronDown className="w-4 h-4" /></>
+                    )}
+                  </button>
+                )}
+              </div>
 
               {/* Attribution */}
               <div className="flex items-center gap-4 pt-4 border-t border-slate-200">
@@ -108,7 +142,7 @@ export default function TestimonialPreview() {
                 </div>
               </div>
             </motion.div>
-          ))}
+          )})}
         </div>
 
         {/* View All Link */}
