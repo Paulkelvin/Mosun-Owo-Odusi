@@ -76,73 +76,74 @@ export default function TestimonialPreview() {
             const isLong = t.quote.length > 250
 
             return (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              viewport={{ once: true }}
-              className="group relative bg-gradient-to-br from-slate-50 to-white rounded-2xl p-6 lg:p-8 shadow-soft hover:shadow-medium transition-all duration-300 border border-slate-100 flex flex-col"
-            >
-              <div className="flex-1">
-                {/* Quote icon */}
-                <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
-                  <Quote className="w-16 h-16 text-primary-600" />
-                </div>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                viewport={{ once: true }}
+                className="group relative bg-gradient-to-br from-slate-50 to-white rounded-2xl p-6 lg:p-8 shadow-soft hover:shadow-medium transition-all duration-300 border border-slate-100 flex flex-col"
+              >
+                <div className="flex-1">
+                  {/* Quote icon */}
+                  <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity pointer-events-none">
+                    <Quote className="w-16 h-16 text-primary-600" />
+                  </div>
 
-                {/* Star rating */}
-                <div className="flex gap-1 mb-4">
-                  {[...Array(5)].map((_, idx) => (
-                    <Star key={idx} className="w-4 h-4 fill-gold-400 text-gold-400" />
-                  ))}
-                </div>
+                  {/* Star rating */}
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, idx) => (
+                      <Star key={idx} className="w-4 h-4 fill-gold-400 text-gold-400" />
+                    ))}
+                  </div>
 
-                {/* Quote text */}
-                <div className="relative mb-3">
-                  <blockquote className={`relative z-10 text-base lg:text-lg text-slate-700 leading-relaxed ${
-                    isExpanded ? 'whitespace-pre-line' : 'line-clamp-6'
-                  }`}>
-                    &ldquo;{t.quote}&rdquo;
-                  </blockquote>
-                  {!isExpanded && isLong && (
-                    <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent" />
+                  {/* Quote text */}
+                  <div className="relative mb-3">
+                    <blockquote className={`relative z-10 text-base lg:text-lg text-slate-700 leading-relaxed ${
+                      isExpanded ? 'whitespace-pre-line max-h-64 overflow-y-auto pr-3' : 'line-clamp-6'
+                      }`}>
+                      &ldquo;{t.quote}&rdquo;
+                    </blockquote>
+                    {!isExpanded && isLong && (
+                      <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent" />
+                    )}
+                  </div>
+
+                  {isLong && (
+                    <button
+                      type="button"
+                      onClick={() => toggleExpanded(i)}
+                      className="mb-6 flex items-center gap-1 text-sm font-semibold text-primary-700 hover:text-primary-800 transition-colors z-20 relative"
+                    >
+                      {isExpanded ? (
+                        <>See less <ChevronUp className="w-4 h-4" /></>
+                      ) : (
+                        <>See more <ChevronDown className="w-4 h-4" /></>
+                      )}
+                    </button>
                   )}
                 </div>
-                
-                {isLong && (
-                  <button
-                    type="button"
-                    onClick={() => toggleExpanded(i)}
-                    className="mb-6 flex items-center gap-1 text-sm font-semibold text-primary-700 hover:text-primary-800 transition-colors z-20 relative"
-                  >
-                    {isExpanded ? (
-                      <>See less <ChevronUp className="w-4 h-4" /></>
-                    ) : (
-                      <>See more <ChevronDown className="w-4 h-4" /></>
-                    )}
-                  </button>
-                )}
-              </div>
 
-              {/* Attribution */}
-              <div className="flex items-center gap-4 pt-4 border-t border-slate-200">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden bg-slate-200 flex-shrink-0 ring-2 ring-primary-100">
-                  <Image
-	                src={t.imageSrc || '/images/mosun_owo-odusi_portrait.png'}
-                    alt={`${t.name} profile`}
-                    fill
-                    className="object-cover"
-                    sizes="48px"
-                  />
+                {/* Attribution */}
+                <div className="flex items-center gap-4 pt-4 border-t border-slate-200">
+                  <div className="relative w-12 h-12 rounded-full overflow-hidden bg-slate-200 flex-shrink-0 ring-2 ring-primary-100">
+                    <Image
+                      src={t.imageSrc || '/images/mosun_owo-odusi_portrait.png'}
+                      alt={`${t.name} profile`}
+                      fill
+                      className="object-cover"
+                      sizes="48px"
+                    />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-semibold text-slate-900 text-sm truncate">{t.name}</div>
+                    <div className="text-xs text-slate-600 truncate">{t.role}</div>
+                    <div className="text-xs text-primary-600 truncate">{t.project}</div>
+                  </div>
                 </div>
-                <div className="flex-1 min-w-0">
-                  <div className="font-semibold text-slate-900 text-sm truncate">{t.name}</div>
-                  <div className="text-xs text-slate-600 truncate">{t.role}</div>
-                  <div className="text-xs text-primary-600 truncate">{t.project}</div>
-                </div>
-              </div>
-            </motion.div>
-          )})}
+              </motion.div>
+            )
+          })}
         </div>
 
         {/* View All Link */}
