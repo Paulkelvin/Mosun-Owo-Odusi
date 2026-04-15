@@ -1,17 +1,18 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About – Mosun Owo-Odusi',
-  description: '15+ years leading World Bank projects, education reform, and strategic transformations across public and private sectors.',
+  title: 'About Mosun Owo-Odusi | Strategic Project Manager & World Bank Consultant',
+  description: 'Learn about Mosun Owo-Odusi’s 30-year career driving World Bank projects (OGSTEP), educational turnaround strategies, and real estate advisory.',
+  keywords: ['Mosun Owo-Odusi', 'World Bank Consultant', 'PMP Project Manager', 'Education Leader Nigeria', 'Project Coordinator'],
   openGraph: {
-    title: 'About Mosun Owo-Odusi',
-    description: '15+ years leading World Bank projects, education reform, and strategic transformations.',
+    title: 'About Mosun Owo-Odusi | Strategic Project Manager',
+    description: 'Learn about Mosun Owo-Odusi’s 30-year career driving World Bank projects.',
     url: 'https://mosunowoodusi.com/about',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Mosun Owo-Odusi',
-    description: '15+ years leading World Bank projects, education reform, and strategic transformations.',
+    title: 'About Mosun Owo-Odusi | Strategic Project Manager',
+    description: 'Learn about Mosun Owo-Odusi’s 30-year career driving World Bank projects.',
   },
   alternates: {
     canonical: '/about',
