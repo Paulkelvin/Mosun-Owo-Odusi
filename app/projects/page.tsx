@@ -624,15 +624,18 @@ type VideoHighlight = {
   src: string
   kind?: 'iframe' | 'mp4'
   project: 'ogstep' | 'consults' | 'school'
+  series?: string
 }
 
 const videoHighlights: VideoHighlight[] = [
+  // General Highlights
   {
     id: 'ogstep-documentary-achievements',
     title: 'OGSTEP Documentary: Achievements Overview',
     src: 'https://drive.google.com/file/d/1EwkTDB1JdZlX7mNIeR2w-bazeYMMAJ3W/preview',
     kind: 'iframe',
     project: 'ogstep',
+    series: 'General Highlights',
   },
   {
     id: 'mosun-fish-harvest-ijebu',
@@ -640,6 +643,7 @@ const videoHighlights: VideoHighlight[] = [
     src: 'https://drive.google.com/file/d/1wEswzM9QHRxg4VFNLAasEADnXA5cJG8R/preview',
     kind: 'iframe',
     project: 'ogstep',
+    series: 'General Highlights',
   },
   {
     id: 'mosun-video-highlight-2',
@@ -647,6 +651,7 @@ const videoHighlights: VideoHighlight[] = [
     src: 'https://drive.google.com/file/d/1cHiu1R03JwsCWPQa-nWFRDPtD8kf9Irt/preview',
     kind: 'iframe',
     project: 'ogstep',
+    series: 'General Highlights',
   },
   {
     id: 'mosun-award-ogstep',
@@ -654,6 +659,7 @@ const videoHighlights: VideoHighlight[] = [
     src: 'https://drive.google.com/file/d/1LldvxNnzTPhSm8hNFmN7vGwvdg98xJ45/preview',
     kind: 'iframe',
     project: 'ogstep',
+    series: 'General Highlights',
   },
   {
     id: 'mosun-pc-interview',
@@ -661,6 +667,7 @@ const videoHighlights: VideoHighlight[] = [
     src: 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview',
     kind: 'iframe',
     project: 'ogstep',
+    series: 'General Highlights',
   },
   {
     id: 'mosun-interview-journalist-1',
@@ -668,6 +675,7 @@ const videoHighlights: VideoHighlight[] = [
     src: 'https://drive.google.com/file/d/1MeifnduMzvgMBdhwZE9kntXKUqkDfq-B/preview',
     kind: 'iframe',
     project: 'ogstep',
+    series: 'General Highlights',
   },
   {
     id: 'mosun-interview-journalist-2',
@@ -675,6 +683,7 @@ const videoHighlights: VideoHighlight[] = [
     src: 'https://drive.google.com/file/d/1ixQo30q24xNnRzOCR7o8x0IgiboPw6nM/preview',
     kind: 'iframe',
     project: 'ogstep',
+    series: 'General Highlights',
   },
   {
     id: 'mosun-matter-resolution',
@@ -682,6 +691,7 @@ const videoHighlights: VideoHighlight[] = [
     src: 'https://drive.google.com/file/d/1Qs6fQAiH44-FLLpMjZhIzL7N9A68f_u2/preview',
     kind: 'iframe',
     project: 'ogstep',
+    series: 'General Highlights',
   },
   {
     id: 'amville-school-video-1',
@@ -689,6 +699,7 @@ const videoHighlights: VideoHighlight[] = [
     src: '/images/amville-school/AQNzwG2CsMq3htCToofp3Br6ramI6LAbgKpWRyG0kCKczhfSUMGN2J4Wteu9XniZt3pqxNMf-MXVP-_BsQhMi6uC.mp4',
     kind: 'mp4',
     project: 'school',
+    series: 'General Highlights',
   },
   {
     id: 'amville-school-video-2',
@@ -696,6 +707,93 @@ const videoHighlights: VideoHighlight[] = [
     src: '/images/amville-school/AQOfeAmIX2zzNCYS7t1NjWWSH7B3g1E1XwLAAsd70arW4mEim3veHoCnUO_akGz6htUXj10WYWcKQLZRIuVyMuM.mp4',
     kind: 'mp4',
     project: 'school',
+    series: 'General Highlights',
+  },
+
+  // Documentary Series 1
+  {
+    id: 'bee-sango',
+    title: 'BEE Sango',
+    src: 'https://drive.google.com/file/d/1KboTbHPEiWTpKNoEn_z-stQUY5gf2VvF/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+    series: 'Documentary Series 1',
+  },
+  {
+    id: 'cassava-processing-center-ipokia',
+    title: 'Cassava Processing Center Ipokia',
+    src: 'https://drive.google.com/file/d/1Dz-20puxaCohKK_mjes6EaYNp2t3SJf_/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+    series: 'Documentary Series 1',
+  },
+  {
+    id: 'ijebu-ode-zonal-planning-office-rehabilitation',
+    title: 'Ijebu Ode zonal Planning Office Rehabilitation',
+    src: 'https://drive.google.com/file/d/1dY5_TOxX13U_iRkg-QL5iwY4fg3CVG8x/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+    series: 'Documentary Series 1',
+  },
+  {
+    id: 'ota-acquaculture-intervention',
+    title: 'Ota Acquaculture Intervention',
+    src: 'https://drive.google.com/file/d/11HppPWfY1u8pua8nhDiShRNNKuPkaui0/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+    series: 'Documentary Series 1',
+  },
+  {
+    id: 'remo-high-school-rehabilitation',
+    title: 'Remo High School Rehabilitation',
+    src: 'https://drive.google.com/file/d/1zSubLFaNkZguQ-e8DMS4cjOpCYU_W-El/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+    series: 'Documentary Series 1',
+  },
+  {
+    id: 'agriculture-mechanization-intervention',
+    title: 'Agriculture Mechanization Intervention',
+    src: 'https://drive.google.com/file/d/1JcU_W2NbczX_EuhKR3d37z7FaAItsYjj/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+    series: 'Documentary Series 1',
+  },
+  {
+    id: 'yewa-egbado-college-rehabilitation',
+    title: 'Yewa Egbado College Rehabilitation',
+    src: 'https://drive.google.com/file/d/1mvnSraO-8X7ZRCfuOUISrsYaGaOIB00L/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+    series: 'Documentary Series 1',
+  },
+
+  // Documentary Series 2
+  {
+    id: 'ministry-of-education-research-and-statistics-rehabilitation',
+    title: 'Ministry of Education Research and Statistics Rehabilitation',
+    src: 'https://drive.google.com/file/d/1JKKpe76s303DzItk4gEwObQ0iA0Tc48T/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+    series: 'Documentary Series 2',
+  },
+  {
+    id: 'owowo-farm-settlement-agricultural-internvention',
+    title: 'Owowo Farm Settlement Agricultural Internvention',
+    src: 'https://drive.google.com/file/d/1QHB4p7QtA0mM5sQi9tBvrY_hK2ttIABz/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+    series: 'Documentary Series 2',
+  },
+  
+  // Documentary Series 3
+  {
+    id: 'nawairuddeen-grammar-school-rehabilitation',
+    title: 'Nawairuddeen Grammar School Rehabilitation',
+    src: 'https://drive.google.com/file/d/19k_eCiQ0AjsHleiegOy6VMAiWjBCnxnE/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+    series: 'Documentary Series 3',
   },
 ]
 
@@ -1652,44 +1750,70 @@ export default function Projects() {
                 </div>
               </div>
 
-              <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
-                {filteredVideos.map((video) => (
-                  <div
-                    key={video.id}
-                    className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 shadow-[0_16px_40px_rgba(15,23,42,0.9)]"
-                  >
-                    <div className={`relative w-full bg-slate-900 ${video.kind === 'mp4' ? 'aspect-video' : 'aspect-[16/10]'}`}>
-                      {video.kind === 'mp4' ? (
-                        <video
-                          src={video.src}
-                          title={video.title}
-                          controls
-                          preload="metadata"
-                          controlsList="nodownload noplaybackrate"
-                          disablePictureInPicture
-                          className="absolute inset-0 h-full w-full object-cover"
-                        />
-                      ) : (
-                        <>
-                          <iframe
-                            src={video.src}
-                            title={video.title}
-                            loading="lazy"
-                            className="absolute inset-y-0 left-0 -right-16 h-full w-[calc(100%+4rem)] border-0"
-                            referrerPolicy="no-referrer"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            allowFullScreen
-                          />
-                        </>
+              <div className="space-y-10">
+                {(() => {
+                  const groupedVideos = filteredVideos.reduce((acc, video) => {
+                    const key = video.series || 'General Highlights';
+                    if (!acc[key]) acc[key] = [];
+                    acc[key].push(video);
+                    return acc;
+                  }, {} as Record<string, typeof filteredVideos>);
+                  
+                  const sortedKeys = Object.keys(groupedVideos).sort((a, b) => {
+                    if (a === 'General Highlights') return -1;
+                    if (b === 'General Highlights') return 1;
+                    return a.localeCompare(b);
+                  });
+
+                  return sortedKeys.map((seriesKey) => (
+                    <div key={seriesKey} className="space-y-5">
+                      {sortedKeys.length > 1 && (
+                        <h4 className="text-base sm:text-lg font-bold text-slate-100 border-b border-slate-800/80 pb-2">
+                          {seriesKey}
+                        </h4>
                       )}
+                      <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
+                        {groupedVideos[seriesKey].map((video) => (
+                          <div
+                            key={video.id}
+                            className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 shadow-[0_16px_40px_rgba(15,23,42,0.9)]"
+                          >
+                            <div className={`relative w-full bg-slate-900 ${video.kind === 'mp4' ? 'aspect-video' : 'aspect-[16/10]'}`}>
+                              {video.kind === 'mp4' ? (
+                                <video
+                                  src={video.src}
+                                  title={video.title}
+                                  controls
+                                  preload="metadata"
+                                  controlsList="nodownload noplaybackrate"
+                                  disablePictureInPicture
+                                  className="absolute inset-0 h-full w-full object-cover"
+                                />
+                              ) : (
+                                <>
+                                  <iframe
+                                    src={video.src}
+                                    title={video.title}
+                                    loading="lazy"
+                                    className="absolute inset-y-0 left-0 -right-16 h-full w-[calc(100%+4rem)] border-0"
+                                    referrerPolicy="no-referrer"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowFullScreen
+                                  />
+                                </>
+                              )}
+                            </div>
+                            <div className="px-3.5 py-3 border-t border-slate-800/80 bg-slate-950/90 flex flex-col justify-center min-h-[60px]">
+                              <p className="text-xs sm:text-sm font-semibold text-slate-50 leading-snug line-clamp-2">
+                                {video.title}
+                              </p>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                    <div className="px-3.5 py-3 border-t border-slate-800/80 bg-slate-950/90">
-                      <p className="text-xs sm:text-sm font-semibold text-slate-50 leading-snug">
-                        {video.title}
-                      </p>
-                    </div>
-                  </div>
-                ))}
+                  ));
+                })()}
               </div>
             </motion.div>
           )}
