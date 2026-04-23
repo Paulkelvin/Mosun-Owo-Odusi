@@ -4,10 +4,12 @@ import Image from 'next/image'
 import { motion } from 'framer-motion'
 
 const logos = [
-  { src: '/images/amVille_SCHOOL_logo.png', alt: 'Amville School' },
-  { src: '/images/ogun_state_logo.png', alt: 'Ogun State' },
   { src: '/images/World-Bank-Logo.jpg', alt: 'World Bank' },
+  { src: '/images/ogun_state_logo.png', alt: 'Ogun State' },
+  { type: 'text', alt: 'Grange School' },
+  { type: 'text', alt: 'Corona Secondary School' },
   { src: '/images/Lekki_British_School_logo.png', alt: 'Lekki British School' },
+  { src: '/images/amVille_SCHOOL_logo.png', alt: 'Amville School' },
 ]
 
 export default function Organizations() {
@@ -38,20 +40,26 @@ export default function Organizations() {
           <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-6">
             {logos.map((logo, idx) => (
               <motion.div
-                key={logo.src}
+                key={logo.alt}
                 initial={{ opacity: 0, y: 8 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: idx * 0.05 }}
                 viewport={{ once: true }}
-                className="transition duration-300 hover:opacity-100 opacity-100"
+                className="transition duration-300 hover:opacity-100 opacity-90"
               >
-                <Image
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={140}
-                  height={40}
-                  className="object-contain"
-                />
+                {logo.src ? (
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={140}
+                    height={40}
+                    className="object-contain"
+                  />
+                ) : (
+                  <span className="text-xl md:text-2xl font-bold text-slate-400 uppercase tracking-wider px-4">
+                    {logo.alt}
+                  </span>
+                )}
               </motion.div>
             ))}
           </div>

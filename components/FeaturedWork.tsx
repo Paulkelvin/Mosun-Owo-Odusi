@@ -82,7 +82,7 @@ export default function FeaturedWork() {
           </p>
         </motion.div>
 
-        {/* OGSTEP documentary feature */}
+        {/* Leadership Speaking Feature */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -90,14 +90,19 @@ export default function FeaturedWork() {
           viewport={{ once: true }}
           className="mb-8 rounded-2xl border border-slate-200 bg-white p-4 lg:p-5 shadow-soft"
         >
-          <div className="mb-3 flex items-center justify-between gap-3">
-            <h3 className="text-lg lg:text-xl font-bold text-slate-900">OGSTEP Achievements Documentary</h3>
-            <span className="text-xs font-medium px-2.5 py-1 rounded-full bg-primary-100 text-primary-700">Featured Video</span>
+          <div className="mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h3 className="text-lg lg:text-xl font-bold text-slate-900">Speech at the Launch of Fish Harvest</h3>
+              <p className="text-sm text-slate-500 mt-1">Ogun State Government Event | Public Address</p>
+            </div>
+            <Link href="/media" className="inline-block text-xs font-medium px-3 py-1.5 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors shrink-0">
+              View All Media & Speaking
+            </Link>
           </div>
-          <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-slate-100">
+          <div className="relative w-full aspect-[16/10] lg:aspect-video rounded-xl overflow-hidden bg-slate-100">
             <iframe
-              src="https://drive.google.com/file/d/1EwkTDB1JdZlX7mNIeR2w-bazeYMMAJ3W/preview"
-              title="OGSTEP documentary achievements"
+              src="https://drive.google.com/file/d/1wEswzM9QHRxg4VFNLAasEADnXA5cJG8R/preview"
+              title="Mosun Owo-Odusi Speech at the Launch of Fish Harvest"
               loading="lazy"
               className="absolute inset-y-0 left-0 -right-16 h-full w-[calc(100%+4rem)] border-0"
               referrerPolicy="no-referrer"

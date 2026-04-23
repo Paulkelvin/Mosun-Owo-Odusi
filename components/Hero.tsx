@@ -46,17 +46,17 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1 }}
-	      className="text-3xl sm:text-4xl lg:text-6xl font-bold text-white leading-tight mb-3"
+	      className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3"
           >
-	    <span className="inline-block">Leading Change, Improving Lives</span>
+	    <span className="inline-block">Leading large-scale public sector reform, human capital and institutional transformation in Nigeria.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25 }}
-              className="text-lg lg:text-xl text-slate-200 mb-4"
+              className="text-lg lg:text-xl text-slate-200 mb-6 max-w-3xl mx-auto"
           >
-            Project Management | Education Consultancy | Real Estate Advisory
+            Development Programme Leadership | Institutional & Education Reform | Board & Advisory
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

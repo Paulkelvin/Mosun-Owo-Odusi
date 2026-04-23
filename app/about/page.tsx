@@ -245,9 +245,14 @@ export default function About() {
                   </HighlightText>
                 </span>
               </h2>
-              <p className="text-base sm:text-lg text-slate-700 leading-relaxed">
+              <p className="text-base sm:text-lg text-slate-700 leading-relaxed mb-6">
                 Mosunmola is a seasoned leader with over 30 years of strategic management experience, blending entrepreneurial drive with large-scale project execution expertise. As a Co-Founder and Director in education, hygiene, and real estate ventures, she has demonstrated a strong ability to build impactful businesses. Her leadership of the World Bank-backed Ogun State Economic Transformation Project showcased her capacity to manage complex, multisectoral initiatives, achieving notable performance-based disbursements and social impact. A PMP-certified professional with advanced degrees, awards, and professional affiliations, Mosunmola excels at managing multidisciplinary teams and delivering measurable results. Her operational excellence and business acumen position her to drive sustainable growth and innovation across diverse ventures.
               </p>
+              <div className="bg-primary-50 border-l-4 border-primary-600 p-4 rounded-r-lg shadow-sm">
+                <p className="text-primary-900 font-medium leading-relaxed">
+                  <span className="font-bold">What&apos;s Next:</span> Currently exploring board advisory, programme leadership mandates with multilaterals and DFIs, and state-level reform engagements.
+                </p>
+              </div>
             </div>
 
             <div className="relative">

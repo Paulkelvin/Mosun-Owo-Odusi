@@ -30,65 +30,32 @@ export default function ServicesPage() {
             {[
               { 
                 icon: Target, 
-                title: 'Project Management', 
-                desc: 'End-to-end project delivery across diverse industries, ensuring results through structure, clarity, and strategic execution.',
+                title: 'Development Programme Leadership', 
+                desc: 'Coordination and delivery of multisectoral, donor-funded, and state-level reform programmes.',
                 services: [
-                  'Strategic Project Planning',
-                  'Project Execution & Delivery',
-                  'Stakeholder Management',
-                  'Risk Assessment & Mitigation',
-                  'Budget & Resource Management'
+                  'Stakeholder management across ministries, multilaterals, and private sector',
+                  'Results-based financing and Disbursement-Linked Results (DLRs)',
+                  'Institutional reform and capacity building',
+                  'Large-scale project planning and execution'
                 ],
                 color: 'from-blue-600 to-blue-400', 
                 action: 'Contact Me', 
                 link: '/contact#message' 
               },
               {
-                icon: Briefcase,
-                title: 'Entrepreneurship & Innovation',
-                desc: 'Support to design, launch, and scale impactful ventures — from idea clarity to execution and systems that sustain growth.',
+                icon: Users,
+                title: 'Institutional & Education Reform Advisory',
+                desc: 'School and institutional turnaround, curriculum development, and skills alignment to economic outcomes.',
                 services: [
-                  'Clarifying vision, value proposition, and positioning',
-                  'Structuring business models and revenue streams',
-                  'Translating ideas into lean, testable pilots',
-                  'Designing simple operating structures and roles',
-                  'Mentoring founders on execution discipline'
+                  'School and institutional turnaround strategies',
+                  'Curriculum and skills development',
+                  'Advisory to education entrepreneurs and public institutions',
+                  'Teacher capacity building and mentoring'
                 ],
                 color: 'from-purple-600 to-indigo-400',
                 action: 'Consult me',
                 link: '/contact#message'
-              },
-              { 
-                icon: Home, 
-                title: 'Real Estate Advisory', 
-                desc: 'Professional guidance on property acquisition, verification, investment decisions, and documentation — with seamless online payment for consultations.',
-                services: [
-                  'Property Verification',
-                  'Investment Advisory',
-                  'Site Inspection Support',
-                  'Documentation Guidance',
-                  'Risk Assessment'
-                ],
-                color: 'from-green-600 to-green-400', 
-                action: 'Consult me', 
-                link: '/contact#message' 
-              },
-              {
-                icon: Users,
-                title: 'Business Development',
-                desc: 'Practical support to strengthen your pipeline, deepen relationships, and convert interest into repeat business.',
-                services: [
-                  'Mapping and prioritising ideal client segments',
-                  'Designing outreach and follow-up routines that fit your context',
-                  'Improving proposals and presentations for decision-makers',
-                  'Creating simple dashboards to track leads and conversions',
-                  'Aligning team roles to support sustainable growth'
-                ],
-                color: 'from-amber-600 to-orange-400',
-                action: 'Contact Me',
-                link: '/contact#message'
               }
-              // Security Services card commented out - see full section below
             ].map((service, index) => {
               const Icon = service.icon
               return (
@@ -121,12 +88,37 @@ export default function ServicesPage() {
               )
             })}
           </div>
+
+
+          {/* Ventures Section */}
+          <div className="mt-20">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-10">
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">Ventures</h2>
+              <p className="text-slate-600 max-w-2xl mx-auto">
+                My personal business lines and long-standing enterprises, demonstrating a track record of building and sustaining value.
+              </p>
+            </motion.div>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }} className="bg-white p-6 rounded-2xl shadow-soft border border-slate-100">
+                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"><Briefcase size={24} /></div>
+                <h3 className="text-xl font-bold mb-2">Amville Consults</h3>
+                <p className="text-sm text-slate-600">Educational consulting, training, and strategic advisory for schools and educational institutions.</p>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }} className="bg-white p-6 rounded-2xl shadow-soft border border-slate-100">
+                <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-4"><Award size={24} /></div>
+                <h3 className="text-xl font-bold mb-2">Amville School</h3>
+                <p className="text-sm text-slate-600">Founder and Alumni capacity. A premier educational institution focused on excellence and holistic child development.</p>
+              </motion.div>
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} viewport={{ once: true }} className="bg-white p-6 rounded-2xl shadow-soft border border-slate-100">
+                <div className="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-4"><Home size={24} /></div>
+                <h3 className="text-xl font-bold mb-2">Divilux Realty</h3>
+                <p className="text-sm text-slate-600">Professional guidance on property acquisition, verification, investment decisions, and documentation.</p>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
-
-      {/* Security Services - Commented out (code preserved in git history)
-      To restore: See commit history for full security packages section
-      including Standard/Premium/Executive teams and bouncer gallery */}
 
       {/* Why Work With Me */}
       <section className="py-20 bg-white">
@@ -135,20 +127,21 @@ export default function ServicesPage() {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">A Proven Track Record <span className="gradient-text">Across Industries and Regions</span></h2>
           </motion.div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
             {[
-              { value: 20, suffix: '+', label: 'Years Experience', icon: Award },
-              { value: 10, suffix: '+', label: 'Projects Delivered', icon: Target },
-              { value: 100, suffix: '%', label: 'Client Satisfaction', icon: Users }
+              { value: 205, prefix: '$', suffix: 'M+', label: 'World Bank Portfolio', icon: Briefcase },
+              { value: 72, suffix: 'K+', label: 'Direct Beneficiaries', icon: Users },
+              { value: 15, suffix: 'K+', label: 'C of O Issued', icon: Home },
+              { value: 160, suffix: 'K+', label: 'Farmers Registered', icon: Target }
             ].map((stat, index) => {
               const Icon = stat.icon
               return (
                 <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: index * 0.1 }} viewport={{ once: true }} className="text-center card-modern hover:shadow-large transition-all duration-300">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-4"><Icon className="text-white" size={32} /></div>
-                  <div className="text-5xl font-bold gradient-text mb-2">
-                    <AnimatedCounter end={stat.value} suffix={stat.suffix} duration={2.5} />
+                  <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
+                    <AnimatedCounter end={stat.value} prefix={stat.prefix} suffix={stat.suffix} duration={2.5} />
                   </div>
-                  <p className="text-slate-700 font-medium text-lg">{stat.label}</p>
+                  <p className="text-slate-700 font-medium text-sm lg:text-lg">{stat.label}</p>
                 </motion.div>
               )
             })}
@@ -164,7 +157,6 @@ export default function ServicesPage() {
             <p className="text-lg text-slate-600 mb-8">Let&apos;s discuss how I can help you achieve your organizational goals through strategic consulting and expert project management.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact#message" className="btn-primary inline-flex items-center gap-2">Get in Touch <ArrowRight size={20} /></Link>
-              <Link href="/opportunities" className="btn-secondary inline-flex items-center gap-2">View Job Opportunities <ArrowRight size={20} /></Link>
             </div>
           </motion.div>
         </div>
