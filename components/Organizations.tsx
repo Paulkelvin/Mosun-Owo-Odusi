@@ -6,8 +6,6 @@ import { motion } from 'framer-motion'
 const logos = [
   { src: '/images/World-Bank-Logo.jpg', alt: 'World Bank' },
   { src: '/images/ogun_state_logo.png', alt: 'Ogun State' },
-  { type: 'text', alt: 'Grange School' },
-  { type: 'text', alt: 'Corona Secondary School' },
   { src: '/images/Lekki_British_School_logo.png', alt: 'Lekki British School' },
   { src: '/images/amVille_SCHOOL_logo.png', alt: 'Amville School' },
 ]
