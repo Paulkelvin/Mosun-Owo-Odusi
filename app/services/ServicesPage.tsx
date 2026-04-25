@@ -124,15 +124,16 @@ export default function ServicesPage() {
       <section className="py-20 bg-white">
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">A Proven Track Record <span className="gradient-text">Across Industries and Regions</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Scale, Impact, <span className="gradient-text">and Documented Results</span></h2>
           </motion.div>
 
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
             {[
               { value: 205, prefix: '$', suffix: 'M+', label: 'World Bank Portfolio', icon: Briefcase },
               { value: 72, suffix: 'K+', label: 'Direct Beneficiaries', icon: Users },
-              { value: 15, suffix: 'K+', label: 'C of O Issued', icon: Home },
-              { value: 160, suffix: 'K+', label: 'Farmers Registered', icon: Target }
+              { value: 160, suffix: 'K+', label: 'Farmers Registered', icon: Target },
+              { value: 15, suffix: 'K+', label: 'Certificates of Occupancy', icon: Home },
+              { value: 30, suffix: '+', label: 'Years of Leadership', icon: Award }
             ].map((stat, index) => {
               const Icon = stat.icon
               return (
@@ -141,7 +142,7 @@ export default function ServicesPage() {
                   <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
                     <AnimatedCounter end={stat.value} prefix={stat.prefix} suffix={stat.suffix} duration={2.5} />
                   </div>
-                  <p className="text-slate-700 font-medium text-sm lg:text-lg">{stat.label}</p>
+                  <p className="text-slate-700 font-medium text-sm lg:text-base">{stat.label}</p>
                 </motion.div>
               )
             })}
@@ -154,7 +155,7 @@ export default function ServicesPage() {
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
-            <p className="text-lg text-slate-600 mb-8">Let&apos;s discuss how I can help you achieve your organizational goals through strategic consulting and expert project management.</p>
+            <p className="text-lg text-slate-600 mb-8">Let&apos;s discuss how I can support your organisation through programme leadership, institutional reform, or board advisory.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact#message" className="btn-primary inline-flex items-center gap-2">Get in Touch <ArrowRight size={20} /></Link>
             </div>
