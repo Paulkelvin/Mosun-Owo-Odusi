@@ -75,6 +75,14 @@ export default function Hero() {
                 </span>
               </motion.button>
             </Link>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.8 }}
+              className="mt-6 text-sm text-slate-300/80 italic"
+            >
+              Having led a $205M+ World Bank programme to completion, I am ready for the next mandate.
+            </motion.p>
           </motion.div>
         </motion.div>
       </div>
