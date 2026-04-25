@@ -26,34 +26,40 @@ export default function ServicesPage() {
           </motion.div>
 
           {/* Services Grid */}
-          <div className="grid md:grid-cols-3 gap-8 mb-20">
+          <div className="grid md:grid-cols-2 gap-10 mb-20">
             {[
               { 
                 icon: Target, 
                 title: 'Development Programme Leadership', 
-                desc: 'Coordination and delivery of multisectoral, donor-funded, and state-level reform programmes.',
+                desc: 'End-to-end leadership of large-scale, donor-funded and government reform programmes, from design through delivery to results verification.',
+                body: 'I have spent the past several years leading OGSTEP, a $205M+ World Bank programme spanning agricultural value chains, skills development, land administration, and public sector reform. My role covered coordinating four project managers, 15+ specialist consultants, and over 50 team members, while managing direct relationships with the World Bank Task Team, the Governor\'s office, and implementing ministries. I am experienced in results-based financing frameworks, Disbursement Linked Results (DLRs), Implementation Support Missions, and the full fiduciary and reporting cycle of multilateral-funded programmes.',
                 services: [
-                  'Stakeholder management across ministries, multilaterals, and private sector',
-                  'Results-based financing and Disbursement-Linked Results (DLRs)',
-                  'Institutional reform and capacity building',
-                  'Large-scale project planning and execution'
+                  'Multisectoral programme coordination across government, agriculture, skills, and land administration',
+                  'Stakeholder management across ministries, World Bank Task Teams, development partners, and community groups',
+                  'Results-based financing and DLR tracking, verification, and reporting',
+                  'Annual budgeting, financial management, and fiduciary compliance for large portfolios',
+                  'Facilitation of Implementation Support Missions and Independent Verification Assessments',
+                  'Institutional capacity building for civil servants and implementing agencies'
                 ],
                 color: 'from-blue-600 to-blue-400', 
-                action: 'Contact Me', 
+                action: 'Get in Touch', 
                 link: '/contact#message' 
               },
               {
                 icon: Users,
                 title: 'Institutional & Education Reform Advisory',
-                desc: 'School and institutional turnaround, curriculum development, and skills alignment to economic outcomes.',
+                desc: 'Strategic advisory for school turnaround, institutional re-engineering, and skills systems alignment to economic outcomes.',
+                body: 'With over 30 years spanning secondary school leadership, curriculum development, and vocational skills reform, I bring operational depth that most advisors in this space lack. My career includes serving as Principal of Corona Secondary School, Deputy Head Teacher at Grange School, and Director of Studies at Lekki British School, alongside co-founding Amville School and growing it from 5 to 190 students. Through OGSTEP, I led the revitalisation of eight Government Technical Colleges and oversaw curriculum and assessment reform at the state level.',
                 services: [
-                  'School and institutional turnaround strategies',
-                  'Curriculum and skills development',
-                  'Advisory to education entrepreneurs and public institutions',
-                  'Teacher capacity building and mentoring'
+                  'School turnaround and institutional review across governance, curriculum, staffing, and culture',
+                  'Curriculum reform and alignment to skills demand and economic priorities',
+                  'Systems strengthening for state education ministries and agencies',
+                  'Advisory to education entrepreneurs on institutional structure, operations, and growth',
+                  'Teacher and school leader capacity development',
+                  'Integration of technology into learning environments'
                 ],
                 color: 'from-purple-600 to-indigo-400',
-                action: 'Consult me',
+                action: 'Get in Touch',
                 link: '/contact#message'
               }
             ].map((service, index) => {
@@ -70,7 +76,8 @@ export default function ServicesPage() {
                     <Icon className="w-full h-full text-white" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 mb-3">{service.title}</h3>
-                  <p className="text-slate-600 mb-6 leading-relaxed">{service.desc}</p>
+                  <p className="text-slate-800 font-medium mb-4 leading-relaxed">{service.desc}</p>
+                  <p className="text-slate-600 mb-6 leading-relaxed text-sm">{service.body}</p>
                   {service.services && (
                     <ul className="space-y-2 mb-6">
                       {service.services.map((s) => (
@@ -90,30 +97,34 @@ export default function ServicesPage() {
           </div>
 
 
+
           {/* Ventures Section */}
           <div className="mt-20">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-10">
               <h2 className="text-3xl font-bold text-slate-900 mb-4">Ventures</h2>
               <p className="text-slate-600 max-w-2xl mx-auto">
-                My personal business lines and long-standing enterprises, demonstrating a track record of building and sustaining value.
+                Three personal business lines, distinct from advisory mandates, built and sustained over the course of my career.
               </p>
             </motion.div>
             
             <div className="grid md:grid-cols-3 gap-6">
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }} className="bg-white p-6 rounded-2xl shadow-soft border border-slate-100">
                 <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"><Briefcase size={24} /></div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Est. 2006</p>
                 <h3 className="text-xl font-bold mb-2">Amville Consults</h3>
-                <p className="text-sm text-slate-600">Educational consulting, training, and strategic advisory for schools and educational institutions.</p>
+                <p className="text-sm text-slate-600">Educational consulting, training, and advisory for schools and educational institutions. Works with institutions on turnaround, curriculum design, and leadership development.</p>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }} className="bg-white p-6 rounded-2xl shadow-soft border border-slate-100">
                 <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-4"><Award size={24} /></div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Est. 2006</p>
                 <h3 className="text-xl font-bold mb-2">Amville School</h3>
-                <p className="text-sm text-slate-600">Founder and Alumni capacity. A premier educational institution focused on excellence and holistic child development.</p>
+                <p className="text-sm text-slate-600">Co-founded and built from 5 to 190 students over 14 years. ICT-integrated learning environment. Founder and alumni capacity retained.</p>
               </motion.div>
               <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} viewport={{ once: true }} className="bg-white p-6 rounded-2xl shadow-soft border border-slate-100">
                 <div className="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-4"><Home size={24} /></div>
+                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Est. 2015</p>
                 <h3 className="text-xl font-bold mb-2">Divilux Realty</h3>
-                <p className="text-sm text-slate-600">Professional guidance on property acquisition, verification, investment decisions, and documentation.</p>
+                <p className="text-sm text-slate-600">Professional guidance on property acquisition, verification, investment decisions, and facility management across residential and commercial real estate.</p>
               </motion.div>
             </div>
           </div>
