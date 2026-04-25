@@ -5,7 +5,13 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
 
-const navLinks = [
+type NavLink = {
+  name: string
+  href: string
+  dropdown?: { name: string; href: string }[]
+}
+
+const navLinks: NavLink[] = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Projects', href: '/projects' },
