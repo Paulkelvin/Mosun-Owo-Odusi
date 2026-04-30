@@ -109,6 +109,10 @@ export default function FeaturedWork() {
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
             />
+            <div
+              aria-hidden="true"
+              className="absolute right-0 top-0 z-10 h-16 w-20 bg-transparent"
+            />
           </div>
         </motion.div>
 
