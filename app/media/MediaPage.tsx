@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowRight, Camera, Film, Mic, PlayCircle } from 'lucide-react'
+import { ArrowRight, Film, Mic, PlayCircle } from 'lucide-react'
 import MediaArchive from '@/components/MediaArchive'
 
 type MediaClip = {
@@ -112,60 +112,76 @@ function displayMediaDate(date: string) {
 export default function MediaPage() {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
-      <section className="relative overflow-hidden bg-slate-950 pt-28 pb-16 lg:pt-32 lg:pb-20">
+      <section className="relative overflow-hidden bg-gradient-to-br from-primary-800 via-primary-700 to-slate-700 pt-28 pb-16 lg:pt-32 lg:pb-20">
+        {/* Subtle dot pattern */}
         <div
-          className="pointer-events-none absolute inset-0 opacity-20"
+          className="pointer-events-none absolute inset-0 opacity-10"
           style={{
             backgroundImage:
-              'linear-gradient(135deg, rgba(255,255,255,0.14) 1px, transparent 1px)',
-            backgroundSize: '34px 34px',
+              'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.25) 1px, transparent 0)',
+            backgroundSize: '28px 28px',
           }}
         />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-50 to-transparent" />
+
+        {/* Floating accent shapes */}
+        <motion.div
+          className="pointer-events-none absolute top-[18%] right-[12%] w-28 h-28 rounded-full border border-white/10 bg-white/5"
+          animate={{ y: [0, -10, 0], opacity: [0.15, 0.3, 0.15] }}
+          transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
+        />
+        <motion.div
+          className="pointer-events-none absolute bottom-[22%] left-[8%] w-20 h-20 rounded-full border border-white/8 bg-white/4"
+          animate={{ y: [0, -8, 0], opacity: [0.1, 0.25, 0.1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+        />
+        <motion.div
+          className="pointer-events-none absolute top-[55%] right-[30%] w-14 h-14 rounded-full border border-white/6 bg-white/3"
+          animate={{ y: [0, -6, 0], opacity: [0.08, 0.18, 0.08] }}
+          transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 3 }}
+        />
 
         <div className="container-custom relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="grid gap-8 lg:grid-cols-[1.15fr,0.85fr] lg:items-end"
+            className="max-w-3xl"
           >
-            <div>
-              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-100">
-                <PlayCircle className="h-4 w-4 text-gold-300" />
-                Media &amp; Speaking
-              </div>
-              <h1 className="max-w-3xl text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
-                Public voice, field presence, and documented delivery.
-              </h1>
-              <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
-                Speeches, interviews, awards, field footage, and visual evidence from OGSTEP and education-sector leadership.
-              </p>
-              <a
-                href="#media-archive"
-                className="mt-7 inline-flex items-center gap-2 rounded-xl bg-gold-400 px-5 py-3 text-sm font-semibold text-slate-950 transition-all hover:-translate-y-0.5 hover:bg-gold-300"
-              >
-                Explore media archive
-                <ArrowRight className="h-4 w-4" />
-              </a>
-            </div>
-
-            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-              {[
-                { value: '7', label: 'Featured public clips', icon: Film },
-                { value: '3', label: 'Speaking and media categories', icon: Mic },
-                { value: '1', label: 'Visual archive for due diligence', icon: Camera },
-              ].map((item) => {
-                const Icon = item.icon
-                return (
-                  <div key={item.label} className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
-                    <Icon className="mb-4 h-5 w-5 text-gold-300" />
-                    <p className="text-3xl font-extrabold text-white">{item.value}</p>
-                    <p className="mt-1 text-sm text-slate-300">{item.label}</p>
-                  </div>
-                )
-              })}
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.05 }}
+              className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white/90 backdrop-blur-sm"
+            >
+              <PlayCircle className="h-4 w-4 text-gold-300" />
+              Media &amp; Speaking
+            </motion.div>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.1 }}
+              className="text-4xl font-bold leading-tight text-white md:text-5xl lg:text-5xl"
+            >
+              On the Record
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="mt-5 max-w-2xl text-base leading-relaxed text-white/75 md:text-lg"
+            >
+              Speeches, interviews, and public addresses on state-level reform, project coordination, and human capital development.
+            </motion.p>
+            <motion.a
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              href="#media-archive"
+              className="mt-7 inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-primary-800 transition-all hover:-translate-y-0.5 hover:bg-white/90 hover:shadow-lg"
+            >
+              Explore media archive
+              <ArrowRight className="h-4 w-4" />
+            </motion.a>
           </motion.div>
         </div>
       </section>
