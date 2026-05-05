@@ -92,6 +92,9 @@ export default function FeaturedWork() {
         >
           <div className="mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div>
+              <div className="mb-2 inline-flex items-center rounded-full bg-primary-600 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white">
+                OGSTEP
+              </div>
               <h3 className="text-lg lg:text-xl font-bold text-slate-900">Speech at the Launch of Fish Harvest</h3>
               <p className="text-sm text-slate-500 mt-1">Ogun State Government Event | Public Address</p>
             </div>

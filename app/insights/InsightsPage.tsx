@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { BookOpen, ChevronRight, Clock, ArrowLeft } from 'lucide-react'
+import { ArrowLeft, BookOpen, ChevronRight, Clock, Landmark, PenLine } from 'lucide-react'
 
 type Article = {
   id: string
@@ -81,7 +81,7 @@ export default function InsightsPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 pt-24 pb-20">
-      <div className="container-custom max-w-4xl">
+      <div className="container-custom max-w-5xl">
 
         <AnimatePresence mode="wait">
           {!active ? (
@@ -93,21 +93,47 @@ export default function InsightsPage() {
               transition={{ duration: 0.4 }}
             >
               {/* Page Header */}
-              <div className="text-center mb-16">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 rounded-full mb-6">
-                  <BookOpen className="text-primary-700" size={20} />
-                  <span className="text-primary-700 font-semibold">Insights</span>
+              <div className="relative mb-14 overflow-hidden rounded-2xl bg-slate-950 px-6 py-10 shadow-large sm:px-8 lg:px-10">
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-20"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(135deg, rgba(255,255,255,0.14) 1px, transparent 1px)',
+                    backgroundSize: '34px 34px',
+                  }}
+                />
+                <div className="relative grid gap-8 lg:grid-cols-[1.15fr,0.85fr] lg:items-end">
+                  <div>
+                    <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-100">
+                      <BookOpen className="h-4 w-4 text-gold-300" />
+                      Insights
+                    </div>
+                    <h1 className="max-w-3xl text-4xl font-bold leading-tight text-white md:text-5xl">
+                      Field notes from reform, delivery, and institutional leadership.
+                    </h1>
+                    <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
+                      Practical reflections drawn from public-sector reform, skills systems, education leadership, and a $205M+ World Bank portfolio.
+                    </p>
+                  </div>
+                  <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                    {[
+                      { label: 'Programme leadership', icon: Landmark },
+                      { label: 'Board-level perspective', icon: PenLine },
+                    ].map((item) => {
+                      const Icon = item.icon
+                      return (
+                        <div key={item.label} className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
+                          <Icon className="mb-4 h-5 w-5 text-gold-300" />
+                          <p className="text-sm font-semibold text-white">{item.label}</p>
+                        </div>
+                      )
+                    })}
+                  </div>
                 </div>
-                <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
-                  Thought <span className="gradient-text">Leadership</span>
-                </h1>
-                <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
-                  Reflections on programme leadership, institutional reform, and public sector delivery, drawn from over 30 years of lived experience.
-                </p>
               </div>
 
               {/* Article Cards */}
-              <div className="space-y-6">
+              <div className="mx-auto max-w-4xl space-y-6">
                 {articles.map((article, index) => (
                   <motion.button
                     key={article.id}

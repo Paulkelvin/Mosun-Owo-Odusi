@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Target, Home, CheckCircle, ArrowRight, Briefcase, Award, Users } from 'lucide-react'
+import { Target, Home, CheckCircle, ArrowRight, Briefcase, Award, Users, Landmark, Network } from 'lucide-react'
 import Link from 'next/link'
 import AnimatedCounter from '@/components/AnimatedCounter'
 
@@ -10,20 +10,63 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-primary-50">
       {/* Hero */}
-      <section className="section-padding mt-16 lg:mt-20">
+      <section className="relative mt-16 overflow-hidden bg-slate-950 py-20 lg:mt-20 lg:py-24">
+        <div
+          className="pointer-events-none absolute inset-0 opacity-20"
+          style={{
+            backgroundImage:
+              'linear-gradient(135deg, rgba(255,255,255,0.14) 1px, transparent 1px)',
+            backgroundSize: '34px 34px',
+          }}
+        />
         <div className="container-custom">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-4xl mx-auto mb-16">
-            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }} className="inline-flex items-center gap-2 px-4 py-2 bg-primary-100 rounded-full mb-6">
-              <Briefcase className="text-primary-700" size={20} />
-              <span className="text-primary-700 font-semibold">Professional Services</span>
-            </motion.div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Professional Consulting Services <span className="gradient-text">Tailored to Your Needs</span>
-            </h1>
-            <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
-              From strategic project management to real estate advisory, I provide end-to-end solutions that deliver measurable impact.
-            </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="grid gap-8 lg:grid-cols-[1.1fr,0.9fr] lg:items-end"
+          >
+            <div>
+              <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-100">
+                <Briefcase className="h-4 w-4 text-gold-300" />
+                Advisory & Programme Leadership
+              </div>
+              <h1 className="max-w-4xl text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
+                Senior counsel for reform, delivery, and institutional scale.
+              </h1>
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
+                Mandates shaped for boards, DFIs, state governments, and education institutions that need disciplined execution and trusted stakeholder leadership.
+              </p>
+              <Link
+                href="/contact#message"
+                className="mt-7 inline-flex items-center gap-2 rounded-xl bg-gold-400 px-5 py-3 text-sm font-semibold text-slate-950 transition-all hover:-translate-y-0.5 hover:bg-gold-300"
+              >
+                Discuss a mandate
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
+              {[
+                { label: '$205M+ portfolio led', icon: Landmark },
+                { label: '30+ years of leadership', icon: Award },
+                { label: '4 PMs, 15+ consultants, 50+ team members', icon: Network },
+              ].map((item) => {
+                const Icon = item.icon
+                return (
+                  <div key={item.label} className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
+                    <Icon className="mb-4 h-5 w-5 text-gold-300" />
+                    <p className="text-sm font-semibold leading-relaxed text-white">{item.label}</p>
+                  </div>
+                )
+              })}
+            </div>
           </motion.div>
+        </div>
+      </section>
+
+      <section className="section-padding">
+        <div className="container-custom">
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 gap-10 mb-20">
