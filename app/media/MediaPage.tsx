@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { PlayCircle, Mic, Award, Film } from 'lucide-react'
+import MediaArchive from '@/components/MediaArchive'
 
 type MediaClip = {
   id: string
@@ -170,7 +171,7 @@ export default function MediaPage() {
                         src={clip.src}
                         title={clip.title}
                         loading="lazy"
-                        className="absolute inset-y-0 left-0 -right-16 h-full w-[calc(100%+4rem)] border-0"
+                        className="absolute inset-0 h-full w-full border-0"
                         referrerPolicy="no-referrer"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowFullScreen
@@ -203,6 +204,7 @@ export default function MediaPage() {
           )
         })}
       </div>
+      <MediaArchive />
     </div>
   )
 }

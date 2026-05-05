@@ -8,7 +8,7 @@ import {
   Briefcase,
   Eye,
   GraduationCap,
-  Landmark,
+  Award,
   MapPinned,
   Sparkles,
   Users,
@@ -20,62 +20,56 @@ import AnimatedCounter from '@/components/AnimatedCounter'
 
 const headlineMetrics = [
   {
-    title: 'Primary Beneficiaries',
-    value: 325,
-    suffix: '+',
-    prefix: '',
-    valueLabel: 'K',
-    caption: 'Reached through OGSTEP interventions',
-    icon: Users,
+    title: 'World Bank Portfolio',
+    value: 205,
+    suffix: 'M+',
+    prefix: '$',
+    caption: 'Portfolio managed across OGSTEP reform components',
+    icon: Briefcase,
     tone: 'from-primary-600 to-primary-700',
   },
   {
-    title: 'Secondary Beneficiaries',
-    value: 650,
+    title: 'Direct Beneficiaries',
+    value: 72000,
     suffix: '+',
     prefix: '',
-    valueLabel: 'K',
-    caption: 'Wider community-level indirect impact',
-    icon: Landmark,
+    caption: 'Reached across Ogun State interventions',
+    icon: Users,
     tone: 'from-gold-500 to-gold-600',
   },
   {
-    title: 'Skills Upgraded',
-    value: 39806,
-    suffix: '',
+    title: 'Certificates of Occupancy',
+    value: 15000,
+    suffix: '+',
     prefix: '',
-    valueLabel: '',
-    caption: 'Participants trained across key sectors',
-    icon: GraduationCap,
+    caption: 'Issued under her land reform leadership',
+    icon: Award,
     tone: 'from-emerald-500 to-emerald-600',
   },
   {
-    title: 'Jobs Created',
-    value: 13675,
+    title: 'Farmers Registered',
+    value: 160000,
     suffix: '',
     prefix: '',
-    valueLabel: '',
-    caption: 'Employment from upgraded skills',
-    icon: Briefcase,
+    caption: 'Captured under OGFIMS for agricultural reform',
+    icon: Wheat,
     tone: 'from-sky-600 to-sky-700',
   },
   {
-    title: 'Farmers Supported',
-    value: 42793,
-    suffix: '',
+    title: 'Leadership Span',
+    value: 30,
+    suffix: '+',
     prefix: '',
-    valueLabel: '',
-    caption: 'Agriculture-focused beneficiaries',
-    icon: Wheat,
+    caption: 'Years across education, enterprise, and development',
+    icon: GraduationCap,
     tone: 'from-amber-500 to-amber-600',
   },
   {
-    title: 'Project Sites',
-    value: 71,
-    suffix: '+',
+    title: 'OGSTEP Team Led',
+    value: '4 | 15+ | 50+',
+    suffix: '',
     prefix: '',
-    valueLabel: '',
-    caption: 'Distributed across OGSTEP divisions',
+    caption: 'Project Managers, consultants, and team members',
     icon: MapPinned,
     tone: 'from-slate-600 to-slate-700',
   },
@@ -193,13 +187,16 @@ export default function OGSTEPImpactSection() {
                   {metric.title}
                 </p>
                 <p className="mt-2 text-3xl font-extrabold text-white sm:text-4xl">
-                  <AnimatedCounter
-                    end={metric.value}
-                    prefix={metric.prefix}
-                    suffix={metric.suffix}
-                    className="tabular-nums"
-                  />
-                  {metric.valueLabel ? <span>{metric.valueLabel}</span> : null}
+                  {typeof metric.value === 'number' ? (
+                    <AnimatedCounter
+                      end={metric.value}
+                      prefix={metric.prefix}
+                      suffix={metric.suffix}
+                      className="tabular-nums"
+                    />
+                  ) : (
+                    <span className="tabular-nums">{metric.value}</span>
+                  )}
                 </p>
                 <p className="mt-2 text-sm text-slate-200">{metric.caption}</p>
               </motion.article>
@@ -272,7 +269,7 @@ export default function OGSTEPImpactSection() {
           </a>
 
           <a
-            href="/projects#video-highlights"
+            href="/media#media-archive"
             className="inline-flex items-center justify-center gap-2 rounded-xl border border-emerald-400/30 bg-emerald-500/10 px-5 py-3 text-sm font-semibold text-emerald-300 transition-all duration-300 hover:-translate-y-0.5 hover:bg-emerald-500/20"
           >
             Watch Documentary Series

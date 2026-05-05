@@ -56,7 +56,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.25 }}
               className="text-lg lg:text-xl text-slate-200 mb-6 max-w-3xl mx-auto"
           >
-            Senior programme leader. 30 years across government reform, human capital, and institutional transformation. Open for board advisory and multilateral mandates.
+            Senior programme leader. 30 years across government reform, human capital, and institutional transformation. Trusted across boardrooms, DFIs, and state-level reform.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

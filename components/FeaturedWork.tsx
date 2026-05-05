@@ -21,7 +21,7 @@ const featuredImages: FeaturedImage[] = [
     project: 'ogstep',
     projectName: 'OGSTEP',
     caption: '72,000+ Lives Transformed',
-    filterLink: '/projects#projects-gallery'
+    filterLink: '/media#media-archive'
   },
   {
     src: '/images/amville-consults/c8c45d4b-c691-40ec-ab3e-6e9096ec3ae2.JPG',
@@ -29,7 +29,7 @@ const featuredImages: FeaturedImage[] = [
     project: 'consults',
     projectName: 'Amville Consults',
     caption: 'Educational Excellence',
-    filterLink: '/projects#projects-gallery'
+    filterLink: '/media#media-archive'
   },
   {
     src: '/images/amville-school/Teachers day.jpg',
@@ -37,7 +37,7 @@ const featuredImages: FeaturedImage[] = [
     project: 'school',
     projectName: 'Amville School',
     caption: 'School Community Impact',
-    filterLink: '/projects#projects-gallery'
+    filterLink: '/media#media-archive'
   },
   {
     src: '/images/OGSTEP_skills1.jpeg',
@@ -45,7 +45,7 @@ const featuredImages: FeaturedImage[] = [
     project: 'ogstep',
     projectName: 'OGSTEP',
     caption: 'Skills Development',
-    filterLink: '/projects#projects-gallery'
+    filterLink: '/media#media-archive'
   },
   {
     src: '/images/amville-consults/a872e439-a81b-4278-b440-d838586c96e3.JPG',
@@ -53,7 +53,7 @@ const featuredImages: FeaturedImage[] = [
     project: 'consults',
     projectName: 'Amville Consults',
     caption: 'School Transformation',
-    filterLink: '/projects#projects-gallery'
+    filterLink: '/media#media-archive'
   }
 ]
 
@@ -104,7 +104,7 @@ export default function FeaturedWork() {
               src="https://drive.google.com/file/d/1wEswzM9QHRxg4VFNLAasEADnXA5cJG8R/preview"
               title="Mosun Owo-Odusi Speech at the Launch of Fish Harvest"
               loading="lazy"
-              className="absolute inset-y-0 left-0 -right-16 h-full w-[calc(100%+4rem)] border-0"
+              className="absolute inset-0 h-full w-full border-0"
               referrerPolicy="no-referrer"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
@@ -148,7 +148,7 @@ export default function FeaturedWork() {
                   {featuredImages[0].caption}
                 </p>
                 <div className="flex items-center gap-2 text-white/90 text-xs opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <span>View Project Gallery</span>
+                  <span>View Media Archive</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </div>
               </div>
@@ -293,10 +293,10 @@ export default function FeaturedWork() {
           className="text-center"
         >
           <Link
-            href="/projects#projects-gallery"
+            href="/media#media-archive"
             className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 group"
           >
-            <span>View Full Portfolio</span>
+            <span>View Media Archive</span>
             <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
         </motion.div>
