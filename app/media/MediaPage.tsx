@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { ArrowRight, Film, Mic, PlayCircle } from 'lucide-react'
 import MediaArchive from '@/components/MediaArchive'
+import GoogleDriveVideo from '@/components/GoogleDriveVideo'
 
 type MediaClip = {
   id: string
@@ -206,14 +207,9 @@ export default function MediaPage() {
                     className="bg-white rounded-2xl overflow-hidden shadow-soft border border-slate-100 flex flex-col"
                   >
                     <div className="relative aspect-[4/3] overflow-hidden bg-slate-950 sm:aspect-[16/10] lg:aspect-video">
-                      <iframe
+                      <GoogleDriveVideo
                         src={clip.src}
                         title={clip.title}
-                        loading="lazy"
-                        className="absolute inset-0 h-full w-full border-0"
-                        referrerPolicy="no-referrer"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
                       />
                     </div>
                     <div className="p-6 flex-1 flex flex-col">

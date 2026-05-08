@@ -15,6 +15,7 @@ import {
   ZoomOut,
 } from 'lucide-react'
 import DotPattern from './DotPattern'
+import GoogleDriveVideo from './GoogleDriveVideo'
 
 type ProjectFilter = 'all' | 'ogstep' | 'consults' | 'school'
 
@@ -422,14 +423,9 @@ export default function MediaArchive() {
                           {video.kind === 'mp4' ? (
                             <video src={video.src} title={video.title} controls preload="metadata" controlsList="nodownload noplaybackrate" disablePictureInPicture className="absolute inset-0 h-full w-full object-cover" />
                           ) : (
-                            <iframe
+                            <GoogleDriveVideo
                               src={video.src}
                               title={video.title}
-                              loading="lazy"
-                              className="absolute inset-0 h-full w-full border-0"
-                              referrerPolicy="no-referrer"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                              allowFullScreen
                             />
                           )}
                         </div>

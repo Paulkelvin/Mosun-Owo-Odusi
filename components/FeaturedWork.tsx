@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
+import GoogleDriveVideo from './GoogleDriveVideo'
 
 type FeaturedImage = {
   src: string
@@ -105,14 +106,9 @@ export default function FeaturedWork() {
             </Link>
           </div>
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-950 shadow-inner ring-1 ring-slate-200/80 sm:aspect-[16/10] lg:aspect-video">
-            <iframe
+            <GoogleDriveVideo
               src={ogstepCoordinatorVideoSrc}
               title="On Leading OGSTEP: A Programme Coordinator's Perspective"
-              loading="lazy"
-              className="absolute inset-0 block h-full w-full border-0"
-              referrerPolicy="no-referrer"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
             />
           </div>
         </motion.div>
