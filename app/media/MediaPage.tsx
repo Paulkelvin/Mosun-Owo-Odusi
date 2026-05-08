@@ -93,11 +93,6 @@ const categories = [
   },
 ]
 
-function getDriveVideoSrc(src: string) {
-  const match = src.match(/\/d\/([^/]+)/)
-  return match ? `https://drive.google.com/uc?export=download&id=${match[1]}` : src
-}
-
 export default function MediaPage() {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
@@ -211,14 +206,14 @@ export default function MediaPage() {
                     className="bg-white rounded-2xl overflow-hidden shadow-soft border border-slate-100 flex flex-col"
                   >
                     <div className="relative aspect-[4/3] overflow-hidden bg-slate-950 sm:aspect-[16/10] lg:aspect-video">
-                      <video
-                        src={getDriveVideoSrc(clip.src)}
+                      <iframe
+                        src={clip.src}
                         title={clip.title}
-                        controls
-                        playsInline
-                        preload="metadata"
-                        controlsList="nodownload"
-                        className="absolute inset-0 h-full w-full bg-slate-950 object-contain"
+                        loading="lazy"
+                        className="absolute inset-0 h-full w-full border-0"
+                        referrerPolicy="no-referrer"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
                       />
                     </div>
                     <div className="p-6 flex-1 flex flex-col">

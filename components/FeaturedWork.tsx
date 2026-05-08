@@ -57,7 +57,7 @@ const featuredImages: FeaturedImage[] = [
   }
 ]
 
-const ogstepCoordinatorVideoSrc = 'https://drive.google.com/uc?export=download&id=1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B'
+const ogstepCoordinatorVideoSrc = 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview'
 
 export default function FeaturedWork() {
   return (
@@ -105,14 +105,14 @@ export default function FeaturedWork() {
             </Link>
           </div>
           <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-950 shadow-inner ring-1 ring-slate-200/80 sm:aspect-[16/10] lg:aspect-video">
-            <video
+            <iframe
               src={ogstepCoordinatorVideoSrc}
               title="On Leading OGSTEP: A Programme Coordinator's Perspective"
-              controls
-              playsInline
-              preload="metadata"
-              controlsList="nodownload"
-              className="absolute inset-0 block h-full w-full bg-slate-950 object-contain"
+              loading="lazy"
+              className="absolute inset-0 block h-full w-full border-0"
+              referrerPolicy="no-referrer"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
             />
           </div>
         </motion.div>

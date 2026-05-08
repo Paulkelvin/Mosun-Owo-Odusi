@@ -243,11 +243,6 @@ const descriptions: Record<ProjectFilter, string> = {
   school: 'Educational programmes and community moments from Amville School.',
 }
 
-function getDriveVideoSrc(src: string) {
-  const match = src.match(/\/d\/([^/]+)/)
-  return match ? `https://drive.google.com/uc?export=download&id=${match[1]}` : src
-}
-
 export default function MediaArchive() {
   const [galleryFilter, setGalleryFilter] = useState<ProjectFilter>('all')
   const [galleryMode, setGalleryMode] = useState<'preview' | 'expanded' | 'full'>('preview')
@@ -427,7 +422,15 @@ export default function MediaArchive() {
                           {video.kind === 'mp4' ? (
                             <video src={video.src} title={video.title} controls preload="metadata" controlsList="nodownload noplaybackrate" disablePictureInPicture className="absolute inset-0 h-full w-full object-cover" />
                           ) : (
-                            <video src={getDriveVideoSrc(video.src)} title={video.title} controls playsInline preload="metadata" controlsList="nodownload" className="absolute inset-0 h-full w-full bg-slate-950 object-contain" />
+                            <iframe
+                              src={video.src}
+                              title={video.title}
+                              loading="lazy"
+                              className="absolute inset-0 h-full w-full border-0"
+                              referrerPolicy="no-referrer"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                              allowFullScreen
+                            />
                           )}
                         </div>
                         <div className="px-3.5 py-3 border-t border-slate-800/80 bg-slate-950/90 flex flex-col justify-center min-h-[60px]">
