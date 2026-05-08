@@ -1,10 +1,9 @@
 'use client'
 
-import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ArrowRight, PlayCircle } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 
 type FeaturedImage = {
   src: string
@@ -59,8 +58,6 @@ const featuredImages: FeaturedImage[] = [
 ]
 
 export default function FeaturedWork() {
-  const [isSpeechVideoLoaded, setIsSpeechVideoLoaded] = useState(false)
-
   return (
     <section className="section-padding bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
       {/* Subtle background decoration */}
@@ -105,47 +102,20 @@ export default function FeaturedWork() {
               View All Media & Speaking
             </Link>
           </div>
-          <div className="overflow-hidden rounded-xl bg-slate-950 p-1 shadow-inner ring-1 ring-slate-200/80">
-            <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-slate-900">
-              {isSpeechVideoLoaded ? (
-                <>
-                  <iframe
-                    src="https://drive.google.com/file/d/1wEswzM9QHRxg4VFNLAasEADnXA5cJG8R/preview"
-                    title="Mosun Owo-Odusi Speech at the Launch of Fish Harvest"
-                    loading="lazy"
-                    className="absolute inset-0 block h-full w-full border-0"
-                    referrerPolicy="no-referrer"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowFullScreen
-                  />
-                  <div
-                    aria-hidden="true"
-                    className="absolute right-0 top-0 z-10 h-16 w-20 bg-transparent"
-                  />
-                </>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => setIsSpeechVideoLoaded(true)}
-                  className="group absolute inset-0 block h-full w-full overflow-hidden text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-                  aria-label="Play Mosun Owo-Odusi speech at the launch of fish harvest"
-                >
-                  <Image
-                    src="/images/OGSTEP_Agric2.JPG"
-                    alt="OGSTEP agricultural field engagement"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 960px"
-                    className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/20 to-transparent" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="inline-flex h-14 w-14 items-center justify-center rounded-full bg-white/95 text-primary-700 shadow-lg transition-transform duration-300 group-hover:scale-105 sm:h-16 sm:w-16">
-                      <PlayCircle className="h-8 w-8 sm:h-9 sm:w-9" />
-                    </span>
-                  </div>
-                </button>
-              )}
-            </div>
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-100 shadow-inner ring-1 ring-slate-200/80 sm:aspect-[16/10] lg:aspect-video">
+            <iframe
+              src="https://drive.google.com/file/d/1wEswzM9QHRxg4VFNLAasEADnXA5cJG8R/preview"
+              title="Mosun Owo-Odusi Speech at the Launch of Fish Harvest"
+              loading="lazy"
+              className="absolute inset-0 block h-full w-full border-0"
+              referrerPolicy="no-referrer"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+            <div
+              aria-hidden="true"
+              className="absolute right-0 top-0 z-10 h-16 w-20 bg-transparent"
+            />
           </div>
         </motion.div>
 
