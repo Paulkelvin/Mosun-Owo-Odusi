@@ -15,6 +15,14 @@ type MediaClip = {
 
 const mediaClips: MediaClip[] = [
   {
+    id: 'mosun-pc-interview',
+    title: 'On Leading OGSTEP: A Programme Coordinator\'s Perspective',
+    outlet: 'OGSTEP Programme',
+    description: 'In-depth interview on the strategy, challenges, and measurable results of coordinating a $205M+ World Bank reform programme across four sectors.',
+    src: 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview',
+    category: 'interview',
+  },
+  {
     id: 'mosun-fish-harvest-ijebu',
     title: 'Opening Address: Agricultural Value Chain Programme Launch',
     outlet: 'Ogun State Government Event',
@@ -29,14 +37,6 @@ const mediaClips: MediaClip[] = [
     description: 'State-level acknowledgement of OGSTEP\'s contribution to reform and development outcomes, received on behalf of the programme coordination team.',
     src: 'https://drive.google.com/file/d/1LldvxNnzTPhSm8hNFmN7vGwvdg98xJ45/preview',
     category: 'speech',
-  },
-  {
-    id: 'mosun-pc-interview',
-    title: 'On Leading OGSTEP: A Programme Coordinator\'s Perspective',
-    outlet: 'Programme interview',
-    description: 'In-depth interview on the strategy, challenges, and measurable results of coordinating a $205M+ World Bank reform programme across four sectors.',
-    src: 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview',
-    category: 'interview',
   },
   {
     id: 'mosun-interview-journalist-1',
@@ -74,16 +74,16 @@ const mediaClips: MediaClip[] = [
 
 const categories = [
   {
-    key: 'speech' as const,
-    label: 'Speeches & Public Addresses',
-    icon: Mic,
-    description: 'Keynote addresses and formal speeches delivered at government events and state ceremonies.',
-  },
-  {
     key: 'interview' as const,
     label: 'Media Interviews',
     icon: PlayCircle,
     description: 'Press engagements, broadcaster interviews, and stakeholder dialogues on programme delivery and institutional reform.',
+  },
+  {
+    key: 'speech' as const,
+    label: 'Speeches & Public Addresses',
+    icon: Mic,
+    description: 'Keynote addresses and formal speeches delivered at government events and state ceremonies.',
   },
   {
     key: 'coverage' as const,
@@ -92,6 +92,11 @@ const categories = [
     description: 'Documentary footage and field coverage of OGSTEP interventions and outcomes.',
   },
 ]
+
+function getDriveVideoSrc(src: string) {
+  const match = src.match(/\/d\/([^/]+)/)
+  return match ? `https://drive.google.com/uc?export=download&id=${match[1]}` : src
+}
 
 export default function MediaPage() {
   return (
@@ -205,19 +210,15 @@ export default function MediaPage() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     className="bg-white rounded-2xl overflow-hidden shadow-soft border border-slate-100 flex flex-col"
                   >
-                    <div className="relative aspect-[16/10] bg-slate-100 overflow-hidden">
-                      <iframe
-                        src={clip.src}
+                    <div className="relative aspect-[4/3] overflow-hidden bg-slate-950 sm:aspect-[16/10] lg:aspect-video">
+                      <video
+                        src={getDriveVideoSrc(clip.src)}
                         title={clip.title}
-                        loading="lazy"
-                        className="absolute inset-0 h-full w-full border-0"
-                        referrerPolicy="no-referrer"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowFullScreen
-                      />
-                      <div
-                        aria-hidden="true"
-                        className="absolute right-0 top-0 z-10 h-16 w-20 bg-transparent"
+                        controls
+                        playsInline
+                        preload="metadata"
+                        controlsList="nodownload"
+                        className="absolute inset-0 h-full w-full bg-slate-950 object-contain"
                       />
                     </div>
                     <div className="p-6 flex-1 flex flex-col">

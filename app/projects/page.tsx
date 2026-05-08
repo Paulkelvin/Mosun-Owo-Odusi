@@ -628,6 +628,14 @@ type VideoHighlight = {
 }
 
 const videoHighlights: VideoHighlight[] = [
+  {
+    id: 'ogstep-coordinator-perspective',
+    title: 'On Leading OGSTEP: A Programme Coordinator\'s Perspective',
+    src: 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview',
+    kind: 'iframe',
+    project: 'ogstep',
+    series: 'OGSTEP Project',
+  },
   // General Highlights
   {
     id: 'ogstep-documentary-achievements',

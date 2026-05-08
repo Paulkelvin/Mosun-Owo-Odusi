@@ -220,6 +220,7 @@ const beforeAfterPairs = [
 ] as const
 
 const videoHighlights: VideoHighlight[] = [
+  { id: 'ogstep-coordinator-perspective', title: 'On Leading OGSTEP: A Programme Coordinator\'s Perspective', src: 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview', kind: 'iframe', project: 'ogstep', series: 'OGSTEP Project' },
   { id: 'ogstep-documentary-achievements', title: 'OGSTEP Documentary: Achievements Overview', src: 'https://drive.google.com/file/d/1EwkTDB1JdZlX7mNIeR2w-bazeYMMAJ3W/preview', kind: 'iframe', project: 'ogstep', series: 'General Highlights' },
   { id: 'amville-school-video-1', title: 'Amville School Video Highlight 1', src: '/images/amville-school/AQNzwG2CsMq3htCToofp3Br6ramI6LAbgKpWRyG0kCKczhfSUMGN2J4Wteu9XniZt3pqxNMf-MXVP-_BsQhMi6uC.mp4', kind: 'mp4', project: 'school', series: 'Amville School Highlights' },
   { id: 'amville-school-video-2', title: 'Amville School Video Highlight 2', src: '/images/amville-school/AQOfeAmIX2zzNCYS7t1NjWWSH7B3g1E1XwLAAsd70arW4mEim3veHoCnUO_akGz6htUXj10WYWcKQLZRIuVyMuM.mp4', kind: 'mp4', project: 'school', series: 'Amville School Highlights' },
@@ -240,6 +241,11 @@ const descriptions: Record<ProjectFilter, string> = {
   ogstep: 'A visual story of agricultural transformation, skills development, and geospatial reforms across the OGSTEP portfolio.',
   consults: 'Educational consulting, CSR projects, and capacity-building initiatives through Amville Consults.',
   school: 'Educational programmes and community moments from Amville School.',
+}
+
+function getDriveVideoSrc(src: string) {
+  const match = src.match(/\/d\/([^/]+)/)
+  return match ? `https://drive.google.com/uc?export=download&id=${match[1]}` : src
 }
 
 export default function MediaArchive() {
@@ -296,6 +302,8 @@ export default function MediaArchive() {
   }, {} as Record<string, VideoHighlight[]>)
 
   const sortedVideoGroups = Object.keys(groupedVideos).sort((a, b) => {
+    if (a === 'OGSTEP Project') return -1
+    if (b === 'OGSTEP Project') return 1
     if (a === 'General Highlights') return 1
     if (b === 'General Highlights') return -1
     return a.localeCompare(b)
@@ -415,22 +423,11 @@ export default function MediaArchive() {
                   <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-3">
                     {groupedVideos[seriesKey].map((video) => (
                       <div key={video.id} className="group relative overflow-hidden rounded-2xl border border-slate-800 bg-slate-950/80 shadow-[0_16px_40px_rgba(15,23,42,0.9)]">
-                        <div className={`relative w-full bg-slate-900 ${video.kind === 'mp4' ? 'aspect-video' : 'aspect-[16/10]'}`}>
+                        <div className={`relative w-full bg-slate-900 ${video.kind === 'mp4' ? 'aspect-video' : 'aspect-[4/3] sm:aspect-[16/10] lg:aspect-video'}`}>
                           {video.kind === 'mp4' ? (
                             <video src={video.src} title={video.title} controls preload="metadata" controlsList="nodownload noplaybackrate" disablePictureInPicture className="absolute inset-0 h-full w-full object-cover" />
                           ) : (
-                            <>
-                              <iframe
-                                src={video.src}
-                                title={video.title}
-                                loading="lazy"
-                                className="absolute inset-0 h-full w-full border-0"
-                                referrerPolicy="no-referrer"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                allowFullScreen
-                              />
-                              <div aria-hidden="true" className="absolute right-0 top-0 z-10 h-16 w-20 bg-transparent" />
-                            </>
+                            <video src={getDriveVideoSrc(video.src)} title={video.title} controls playsInline preload="metadata" controlsList="nodownload" className="absolute inset-0 h-full w-full bg-slate-950 object-contain" />
                           )}
                         </div>
                         <div className="px-3.5 py-3 border-t border-slate-800/80 bg-slate-950/90 flex flex-col justify-center min-h-[60px]">

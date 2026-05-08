@@ -57,6 +57,8 @@ const featuredImages: FeaturedImage[] = [
   }
 ]
 
+const ogstepCoordinatorVideoSrc = 'https://drive.google.com/uc?export=download&id=1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B'
+
 export default function FeaturedWork() {
   return (
     <section className="section-padding bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
@@ -95,26 +97,22 @@ export default function FeaturedWork() {
               <div className="mb-2 inline-flex items-center rounded-full bg-primary-600 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white">
                 OGSTEP
               </div>
-              <h3 className="text-lg lg:text-xl font-bold text-slate-900">Speech at the Launch of Fish Harvest</h3>
-              <p className="text-sm text-slate-500 mt-1">Ogun State Government Event | Public Address</p>
+              <h3 className="text-lg lg:text-xl font-bold text-slate-900">On Leading OGSTEP: A Programme Coordinator&apos;s Perspective</h3>
+              <p className="text-sm text-slate-500 mt-1">OGSTEP Programme | Project Leadership</p>
             </div>
             <Link href="/media" className="inline-block text-xs font-medium px-3 py-1.5 rounded-full bg-primary-100 text-primary-700 hover:bg-primary-200 transition-colors shrink-0">
               View All Media & Speaking
             </Link>
           </div>
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-100 shadow-inner ring-1 ring-slate-200/80 sm:aspect-[16/10] lg:aspect-video">
-            <iframe
-              src="https://drive.google.com/file/d/1wEswzM9QHRxg4VFNLAasEADnXA5cJG8R/preview"
-              title="Mosun Owo-Odusi Speech at the Launch of Fish Harvest"
-              loading="lazy"
-              className="absolute inset-0 block h-full w-full border-0"
-              referrerPolicy="no-referrer"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-            <div
-              aria-hidden="true"
-              className="absolute right-0 top-0 z-10 h-16 w-20 bg-transparent"
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-xl bg-slate-950 shadow-inner ring-1 ring-slate-200/80 sm:aspect-[16/10] lg:aspect-video">
+            <video
+              src={ogstepCoordinatorVideoSrc}
+              title="On Leading OGSTEP: A Programme Coordinator's Perspective"
+              controls
+              playsInline
+              preload="metadata"
+              controlsList="nodownload"
+              className="absolute inset-0 block h-full w-full bg-slate-950 object-contain"
             />
           </div>
         </motion.div>
