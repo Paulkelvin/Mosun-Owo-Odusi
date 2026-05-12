@@ -121,6 +121,7 @@
 /* ─── Google Drive embed wrapper ───────────────────────────────────── */
 /* Fixes: inverted controls at top, black overlay flash, pop-out link */
 .gdrive-video-wrapper {
+  --gdrive-mobile-chrome-crop: 56px;
   position: relative;
   width: 100%;
   height: 100%;
@@ -137,10 +138,8 @@
 }
 
 /*
- * Transparent shield across the top of the embed.
- * Blocks the "Open in new window" / pop-out link that Google Drive
- * renders at the top-right, and also covers the inverted/upside-down
- * control bar that sometimes appears at the top.
+ * Transparent shield across the top of the embed. Blocks the "Open in new
+ * window" / pop-out link that Google Drive renders at the top-right.
  */
 .gdrive-video-top-shield {
   position: absolute;
@@ -153,6 +152,23 @@
   cursor: default;
   /* fully transparent — invisible to user */
   background: transparent;
+}
+
+/*
+ * iOS Safari renders Google Drive's preview chrome inside the iframe after
+ * playback starts. Crop that top chrome on touch/mobile layouts by moving the
+ * iframe up and extending its height so the bottom controls stay in view.
+ */
+@media (hover: none) and (pointer: coarse), (max-width: 767px) {
+  .gdrive-video-iframe {
+    top: calc(-1 * var(--gdrive-mobile-chrome-crop));
+    bottom: auto;
+    height: calc(100% + var(--gdrive-mobile-chrome-crop));
+  }
+
+  .gdrive-video-top-shield {
+    display: none;
+  }
 }
 
 /* Reduced motion support */

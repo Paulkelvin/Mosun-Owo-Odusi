@@ -6,9 +6,8 @@
  * It solves three known quirks with the native embed:
  *  1. The "pop-out" / "open in new window" link at the top-right is blocked
  *     by a transparent overlay so visitors cannot navigate away.
- *  2. The semi-transparent black overlay that flashes when toggling play/pause
- *     is hidden via a CSS clip on the top ~48px of the iframe (where the
- *     inverted, barely-visible controls live).
+ *  2. On touch/mobile layouts, the iframe is cropped upward in CSS so the
+ *     Google Drive top chrome that appears during playback is hidden.
  *  3. The bottom controls remain fully accessible and visible.
  */
 
