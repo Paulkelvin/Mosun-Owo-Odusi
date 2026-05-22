@@ -81,7 +81,7 @@ export default function FeaturedWork() {
             Featured Work
           </h2>
           <p className="text-base lg:text-lg text-slate-600 max-w-3xl mx-auto">
-            Visual highlights from 15+ years of transformative leadership across education, agriculture, and institutional development
+            Visual highlights from over 30 years of transformative leadership across education, agriculture, and institutional development
           </p>
         </motion.div>
 
