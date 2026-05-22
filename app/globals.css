@@ -154,7 +154,12 @@
   background: transparent;
 }
 
-/* Removed problematic mobile crop logic that broke iOS Safari rendering */
+/* Hide the top shield on touch devices to ensure the native Google Drive play button and controls are fully tappable */
+@media (hover: none) and (pointer: coarse), (max-width: 767px) {
+  .gdrive-video-top-shield {
+    display: none;
+  }
+}
 
 /* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
