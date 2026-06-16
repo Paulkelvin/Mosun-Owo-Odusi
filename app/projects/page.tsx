@@ -356,6 +356,52 @@ const amvilleSchoolImageFiles = [
   'Teachers day.jpg',
 ] as const
 
+const ogstepEventImageFiles = [
+  '0956e04b-e60d-49b9-b72d-2a254bb10722.JPG',
+  '1315abb9-97f0-46a7-9322-33e88663a8f0.JPG',
+  '1792e7e0-5eab-4189-b006-1df3b1fb232d.JPG',
+  '25015216-2676-47e6-b0ff-2845bf40028e.JPG',
+  '27e278a4-e262-41b0-afd5-8f2be6a12370.JPG',
+  '29e6fbc7-9881-4dc8-a4f2-9370b3c7cef4.JPG',
+  '2aec393f-16ac-4e65-8217-65515825ef25.JPG',
+  '30717265-29c2-4157-a5c0-ae59e91e17f0.JPG',
+  '3601da8c-a1a7-44d9-b620-e74c2f80108c.JPG',
+  '3bc989a3-7e9f-44c8-af50-1d41cf9d34d9.JPG',
+  '3ce4de8d-ec9f-4f56-99ed-75b2713d51a2.JPG',
+  '3dbd7d0b-bdf9-4136-b89e-ddb23f02b177.JPG',
+  '44e3417e-d5df-48b6-8fe7-6baed45e18e7.JPG',
+  '47a14ef0-4c51-429a-95ba-4aca5144bb8a.JPG',
+  '57c9b7ca-a195-4254-b002-8f725f84e584.JPG',
+  '59a44d27-fdb7-42fe-b17f-fe3605db0db9.JPG',
+  '5de9192a-73ef-4bc4-9287-528185bc5782.JPG',
+  '66d8a7df-6a1d-4382-88ce-bf1ad077a6a5.JPG',
+  '6706457d-b70a-4b2c-a2c6-2076331de8a9.JPG',
+  '7532b935-a3ba-4d3c-8022-bc8a22b95497.JPG',
+  '7d60aa60-dd95-41fd-9b28-f8295819de47.JPG',
+  '7da375b9-fe7e-4d48-923b-00fca648dc3b.JPG',
+  '88e38234-b5e5-4eb8-888a-24c017d1abf8.JPG',
+  '8e2d6fdb-0e93-43c9-b449-7367dbc220d8.JPG',
+  '8e9c0a33-3565-4248-a0b5-1cf2e38a6b9e.JPG',
+  '93a7fde9-6639-40ea-a2cc-d38eb54ba557.JPG',
+  '9fa2038e-f805-4a2a-b926-424fca82798f.JPG',
+  'a2440e34-1728-4f46-990b-d56bdfba321d.JPG',
+  'a6e51757-0606-430a-bb8c-a869e32e6589.JPG',
+  'a87bc1d0-b535-4f26-a459-43e73d4a332e.JPG',
+  'afa9f1a1-cf0b-498d-8972-94a5ad5aa454.JPG',
+  'b85bd20b-859e-42d2-afc5-37e69b8e561e.JPG',
+  'bbdcba44-13bb-481c-9213-6fd8edf18d64.JPG',
+  'beb78329-438c-4d78-877d-05fa43a7d1bf.JPG',
+  'c0620db6-8de3-4f39-8244-7f9cc8253593.JPG',
+  'c5b1aefc-a5d4-4e30-a4a4-c309f8e6950c.JPG',
+  'c7ee7e11-981e-42ec-8398-8abb652ef541.JPG',
+  'daaffcac-7865-454d-86be-9c42e24b3ee6.JPG',
+  'e9995bf3-a51e-42ca-ab94-27d269f6cd53.JPG',
+  'f668723e-ad12-454f-a5f6-130bd1d27e91.JPG',
+  'f68797fd-9f25-4cff-82e0-7329891902f1.JPG',
+  'f7c1355f-567c-40f0-a6e8-206209291b31.JPG',
+  'ffa0d57f-9613-4abe-9943-988b8dad5a03.JPG',
+] as const
+
 const galleryImages: GalleryImage[] = [
   // OGSTEP leadership & outreach
   {
@@ -600,6 +646,14 @@ const galleryImages: GalleryImage[] = [
     alt: `Amville School highlight ${index + 1}`,
     category: 'Amville School Highlights',
     project: 'school' as const,
+  })),
+
+  // OGSTEP - Programme events, launches & field highlights
+  ...ogstepEventImageFiles.map((fileName, index) => ({
+    src: `/images/ogstep-events/${fileName}`,
+    alt: `OGSTEP programme highlight ${index + 1}`,
+    category: 'OGSTEP Programme Highlights',
+    project: 'ogstep' as const,
   })),
 ]
 
