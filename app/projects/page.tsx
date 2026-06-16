@@ -1233,7 +1233,20 @@ export default function Projects() {
                         <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 mb-4 leading-tight">
                           {currentProject.title}
                         </h3>
-                        
+
+                        {currentProject.id === 1 && (
+                          <a
+                            href="https://ogstep.org.ng"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 mb-4 text-sm font-semibold text-primary-600 hover:text-primary-700 underline decoration-2 underline-offset-2"
+                            title="Visit the official OGSTEP website"
+                          >
+                            Visit the official OGSTEP website
+                            <ExternalLink className="h-4 w-4" />
+                          </a>
+                        )}
+
                         {/* Story Context Badge */}
                         <div className="inline-flex items-center gap-2 px-3 py-1 bg-gold-50 border border-gold-200 rounded-full text-sm font-medium text-gold-700 mb-4">
                           <span className="w-2 h-2 bg-gold-400 rounded-full"></span>

@@ -137,10 +137,16 @@ export default function OGSTEPImpactSection() {
           transition={{ duration: 0.7 }}
           className="mb-10 lg:mb-14"
         >
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white/90">
+          <a
+            href="https://ogstep.org.ng"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Visit the official OGSTEP website"
+            className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm font-semibold text-white/90 transition-colors hover:bg-white/20 hover:text-white"
+          >
             <Sparkles className="h-4 w-4 text-gold-300" />
             OGSTEP Impact At A Glance
-          </div>
+          </a>
 
           <div className="mt-5 grid gap-8 lg:grid-cols-[1.15fr,0.85fr] lg:items-end">
             <div>
