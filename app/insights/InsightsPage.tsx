@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowLeft, BookOpen, ChevronRight, Clock, Landmark, PenLine } from 'lucide-react'
 
@@ -78,6 +78,12 @@ const articles: Article[] = [
 export default function InsightsPage() {
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null)
   const active = selectedArticle ? articles.find(a => a.id === selectedArticle) : null
+
+  useEffect(() => {
+    if (selectedArticle) {
+      window.scrollTo({ top: 0, behavior: 'auto' })
+    }
+  }, [selectedArticle])
 
   return (
     <div className="min-h-screen bg-slate-50 pt-24 pb-20">
