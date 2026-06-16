@@ -16,14 +16,14 @@ type Article = {
 
 const articles: Article[] = [
   {
-    id: 'lessons-205m-reform',
-    title: 'Lessons from Delivering $205M of Public Sector Reform in a Nigerian State',
+    id: 'lessons-250m-reform',
+    title: 'Lessons from Delivering $250M of Public Sector Reform in a Nigerian State',
     subtitle: 'What I learned coordinating OGSTEP across four sectors, three tiers of government, and seventy-plus intervention sites.',
     readTime: '6 min read',
     date: 'April 2026',
     tag: 'Programme Leadership',
     body: [
-      'When I took on the role of State Project Coordinator for the Ogun State Economic Transformation Project in 2021, I inherited a programme that was ambitious by any standard. OGSTEP was a $205M+ World Bank investment spanning four components: creating a business-enabling environment, improving agricultural value chains, skills development, and public sector reform. The remit was statewide. The expectation was transformation. The timeline was tight.',
+      'When I took on the role of State Project Coordinator for the Ogun State Economic Transformation Project in 2021, I inherited a programme that was ambitious by any standard. OGSTEP was a $250M+ World Bank investment spanning four components: creating a business-enabling environment, improving agricultural value chains, skills development, and public sector reform. The remit was statewide. The expectation was transformation. The timeline was tight.',
 
       'Over the next four years, the programme reached more than 72,000 direct beneficiaries, issued over 15,000 Certificates of Occupancy, registered 160,000 farmers on the Ogun Geographic Farmers Information Management System (OGFIMS), launched the Ogun Land Administration and Revenue Management System (OLARMS), and rehabilitated eight Government Technical Colleges. These are the numbers. What follows are the lessons behind them.',
 
@@ -31,7 +31,7 @@ const articles: Article[] = [
 
       'The second lesson is that stakeholder management across tiers of government is not a support function. It is the work. OGSTEP required simultaneous coordination with the World Bank Task Team in Washington, the Federal Ministry of Finance, the Governor\'s office, four line ministries, local government councils, traditional institutions, and community groups across 71+ intervention sites in four divisions. Any one of those relationships, if mismanaged, could stall a component for months. Investing time in alignment, transparency, and shared credit was not optional. It was a delivery strategy.',
 
-      'The third lesson concerns procurement and fiduciary management. A $205M portfolio generates enormous procurement volume. Our team managed World Bank procurement guidelines, state financial regulations, and independent audit requirements simultaneously. The lesson here is that fiduciary rigour is not bureaucracy. It is the mechanism through which a programme earns continued trust, continued funding, and continued independence from political interference. We treated every procurement cycle as a credibility exercise.',
+      'The third lesson concerns procurement and fiduciary management. A $250M portfolio generates enormous procurement volume. Our team managed World Bank procurement guidelines, state financial regulations, and independent audit requirements simultaneously. The lesson here is that fiduciary rigour is not bureaucracy. It is the mechanism through which a programme earns continued trust, continued funding, and continued independence from political interference. We treated every procurement cycle as a credibility exercise.',
 
       'The fourth lesson is about institutional capacity and sustainability. It is tempting, in a large programme, to bring in consultants and contractors who deliver fast and leave. We chose a different path in several components. In the Government Technical Colleges, for instance, we did not just rehabilitate infrastructure. We worked with the Ministry of Education to retrain teachers, update curricula, and align skills training to economic demand in each division. The building is the visible result. The institutional shift is the one that lasts.',
 
@@ -112,7 +112,7 @@ export default function InsightsPage() {
                       Field notes from reform, delivery, and institutional leadership.
                     </h1>
                     <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
-                      Practical reflections drawn from public-sector reform, skills systems, education leadership, and a $205M+ World Bank portfolio.
+                      Practical reflections drawn from public-sector reform, skills systems, education leadership, and a $250M+ World Bank portfolio.
                     </p>
                   </div>
                   <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">

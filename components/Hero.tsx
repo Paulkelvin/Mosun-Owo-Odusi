@@ -48,7 +48,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.1 }}
 	      className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-3"
           >
-	    <span className="inline-block">$205M of Public Sector Reform. Delivered.</span>
+	    <span className="inline-block">$250M of Public Sector Reform. Delivered.</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}

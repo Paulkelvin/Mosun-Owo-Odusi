@@ -19,7 +19,7 @@ const mediaClips: MediaClip[] = [
     id: 'mosun-pc-interview',
     title: 'On Leading OGSTEP: A Programme Coordinator\'s Perspective',
     outlet: 'OGSTEP Programme',
-    description: 'In-depth interview on the strategy, challenges, and measurable results of coordinating a $205M+ World Bank reform programme across four sectors.',
+    description: 'In-depth interview on the strategy, challenges, and measurable results of coordinating a $250M+ World Bank reform programme across four sectors.',
     src: 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview',
     category: 'interview',
   },

@@ -48,7 +48,7 @@ export default function ServicesPage() {
 
             <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
               {[
-                { label: '$205M+ portfolio led', icon: Landmark },
+                { label: '$250M+ portfolio led', icon: Landmark },
                 { label: '30+ years of leadership', icon: Award },
                 { label: '4 PMs, 15+ consultants, 50+ team members', icon: Network },
               ].map((item) => {
@@ -75,7 +75,7 @@ export default function ServicesPage() {
                 icon: Target, 
                 title: 'Development Programme Leadership', 
                 desc: 'End-to-end leadership of large-scale, donor-funded and government reform programmes, from design through delivery to results verification.',
-                body: 'I have spent the past several years leading OGSTEP, a $205M+ World Bank programme spanning agricultural value chains, skills development, land administration, and public sector reform. My role covered coordinating four project managers, 15+ specialist consultants, and over 50 team members, while managing direct relationships with the World Bank Task Team, the Governor\'s office, and implementing ministries. I am experienced in results-based financing frameworks, Disbursement Linked Results (DLRs), Implementation Support Missions, and the full fiduciary and reporting cycle of multilateral-funded programmes.',
+                body: 'I have spent the past several years leading OGSTEP, a $250M+ World Bank programme spanning agricultural value chains, skills development, land administration, and public sector reform. My role covered coordinating four project managers, 15+ specialist consultants, and over 50 team members, while managing direct relationships with the World Bank Task Team, the Governor\'s office, and implementing ministries. I am experienced in results-based financing frameworks, Disbursement Linked Results (DLRs), Implementation Support Missions, and the full fiduciary and reporting cycle of multilateral-funded programmes.',
                 services: [
                   'Multisectoral programme coordination across government, agriculture, skills, and land administration',
                   'Stakeholder management across ministries, World Bank Task Teams, development partners, and community groups',
@@ -183,7 +183,7 @@ export default function ServicesPage() {
 
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
             {[
-              { value: 205, prefix: '$', suffix: 'M+', label: 'World Bank Portfolio', icon: Briefcase },
+              { value: 250, prefix: '$', suffix: 'M+', label: 'World Bank Portfolio', icon: Briefcase },
               { value: 72, suffix: 'K+', label: 'Direct Beneficiaries', icon: Users },
               { value: 160, suffix: 'K+', label: 'Farmers Registered', icon: Target },
               { value: 15, suffix: 'K+', label: 'Certificates of Occupancy', icon: Home },

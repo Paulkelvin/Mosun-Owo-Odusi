@@ -19,7 +19,7 @@ export default function About() {
       type: 'Full-time',
       highlights: [
 	'Led a multi-sectoral team of 18 consultants and specialists to deliver OGSTEP’s Project Development Objectives and Disbursement Linked Results (DLRs).',
-        'Coordinated annual budgeting and financial management for an over $205M World Bank portfolio, ensuring fiduciary compliance and timely external audits.',
+        'Coordinated annual budgeting and financial management for an over $250M World Bank portfolio, ensuring fiduciary compliance and timely external audits.',
         'Facilitated high-level policy dialogues and six Implementation Support Missions (ISMs) with the World Bank Task Team, driving sector reforms and capacity building across implementing agencies.',
         'Oversaw sectoral reform implementation across education, skills development and economic transformation, tracking results against the Project Appraisal Document (PAD).',
         'Implemented robust stakeholder management and communication strategies, aligning ministries, agencies and the Project Home Ministry.'

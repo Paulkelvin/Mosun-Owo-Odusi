@@ -21,7 +21,7 @@ import AnimatedCounter from '@/components/AnimatedCounter'
 const headlineMetrics = [
   {
     title: 'World Bank Portfolio',
-    value: 205,
+    value: 250,
     suffix: 'M+',
     prefix: '$',
     caption: 'Portfolio managed across OGSTEP reform components',
