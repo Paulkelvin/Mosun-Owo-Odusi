@@ -251,7 +251,7 @@ export default function About() {
               <div className="bg-primary-50 border-l-4 border-primary-600 p-4 rounded-r-lg shadow-sm">
                 <p className="text-xs font-semibold uppercase tracking-widest text-primary-500 mb-2">What&apos;s Next</p>
                 <p className="text-primary-900 font-medium leading-relaxed">
-                  Three decades of building public institutions have taught me what it takes to move from policy to measurable results. I am now available for board advisory appointments, programme leadership mandates with multilaterals and DFIs, and state-level reform engagements.
+                  Three decades of building private and public institutions have taught me what it takes to move from policy to measurable results. I am now available for board advisory appointments, executive roles such as Chief Operating Officer or Chief Programme Officer within private companies and multinational or multi-campus organisations (including educational institutions), programme leadership mandates with multilaterals and DFIs, and state-level reform engagements.
                 </p>
               </div>
             </div>
