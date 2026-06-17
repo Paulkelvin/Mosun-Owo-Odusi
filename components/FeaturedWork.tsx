@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -38,8 +38,38 @@ const badgeColors: Record<MarqueeImage['project'], string> = {
 const ogstepCoordinatorVideoSrc = 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview'
 
 export default function FeaturedWork() {
-  const [paused, setPaused] = useState(false)
   const marqueeLoop = [...marqueeImages, ...marqueeImages]
+  const scrollerRef = useRef<HTMLDivElement>(null)
+  const pausedRef = useRef(false)
+
+  // Auto-scroll the strip while still allowing native finger-swipe / drag.
+  // Pausing only stops the auto-advance; manual scrolling stays live.
+  useEffect(() => {
+    const el = scrollerRef.current
+    if (!el) return
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+
+    const SPEED = 0.6 // px per frame (~36px/s)
+    let raf = 0
+
+    const step = () => {
+      if (!pausedRef.current) el.scrollLeft += SPEED
+      // The list is duplicated; loop seamlessly at the start of the 2nd copy.
+      const marker = el.children[marqueeImages.length] as HTMLElement | undefined
+      const period = marker ? marker.offsetLeft : el.scrollWidth / 2
+      if (period > 0 && el.scrollLeft >= period) el.scrollLeft -= period
+      raf = requestAnimationFrame(step)
+    }
+    raf = requestAnimationFrame(step)
+    return () => cancelAnimationFrame(raf)
+  }, [])
+
+  const pause = () => {
+    pausedRef.current = true
+  }
+  const resume = () => {
+    pausedRef.current = false
+  }
 
   return (
     <section className="section-padding bg-gradient-to-b from-white via-slate-50/50 to-white relative overflow-hidden">
@@ -101,31 +131,29 @@ export default function FeaturedWork() {
           viewport={{ once: true }}
           className="mb-8"
         >
-          <div
-            className="relative overflow-hidden"
-            onMouseEnter={() => setPaused(true)}
-            onMouseLeave={() => setPaused(false)}
-            onPointerDown={() => setPaused(true)}
-            onPointerUp={() => setPaused(false)}
-            onPointerCancel={() => setPaused(false)}
-          >
+          <div className="relative overflow-hidden">
             <div
-              className="marquee-track flex w-max gap-4"
-              style={{ animationPlayState: paused ? 'paused' : 'running' }}
+              ref={scrollerRef}
+              className="flex gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              onMouseEnter={pause}
+              onMouseLeave={resume}
+              onPointerDown={pause}
+              onPointerUp={resume}
+              onPointerCancel={resume}
             >
               {marqueeLoop.map((img, index) => (
                 <Link
                   key={`${img.src}-${index}`}
                   href={`/media?tab=${img.project}#media-archive`}
                   aria-label={`${img.projectName} — view in media archive`}
-                  className="group/card relative block w-72 sm:w-80 lg:w-96 shrink-0 overflow-hidden rounded-2xl shadow-lg"
+                  className="group/card relative block w-[80vw] sm:w-96 lg:w-[28rem] shrink-0 overflow-hidden rounded-2xl shadow-lg"
                 >
                   <div className="relative aspect-[4/3]">
                     <Image
                       src={img.src}
                       alt={img.alt}
                       fill
-                      sizes="(max-width: 640px) 288px, (max-width: 1024px) 320px, 384px"
+                      sizes="(max-width: 640px) 80vw, (max-width: 1024px) 384px, 448px"
                       className="object-cover object-center transition-transform duration-500 group-hover/card:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
@@ -137,13 +165,10 @@ export default function FeaturedWork() {
               ))}
             </div>
 
-            {/* Edge fades */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-12 sm:w-16 bg-gradient-to-r from-white to-transparent" />
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-12 sm:w-16 bg-gradient-to-l from-white to-transparent" />
+            {/* Subtle edge fades */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-8 bg-gradient-to-r from-white/70 to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-8 bg-gradient-to-l from-white/70 to-transparent" />
           </div>
-          <p className="mt-3 text-center text-xs text-slate-400">
-            Hover or hold to pause · tap an image to open it in the media archive
-          </p>
         </motion.div>
 
         {/* CTA Button */}
