@@ -118,14 +118,14 @@ export default function FeaturedWork() {
                   key={`${img.src}-${index}`}
                   href={`/media?tab=${img.project}#media-archive`}
                   aria-label={`${img.projectName} — view in media archive`}
-                  className="group/card relative block w-56 sm:w-64 shrink-0 overflow-hidden rounded-2xl shadow-lg"
+                  className="group/card relative block w-72 sm:w-80 lg:w-96 shrink-0 overflow-hidden rounded-2xl shadow-lg"
                 >
                   <div className="relative aspect-[4/3]">
                     <Image
                       src={img.src}
                       alt={img.alt}
                       fill
-                      sizes="(max-width: 640px) 224px, 256px"
+                      sizes="(max-width: 640px) 288px, (max-width: 1024px) 320px, 384px"
                       className="object-cover object-center transition-transform duration-500 group-hover/card:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
