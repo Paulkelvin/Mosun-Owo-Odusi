@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useMotionValue } from 'framer-motion'
 import Image from 'next/image'
 import {
@@ -304,6 +304,14 @@ export default function MediaArchive() {
   const [zoomLevel, setZoomLevel] = useState(1)
   const zoomPanX = useMotionValue(0)
   const zoomPanY = useMotionValue(0)
+
+  // Pre-select a gallery tab when arriving via /media?tab=ogstep|consults|school
+  useEffect(() => {
+    const tab = new URLSearchParams(window.location.search).get('tab')
+    if (tab === 'ogstep' || tab === 'consults' || tab === 'school') {
+      setGalleryFilter(tab)
+    }
+  }, [])
 
   const nonBeforeAfterImages = galleryImages.filter((img) => !beforeAfterGallerySrcs.has(img.src))
   const filteredImages = galleryFilter === 'all' ? nonBeforeAfterImages : nonBeforeAfterImages.filter(img => img.project === galleryFilter)
