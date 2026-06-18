@@ -44,7 +44,7 @@ export default async function Home() {
     caption: m.caption,
     icon: m.icon,
   }))
-  const featuredTestimonials = (data?.featuredTestimonials || []).map((t: any) => ({
+  const featuredTestimonials = (data?.featuredTestimonials || []).filter(Boolean).map((t: any) => ({
     quote: toPlainText(t.content),
     highlights: t.highlights || [],
     name: t.name,
