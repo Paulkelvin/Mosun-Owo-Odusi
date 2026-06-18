@@ -94,7 +94,7 @@ const categories = [
   },
 ]
 
-export default function MediaPage() {
+export default function MediaPage({ media }: { media?: any } = {}) {
   return (
     <div className="min-h-screen bg-slate-50 pb-20">
       <section className="relative overflow-hidden bg-gradient-to-br from-primary-800 via-primary-700 to-slate-700 pt-28 pb-16 lg:pt-32 lg:pb-20">
@@ -232,7 +232,12 @@ export default function MediaPage() {
           )
         })}
       </div>
-      <MediaArchive />
+      <MediaArchive
+        galleryImages={media?.galleryImages}
+        beforeAfterPairs={media?.beforeAfterPairs}
+        videoHighlights={media?.videoHighlights}
+        descriptions={media?.descriptions}
+      />
     </div>
   )
 }

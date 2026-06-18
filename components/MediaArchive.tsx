@@ -169,7 +169,7 @@ const ogstepEventImageFiles = [
   'ffa0d57f-9613-4abe-9943-988b8dad5a03.JPG',
 ] as const
 
-const galleryImages: GalleryImage[] = [
+const defaultGalleryImages: GalleryImage[] = [
   { src: '/images/OGSTEP_outreach.JPG', alt: 'OGSTEP outreach session with community members', category: 'Leadership & Outreach', project: 'ogstep' },
   { src: '/images/OGSTEP_Mosun_Owo-Odusi.JPG', alt: 'Mosun Owo-Odusi speaking during OGSTEP session', category: 'Leadership & Outreach', project: 'ogstep' },
   { src: '/images/Mosun Owo-Odusi.jpg', alt: 'Professional portrait of Mosun Owo-Odusi', category: 'Leadership & Outreach', project: 'ogstep' },
@@ -226,20 +226,7 @@ const galleryImages: GalleryImage[] = [
   })),
 ]
 
-const beforeAfterGallerySrcs = new Set<string>([
-  '/images/Government_Technical_College_Before_Rehabilitation.png',
-  '/images/Government_Technical_College_After_Rehabilitation.png',
-  '/images/Before1.png',
-  '/images/After1.png',
-  '/images/Before2.png',
-  '/images/After2.png',
-  '/images/Before3.png',
-  '/images/After3.png',
-  '/images/Before4.png',
-  '/images/After4.png',
-])
-
-const beforeAfterPairs = [
+const defaultBeforeAfterPairs = [
   {
     label: 'Government Technical College Rehabilitation',
     context: 'One of eight Government Technical Colleges upgraded under OGSTEP to modern, skills-focused learning environments.',
@@ -272,7 +259,7 @@ const beforeAfterPairs = [
   },
 ] as const
 
-const videoHighlights: VideoHighlight[] = [
+const defaultVideoHighlights: VideoHighlight[] = [
   { id: 'ogstep-coordinator-perspective', title: 'On Leading OGSTEP: A Programme Coordinator\'s Perspective', src: 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview', kind: 'iframe', project: 'ogstep', series: 'OGSTEP Project' },
   { id: 'ogstep-documentary-achievements', title: 'OGSTEP Documentary: Achievements Overview', src: 'https://drive.google.com/file/d/1EwkTDB1JdZlX7mNIeR2w-bazeYMMAJ3W/preview', kind: 'iframe', project: 'ogstep', series: 'General Highlights' },
   { id: 'amville-school-video-1', title: 'Amville School Video Highlight 1', src: '/images/amville-school/AQNzwG2CsMq3htCToofp3Br6ramI6LAbgKpWRyG0kCKczhfSUMGN2J4Wteu9XniZt3pqxNMf-MXVP-_BsQhMi6uC.mp4', kind: 'mp4', project: 'school', series: 'Amville School Highlights' },
@@ -289,14 +276,31 @@ const videoHighlights: VideoHighlight[] = [
   { id: 'nawairuddeen-grammar-school-rehabilitation', title: 'Nawairuddeen Grammar School Rehabilitation', src: 'https://drive.google.com/file/d/19k_eCiQ0AjsHleiegOy6VMAiWjBCnxnE/preview', kind: 'iframe', project: 'ogstep', series: 'Documentary Series 3' },
 ]
 
-const descriptions: Record<ProjectFilter, string> = {
+const defaultDescriptions: Record<ProjectFilter, string> = {
   all: 'Visual highlights across OGSTEP, Amville Consults, and Amville School.',
   ogstep: 'A visual story of agricultural transformation, skills development, and geospatial reforms across the OGSTEP portfolio.',
   consults: 'Educational consulting, CSR projects, and capacity-building initiatives through Amville Consults.',
   school: 'Educational programmes and community moments from Amville School.',
 }
 
-export default function MediaArchive() {
+type MediaArchiveProps = {
+  galleryImages?: GalleryImage[]
+  beforeAfterPairs?: { label: string; context: string; before: string; after: string }[]
+  videoHighlights?: VideoHighlight[]
+  descriptions?: Record<ProjectFilter, string>
+}
+
+export default function MediaArchive({
+  galleryImages: galleryImagesProp,
+  beforeAfterPairs: beforeAfterPairsProp,
+  videoHighlights: videoHighlightsProp,
+  descriptions: descriptionsProp,
+}: MediaArchiveProps = {}) {
+  const galleryImages = galleryImagesProp && galleryImagesProp.length ? galleryImagesProp : defaultGalleryImages
+  const beforeAfterPairs = beforeAfterPairsProp && beforeAfterPairsProp.length ? beforeAfterPairsProp : defaultBeforeAfterPairs
+  const videoHighlights = videoHighlightsProp && videoHighlightsProp.length ? videoHighlightsProp : defaultVideoHighlights
+  const descriptions = descriptionsProp ?? defaultDescriptions
+  const beforeAfterGallerySrcs = new Set<string>(beforeAfterPairs.flatMap((p) => [p.before, p.after]))
   const [galleryFilter, setGalleryFilter] = useState<ProjectFilter>('all')
   const [galleryMode, setGalleryMode] = useState<'preview' | 'expanded' | 'full'>('preview')
   const [isImageZoomOpen, setIsImageZoomOpen] = useState(false)
