@@ -4,8 +4,78 @@ import { motion } from 'framer-motion'
 import { Target, Home, CheckCircle, ArrowRight, Briefcase, Award, Users, Landmark, Network } from 'lucide-react'
 import Link from 'next/link'
 import AnimatedCounter from '@/components/AnimatedCounter'
+import { getIcon } from '@/sanity/icons'
 
-export default function ServicesPage() {
+const resolveIcon = (icon: any) => (typeof icon === 'string' ? getIcon(icon) : icon)
+
+const defaultServices = [
+  {
+    icon: Target,
+    title: 'Development Programme Leadership',
+    desc: 'End-to-end leadership of large-scale, donor-funded and government reform programmes, from design through delivery to results verification.',
+    body: "I have spent the past several years leading OGSTEP, a $250M+ World Bank programme spanning agricultural value chains, skills development, land administration, and public sector reform. My role covered coordinating four project managers, 15+ specialist consultants, and over 50 team members, while managing direct relationships with the World Bank Task Team, the Governor's office, and implementing ministries. I am experienced in results-based financing frameworks, Disbursement Linked Results (DLRs), Implementation Support Missions, and the full fiduciary and reporting cycle of multilateral-funded programmes.",
+    services: [
+      'Multisectoral programme coordination across government, agriculture, skills, and land administration',
+      'Stakeholder management across ministries, World Bank Task Teams, development partners, and community groups',
+      'Results-based financing and DLR tracking, verification, and reporting',
+      'Annual budgeting, financial management, and fiduciary compliance for large portfolios',
+      'Facilitation of Implementation Support Missions and Independent Verification Assessments',
+      'Institutional capacity building for civil servants and implementing agencies',
+    ],
+    color: 'from-blue-600 to-blue-400',
+    action: 'Get in Touch',
+    link: '/contact#message',
+  },
+  {
+    icon: Users,
+    title: 'Institutional & Education Reform Advisory',
+    desc: 'Strategic advisory for school turnaround, institutional re-engineering, and skills systems alignment to economic outcomes.',
+    body: 'With over 30 years spanning secondary school leadership, curriculum development, and vocational skills reform, I bring operational depth that most advisors in this space lack. My career includes serving as Principal of Corona Secondary School, Deputy Head Teacher at Grange School, and Director of Studies at Lekki British School, alongside co-founding Amville School and growing it from 5 to 190 students. Through OGSTEP, I led the revitalisation of eight Government Technical Colleges and oversaw curriculum and assessment reform at the state level.',
+    services: [
+      'School turnaround and institutional review across governance, curriculum, staffing, and culture',
+      'Curriculum reform and alignment to skills demand and economic priorities',
+      'Systems strengthening for state education ministries and agencies',
+      'Advisory to education entrepreneurs on institutional structure, operations, and growth',
+      'Teacher and school leader capacity development',
+      'Integration of technology into learning environments',
+    ],
+    color: 'from-purple-600 to-indigo-400',
+    action: 'Get in Touch',
+    link: '/contact#message',
+  },
+]
+
+const defaultVentures = [
+  { name: 'Amville Consults', established: 'Est. 2006', description: 'Educational consulting, training, and advisory for schools and educational institutions. Works with institutions on turnaround, curriculum design, and leadership development.', icon: Briefcase, color: 'bg-blue-100 text-blue-600' },
+  { name: 'Amville School', established: 'Est. 2006', description: 'Co-founded and built from 5 to 190 students over 14 years. ICT-integrated learning environment. Founder and alumni capacity retained.', icon: Award, color: 'bg-purple-100 text-purple-600' },
+  { name: 'Divilux Realty', established: 'Est. 2015', description: 'Professional guidance on property acquisition, verification, investment decisions, and facility management across residential and commercial real estate.', icon: Home, color: 'bg-green-100 text-green-600' },
+]
+
+const ventureColors = ['bg-blue-100 text-blue-600', 'bg-purple-100 text-purple-600', 'bg-green-100 text-green-600']
+
+const defaultStats = [
+  { value: 250, prefix: '$', suffix: 'M+', label: 'World Bank Portfolio', icon: Briefcase },
+  { value: 72, suffix: 'K+', label: 'Direct Beneficiaries', icon: Users },
+  { value: 160, suffix: 'K+', label: 'Farmers Registered', icon: Target },
+  { value: 15, suffix: 'K+', label: 'Certificates of Occupancy', icon: Home },
+  { value: 30, suffix: '+', label: 'Years of Leadership', icon: Award },
+]
+
+export default function ServicesPage({ data }: { data?: any } = {}) {
+  const heroStats =
+    data?.heroStats?.length
+      ? data.heroStats
+      : [
+          { label: '$250M+ portfolio led', icon: Landmark },
+          { label: '30+ years of leadership', icon: Award },
+          { label: '4 PMs, 15+ consultants, 50+ team members', icon: Network },
+        ]
+  const services =
+    data?.services?.length
+      ? data.services
+      : defaultServices
+  const ventures = data?.ventures?.length ? data.ventures : defaultVentures
+  const stats = data?.stats?.length ? data.stats : defaultStats
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-primary-50">
@@ -29,30 +99,27 @@ export default function ServicesPage() {
             <div>
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-100">
                 <Briefcase className="h-4 w-4 text-gold-300" />
-                Advisory & Programme Leadership
+                {data?.heroBadge ?? 'Advisory & Programme Leadership'}
               </div>
               <h1 className="max-w-4xl text-4xl font-bold leading-tight text-white md:text-5xl lg:text-6xl">
-                Senior counsel for reform, delivery, and institutional scale.
+                {data?.heroHeading ?? 'Senior counsel for reform, delivery, and institutional scale.'}
               </h1>
               <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
-                Mandates shaped for boards, DFIs, state governments, and education institutions that need disciplined execution and trusted stakeholder leadership.
+                {data?.heroSubheading ??
+                  'Mandates shaped for boards, DFIs, state governments, and education institutions that need disciplined execution and trusted stakeholder leadership.'}
               </p>
               <Link
-                href="/contact#message"
+                href={data?.heroCtaHref ?? '/contact#message'}
                 className="mt-7 inline-flex items-center gap-2 rounded-xl bg-gold-400 px-5 py-3 text-sm font-semibold text-slate-950 transition-all hover:-translate-y-0.5 hover:bg-gold-300"
               >
-                Discuss a mandate
+                {data?.heroCtaLabel ?? 'Discuss a mandate'}
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
-              {[
-                { label: '$250M+ portfolio led', icon: Landmark },
-                { label: '30+ years of leadership', icon: Award },
-                { label: '4 PMs, 15+ consultants, 50+ team members', icon: Network },
-              ].map((item) => {
-                const Icon = item.icon
+              {heroStats.map((item: any) => {
+                const Icon = resolveIcon(item.icon)
                 return (
                   <div key={item.label} className="rounded-2xl border border-white/15 bg-white/10 p-5 backdrop-blur-md">
                     <Icon className="mb-4 h-5 w-5 text-gold-300" />
@@ -70,43 +137,8 @@ export default function ServicesPage() {
 
           {/* Services Grid */}
           <div className="grid md:grid-cols-2 gap-10 mb-20">
-            {[
-              { 
-                icon: Target, 
-                title: 'Development Programme Leadership', 
-                desc: 'End-to-end leadership of large-scale, donor-funded and government reform programmes, from design through delivery to results verification.',
-                body: 'I have spent the past several years leading OGSTEP, a $250M+ World Bank programme spanning agricultural value chains, skills development, land administration, and public sector reform. My role covered coordinating four project managers, 15+ specialist consultants, and over 50 team members, while managing direct relationships with the World Bank Task Team, the Governor\'s office, and implementing ministries. I am experienced in results-based financing frameworks, Disbursement Linked Results (DLRs), Implementation Support Missions, and the full fiduciary and reporting cycle of multilateral-funded programmes.',
-                services: [
-                  'Multisectoral programme coordination across government, agriculture, skills, and land administration',
-                  'Stakeholder management across ministries, World Bank Task Teams, development partners, and community groups',
-                  'Results-based financing and DLR tracking, verification, and reporting',
-                  'Annual budgeting, financial management, and fiduciary compliance for large portfolios',
-                  'Facilitation of Implementation Support Missions and Independent Verification Assessments',
-                  'Institutional capacity building for civil servants and implementing agencies'
-                ],
-                color: 'from-blue-600 to-blue-400', 
-                action: 'Get in Touch', 
-                link: '/contact#message' 
-              },
-              {
-                icon: Users,
-                title: 'Institutional & Education Reform Advisory',
-                desc: 'Strategic advisory for school turnaround, institutional re-engineering, and skills systems alignment to economic outcomes.',
-                body: 'With over 30 years spanning secondary school leadership, curriculum development, and vocational skills reform, I bring operational depth that most advisors in this space lack. My career includes serving as Principal of Corona Secondary School, Deputy Head Teacher at Grange School, and Director of Studies at Lekki British School, alongside co-founding Amville School and growing it from 5 to 190 students. Through OGSTEP, I led the revitalisation of eight Government Technical Colleges and oversaw curriculum and assessment reform at the state level.',
-                services: [
-                  'School turnaround and institutional review across governance, curriculum, staffing, and culture',
-                  'Curriculum reform and alignment to skills demand and economic priorities',
-                  'Systems strengthening for state education ministries and agencies',
-                  'Advisory to education entrepreneurs on institutional structure, operations, and growth',
-                  'Teacher and school leader capacity development',
-                  'Integration of technology into learning environments'
-                ],
-                color: 'from-purple-600 to-indigo-400',
-                action: 'Get in Touch',
-                link: '/contact#message'
-              }
-            ].map((service, index) => {
-              const Icon = service.icon
+            {services.map((service: any, index: number) => {
+              const Icon = resolveIcon(service.icon)
               return (
                 <motion.div
                   key={service.title}
@@ -123,7 +155,7 @@ export default function ServicesPage() {
                   <p className="text-slate-600 mb-6 leading-relaxed text-sm">{service.body}</p>
                   {service.services && (
                     <ul className="space-y-2 mb-6">
-                      {service.services.map((s) => (
+                      {service.services.map((s: string) => (
                         <li key={s} className="flex items-start gap-2 text-sm text-slate-700">
                           <CheckCircle className="text-primary-600 flex-shrink-0 mt-0.5" size={16} />
                           <span>{s}</span>
@@ -144,31 +176,24 @@ export default function ServicesPage() {
           {/* Ventures Section */}
           <div className="mt-20">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">Ventures</h2>
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">{data?.venturesHeading ?? 'Ventures'}</h2>
               <p className="text-slate-600 max-w-2xl mx-auto">
-                Three personal business lines, distinct from advisory mandates, built and sustained over the course of my career.
+                {data?.venturesIntro ?? 'Three personal business lines, distinct from advisory mandates, built and sustained over the course of my career.'}
               </p>
             </motion.div>
-            
+
             <div className="grid md:grid-cols-3 gap-6">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }} viewport={{ once: true }} className="bg-white p-6 rounded-2xl shadow-soft border border-slate-100">
-                <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-xl flex items-center justify-center mb-4"><Briefcase size={24} /></div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Est. 2006</p>
-                <h3 className="text-xl font-bold mb-2">Amville Consults</h3>
-                <p className="text-sm text-slate-600">Educational consulting, training, and advisory for schools and educational institutions. Works with institutions on turnaround, curriculum design, and leadership development.</p>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} viewport={{ once: true }} className="bg-white p-6 rounded-2xl shadow-soft border border-slate-100">
-                <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-xl flex items-center justify-center mb-4"><Award size={24} /></div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Est. 2006</p>
-                <h3 className="text-xl font-bold mb-2">Amville School</h3>
-                <p className="text-sm text-slate-600">Co-founded and built from 5 to 190 students over 14 years. ICT-integrated learning environment. Founder and alumni capacity retained.</p>
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.3 }} viewport={{ once: true }} className="bg-white p-6 rounded-2xl shadow-soft border border-slate-100">
-                <div className="w-12 h-12 bg-green-100 text-green-600 rounded-xl flex items-center justify-center mb-4"><Home size={24} /></div>
-                <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">Est. 2015</p>
-                <h3 className="text-xl font-bold mb-2">Divilux Realty</h3>
-                <p className="text-sm text-slate-600">Professional guidance on property acquisition, verification, investment decisions, and facility management across residential and commercial real estate.</p>
-              </motion.div>
+              {ventures.map((v: any, i: number) => {
+                const Icon = resolveIcon(v.icon)
+                return (
+                  <motion.div key={v.name ?? i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 * (i + 1) }} viewport={{ once: true }} className="bg-white p-6 rounded-2xl shadow-soft border border-slate-100">
+                    <div className={`w-12 h-12 ${v.color ?? ventureColors[i % ventureColors.length]} rounded-xl flex items-center justify-center mb-4`}><Icon size={24} /></div>
+                    <p className="text-xs font-semibold uppercase tracking-widest text-slate-400 mb-1">{v.established}</p>
+                    <h3 className="text-xl font-bold mb-2">{v.name}</h3>
+                    <p className="text-sm text-slate-600">{v.description}</p>
+                  </motion.div>
+                )
+              })}
             </div>
           </div>
         </div>
@@ -178,23 +203,17 @@ export default function ServicesPage() {
       <section className="py-20 bg-white">
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Scale, Impact, <span className="gradient-text">and Documented Results</span></h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{data?.statsHeading ?? <>Scale, Impact, <span className="gradient-text">and Documented Results</span></>}</h2>
           </motion.div>
 
           <div className="grid grid-cols-2 lg:grid-cols-5 gap-6 lg:gap-8">
-            {[
-              { value: 250, prefix: '$', suffix: 'M+', label: 'World Bank Portfolio', icon: Briefcase },
-              { value: 72, suffix: 'K+', label: 'Direct Beneficiaries', icon: Users },
-              { value: 160, suffix: 'K+', label: 'Farmers Registered', icon: Target },
-              { value: 15, suffix: 'K+', label: 'Certificates of Occupancy', icon: Home },
-              { value: 30, suffix: '+', label: 'Years of Leadership', icon: Award }
-            ].map((stat, index) => {
-              const Icon = stat.icon
+            {stats.map((stat: any, index: number) => {
+              const Icon = resolveIcon(stat.icon)
               return (
                 <motion.div key={stat.label} initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} transition={{ duration: 0.6, delay: index * 0.1 }} viewport={{ once: true }} className="text-center card-modern hover:shadow-large transition-all duration-300">
                   <div className="w-16 h-16 bg-gradient-to-br from-primary-600 to-primary-500 rounded-2xl flex items-center justify-center mx-auto mb-4"><Icon className="text-white" size={32} /></div>
                   <div className="text-4xl md:text-5xl font-bold gradient-text mb-2">
-                    <AnimatedCounter end={stat.value} prefix={stat.prefix} suffix={stat.suffix} duration={2.5} />
+                    <AnimatedCounter end={Number(stat.value)} prefix={stat.prefix} suffix={stat.suffix} duration={2.5} />
                   </div>
                   <p className="text-slate-700 font-medium text-sm lg:text-base">{stat.label}</p>
                 </motion.div>
@@ -208,10 +227,10 @@ export default function ServicesPage() {
       <section className="py-20 bg-gradient-to-br from-primary-50 to-gold-50">
         <div className="container-custom">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} className="text-center max-w-3xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Get Started?</h2>
-            <p className="text-lg text-slate-600 mb-8">Let&apos;s discuss how I can support your organisation through programme leadership, institutional reform, or board advisory.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">{data?.ctaHeading ?? 'Ready to Get Started?'}</h2>
+            <p className="text-lg text-slate-600 mb-8">{data?.ctaText ?? "Let's discuss how I can support your organisation through programme leadership, institutional reform, or board advisory."}</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/contact#message" className="btn-primary inline-flex items-center gap-2">Get in Touch <ArrowRight size={20} /></Link>
+              <Link href={data?.ctaButton?.href ?? '/contact#message'} className="btn-primary inline-flex items-center gap-2">{data?.ctaButton?.label ?? 'Get in Touch'} <ArrowRight size={20} /></Link>
             </div>
           </motion.div>
         </div>

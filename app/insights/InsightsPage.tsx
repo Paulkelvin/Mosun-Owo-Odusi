@@ -14,7 +14,7 @@ type Article = {
   body: string[]
 }
 
-const articles: Article[] = [
+const defaultArticles: Article[] = [
   {
     id: 'lessons-250m-reform',
     title: 'Lessons from Delivering $250M of Public Sector Reform in a Nigerian State',
@@ -75,7 +75,20 @@ const articles: Article[] = [
   },
 ]
 
-export default function InsightsPage() {
+type InsightsPageProps = {
+  articles?: Article[]
+  heroBadge?: string
+  heroHeading?: string
+  heroSubheading?: string
+}
+
+export default function InsightsPage({
+  articles: articlesProp,
+  heroBadge = 'Insights',
+  heroHeading = 'Field notes from reform, delivery, and institutional leadership.',
+  heroSubheading = 'Practical reflections drawn from public-sector reform, skills systems, education leadership, and a $250M+ World Bank portfolio.',
+}: InsightsPageProps = {}) {
+  const articles = articlesProp && articlesProp.length ? articlesProp : defaultArticles
   const [selectedArticle, setSelectedArticle] = useState<string | null>(null)
   const active = selectedArticle ? articles.find(a => a.id === selectedArticle) : null
 
@@ -112,13 +125,13 @@ export default function InsightsPage() {
                   <div>
                     <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-sm font-semibold text-slate-100">
                       <BookOpen className="h-4 w-4 text-gold-300" />
-                      Insights
+                      {heroBadge}
                     </div>
                     <h1 className="max-w-3xl text-4xl font-bold leading-tight text-white md:text-5xl">
-                      Field notes from reform, delivery, and institutional leadership.
+                      {heroHeading}
                     </h1>
                     <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
-                      Practical reflections drawn from public-sector reform, skills systems, education leadership, and a $250M+ World Bank portfolio.
+                      {heroSubheading}
                     </p>
                   </div>
                   <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
