@@ -147,7 +147,7 @@ async function build() {
     const g = galleryImagesData[i]
     const img = await imageRef(g.src, g.alt, g.caption)
     if (!img) continue
-    const id = `gallery.${slugify(g.src)}`
+    const id = `gallery-${slugify(g.src)}`
     galleryIdBySrc.set(g.src, id)
     await put({
       _id: id,
@@ -166,7 +166,7 @@ async function build() {
     const v = videoHighlightsData[i]
     const isFile = v.kind === 'mp4'
     await put({
-      _id: `video.${v.id}`,
+      _id: `video-${v.id}`,
       _type: 'videoHighlight',
       title: v.title,
       kind: v.kind,
@@ -181,7 +181,7 @@ async function build() {
   for (let i = 0; i < beforeAfterPairsData.length; i++) {
     const b = beforeAfterPairsData[i]
     await put({
-      _id: `beforeAfter.${i}`,
+      _id: `beforeafter-${i}`,
       _type: 'beforeAfterPair',
       label: b.label,
       context: b.context,
@@ -195,7 +195,7 @@ async function build() {
   const projectIds: Record<string, string> = {}
   for (let i = 0; i < projectsData.length; i++) {
     const p = projectsData[i]
-    const id = `project.${slugify(p.title).slice(0, 40)}`
+    const id = `project-${slugify(p.title).slice(0, 40)}`
     projectIds[p.key] = id
     const milestones = []
     for (const m of p.milestones) {
@@ -242,7 +242,7 @@ async function build() {
   const testimonialIds: Record<string, string> = {}
   for (let i = 0; i < testimonialsData.length; i++) {
     const t = testimonialsData[i]
-    const id = `testimonial.${slugify(t.name)}`
+    const id = `testimonial-${slugify(t.name)}`
     testimonialIds[t.name] = id
     await put({
       _id: id,
@@ -265,7 +265,7 @@ async function build() {
   for (let i = 0; i < insightsData.length; i++) {
     const a = insightsData[i]
     await put({
-      _id: `insight.${a.id}`,
+      _id: `insight-${a.id}`,
       _type: 'insight',
       title: a.title,
       slug: { _type: 'slug', current: a.id },
