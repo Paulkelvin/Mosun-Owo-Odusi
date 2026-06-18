@@ -11,7 +11,7 @@ type NavLink = {
   dropdown?: { name: string; href: string }[]
 }
 
-const navLinks: NavLink[] = [
+const defaultNavLinks: NavLink[] = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Projects', href: '/projects' },
@@ -22,7 +22,8 @@ const navLinks: NavLink[] = [
   { name: 'Contact', href: '/contact' },
 ]
 
-export default function Header() {
+export default function Header({ nav }: { nav?: NavLink[] } = {}) {
+  const navLinks = nav && nav.length ? nav : defaultNavLinks
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)

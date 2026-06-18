@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 
-const footerLinks = [
+const defaultFooterLinks = [
   { name: 'About', href: '/about' },
   { name: 'Projects', href: '/projects' },
   { name: 'Services', href: '/services' },
@@ -13,7 +13,8 @@ const footerLinks = [
   { name: 'Contact', href: '/contact' },
 ]
 
-export default function Footer() {
+export default function Footer({ links }: { links?: { name: string; href: string }[] } = {}) {
+  const footerLinks = links && links.length ? links : defaultFooterLinks
   return (
     <footer className="bg-primary-800 text-white">
       <div className="container-custom py-12">
