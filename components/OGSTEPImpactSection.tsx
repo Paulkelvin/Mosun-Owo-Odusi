@@ -17,8 +17,9 @@ import {
   PlayCircle,
 } from 'lucide-react'
 import AnimatedCounter from '@/components/AnimatedCounter'
+import { getIcon } from '@/sanity/icons'
 
-const headlineMetrics = [
+const defaultHeadlineMetrics = [
   {
     title: 'World Bank Portfolio',
     value: 250,
@@ -75,7 +76,7 @@ const headlineMetrics = [
   },
 ]
 
-const divisionCoverage = [
+const defaultDivisionCoverage = [
   { name: 'Egba', sites: 20 },
   { name: 'Ijebu', sites: 17 },
   { name: 'Yewa', sites: 16 },
@@ -93,7 +94,16 @@ const pdfOptions = {
   },
 }
 
-export default function OGSTEPImpactSection() {
+type ImpactProps = {
+  heading?: string
+  intro?: string
+  metrics?: any[]
+  divisions?: { name: string; sites: number }[]
+}
+
+export default function OGSTEPImpactSection({ heading, intro, metrics, divisions }: ImpactProps = {}) {
+  const headlineMetrics = metrics && metrics.length ? metrics : defaultHeadlineMetrics
+  const divisionCoverage = divisions && divisions.length ? divisions : defaultDivisionCoverage
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [activePdfKey, setActivePdfKey] = useState<'impact' | 'sites'>('impact')
 
@@ -151,11 +161,11 @@ export default function OGSTEPImpactSection() {
           <div className="mt-5 grid gap-8 lg:grid-cols-[1.15fr,0.85fr] lg:items-end">
             <div>
               <h2 className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl">
-                Measurable Reach. Strategic Delivery. Documented Results.
+                {heading ?? 'Measurable Reach. Strategic Delivery. Documented Results.'}
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-relaxed text-slate-200 sm:text-lg">
-                A high-level OGSTEP snapshot from the official infographics showing beneficiary
-                reach, skills, jobs, agriculture outcomes, and statewide implementation coverage.
+                {intro ??
+                  'A high-level OGSTEP snapshot from the official infographics showing beneficiary reach, skills, jobs, agriculture outcomes, and statewide implementation coverage.'}
               </p>
             </div>
 
@@ -176,7 +186,7 @@ export default function OGSTEPImpactSection() {
 
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {headlineMetrics.map((metric, index) => {
-            const Icon = metric.icon
+            const Icon = typeof metric.icon === 'string' ? getIcon(metric.icon) : metric.icon
             return (
               <motion.article
                 key={metric.title}
@@ -186,7 +196,7 @@ export default function OGSTEPImpactSection() {
                 transition={{ duration: 0.6, delay: index * 0.08 }}
                 className="group rounded-2xl border border-white/15 bg-white/10 p-5 shadow-large backdrop-blur-md"
               >
-                <div className={`inline-flex rounded-xl bg-gradient-to-r p-3 ${metric.tone}`}>
+                <div className={`inline-flex rounded-xl bg-gradient-to-r p-3 ${metric.tone ?? 'from-primary-600 to-primary-700'}`}>
                   <Icon className="h-5 w-5 text-white" />
                 </div>
                 <p className="mt-5 text-sm font-semibold uppercase tracking-widest text-slate-300">

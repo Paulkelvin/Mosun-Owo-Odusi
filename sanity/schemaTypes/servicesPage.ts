@@ -17,6 +17,7 @@ export const servicesPage = defineType({
       of: [
         {
           type: 'object',
+          name: 'heroStat',
           fields: [
             { name: 'label', type: 'string' },
             {

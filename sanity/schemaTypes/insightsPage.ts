@@ -15,6 +15,7 @@ export const insightsPage = defineType({
       of: [
         {
           type: 'object',
+          name: 'heroBadge',
           fields: [
             { name: 'label', type: 'string' },
             { name: 'icon', type: 'string', options: { list: ['landmark', 'penLine', 'bookOpen'] } },

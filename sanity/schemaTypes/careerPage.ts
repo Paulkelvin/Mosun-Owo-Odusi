@@ -14,6 +14,7 @@ export const careerPage = defineType({
       of: [
         {
           type: 'object',
+          name: 'careerService',
           fields: [
             { name: 'title', type: 'string' },
             { name: 'description', type: 'string' },

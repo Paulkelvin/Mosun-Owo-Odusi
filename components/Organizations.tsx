@@ -3,7 +3,7 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 
-const logos = [
+const defaultLogos = [
   { src: '/images/World-Bank-Logo.jpg', alt: 'World Bank' },
   { src: '/images/ogun_state_logo.png', alt: 'Ogun State' },
   { src: '/images/grange-secondary-school.png', alt: 'Grange School' },
@@ -12,7 +12,15 @@ const logos = [
   { src: '/images/amVille_SCHOOL_logo.png', alt: 'Amville' },
 ]
 
-export default function Organizations() {
+type OrganizationsProps = {
+  heading?: string
+  logos?: { src: string; alt: string }[]
+}
+
+export default function Organizations({
+  heading = "Organizations I've Worked With",
+  logos = defaultLogos,
+}: OrganizationsProps = {}) {
   return (
     <section aria-labelledby="orgs-heading" className="w-full bg-white">
       <div className="py-12 md:py-16 lg:py-20">
@@ -25,8 +33,8 @@ export default function Organizations() {
             className="text-center mb-16"
           >
             <h2 id="orgs-heading" className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 relative inline-block">
-              Organizations I&apos;ve Worked With
-              <motion.div 
+              {heading}
+              <motion.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 transition={{ duration: 0.8, delay: 0.3 }}

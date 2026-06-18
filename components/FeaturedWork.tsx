@@ -14,7 +14,7 @@ type MarqueeImage = {
   projectName: string
 }
 
-const marqueeImages: MarqueeImage[] = [
+const defaultMarqueeImages: MarqueeImage[] = [
   { src: '/images/OGSTEP_Agric.JPG', alt: 'OGSTEP agricultural training session', project: 'ogstep', projectName: 'OGSTEP' },
   { src: '/images/amville-consults/c8c45d4b-c691-40ec-ab3e-6e9096ec3ae2.JPG', alt: 'Amville Consults workshop with educators', project: 'consults', projectName: 'Amville Consults' },
   { src: '/images/amville-school/Teachers day.jpg', alt: 'Amville School community celebration', project: 'school', projectName: 'Amville School' },
@@ -37,7 +37,13 @@ const badgeColors: Record<MarqueeImage['project'], string> = {
 
 const ogstepCoordinatorVideoSrc = 'https://drive.google.com/file/d/1CSaJFb2_hy-2sFYLB8U1bowPxeyAmp_B/preview'
 
-export default function FeaturedWork() {
+type FeaturedWorkProps = {
+  heading?: string
+  images?: MarqueeImage[]
+}
+
+export default function FeaturedWork({ heading = 'Featured Work', images }: FeaturedWorkProps = {}) {
+  const marqueeImages = images && images.length ? images : defaultMarqueeImages
   const marqueeLoop = [...marqueeImages, ...marqueeImages]
   const scrollerRef = useRef<HTMLDivElement>(null)
   const pausedRef = useRef(false)
@@ -88,7 +94,7 @@ export default function FeaturedWork() {
           className="text-center mb-10"
         >
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4">
-            Featured Work
+            {heading}
           </h2>
           <p className="text-base lg:text-lg text-slate-600 max-w-3xl mx-auto">
             Visual highlights from over 30 years of transformative leadership across education, agriculture, and institutional development

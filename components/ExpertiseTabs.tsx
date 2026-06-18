@@ -14,7 +14,7 @@ interface ExpertiseArea {
   details: string[]
 }
 
-const expertiseAreas: ExpertiseArea[] = [
+const defaultExpertiseAreas: ExpertiseArea[] = [
   {
     id: 'project-management',
     title: 'Project Management',
@@ -55,7 +55,18 @@ const expertiseAreas: ExpertiseArea[] = [
   }
 ]
 
-export default function ExpertiseTabs() {
+type ExpertiseTabsProps = {
+  heading?: React.ReactNode
+  intro?: string
+  areas?: ExpertiseArea[]
+}
+
+export default function ExpertiseTabs({
+  heading,
+  intro = 'Delivering excellence across multiple domains with strategic insight and proven methodologies',
+  areas,
+}: ExpertiseTabsProps = {}) {
+  const expertiseAreas = areas && areas.length ? areas : defaultExpertiseAreas
   const [activeTab, setActiveTab] = useState(expertiseAreas[0].id)
   
   // Get mobile-available tabs (first 3)
@@ -78,8 +89,8 @@ export default function ExpertiseTabs() {
           className="text-center mb-16"
         >
     <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 mb-4 relative inline-block">
-      Core Areas of <span className="text-slate-900">Expertise</span>
-	    <motion.div 
+      {heading ?? <>Core Areas of <span className="text-slate-900">Expertise</span></>}
+	    <motion.div
 	      initial={{ scaleX: 0 }}
 	      whileInView={{ scaleX: 1 }}
 	      transition={{ duration: 0.8, delay: 0.3 }}
@@ -89,7 +100,7 @@ export default function ExpertiseTabs() {
 	  </h2>
           
           <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-            Delivering excellence across multiple domains with strategic insight and proven methodologies
+            {intro}
           </p>
         </motion.div>
 
