@@ -1,10 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import ToastProvider from '@/components/ToastProvider'
-import { siteSettingsQuery, sanityFetch } from '@/sanity/queries'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -57,12 +53,11 @@ export const metadata: Metadata = {
   themeColor: '#1a365d',
 }
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
-  const settings = await sanityFetch<any>(siteSettingsQuery).catch(() => null)
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
@@ -185,14 +180,7 @@ export default async function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        <ToastProvider />
-        <div className="min-w-0 overflow-x-hidden">
-          <Header nav={settings?.nav} />
-          <main className="min-h-screen max-w-full">
-            {children}
-          </main>
-          <Footer links={settings?.footerLinks} />
-        </div>
+        {children}
       </body>
     </html>
   )
