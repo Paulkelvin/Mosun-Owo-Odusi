@@ -58,17 +58,28 @@ export default function FeaturedWork({ heading = 'Featured Work', images }: Feat
     const SPEED = 0.6 // px per frame (~36px/s)
     let raf = 0
 
+    // The list is duplicated; one "period" = the offset of the start of the
+    // 2nd copy. Measure it up front (and on resize) rather than every frame so
+    // the wrap is stable and seamless.
+    let period = 0
+    const measure = () => {
+      const marker = el.children[marqueeImages.length] as HTMLElement | undefined
+      period = marker ? marker.offsetLeft : el.scrollWidth / 2
+    }
+    measure()
+    window.addEventListener('resize', measure)
+
     const step = () => {
       if (!pausedRef.current) el.scrollLeft += SPEED
-      // The list is duplicated; loop seamlessly at the start of the 2nd copy.
-      const marker = el.children[marqueeImages.length] as HTMLElement | undefined
-      const period = marker ? marker.offsetLeft : el.scrollWidth / 2
       if (period > 0 && el.scrollLeft >= period) el.scrollLeft -= period
       raf = requestAnimationFrame(step)
     }
     raf = requestAnimationFrame(step)
-    return () => cancelAnimationFrame(raf)
-  }, [])
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('resize', measure)
+    }
+  }, [marqueeImages.length])
 
   const pause = () => {
     pausedRef.current = true
@@ -140,7 +151,7 @@ export default function FeaturedWork({ heading = 'Featured Work', images }: Feat
           <div className="relative overflow-hidden">
             <div
               ref={scrollerRef}
-              className="flex gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+              className="flex gap-4 overflow-x-auto overflow-y-hidden overscroll-x-contain touch-pan-x [scroll-behavior:auto] [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
               onMouseEnter={pause}
               onMouseLeave={resume}
               onPointerDown={pause}

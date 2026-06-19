@@ -7,7 +7,7 @@ import Organizations from '@/components/Organizations'
 import OGSTEPImpactSection from '@/components/OGSTEPImpactSection'
 import { Icon } from '@/sanity/icons'
 import { urlFor } from '@/sanity/image'
-import { homePageQuery, sanityFetch } from '@/sanity/queries'
+import { homePageQuery, galleryImagesQuery, sanityFetch } from '@/sanity/queries'
 
 const projectLabel: Record<string, string> = { ogstep: 'OGSTEP', consults: 'Amville Consults', school: 'Amville School' }
 
@@ -21,8 +21,31 @@ const numOrStr = (v: any) => {
 
 export const revalidate = 60
 
+// Round-robin interleave gallery images across projects so the marquee shows
+// variety (OGSTEP / Consults / School) instead of one project in a row.
+function buildMarquee(gallery: any[], limit = 24) {
+  const groups: Record<string, any[]> = {}
+  for (const g of gallery) {
+    if (!g?.image) continue
+    ;(groups[g.project] ||= []).push(g)
+  }
+  const keys = Object.keys(groups)
+  const out: any[] = []
+  let i = 0
+  while (out.length < limit && keys.some((k) => groups[k].length)) {
+    const k = keys[i % keys.length]
+    const next = groups[k].shift()
+    if (next) out.push(next)
+    i++
+  }
+  return out
+}
+
 export default async function Home() {
-  const data = await sanityFetch<any>(homePageQuery).catch(() => null)
+  const [data, gallery] = await Promise.all([
+    sanityFetch<any>(homePageQuery).catch(() => null),
+    sanityFetch<any[]>(galleryImagesQuery).catch(() => []),
+  ])
 
   const hero = data?.hero
   const orgLogos = (data?.organizationLogos || []).map((l: any) => ({ src: imgUrl(l.image, 300) || '', alt: l.alt }))
@@ -33,7 +56,10 @@ export default async function Home() {
     description: a.description,
     details: a.details || [],
   }))
-  const marquee = (data?.marqueeImages || [])
+  // Prefer a varied, interleaved sample of the whole gallery; fall back to the
+  // curated marqueeImages field, then to the component's own defaults.
+  const marqueeSource = (gallery && gallery.length ? buildMarquee(gallery) : data?.marqueeImages) || []
+  const marquee = marqueeSource
     .filter((m: any) => m?.image)
     .map((m: any) => ({ src: imgUrl(m.image, 900) || '', alt: m.alt || '', project: m.project, projectName: projectLabel[m.project] || '' }))
   const metrics = (data?.headlineMetrics || []).map((m: any) => ({
